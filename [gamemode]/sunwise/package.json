@@ -1,31 +1,26 @@
 {
-  "name": "fivem-ts-boilerplate",
-  "version": "0.0.1",
+  "name": "gamemode",
+  "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode production",
-    "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "watch": "webpack --mode development --watch true"
+    "build": "npm run buildc && npm run builds",
+    "buildc": "webpack --mode production --config client.config.js",
+    "builds": "webpack --mode production --config server.config.js",
+    "watch": "npm run watchc && npm run watchs",
+    "watchc": "webpack --mode development --watch true --config client.config.js",
+    "watchs": "webpack --mode development --watch true --config server.config.js"
   },
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "@citizenfx/client": "^1.0.2792-1",
-    "@citizenfx/server": "^1.0.2792-1",
-    "@types/node": "^14.0.27"
+    "@citizenfx/client": "^2.0.3923-1",
+    "@citizenfx/server": "^2.0.3923-1",
+    "@types/node": "^15.0.2"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^3.8.0",
-    "@typescript-eslint/parser": "^2.34.0",
-    "eslint": "^7.6.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-loader": "^4.0.2",
-    "prettier": "^2.0.5",
-    "remove-files-webpack-plugin": "^1.4.3",
-    "ts-loader": "^8.0.2",
-    "typescript": "^3.9.7",
-    "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12"
+    "ts-loader": "^6.0.2",
+    "typescript": "^3.7.4",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.2"
   }
 }

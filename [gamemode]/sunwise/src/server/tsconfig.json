@@ -5,18 +5,16 @@
       "*": ["types/*"]
     },
     "outDir": "./",
-    "noImplicitAny": false,
-    "module": "commonjs",
+    "module": "es6",
     "target": "es6",
-    "allowJs": false,
     "lib": ["es2017"],
     "types": ["@citizenfx/server", "@types/node"],
     "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true
+    "strict": true,
+    "alwaysStrict": true,
+    "diagnostics": true,
+    "removeComments": true
   },
   "include": ["./**/*"],
-  "exclude": ["**/node_modules", "**/__tests__/*"]
+  "exclude": []
 }

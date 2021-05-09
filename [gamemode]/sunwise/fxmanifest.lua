@@ -1,6 +1,14 @@
-fx_version 'bodacious'
-game 'gta5'
+fx_version 'cerulean'
+game 'common'
 
+client_scripts {
+    'dist/client/*.js',
+}
 
-client_script 'dist/client/*.client.js'
-server_script 'dist/server/*.server.js'
+server_scripts {
+    'dist/server/*.js',
+}
+
+files {
+    -- UI
+}
