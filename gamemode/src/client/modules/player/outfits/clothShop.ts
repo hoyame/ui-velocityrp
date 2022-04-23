@@ -4,7 +4,7 @@ import MasksConfig from "../../../../shared/config/clothes/masks.json";
 import { Clothes } from "../../../player/clothes";
 import { CoraUI, IButton, ICMenu } from "../../../core/coraui";
 import { TriggerServerCallbackAsync } from "../../../core/utils";
-import { BlipColor, Camera, Color, Control, Game, Screen, Vector3 } from "@nativewrappers/client";
+import { BlipColor, Camera, Color, Control, Game, Screen, Vector3 } from "@wdesgardin/fivem-js";
 import { IClotheConfig, IClothItem } from "../../../../shared/types/clothes";
 import { Character } from "../../../player/character";
 import { InstructionalButtons } from "../../../misc/instructional-buttons";

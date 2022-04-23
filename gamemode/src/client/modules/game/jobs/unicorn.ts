@@ -1,5 +1,5 @@
-import { Color, Game, MarkerType, Ped, Screen, Vector3, World } from "@nativewrappers/client";
-import { Vec3 } from "@nativewrappers/client/lib/utils/Vector3";
+import { Color, Game, MarkerType, Ped, Screen, Vector3, World } from "@wdesgardin/fivem-js";
+import { Vec3 } from "@wdesgardin/fivem-js/lib/utils/Vector3";
 import { ItemsConfig } from "../../../../shared/config/items";
 import { JobId } from "../../../../shared/config/jobs/jobs";
 import { CoraUI } from "../../../core/coraui";

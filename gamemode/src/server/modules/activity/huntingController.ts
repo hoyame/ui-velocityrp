@@ -1,7 +1,7 @@
 import { RegisterServerCallback } from "../../core/utils";
 import Config from "../../../shared/config/activity/hunting.json";
 import { IItem, ItemsConfig } from "../../../shared/config/items";
-import { Model } from "@nativewrappers/client";
+import { Model } from "@wdesgardin/fivem-js";
 import { CharactersController } from "../../player/charactersController";
 import { SendErrorNotification, SendSuccessNotification } from "../../utils/notifications";
 

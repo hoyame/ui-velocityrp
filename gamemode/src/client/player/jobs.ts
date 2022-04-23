@@ -1,4 +1,4 @@
-import { Game, Ped } from "@nativewrappers/client";
+import { Game, Ped } from "@wdesgardin/fivem-js";
 import { JobId, JobsList } from "../../shared/config/jobs/jobs";
 import { ICharacterJob } from "../../shared/player/character";
 import { LocalEvents } from "../../shared/utils/localEvents";

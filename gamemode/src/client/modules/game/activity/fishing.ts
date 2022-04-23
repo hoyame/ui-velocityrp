@@ -1,7 +1,7 @@
 import { BlipsController } from "../../../misc/blips";
 import Config from "../../../../shared/config/activity/fishing.json";
-import { Player } from "@nativewrappers/client";
-import { Vec3, Vector3 } from "@nativewrappers/client/lib/utils/Vector3";
+import { Player } from "@wdesgardin/fivem-js";
+import { Vec3, Vector3 } from "@wdesgardin/fivem-js/lib/utils/Vector3";
 import { ItemsConfig } from "../../../../shared/config/items";
 import { Delay } from "../../../../shared/utils/utils";
 import { CoraUI } from "../../../core/coraui";

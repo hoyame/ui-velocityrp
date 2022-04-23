@@ -1,4 +1,4 @@
-import { Alignment, Color, Control, Font, Game, Point, Screen, Text, Vector3 } from "@nativewrappers/client";
+import { Alignment, Color, Control, Font, Game, Point, Screen, Text, Vector3 } from "@wdesgardin/fivem-js";
 import { Environnment } from "../../shared/utils/environnment";
 import { LocalEvents } from "../../shared/utils/localEvents";
 import { Delay } from "../../shared/utils/utils";

@@ -1,9 +1,9 @@
 import { Streaming } from "../utils/streaming";
 import BlipsConfig from "../../shared/config/world/blips.json";
-import { Vector3 } from "@nativewrappers/client";
+import { Vector3 } from "@wdesgardin/fivem-js";
 import { Blip } from "../core/blips";
 import { BlipColor, BlipSprite } from "../core/enums/blips";
-import { Vec3 } from "@nativewrappers/client/lib/utils/Vector3";
+import { Vec3 } from "@wdesgardin/fivem-js/lib/utils/Vector3";
 import { Delay } from "../../shared/utils/utils";
 
 export interface IBlipInfos {

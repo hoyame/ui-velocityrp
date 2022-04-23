@@ -1,6 +1,6 @@
-import { Vector3 } from '@nativewrappers/client/lib/utils';
-import { BlipColor, BlipSprite } from '@nativewrappers/client/lib/enums';
-import { Entity, Player } from '@nativewrappers/client/lib/models';
+import { Vector3 } from '@wdesgardin/fivem-js/lib/utils';
+import { BlipColor, BlipSprite } from '@wdesgardin/fivem-js/lib/enums';
+import { Entity, Player } from '@wdesgardin/fivem-js/lib/models';
 import { BlipDisplay } from './enums/blips';
 
 export class Blip {

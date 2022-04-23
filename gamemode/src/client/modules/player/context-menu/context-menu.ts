@@ -14,7 +14,7 @@ import {
 	VehicleDoorIndex,
 	VehicleLockStatus,
 	VehicleSeat,
-} from "@nativewrappers/client";
+} from "@wdesgardin/fivem-js";
 import { GetClosestPlayer, GetNearbyPlayers, RegisterClientCallback, TriggerServerCallbackAsync } from "../../../core/utils";
 import { Inventory } from "../../../player/inventory";
 import { Delay } from "../../../../shared/utils/utils";
@@ -82,7 +82,7 @@ export class ContextMenuController {
 		const coords = Vector3.fromArray(GetEntityCoords(PlayerPedId(), true));
 		const targetCoords = Vector3.fromArray(GetEntityCoords(data.targetId, true));
 
-		// if (coords.absDistance2D(targetCoords) > 6) {
+		// if (coords.distance2d(targetCoords) > 6) {
 		// 	Notifications.ShowError("Action impossible, la cible est top loin de vous.");
 		// 	return;
 		// }

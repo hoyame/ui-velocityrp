@@ -1,5 +1,5 @@
-import { Vector3 } from "@nativewrappers/client";
-import { Vec3 } from "@nativewrappers/client/lib/utils/Vector3";
+import { Vector3 } from "@wdesgardin/fivem-js";
+import { Vec3 } from "@wdesgardin/fivem-js/lib/utils/Vector3";
 
 export abstract class Utils {
 	public static draw3dText(coords: [number, number, number], text: string) {

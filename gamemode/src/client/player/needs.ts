@@ -1,4 +1,4 @@
-import { Game } from "@nativewrappers/client";
+import { Game } from "@wdesgardin/fivem-js";
 import { ItemId } from "../../shared/config/items";
 import { Environnment } from "../../shared/utils/environnment";
 import { LocalEvents } from "../../shared/utils/localEvents";

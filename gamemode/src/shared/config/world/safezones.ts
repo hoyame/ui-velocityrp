@@ -1,4 +1,4 @@
-import { Vec3 } from "@nativewrappers/client/lib/utils/Vector3";
+import { Vec3 } from "@wdesgardin/fivem-js/lib/utils/Vector3";
 
 export const Safezones: Vec3[] = [
 	{ x: -286.91304901, y: -331.26992797, z: 18.288125 }, //Spawn

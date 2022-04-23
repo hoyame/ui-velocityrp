@@ -1,4 +1,4 @@
-import { Notification } from "@nativewrappers/client";
+import { Notification } from "@wdesgardin/fivem-js";
 import { ItemsConfig } from "../../../../shared/config/items";
 import { Loots } from "../../../../shared/config/lootboxes";
 import { Notifications } from "../../../player/notifications";

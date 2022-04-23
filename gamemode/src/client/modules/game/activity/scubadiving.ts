@@ -1,4 +1,4 @@
-import { Game, Vector3 } from "@nativewrappers/client";
+import { Game, Vector3 } from "@wdesgardin/fivem-js";
 import Config from "../../../../shared/config/activity/scubadiving.json";
 import { Delay } from "../../../../shared/utils/utils";
 import { CoraUI } from "../../../core/coraui";

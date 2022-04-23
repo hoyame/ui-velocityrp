@@ -1,6 +1,6 @@
-import { Game, Model, Vector3, VehicleSeat, World, Player, BlipSprite, BlipColor, Ped, Control } from "@nativewrappers/client";
+import { Game, Model, Vector3, VehicleSeat, World, Player, BlipSprite, BlipColor, Ped, Control } from "@wdesgardin/fivem-js";
 import { KeyboardInput, TriggerServerCallbackAsync } from "./utils";
-import { Vec3 } from "@nativewrappers/client/lib/utils/Vector3";
+import { Vec3 } from "@wdesgardin/fivem-js/lib/utils/Vector3";
 import { Delay } from "../../shared/utils/utils";
 import { InstructionalButtons } from "../misc/instructional-buttons";
 import { Clothes } from "../player/clothes";

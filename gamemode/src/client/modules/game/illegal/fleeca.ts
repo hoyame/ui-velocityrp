@@ -1,4 +1,4 @@
-import { BlipColor, Control, Game, Model, Prop, Screen, Vector3, World } from "@nativewrappers/client";
+import { BlipColor, Control, Game, Model, Prop, Screen, Vector3, World } from "@wdesgardin/fivem-js";
 import Config from "../../../../shared/config/activity/fleeca.json";
 import { JobId } from "../../../../shared/config/jobs/jobs";
 import { Delay } from "../../../../shared/utils/utils";

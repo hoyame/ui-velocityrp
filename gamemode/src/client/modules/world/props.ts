@@ -1,4 +1,4 @@
-import { Vector3, Prop, Model, Screen, World, Game, Control } from "@nativewrappers/client";
+import { Vector3, Prop, Model, Screen, World, Game, Control } from "@wdesgardin/fivem-js";
 import { JobId } from "../../../shared/config/jobs/jobs";
 import { Delay } from "../../../shared/utils/utils";
 import { Jobs } from "../../player/jobs";

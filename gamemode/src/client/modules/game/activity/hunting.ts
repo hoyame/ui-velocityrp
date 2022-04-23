@@ -1,4 +1,4 @@
-import { Control, Game, Model, Notification, Vector3, WeaponHash, World } from "@nativewrappers/client";
+import { Control, Game, Model, Notification, Vector3, WeaponHash, World } from "@wdesgardin/fivem-js";
 import { Environnment } from "../../../../shared/utils/environnment";
 import { Delay } from "../../../../shared/utils/utils";
 import Config from "../../../../shared/config/activity/hunting.json";
@@ -94,13 +94,13 @@ export abstract class Hunting {
 		const plyPos = Game.PlayerPed.Position;
 
 		const deadAnimalsNearby = World.getAllPeds().filter(
-			p => this.animalHashs.includes(p.Model.Hash) && p.isDead() && p.Position.absDistance2D(plyPos) < 3
+			p => this.animalHashs.includes(p.Model.Hash) && p.isDead() && p.Position.distance2d(plyPos) < 3
 		);
 		if (deadAnimalsNearby.length == 0) return;
 
 		let closest = deadAnimalsNearby[0];
 		for (let i = 1; i < deadAnimalsNearby.length; i++) {
-			if (deadAnimalsNearby[i].Position.absDistance2D(plyPos) < closest.Position.absDistance2D(plyPos)) {
+			if (deadAnimalsNearby[i].Position.distance2d(plyPos) < closest.Position.distance2d(plyPos)) {
 				closest = deadAnimalsNearby[i];
 			}
 		}

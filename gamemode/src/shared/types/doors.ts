@@ -1,4 +1,4 @@
-import { Vec3 } from "@nativewrappers/client/lib/utils/Vector3";
+import { Vec3 } from "@wdesgardin/fivem-js/lib/utils/Vector3";
 import { JobId } from "../config/jobs/jobs";
 
 export interface DoorObject {

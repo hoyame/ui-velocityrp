@@ -12,7 +12,7 @@ import { Health } from "./health";
 import { OpenIdentityCreator } from "../modules/player/character/menu";
 import Config from "../../shared/config/client.json";
 import { LocalEvents } from "../../shared/utils/localEvents";
-import { Game } from "@nativewrappers/client";
+import { Game } from "@wdesgardin/fivem-js";
 import { Notifications } from "./notifications";
 
 export class Character {

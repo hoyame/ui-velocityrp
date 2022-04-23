@@ -1,4 +1,4 @@
-import { Game, Model, Ped, Screen, Vector3, Vehicle, VehicleSeat } from "@nativewrappers/client";
+import { Game, Model, Ped, Screen, Vector3, Vehicle, VehicleSeat } from "@wdesgardin/fivem-js";
 import { JobId, JobsList } from "../../../../shared/config/jobs/jobs";
 import { Delay } from "../../../../shared/utils/utils";
 import { CoraUI } from "../../../core/coraui";

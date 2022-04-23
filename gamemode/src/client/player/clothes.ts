@@ -1,4 +1,4 @@
-import { Game, Model, Screen } from "@nativewrappers/client";
+import { Game, Model, Screen } from "@wdesgardin/fivem-js";
 import { JobsList } from "../../shared/config/jobs/jobs";
 import { ICharacterInfos } from "../../shared/player/character";
 import Config from "../../shared/config/client.json";

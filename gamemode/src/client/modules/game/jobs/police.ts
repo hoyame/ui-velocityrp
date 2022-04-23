@@ -6,7 +6,7 @@ import { Documents } from "../../../player/documents";
 import { Vehicules } from "../../../player/vehicules";
 import { LocalEvents } from "../../../../shared/utils/localEvents";
 import { JobId, JobsList } from "../../../../shared/config/jobs/jobs";
-import { Vector3 } from "@nativewrappers/client";
+import { Vector3 } from "@wdesgardin/fivem-js";
 import { InteractionPoints } from "../../../misc/interaction-points";
 import Config from "../../../../shared/config/jobs/jobs.json";
 import { Jobs } from "../../../player/jobs";

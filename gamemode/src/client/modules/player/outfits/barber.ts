@@ -1,4 +1,4 @@
-import { BlipSprite, Game, Prop, Vector3 } from "@nativewrappers/client";
+import { BlipSprite, Game, Prop, Vector3 } from "@wdesgardin/fivem-js";
 import { Delay } from "../../../../shared/utils/utils";
 import { CoraUI } from "../../../core/coraui";
 import { BlipsController } from "../../../misc/blips";

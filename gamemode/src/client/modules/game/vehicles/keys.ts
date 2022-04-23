@@ -1,4 +1,4 @@
-import { Game, Model, Screen, Vehicle, VehicleLockStatus, World } from "@nativewrappers/client";
+import { Game, Model, Screen, Vehicle, VehicleLockStatus, World } from "@wdesgardin/fivem-js";
 import { off } from "process";
 import { Delay } from "../../../../shared/utils/utils";
 import { Notifications } from "../../../player/notifications";

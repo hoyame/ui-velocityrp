@@ -1,5 +1,5 @@
-import { Control, Game, Notification, WeaponHash } from "@nativewrappers/client";
-import { Vec3 } from "@nativewrappers/client/lib/utils/Vector3";
+import { Control, Game, Notification, WeaponHash } from "@wdesgardin/fivem-js";
+import { Vec3 } from "@wdesgardin/fivem-js/lib/utils/Vector3";
 import { Delay } from "../../shared/utils/utils";
 import { Safezones } from "../../shared/config/world/safezones";
 import { LocalEvents } from "../../shared/utils/localEvents";

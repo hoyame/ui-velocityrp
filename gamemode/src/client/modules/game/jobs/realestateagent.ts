@@ -1,4 +1,4 @@
-import { BlipSprite, Vector3 } from "@nativewrappers/client";
+import { BlipSprite, Vector3 } from "@wdesgardin/fivem-js";
 import { JobId } from "../../../../shared/config/jobs/jobs";
 import { IProperty } from "../../../../shared/types/property";
 import { CoraUI } from "../../../core/coraui";

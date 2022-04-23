@@ -1,4 +1,4 @@
-import { Game, Player, VehicleSeat } from "@nativewrappers/client";
+import { Game, Player, VehicleSeat } from "@wdesgardin/fivem-js";
 import { Fuel } from "./fuel";
 import Config from "../../../../shared/config/client.json";
 import { Nui } from "../../../utils/nui";

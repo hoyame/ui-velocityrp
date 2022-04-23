@@ -1,4 +1,4 @@
-import { Control, Game, Vehicle, VehicleLockStatus } from "@nativewrappers/client";
+import { Control, Game, Vehicle, VehicleLockStatus } from "@wdesgardin/fivem-js";
 import { ItemId, ItemsConfig } from "../../shared/config/items";
 import { ICharacter } from "../../shared/player/character";
 import { IInventoryItem, TargetType } from "../../shared/player/inventory";

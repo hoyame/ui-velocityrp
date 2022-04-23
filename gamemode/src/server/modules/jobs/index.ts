@@ -1,5 +1,5 @@
-import { uuidv4 } from "@nativewrappers/client";
-import { Vec3, Vector3 } from "@nativewrappers/client/lib/utils/Vector3";
+import { Crypto } from "@wdesgardin/fivem-js";
+import { Vec3, Vector3 } from "@wdesgardin/fivem-js/lib/utils/Vector3";
 import { JobId, JobsList, SalaryMinutesInterval } from "../../../shared/config/jobs/jobs";
 import { Callout } from "../../../shared/types/callouts";
 import { Environnment } from "../../../shared/utils/environnment";
@@ -62,17 +62,17 @@ export class Jobs {
 
 	public static SendLspdCallout(infos: string, position: Vec3, sender?: string | number) {
 		const senderName = (!!sender && CharactersController.getCharacter(sender)?.infos?.name) || "Inconnu";
-		return this.SendCallout(JobId.LSPD, { id: uuidv4(), title: "Appel d'urgence: 911", senderName, sender, infos, position });
+		return this.SendCallout(JobId.LSPD, { id: Crypto.uuidv4(), title: "Appel d'urgence: 911", senderName, sender, infos, position });
 	}
 
 	public static SendTaxiCallout(infos: string, position: Vec3, sender?: string | number) {
 		const senderName = (!!sender && CharactersController.getCharacter(sender)?.infos?.name) || "Inconnu";
-		return this.SendCallout(JobId.Taxi, { id: uuidv4(), title: "Message Entreprise", senderName, sender, infos, position });
+		return this.SendCallout(JobId.Taxi, { id: Crypto.uuidv4(), title: "Message Entreprise", senderName, sender, infos, position });
 	}
 
 	public static SendEmsCallout(infos: string, position: Vec3, sender: string | number) {
 		const senderName = CharactersController.getCharacter(sender)?.infos?.name || "Inconnu";
-		return this.SendCallout(JobId.EMS, { id: uuidv4(), title: "Appel d'urgence: 912", senderName, sender, infos, position });
+		return this.SendCallout(JobId.EMS, { id: Crypto.uuidv4(), title: "Appel d'urgence: 912", senderName, sender, infos, position });
 	}
 
 	public static EnsureCopsCount(minCops: number, toNotifty?: string | number) {

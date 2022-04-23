@@ -1,4 +1,4 @@
-import { BlipColor } from "@nativewrappers/client";
+import { BlipColor } from "@wdesgardin/fivem-js";
 import { Delay } from "../../../../shared/utils/utils";
 import { ShowHelpNotification, TriggerServerCallbackAsync } from "../../../core/utils";
 import { BlipsController } from "../../../misc/blips";

@@ -4,7 +4,7 @@ import TatoosC from "../../../../shared/config/tatoos.json";
 import { CamCreate, CamDestroy } from "./cam";
 import { Delay } from "../../../../shared/utils/utils";
 import { InteractionPoints } from "../../../misc/interaction-points";
-import { Control, Vector3 } from "@nativewrappers/client";
+import { Control, Vector3 } from "@wdesgardin/fivem-js";
 import { Money } from "../../../player/money";
 
 import { Tatoos as TatoosPlayer } from "../../../player/tatoos";

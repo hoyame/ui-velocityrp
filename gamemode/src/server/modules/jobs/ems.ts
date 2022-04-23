@@ -1,4 +1,4 @@
-import { Vector3 } from "@nativewrappers/client";
+import { Vector3 } from "@wdesgardin/fivem-js";
 import { Jobs } from ".";
 import { JobId } from "../../../shared/config/jobs/jobs";
 import { RegisterServerCallback } from "../../core/utils";

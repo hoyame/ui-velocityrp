@@ -1,5 +1,5 @@
-import { Color, Control, Game, MarkerType, Model, Ped, World } from "@nativewrappers/client";
-import { Vec3, Vector3 } from "@nativewrappers/client/lib/utils/Vector3";
+import { Color, Control, Game, MarkerType, Model, Ped, World } from "@wdesgardin/fivem-js";
+import { Vec3, Vector3 } from "@wdesgardin/fivem-js/lib/utils/Vector3";
 import { ItemId } from "../../shared/config/items";
 import { ShowHelpNotification } from "../core/utils";
 import { Character } from "../player/character";
@@ -61,7 +61,7 @@ export abstract class InteractionPoints {
 			const interval = setInterval(async () => {
 				if (!this.currentSell) return;
 
-				// if (Game.PlayerPed.Position.absDistance2D(this.currentSell.point.position) > 5) {
+				// if (Game.PlayerPed.Position.distance2d(this.currentSell.point.position) > 5) {
 				// 	clearInterval(interval);
 				// 	this.currentSell = undefined;
 				// 	Notifications.ShowError("~r~Vente terminée~n~~w~Vous êtes trop loin du vendeur");

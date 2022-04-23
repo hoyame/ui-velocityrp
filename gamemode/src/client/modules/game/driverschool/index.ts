@@ -7,7 +7,7 @@ import { CoraUI } from "../../../core/coraui";
 import { ShowHelpNotification } from "../../../core/utils";
 import Prices from "../../../../shared/config/prices.json";
 import { Money } from "../../../player/money";
-import { BlipColor, Vector3 } from "@nativewrappers/client";
+import { BlipColor, Vector3 } from "@wdesgardin/fivem-js";
 import { BlipsController } from "../../../misc/blips";
 import { InteractionPoints } from "../../../misc/interaction-points";
 import { Notifications } from "../../../player/notifications";

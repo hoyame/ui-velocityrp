@@ -3,7 +3,7 @@ import { Delay } from "../../../../shared/utils/utils";
 import { Vehicules } from "../../../player/vehicules";
 import { CoraUI } from "../../../core/coraui";
 import { BlipsController } from "../../../misc/blips";
-import { BlipColor, BlipSprite } from "@nativewrappers/client";
+import { BlipColor, BlipSprite } from "@wdesgardin/fivem-js";
 import { IVehicle } from "../../../../shared/types/vehicules";
 import { Garages, GaragesOrg } from "../../../../shared/config/world/garages";
 import { IGarage } from "../../../../shared/types/garage";

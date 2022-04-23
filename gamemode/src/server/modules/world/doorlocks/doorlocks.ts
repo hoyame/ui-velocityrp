@@ -1,4 +1,4 @@
-import { Vector3 } from "@nativewrappers/client";
+import { Vector3 } from "@wdesgardin/fivem-js";
 import { Door, NewDoor } from "../../../../shared/types/doors";
 import { MySQL } from "../../../core/mysql";
 import { RegisterServerCallback } from "../../../core/utils";

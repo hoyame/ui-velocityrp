@@ -1,4 +1,4 @@
-import { Vec3, Vector3 } from "@nativewrappers/client/lib/utils/Vector3";
+import { Vec3, Vector3 } from "@wdesgardin/fivem-js/lib/utils/Vector3";
 import { CharactersController } from "../../player/charactersController";
 import { SendErrorNotification, SendNotification } from "../../utils/notifications";
 import Config from "../../../shared/config/activity/gofast.json";
@@ -38,7 +38,7 @@ export abstract class GoFast {
 			!this.onGoingGoFast[source] ||
 			this.onGoingGoFast[source]?.end < GetGameTimer() ||
 			!vehicle ||
-			// Vector3.absDistance2D(Vector3.fromArray(GetEntityCoords(GetPlayerPed(source))), this.onGoingGoFast[source].coords) > 10
+			Vector3.distance2d(Vector3.fromArray(GetEntityCoords(GetPlayerPed(source))), this.onGoingGoFast[source].coords) > 10
 		)
 			return;
 
@@ -53,7 +53,7 @@ export abstract class GoFast {
 		if (!this.onGoingGoFast[source] || this.onGoingGoFast[source].lspdNotified) return;
 		this.onGoingGoFast[source].lspdNotified = true;
 
-		// const pos = Vector3.fromArray(GetEntityCoords(GetPlayerPed(source)));
+		const pos = Vector3.fromArray(GetEntityCoords(GetPlayerPed(source)));
 		Jobs.SendLspdCallout("Un véhicule sans plaque d'immatriculation roule dangereusement !", pos);
 
 		SendNotification(source, "Quelqu'un a signalé votre position à la ~b~police !", "call", NotificationType.Warning);

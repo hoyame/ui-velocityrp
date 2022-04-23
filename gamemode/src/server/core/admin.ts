@@ -1,4 +1,4 @@
-import { Ped, Vector3 } from "@nativewrappers/client";
+import { Ped, Vector3 } from "@wdesgardin/fivem-js";
 import { ScreenshotUtils } from "../utils/screenshot";
 import { DiscordUtils } from "../utils/discord";
 import { RegisterServerCallback } from "./utils";

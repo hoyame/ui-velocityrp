@@ -6,7 +6,7 @@ import { Lodaout } from "../../../player/lodaout";
 import { Money } from "../../../player/money";
 import WeaponShopConfig from "../../../../shared/config/world/weaponshops.json";
 import { BlipsController } from "../../../misc/blips";
-import { BlipColor, BlipSprite, Vector3 } from "@nativewrappers/client";
+import { BlipColor, BlipSprite, Vector3 } from "@wdesgardin/fivem-js";
 import { InteractionPoints } from "../../../misc/interaction-points";
 
 export abstract class WeaponShop {

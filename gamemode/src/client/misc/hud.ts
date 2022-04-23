@@ -1,4 +1,4 @@
-import { Game, Hud as GameHud, HudComponent } from "@nativewrappers/client";
+import { Game, Hud as GameHud, HudComponent } from "@wdesgardin/fivem-js";
 import { LocalEvents } from "../../shared/utils/localEvents";
 import { Nui } from "../utils/nui";
 

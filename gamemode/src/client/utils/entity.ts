@@ -1,4 +1,4 @@
-import { Entity } from "@nativewrappers/client";
+import { Entity } from "@wdesgardin/fivem-js";
 
 export abstract class EntityUtils {
 	private static timeOut: number = 6000;

@@ -1,6 +1,6 @@
-import { BlipSprite, Game } from "@nativewrappers/client";
+import { BlipSprite, Game } from "@wdesgardin/fivem-js";
 import { Blip } from "../../../core/blips";
-import { Vector3 } from "@nativewrappers/client/lib/utils/Vector3";
+import { Vector3 } from "@wdesgardin/fivem-js/lib/utils/Vector3";
 import { Callout } from "../../../../shared/types/callouts";
 import { Delay } from "../../../../shared/utils/utils";
 import { ICMenu } from "../../../core/coraui";

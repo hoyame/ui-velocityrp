@@ -1,4 +1,4 @@
-import { Game, Player, Vector3 } from "@nativewrappers/client";
+import { Game, Player, Vector3 } from "@wdesgardin/fivem-js";
 import { Environnment } from "../../shared/utils/environnment";
 import { Delay } from "../../shared/utils/utils";
 import { Streaming } from "../utils/streaming";

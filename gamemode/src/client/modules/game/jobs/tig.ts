@@ -1,4 +1,4 @@
-import { Vector3 } from "@nativewrappers/client";
+import { Vector3 } from "@wdesgardin/fivem-js";
 import { Delay } from "../../../../shared/utils/utils";
 import { ShowHelpNotification } from "../../../core/utils";
 import { Notifications } from "../../../player/notifications";

@@ -1,4 +1,4 @@
-import { Control, Game, Screen, Vector3 } from "@nativewrappers/client";
+import { Control, Game, Screen, Vector3 } from "@wdesgardin/fivem-js";
 import { Door, DoorObject, NewDoor } from "../../../../shared/types/doors";
 import { TriggerServerCallbackAsync } from "../../../core/utils";
 import { InstructionalButtons } from "../../../misc/instructional-buttons";

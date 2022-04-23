@@ -1,4 +1,4 @@
-import { BlipColor, BlipSprite, Color, Game, MarkerType, Ped, Prop, Vector3, World } from "@nativewrappers/client";
+import { BlipColor, BlipSprite, Color, Game, MarkerType, Ped, Prop, Vector3, World } from "@wdesgardin/fivem-js";
 import { JobId } from "../../../../shared/config/jobs/jobs";
 import { CoraUI } from "../../../core/coraui";
 import { InteractionPoints } from "../../../misc/interaction-points";
@@ -6,7 +6,7 @@ import { Jobs } from "../../../player/jobs";
 import Config from "../../../../shared/config/jobs/ltd.json";
 import { ItemsConfig } from "../../../../shared/config/items";
 import { GetClosestPlayer, KeyboardInput } from "../../../core/utils";
-import { Vec3 } from "@nativewrappers/client/lib/utils/Vector3";
+import { Vec3 } from "@wdesgardin/fivem-js/lib/utils/Vector3";
 import { Streaming } from "../../../utils/streaming";
 import { Animations } from "../../../utils/animations";
 import { Delay } from "../../../../shared/utils/utils";
@@ -269,7 +269,7 @@ export abstract class Ltd {
 				return;
 			}
 
-			if (Game.PlayerPed.Position.absDistance2D(element.Position) < 0.4) {
+			if (Game.PlayerPed.Position.distance2d(element.Position) < 0.4) {
 				emitNet("gm:ltd:pickupBag", element.NetworkId);
 			}
 		}

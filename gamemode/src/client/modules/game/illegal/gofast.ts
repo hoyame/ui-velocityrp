@@ -1,8 +1,8 @@
-import { Blip, BlipColor, BlipSprite, Control, Game, Vector3, Vehicle, VehicleLockStatus } from "@nativewrappers/client";
+import { Blip, BlipColor, BlipSprite, Control, Game, Vector3, Vehicle, VehicleLockStatus } from "@wdesgardin/fivem-js";
 import { InteractionPoints } from "../../../misc/interaction-points";
 import Config from "../../../../shared/config/activity/gofast.json";
 import { ShowHelpNotification } from "../../../core/utils";
-import { Vec3 } from "@nativewrappers/client/lib/utils/Vector3";
+import { Vec3 } from "@wdesgardin/fivem-js/lib/utils/Vector3";
 import { Streaming } from "../../../utils/streaming";
 import { Utils } from "../../../utils/utils";
 import { Environnment } from "../../../../shared/utils/environnment";

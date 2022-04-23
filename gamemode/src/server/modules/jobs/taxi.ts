@@ -1,4 +1,4 @@
-import { Vector3 } from "@nativewrappers/client";
+import { Vector3 } from "@wdesgardin/fivem-js";
 import { RegisterServerCallback } from "../../core/utils";
 import { CharactersController } from "../../player/charactersController";
 

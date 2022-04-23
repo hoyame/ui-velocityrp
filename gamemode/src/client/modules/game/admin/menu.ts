@@ -1,6 +1,6 @@
 import { CoraUI } from "../../../core/coraui";
 import { KeyboardInput, TriggerServerCallbackAsync } from "../../../core/utils";
-import { Game, Vehicle } from "@nativewrappers/client";
+import { Game, Vehicle } from "@wdesgardin/fivem-js";
 import { Admin, NoClip, Spectate } from "../../../core/admin";
 import { ItemsConfig } from "../../../../shared/config/items";
 import { ISanction } from "../../../../shared/player/sanction";

@@ -1,4 +1,4 @@
-import { BlipSprite, Game, Vector3, VehicleWheelType } from "@nativewrappers/client";
+import { BlipSprite, Game, Vector3, VehicleWheelType } from "@wdesgardin/fivem-js";
 import { JobId } from "../../../../shared/config/jobs/jobs";
 import { Delay } from "../../../../shared/utils/utils";
 import { CoraUI } from "../../../core/coraui";

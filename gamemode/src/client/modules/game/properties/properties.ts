@@ -2,7 +2,7 @@ import { ShowHelpNotification, TriggerServerCallbackAsync } from "../../../core/
 import { Delay } from "../../../../shared/utils/utils";
 import { BlipsController } from "../../../misc/blips";
 import { Apparts } from "../../../../shared/config/world/properties";
-import { BlipColor, Vector3 } from "@nativewrappers/client";
+import { BlipColor, Vector3 } from "@wdesgardin/fivem-js";
 import { LocalEvents } from "../../../../shared/utils/localEvents";
 import { CoraUI } from "../../../core/coraui";
 import { JobId } from "../../../../shared/config/jobs/jobs";

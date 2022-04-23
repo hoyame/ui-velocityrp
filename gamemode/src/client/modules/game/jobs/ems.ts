@@ -1,5 +1,5 @@
 import { GetClosestPlayer, TriggerServerCallbackAsync } from "../../../core/utils";
-import { Control, Game, Screen, Vector3, Prop, Ped } from "@nativewrappers/client";
+import { Control, Game, Screen, Vector3, Prop, Ped } from "@wdesgardin/fivem-js";
 import { Delay } from "../../../../shared/utils/utils";
 import { CoraUI } from "../../../core/coraui";
 import { Vehicules } from "../../../player/vehicules";

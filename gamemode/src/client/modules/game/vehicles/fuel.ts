@@ -1,8 +1,8 @@
-import { BlipColor, BlipSprite, Player, Vehicle, VehicleSeat } from "@nativewrappers/client";
+import { BlipColor, BlipSprite, Player, Vehicle, VehicleSeat } from "@wdesgardin/fivem-js";
 import { KeyboardInput, ShowHelpNotification } from "../../../core/utils";
 import Config from "../../../../shared/config/fuel.json";
 import { BlipsController } from "../../../misc/blips";
-import { Vector3 } from "@nativewrappers/client/lib/utils/Vector3";
+import { Vector3 } from "@wdesgardin/fivem-js/lib/utils/Vector3";
 import { Animations } from "../../../utils/animations";
 import { Money } from "../../../player/money";
 import { Notifications } from "../../../player/notifications";
@@ -82,11 +82,11 @@ export abstract class Fuel {
 	}
 
 	private static GetClosestStation(playerPos: Vector3) {
-		return Config.stations.find(station => playerPos.absDistance2D(station.coords) < Config.stationRadius);
+		return Config.stations.find(station => playerPos.distance2d(station.coords) < Config.stationRadius);
 	}
 
 	private static IsNearPump(playerPos: Vector3, station: typeof Config.stations[number]) {
-		return !!station.pumps.find(pump => playerPos.absDistance2D(pump) < Config.pumpRadius);
+		return !!station.pumps.find(pump => playerPos.distance2d(pump) < Config.pumpRadius);
 	}
 
 	public static GetVehicleFuelCapacity(vehicle: Vehicle) {

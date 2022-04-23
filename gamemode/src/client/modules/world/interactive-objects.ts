@@ -1,5 +1,5 @@
-import { Control, Game, Model, Prop, World } from "@nativewrappers/client";
-import { Vector3 } from "@nativewrappers/client/lib/utils/Vector3";
+import { Control, Game, Model, Prop, World } from "@wdesgardin/fivem-js";
+import { Vector3 } from "@wdesgardin/fivem-js/lib/utils/Vector3";
 import { Environnment } from "../../../shared/utils/environnment";
 import { Delay } from "../../../shared/utils/utils";
 import { ShowHelpNotification } from "../../core/utils";

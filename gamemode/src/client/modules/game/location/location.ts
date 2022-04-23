@@ -4,7 +4,7 @@ import { Money } from "../../../player/money";
 import { Vehicules } from "../../../player/vehicules";
 import Config from "../../../../shared/config/client.json";
 import { BlipsController } from "../../../misc/blips";
-import { Game, Vector3 } from "@nativewrappers/client";
+import { Game, Vector3 } from "@wdesgardin/fivem-js";
 import { BlipColor } from "../../../core/enums/blips";
 import { InteractionPoints } from "../../../misc/interaction-points";
 import { Utils } from "../../../utils/utils";

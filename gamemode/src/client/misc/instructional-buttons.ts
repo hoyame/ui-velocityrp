@@ -1,4 +1,4 @@
-import { Control } from "@nativewrappers/client";
+import { Control } from "@wdesgardin/fivem-js";
 import { Streaming } from "../utils/streaming";
 
 export abstract class InstructionalButtons {
