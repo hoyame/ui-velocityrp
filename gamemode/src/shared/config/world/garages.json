@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Ranger vehicule",
+        "touche": 38,
+        "blip": ["Garage", 326, 2, 1.0, 3, true],
+        "mess": "Appuyez sur ~INPUT_PICKUP~ pour ranger votre vehicule",
+        "marker": [true, 2, [5, 5, 255]],
+        "positions": [
+            { "x": 214.6248779296875, "y": -793.7689208984375, "z": 30.842506408691406 }
+        ]
+    },
+    {
+        "name": "Sortir vehicule",
+        "touche": 38,
+        "blip": ["Garage", 326, 2, 1.0, 3, false],
+        "mess": "Appuyez sur ~INPUT_PICKUP~ pour sortir un vehicule",
+        "marker": [true, 2, [5, 5, 255]],
+        "positions": [
+            { "x": 228.46319580078125, "y": -800.9853515625, "z": 30.58451271057129 }
+        ]
+    },
+    {
+        "name": "Fourriere vehicule",
+        "touche": 38,
+        "blip": ["Garage", 326, 2, 1.0, 3, false],
+        "mess": "Appuyez sur ~INPUT_PICKUP~ pour ouvrir la fourriere",
+        "marker": [true, 2, [5, 5, 255]],
+        "positions": [
+            { "x": 251.2543487548828, "y": -770.4573364257812, "z": 30.743425369262695}
+        ]
+    }
+]

@@ -1,0 +1,130 @@
+#speedometer-container {
+	font-family: Arial, Helvetica, sans-serif;
+	transition: opacity 0.3s;
+	height: 100%;
+	width: 100%;
+
+	* {
+		position: relative;
+		margin: 0;
+		padding: 0;
+		outline: 0;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+
+	.background {
+		transform: rotate(140deg);
+		transform-origin: 50% 50%;
+	}
+
+	.progress {
+		transition: all 0.35s;
+		transform: rotate(140deg);
+		transform-origin: 50% 50%;
+	}
+
+	.hud.dashboard {
+		position: absolute;
+		height: 40px;
+		bottom: 80px;
+		left: 50%;
+		-webkit-transform: translateX(-50%);
+		-ms-transform: translateX(-50%);
+		transform: translateX(-50%);
+	}
+	.hud.dashboard div {
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.hud.dashboard div svg {
+		opacity: 0.2;
+	}
+	.hud.dashboard .active svg {
+		opacity: 0.8;
+	}
+	.turn-signal.active svg {
+		-webkit-animation: fadeLoop 1s step-start infinite !important;
+		animation: fadeLoop 1s step-start infinite !important;
+	}
+	.turn-signal {
+		position: absolute;
+		bottom: 20px;
+	}
+	.turn-signal-left {
+		left: 16px;
+	}
+	.turn-signal-right {
+		right: 16px;
+	}
+	.turn-signal.active svg path {
+		stroke: #f39c12 !important;
+	}
+	.hud.dashboard .speedometer {
+		width: 100px;
+		height: 100px;
+		text-align: center;
+	}
+	.hud.dashboard .speedometer svg {
+		opacity: 1;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: scale(2) translate(-25%, -25%);
+	}
+	.hud.dashboard .speedometer .text {
+		width: 100%;
+		position: absolute;
+		top: 35%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		margin: 0;
+	}
+	.hud.dashboard .speedometer .text .speed {
+		color: white;
+		font-size: 36px;
+		display: block;
+	}
+	.hud.dashboard .speedometer .text .kmh {
+		color: rgba(255, 255, 255, 0.5);
+		font-size: 8px;
+		display: block;
+		text-transform: uppercase;
+	}
+	.hud.fuel {
+		position: absolute;
+		bottom: 20px;
+		right: 50%;
+		left: 50%;
+		position: absolute;
+	}
+
+	.hud.fuel span {
+		color: rgba(255, 255, 255, 0.8);
+		font-size: 12px;
+		display: block;
+		margin-top: 0px;
+	}
+
+	.hud.fuel svg {
+		opacity: 1 !important;
+	}
+
+	.hud.fuel span {
+		opacity: 0;
+		margin-top: -4px;
+	}
+
+	.hud.fuel span:after {
+		position: absolute;
+		content: "%";
+		top: 1px;
+		right: 4px;
+		font-size: 7px;
+	}
+
+	.hud.fuel g {
+		transform: translate(6px, 5px) scale(0.5);
+	}
+}

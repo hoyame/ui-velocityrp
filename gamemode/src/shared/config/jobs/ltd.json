@@ -1,0 +1,7 @@
+{
+	"positions": [{ "x": -705.7, "y": -913.28, "z": 18.22, "h": 74 }],
+	"items": [
+		{ "id": "bt_eau", "sellPrice": 100 },
+		{ "id": "bgt_pain", "sellPrice": 50 }
+	]
+}

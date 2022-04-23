@@ -1,0 +1,15 @@
+{
+	"meteo-timer": false,
+	"meteo-options": ["EXTRASUNNY", "EXTRASUNNY", "EXTRASUNNY", "EXTRASUNNY", "EXTRASUNNY"],
+	"autoSave": 300000,
+	"rewards": {
+		"roberry": {
+			"ltd": 200
+		}
+	},
+	"licenses": {
+		"car": 750,
+		"motorCycle": 750,
+		"truck": 750
+	}
+}

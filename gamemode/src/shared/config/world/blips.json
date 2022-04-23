@@ -1,0 +1,64 @@
+{
+	"blips": [
+		{
+			"name": "Hôpital",
+			"coords": { "x": 293.2, "y": -588.8, "z": 42.65 },
+			"sprite": 61,
+			"color": 75,
+			"infos": {
+				"header": {
+					"texture": "thumbnail_fleeca_com",
+					"textureDictionnary": "thumbnail_fleeca_com"
+				},
+				"details": [
+					{ "title": "Catégorie", "details": "Soins" },
+					{ "title": "Numéro", "details": "xxx" },
+					{
+						"title": "Urgences 24h/24, Hôpital Los Santos",
+						"separatorBefore": true
+					}
+				]
+			}
+		},
+		{
+			"name": "LSPD",
+			"coords": { "x": 425.1, "y": -979.5, "z": 30.7 },
+			"sprite": 60,
+			"color": 29,
+			"infos": {
+				"header": {
+					"texture": "ttshot6",
+					"textureDictionnary": "pm_tt_6"
+				},
+				"details": [
+					{ "title": "Catégorie", "details": "Force de l'odre" },
+					{ "title": "Numéro", "details": "xxx" },
+					{
+						"title": "Disponible 24h24, LSPD Los Santos",
+						"separatorBefore": true
+					}
+				]
+			}
+		},
+		{
+			"name": "Taxi",
+			"coords": { "x": 909, "y": -177.7, "z": 74 },
+			"sprite": 198,
+			"color": 46,
+			"infos": {
+				"header": {
+					"texture": "ttshot6",
+					"textureDictionnary": "pm_tt_6"
+				},
+				"details": [
+					{ "title": "Catégorie", "details": "Transport" },
+					{ "title": "Numéro", "details": "xxx" },
+					{
+						"title": "Sur rendez-vous, Taxi Los Santos",
+						"separatorBefore": true
+					}
+				]
+			}
+		}
+	]
+}

@@ -266,6 +266,7 @@ function spawnPlayer(spawnIdx, cb)
 
             -- change the player model
             SetPlayerModel(PlayerId(), spawn.model)
+            SetPedDefaultComponentVariation(PlayerPedId())
 
             -- release the player model
             SetModelAsNoLongerNeeded(spawn.model)
@@ -291,7 +292,11 @@ function spawnPlayer(spawnIdx, cb)
         ClearPedTasksImmediately(ped)
         --SetEntityHealth(ped, 300) -- TODO: allow configuration of this?
         RemoveAllPedWeapons(ped) -- TODO: make configurable (V behavior?)
-        ClearPlayerWantedLevel(PlayerId())
+
+        NetworkSetFriendlyFireOption(true)
+		SetCanAttackFriendly(ped, true, true)
+		SetMaxWantedLevel(0)
+		ClearPlayerWantedLevel(PlayerId())
 
         -- why is this even a flag?
         --SetCharWillFlyThroughWindscreen(ped, false)
@@ -313,7 +318,7 @@ function spawnPlayer(spawnIdx, cb)
 
         ShutdownLoadingScreen()
 
-        if IsScreenFadedOut() then
+        if IsScreenFadedOut() and not spawn.skipFadeIn then
             DoScreenFadeIn(500)
 
             while not IsScreenFadedIn() do
@@ -336,7 +341,6 @@ end
 
 -- automatic spawning monitor thread, too
 local respawnForced
-local diedAt
 
 Citizen.CreateThread(function()
     -- main loop thing
@@ -349,7 +353,7 @@ Citizen.CreateThread(function()
             -- check if we want to autospawn
             if autoSpawnEnabled then
                 if NetworkIsPlayerActive(PlayerId()) then
-                    if (diedAt and (math.abs(GetTimeDifference(GetGameTimer(), diedAt)) > 2000)) or respawnForced then
+                    if respawnForced then
                         if autoSpawnCallback then
                             autoSpawnCallback()
                         else
@@ -359,14 +363,6 @@ Citizen.CreateThread(function()
                         respawnForced = false
                     end
                 end
-            end
-
-            if IsEntityDead(playerPed) then
-                if not diedAt then
-                    diedAt = GetGameTimer()
-                end
-            else
-                diedAt = nil
             end
         end
     end

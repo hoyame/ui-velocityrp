@@ -1,0 +1,34 @@
+{
+    "police": {
+        "vehicles": [
+            [
+                ["Police 3", "police3"]
+            ],
+
+            [
+                ["Police 3", "police3"],
+                ["Police T", "policet"]
+            ],
+
+            [
+                ["Police 3", "police3"],
+                ["Police T", "policet"],
+                ["Police B", "policeb"]
+            ],
+
+            [
+                ["Police 3", "police3"],
+                ["Police T", "policet"],
+                ["Police B", "policeb"],
+                ["Riot", "riot"]
+            ],
+            
+            [
+                ["Police 3", "police3"],
+                ["Police T", "policet"],
+                ["Police B", "policeb"],
+                ["Riot", "riot"]
+            ]
+        ]
+    }
+}

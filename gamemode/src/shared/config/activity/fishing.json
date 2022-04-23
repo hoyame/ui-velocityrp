@@ -1,0 +1,74 @@
+{
+	"waitTime": {
+		"min": 20000,
+		"max": 44000
+	},
+	"sellPoints": {
+		"fish": {
+			"ped": { "model": "s_m_y_chef_01", "heading": 130 },
+			"blip": {
+				"name": "Poissonnerie",
+				"sprite": 59,
+				"color": 76
+			},
+			"coords": {
+				"x": -1845.8,
+				"y": -1196.8,
+				"z": 18.2
+			}
+		},
+		"turtle": {
+			"coords": {
+				"x": -1845.8,
+				"y": -1196.8,
+				"z": 18.2
+			},
+			"marker": true
+		},
+		"shark": {
+			"coords": {
+				"x": -1845.8,
+				"y": -1196.8,
+				"z": 18.2
+			},
+			"marker": true
+		}
+	},
+	"boats": {
+		"blip": {
+			"name": "Location de Bateaux",
+			"sprite": 455,
+			"color": 72
+		},
+		"positions": [
+			{
+				"marker": { "x": -3427.19, "y": 953.62, "z": 7.35 },
+				"boatSpawn": { "x": -3426.2, "y": 942.4, "z": 1.1 }
+			},
+			{
+				"marker": { "x": -1612.1, "y": 5261.4, "z": 2.85 },
+				"boatSpawn": { "x": -1590.2, "y": 5278.8, "z": 1.0 }
+			},
+			{
+				"marker": { "x": 3866.7, "y": 4463.7, "z": 1.72 },
+				"boatSpawn": { "x": 3885.2, "y": 4507.2, "z": 1.0 }
+			},
+			{
+				"marker": { "x": 1339.65, "y": 4225.2, "z": 32.9 },
+				"boatSpawn": { "x": 1334.2, "y": 4192.4, "z": 30.0 }
+			},
+			{
+				"marker": { "x": -773.02, "y": -1431.134, "z": 0.59 },
+				"boatSpawn": { "x": -773.02, "y": -1420.134, "z": 1.59 }
+			}
+		],
+		"vehicles": [
+			{ "name": "Dinghy", "price": 600, "model": "dinghy4" },
+			{ "name": "Suntrap", "price": 600, "model": "suntrap" },
+			{ "name": "Jetmax", "price": 600, "model": "jetmax" },
+			{ "name": "Toro", "price": 600, "model": "TORO" },
+			{ "name": "Marquis", "price": 600, "model": "MARQUIS" },
+			{ "name": "Police Predator", "price": 600, "model": "predator" }
+		]
+	}
+}
