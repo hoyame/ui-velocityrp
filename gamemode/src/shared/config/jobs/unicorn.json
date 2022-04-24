@@ -1,6 +1,0 @@
-{
-	"items": [
-		{ "id": "bt_eau", "sellPrice": 100 },
-		{ "id": "bgt_pain", "sellPrice": 50 }
-	]
-}
