@@ -1,11 +1,10 @@
 import React from "react";
 import { Route, Switch, useHistory } from "react-router-dom";
 import Hud from "./hud";
-import Lootboxes from "./lootboxes";
-import Inventory from "./inventory";
+import Main from "./main/main";
+
 import { useDispatch } from "react-redux";
 import "./app.scss";
-import ContextMenu from "./context-menu";
 
 const App: React.FC = () => {
 	const history = useHistory();
@@ -24,9 +23,7 @@ const App: React.FC = () => {
 	return (
 		<React.Fragment>
 			<Switch>
-				<Route path="/lootbox/:idx" component={Lootboxes} />
-				<Route path="/inventory" component={Inventory} />
-				<Route path="/context-menu" component={ContextMenu} />
+				<Route path="/main" component={Main} />
 			</Switch>
 			<Hud />
 		</React.Fragment>

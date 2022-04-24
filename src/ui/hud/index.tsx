@@ -4,7 +4,6 @@ import Speedometer from "./speedometer/speedometer";
 import "./index.scss";
 import { useReduxState } from "../store";
 import { useLocation } from "react-router-dom";
-import Taximeter from "./taximeter/taximeter";
 import Notifications from "./notifications/notifications";
 
 const Hud: React.FC = () => {
@@ -16,7 +15,6 @@ const Hud: React.FC = () => {
 			<div id="hud" style={{ opacity: state.visible && !location.pathname.includes("inventory") ? "1" : "0" }}>
 				<Speedometer />
 				<Needs />
-				<Taximeter />
 			</div>
 			<div id="notifications-hud" style={{ opacity: state.notificationsVisible ? "1" : "0" }}>
 				<Notifications />
