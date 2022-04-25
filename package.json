@@ -19,7 +19,7 @@
 	"dependencies": {
 		"@citizenfx/client": "^2.0.3923-1",
 		"@citizenfx/server": "^2.0.3923-1",
-		"@wdesgardin/fivem-js": "^1.7.6",
+		"@nativewrappers/client": "^1.7.6",
 		"@types/react-transition-group": "^4.4.3",
 		"@wdesgardin/fivem-js": "^1.6.11",
 		"form-data": "^4.0.0",
