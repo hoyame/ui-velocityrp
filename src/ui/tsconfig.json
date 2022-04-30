@@ -13,11 +13,7 @@
 	},
 	"include": [
 		"./**/*",
-		"./../shared/config/**/*",
-		"./../shared/utils/math.ts",
-		"./../shared/extensions/*",
-		"../shared/types/contextmenu.ts",
-		"../shared/types/notifications.ts"
+		"./../shared/ts/*",
 	],
 	"exclude": []
 }

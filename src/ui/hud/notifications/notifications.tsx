@@ -15,20 +15,10 @@ interface INotification {
 
 const Notifications: React.FC = () => {
 	const [state, setState] = useState<INotification[]>([]);
-
-    // useNuiEvent<any>('notification', (event: any) => {
-    //     console.log("f1z56f1z651f")
-    //     const notification = event.data.data as INotification;
-    //     if (!!notification) {
-    //         setState(state => [...state, notification]);
-    //         setTimeout(() => setState(state => state.filter(n => n.id !== notification.id)), notification.timeout - 600);
-    //     }
-    // })
      
 	const onMessage = (event: any) => {
 
         if (event.data.type == "notification") {
-            console.log("5415g6e156g1g651g")
 			if (event.data?.data?.hide == true) {
 				setState(state => state.filter(n => n.id != event.data.data.id));
 				return;
@@ -62,7 +52,30 @@ const Notifications: React.FC = () => {
 			.replaceAll("~g~", '</span><span class="color-green">')
 			.replaceAll("~b~", '</span><span class="color-blue">')
 			.replaceAll("~y~", '</span><span class="color-yellow">')
+            .replaceAll("~s~", "")
+			.replaceAll("VelocityRP", "")
 			.replaceAll("~w~", '</span><span class="color-white">')
+			.replace("</span>", "");
+	};
+
+    const parseTitle = (text: string) => {
+		const escaped = text
+			.replace(/\\/g, "\\\\") // first replace the escape character
+			.replace(/[*#[\]_|`]/g, x => "\\" + x) // then escape any special characters
+			.replace(/---/g, "\\-\\-\\-") // hyphens only if it's 3 or more
+			.replace(/&/g, "")
+			.replace(/</g, "")
+			.replace(/>/g, "");
+
+		return escaped
+			.replaceAll("~n~", "")
+			.replaceAll("~r~", "")
+			.replaceAll("VelocityRP", "")
+			.replaceAll("~s~", "")
+			.replaceAll("~g~", "")
+			.replaceAll("~b~", "")
+			.replaceAll("~y~", "")
+			.replaceAll("~w~", "")
 			.replace("</span>", "");
 	};
 
@@ -72,12 +85,12 @@ const Notifications: React.FC = () => {
             <TransitionGroup>
                 {state.map(notification => (
                     <CSSTransition key={notification.id} classNames="notification" timeout={300}>
-                        <div className={`notification`}>
+                        <div className="notification">
                             {
                                 notification.advanced && (
                                     <>
                                         <div className="notification-header">
-                                            <img className="banner" src="https://cdn.discordapp.com/attachments/857379508747239425/969621675698180164/unknown.png" />
+                                            <img className="banner" src={notification.url ? notification.url : "https://cdn.discordapp.com/attachments/857379508747239425/969621675698180164/unknown.png"} />
                                         </div>
                                     </>
                                 )
@@ -96,7 +109,7 @@ const Notifications: React.FC = () => {
                                 </div>
 
                                 <div>
-                                    <p className="title">{notification.title ? notification.title : "NOTIFICATION"}</p>
+                                    <p className="title">{notification.title ? parseTitle(notification.title) : "NOTIFICATION"}</p>
 
                                     <p className="msg" dangerouslySetInnerHTML={{ __html: parseText(notification.message) }}></p>
                                 </div>

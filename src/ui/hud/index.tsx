@@ -18,7 +18,7 @@ const Hud: React.FC = () => {
 				<Speedometer />
 			</div>
 			
-			<div id="notifications-hud" style={{ opacity: state.notificationsVisible ? "1" : "1" }}>
+			<div id="notifications-hud" style={{ opacity: state.notificationsVisible ? "1" : "0" }}>
 				<Notifications />
 			</div> 
 		

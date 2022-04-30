@@ -20,16 +20,25 @@ const Speedometer: React.FC = () => {
 		return () => window.removeEventListener("message", onMessage);
 	});
 
+	const getSpeed = () => {
+		if (state?.speed < 10) {
+			return "00" + state?.speed;
+		} else if (state?.speed < 100) {
+			return "0" + state?.speed;
+		} else {
+			return state?.speed;
+		}
+	}
+
 	return (
-		<div id="speedometer-container" style={{ opacity: !!state ? 1 : 1 }}>
-			<div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
+		<div id="speedometer-container" style={{ opacity: !!state ? 1 : 0 }}>
+			<div style={{display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between"}}>
 				<div className="gear">
-					3
+					{state?.gear}
 				</div>
 
-				<p style={{marginRight: 2, opacity: 0.25}}>0</p>
-				<p style={{marginRight: 2, opacity: 1}}>5</p>
-				<p style={{marginRight: 2, opacity: 1}}>4</p>
+				<p style={{marginRight: 2, opacity: 1, letterSpacing: 2}}>{getSpeed()}</p>
+			
 			</div>
 
 			<div style={{display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>

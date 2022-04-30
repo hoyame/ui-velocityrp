@@ -50,7 +50,7 @@ $yellow: #c0a24b;
 }
 
 .notification {
-	background: linear-gradient(to right, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.10));
+	background: linear-gradient(to right, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.10));
 	margin-top: 1vh;
 	// font-family: "Circular", Arial, Helvetica, sans-serif;
 	color: white;
@@ -126,7 +126,7 @@ $yellow: #c0a24b;
 			font-family: "Gilroy-Bold";
 			color: #7AF903;
 			text-shadow: 0 0px 7.5px #7AF903;
-
+			text-transform: uppercase;
 			font-size: 14px;
 		}
 

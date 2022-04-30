@@ -8,7 +8,7 @@ import { MySQL } from "./core/mysql";
 
 class Gamemode {
 	public static async Initialize() {
-		await MySQL.initialize();
+		// await MySQL.initialize();
 		
 
 		console.log("GAMEMODE INITIALIZED");

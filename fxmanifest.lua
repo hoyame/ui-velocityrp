@@ -13,6 +13,7 @@ server_scripts {
 }
 
 files {
+   'dist/ui/index.html',
    'dist/ui/*',
    'dist/ui/**/*',
    'loadscreen/**/*'
@@ -27,3 +28,9 @@ dependencies {
 loadscreen 'loadscreen/index.html'
 
 ui_page 'dist/ui/index.html'
+
+exports {
+    "showNotification",
+    "showAdvancedNotification",
+    "showOverlay"
+}
