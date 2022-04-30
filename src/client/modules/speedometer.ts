@@ -10,11 +10,6 @@ export abstract class Speedometer {
 		setTick(async () => {
 			const vehicle = Game.PlayerPed.CurrentVehicle;
 
-			if (!IsPedInAnyVehicle(PlayerPedId(), false)) {
-				await Delay(10000);
-				return;
-			}
-
 			if (!vehicle?.exists() || vehicle.getPedOnSeat(VehicleSeat.Driver).Handle != Game.PlayerPed.Handle) {
 				if (this.uiVisible) {
 					this.uiVisible = false;
