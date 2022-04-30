@@ -44,7 +44,7 @@ export abstract class Notification {
 
         SendNuiMessage(JSON.stringify({ type: "notification", data: {
             id: this.count,
-            title: data.message,
+            title: data.title,
             message: data.message,
             advanced: false,
             timeout: 5000
