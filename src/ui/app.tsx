@@ -5,6 +5,7 @@ import Main from "./main/main";
 
 import { useDispatch } from "react-redux";
 import "./app.scss";
+import CarDealer from "./apps/cardealer";
 
 const App: React.FC = () => {
 	const history = useHistory();
@@ -16,6 +17,7 @@ const App: React.FC = () => {
 	};
 
 	React.useEffect(() => {
+		
 		window.addEventListener("message", onMessage);
 		return () => window.removeEventListener("message", onMessage);
 	});
@@ -24,6 +26,9 @@ const App: React.FC = () => {
 		<React.Fragment>
 			<Switch>
 				<Route path="/main" component={Main} />
+				<Route path="/cardealer" component={CarDealer} />
+
+				
 			</Switch>
 			<Hud />
 		</React.Fragment>

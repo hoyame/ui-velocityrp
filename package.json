@@ -1,18 +1,18 @@
 {
-	"name": "gamemode",
+	"name": "hoyame",
 	"version": "1.0.0",
 	"main": "index.js",
 	"scripts": {
 		"lint": "prettier --write \"src/**/*.{js,jsx,ts,tsx,html,css,scss,md}\"",
 		"build": "npm run buildc && npm run builds && npm run buildui",
-		"buildc": "webpack --openssl-legacy-provider --mode production --config webpack/client.prod.js",
-		"builds": "webpack --openssl-legacy-provider --mode production --config webpack/server.prod.js",
-		"buildui": "webpack --openssl-legacy-provider --mode production --config webpack/ui.prod.js",
-		"watch": "webpack --openssl-legacy-provider --mode development --watch true --config webpack/client.dev.js webpack/server.dev.js",
-		"watchc": "webpack --openssl-legacy-provider --mode development --watch true --config webpack/client.dev.js",
-		"watchs": "webpack --openssl-legacy-provider --mode development --watch true --config webpack/server.dev.js",
-		"watchui": "webpack --openssl-legacy-provider --mode development --watch true --config webpack/ui.dev.js",
-		"devui": "webpack-dev-server --openssl-legacy-provider --mode development --watch true --config webpack/ui.dev.js"
+		"buildc": "webpack --mode production --config webpack/client.prod.js",
+		"builds": "webpack --mode production --config webpack/server.prod.js",
+		"buildui": "webpack --mode production --config webpack/ui.prod.js",
+		"watch": "webpack --mode development --watch true --config webpack/client.dev.js webpack/server.dev.js",
+		"watchc": "webpack --mode development --watch true --config webpack/client.dev.js",
+		"watchs": "webpack --mode development --watch true --config webpack/server.dev.js",
+		"watchui": "webpack --mode development --watch true --config webpack/ui.dev.js",
+		"devui": "webpack-dev-server --mode development --watch true --config webpack/ui.dev.js"
 	},
 	"license": "MIT",
 	"private": false,
@@ -56,8 +56,8 @@
 		"ts-loader": "^6.2.1",
 		"typescript": "^3.7.4",
 		"url-loader": "^4.1.1",
-		"webpack": "^4.41.5",
-		"webpack-cli": "^3.3.2",
+		"webpack": "4.41.5",
+		"webpack-cli": "3.3.10",
 		"webpack-obfuscator": "^2.6.0"
 	},
 	"lint-staged": {

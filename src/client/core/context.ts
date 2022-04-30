@@ -45,25 +45,15 @@ export abstract class Context {
 
         RegisterKeyMapping('contexts', 'Context', 'keyboard', 'K');
 
-        const controls_actions = [239, 240, 24, 25]
-
         setTick(() => {
             if (this.Data.focus) {
-                console.log("focus")
-
                 DisableAllControlActions(2)
                 SetMouseCursorActiveThisFrame()
-                
-                controls_actions.map((k, v) => {
-                    EnableControlAction(0, v, true)
-                })
 
                 if (!this.Data.open) {
                     const [isFound, entityCoords, surfaceNormal, entityHit, entityType, cameraDirection, mouse] = this.getScreenToWorld(35.0, 31);
     
-                    if (entityType != 0) {
-                        console.log("entityType")
-                        
+                    if (entityType != 0) {                       
                         SetMouseCursorSprite(5);
                         
                         if (this.Data.entity.id != entityHit) {
@@ -77,7 +67,6 @@ export abstract class Context {
                                 // @ts-ignore
                                 const [posX, posY] = this.convertToPixel(mouse.x, mouse.y);
                             }
-                            console.log('amonagudum')
                         }
                     } else {
                         if (this.Data.entity.id != null) {
@@ -87,7 +76,7 @@ export abstract class Context {
                         SetMouseCursorSprite(1);
                     }
                 } else {
-                    console.log('ge541g54e15geg5')
+                    // ananasikim
                 }
             } else {
                 // console.log("[Context] Close")
@@ -122,22 +111,22 @@ export abstract class Context {
         return [(x * 1920), (y * 1080)];
     }
 
+    private static getCursorScreenPosition() {
+        EnableControlAction(0, 239, true);
+        EnableControlAction(0, 240, true);
+
+        return [GetControlNormal(0, 239), GetControlNormal(0, 240)];
+    }
+
     public static getScreenToWorld(d: any, f: any) {
         const cRot = new Vector3(GetGameplayCamRot(0)[0], GetGameplayCamRot(0)[1], GetGameplayCamRot(0)[2]);
         const cPos = new Vector3(GetGameplayCamCoord()[0], GetGameplayCamCoord()[1], GetGameplayCamCoord()[2])
         const mouse = {
-            x: GetControlNormal(0, 239), 
-            y: GetControlNormal(0, 240)
+            x: this.getCursorScreenPosition()[0], 
+            y: this.getCursorScreenPosition()[1]
         };
 
-
-        console.log(mouse)
-        console.log(GetControlNormal(0, 239))
-        console.log(GetControlNormal(0, 240))
-
         const [cam3DPosition, forwardDirection] = this.getScreenRelToWorld(cPos, cRot, mouse);
-        // console.log(cam3DPosition, forwardDirection)
-
         const direction = cPos.add(forwardDirection.multiply(d));
         const rayHandle = StartExpensiveSynchronousShapeTestLosProbe(cam3DPosition.x, cam3DPosition.y, cam3DPosition.z, direction.x, direction.y, direction.z, f, 0, 0);
         const [_, hit, endCoords, surfaceNormal, entityHit] = GetShapeTestResult(rayHandle);
@@ -160,8 +149,6 @@ export abstract class Context {
 
     private static getScreenRelToWorld(cPos: Vector3, cRot: Vector3, cursor: {x: number, y: number}) {
         const cForward = this.getRotationADirection(cRot);
-        // console.log(cForward)
-
         const rUp = new Vector3(cRot.x + 1.0, cRot.y, cRot.z);
         const rDown = new Vector3(cRot.x - 1.0, cRot.y, cRot.z);
         const rLeft = new Vector3(cRot.x, cRot.y, cRot.z - 1.0);
@@ -180,15 +167,11 @@ export abstract class Context {
         const pt2D = this.getWorld3DToScreen(pt3D);
         const pt2DZero = this.getWorld3DToScreen(pt3DZero);
 
-        // console.log(cursor)
-
         const scaleX = (cursor.x - pt2DZero.x) / (pt2D.x - pt2DZero.x);
         const scaleY = (cursor.y - pt2DZero.y) / (pt2D.y - pt2DZero.y);
 
         const pt3DRet = pt3DZero.add(cRighRoll.multiply(scaleX).add(cUpRoll.multiply(scaleY)));
         const forwardDirection = cForward.add(cRighRoll.multiply(scaleX).add(cUpRoll.multiply(scaleY)));
-
-        // console.log(pt3DRet, forwardDirection)
 
         return [pt3DRet, forwardDirection];
     }

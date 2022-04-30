@@ -1,9 +1,9 @@
 import React from "react";
-import Needs from "./needs/needs";
 import Speedometer from "./speedometer/speedometer";
 import "./index.scss";
 import { useReduxState } from "../store";
 import { useLocation } from "react-router-dom";
+import Overlay from "./overlay";
 import Notifications from "./notifications/notifications";
 
 const Hud: React.FC = () => {
@@ -12,13 +12,16 @@ const Hud: React.FC = () => {
 
 	return (
 		<React.Fragment>
-			<div id="hud" style={{ opacity: state.visible && !location.pathname.includes("inventory") ? "1" : "0" }}>
+			<div id="hud" style={{ opacity: state.visible && !location.pathname.includes("inventory") ? "1" : "1" }}>
+				<Overlay />
+
 				<Speedometer />
-				<Needs />
 			</div>
-			<div id="notifications-hud" style={{ opacity: state.notificationsVisible ? "1" : "0" }}>
+			
+			<div id="notifications-hud" style={{ opacity: state.notificationsVisible ? "1" : "1" }}>
 				<Notifications />
-			</div>
+			</div> 
+		
 		</React.Fragment>
 	);
 };

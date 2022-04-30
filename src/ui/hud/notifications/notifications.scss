@@ -22,13 +22,13 @@ $yellow: #c0a24b;
 .notifications-container {
 	position: absolute;
 	left: 1.5%;
-	top: 1.5%;
+	top: 3%;
 	height: calc(100% - 25%);
 	overflow: hidden;
-	width: 14.1%;
+	width: 17%;
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-end;
+	justify-content: flex-top;
 
 	.notification-enter {
 		opacity: 0;
@@ -50,12 +50,11 @@ $yellow: #c0a24b;
 }
 
 .notification {
-	background-color: #17191daa;
+	background: linear-gradient(to right, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.10));
 	margin-top: 1vh;
-	font-family: "Circular", Arial, Helvetica, sans-serif;
-	border-left: solid 0.4vh $blue;
-	border-radius: 4px;
+	// font-family: "Circular", Arial, Helvetica, sans-serif;
 	color: white;
+	padding: 7.5px;
 
 	@keyframes example {
 		from {
@@ -66,37 +65,76 @@ $yellow: #c0a24b;
 		}
 	}
 
+	.notification-header {
+		position: relative;
+		top: -7.4px;
+		left: -7.3px;
+
+		height: 70px;
+		width: calc(100% + 15px);
+
+		background-color: red;
+
+		.banner {
+			height: 70px;
+			width: 100%;
+		}
+	}
+
 	.time-bar {
-		background-color: rgba($blue, 0.7);
-		height: 4px;
+		position: relative;
+		top: 7.5px;
+		left: -7.5px;
+
+		background-color: #7AF903;
+		box-shadow: 0 0px 10px #7AF903;
+
+		height: 2px;
 		width: 0%;
 		animation-name: example;
 		animation-duration: 4s;
 	}
 
-	.notification-header {
-		display: flex;
-		margin-bottom: 0.4vh;
-		align-items: center;
-	}
 
-	img {
-		height: 2vh;
-		width: 2vh;
-		margin-right: 1vh;
-		margin-left: 0.2vh;
-	}
 
 	.content {
 		padding: 0.8vh;
 		display: flex;
+		flex-direction: row;
+		align-items: center;
+		margin-bottom: -2px;
 
-		&.advanced-notification {
-			flex-direction: column;
+		.scl {
+			position: absolute;
+			left: -14px;
 		}
 
-		&:not(.advanced-notification) {
-			align-items: center;
+		.icon {
+			height: 32.5px;
+			width: 32.5px;
+			border-radius: 50px;
+			margin-right: 10px;
+
+			background-color: rgba(255, 255, 255, 0.15);
+
+			.svg {
+				margin: -7.5px;
+			}
+		}
+
+		.title {
+			font-family: "Gilroy-Bold";
+			color: #7AF903;
+			text-shadow: 0 0px 7.5px #7AF903;
+
+			font-size: 14px;
+		}
+
+		.msg {
+			font-family: "Gilroy-Medium";
+			color: #fff;
+			font-size: 12px;
+			margin: 0;
 		}
 	}
 
@@ -110,26 +148,5 @@ $yellow: #c0a24b;
 		margin: 0;
 		font-size: 1.3vh;
 		font-weight: normal;
-	}
-
-	&.warning {
-		border-left-color: $yellow;
-		.time-bar {
-			background-color: rgba($yellow, 0.7);
-		}
-	}
-
-	&.success {
-		border-left-color: $green;
-		.time-bar {
-			background-color: rgba($green, 0.7);
-		}
-	}
-
-	&.error {
-		border-left-color: $red;
-		.time-bar {
-			background-color: rgba($red, 0.7);
-		}
 	}
 }

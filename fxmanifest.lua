@@ -1,9 +1,10 @@
-fx_version 'cerulean'
-game 'common'
+fx_version 'adamant'
+game { 'gta5' }
 
 lua54 'yes'
 
 client_scripts {
+    'cl.lua',
     'dist/client/*.js',
 }
 

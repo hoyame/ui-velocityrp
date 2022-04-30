@@ -6,8 +6,8 @@ export interface HudState {
 }
 
 const defaultState: HudState = {
-	visible: false,
-	notificationsVisible: false,
+	visible: true,
+	notificationsVisible: true,
 };
 
 export const HudReducer = (state: HudState = defaultState, action: StoreAction): HudState => {
