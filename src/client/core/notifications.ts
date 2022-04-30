@@ -16,7 +16,10 @@ export abstract class Notification {
 
     private static banners = {
         "casino": "https://cdn.discordapp.com/attachments/857379508747239425/969621675698180164/unknown.png",
-
+        "ems": "https://media.discordapp.net/attachments/969928521440968724/969992289772515368/emsm.png",
+        "lspd": "https://media.discordapp.net/attachments/969928521440968724/969993361123582032/lspd.png",
+        "bennys": "https://cdn.discordapp.com/attachments/969928521440968724/969993687620804608/bennys.png",
+        "casse": "https://cdn.discordapp.com/attachments/969928521440968724/969994104446550106/casse.png"
     }
 
     public static async initialize() {
@@ -61,7 +64,8 @@ export abstract class Notification {
             title: data.title,
             message: data.message,
             advanced: true,
-            url: data.url,
+            // @ts-ignore
+            url: this.banners[data.url],
             timeout: 5000
         }}));
     }
