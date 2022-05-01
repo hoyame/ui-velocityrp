@@ -56,11 +56,11 @@ const Notifications: React.FC = () => {
 			.replace(/>/g, "&gt;");
 
 		return escaped
-			.replaceAll("~n~", "<br/>")
+			.replaceAll("~n~", "")
 			.replaceAll("~r~", '</span><span class="color-red">')
 			.replaceAll("~g~", '</span><span class="color-green">')
-			.replaceAll("~b~", '</span><span class="color-blue">')
-			.replaceAll("~y~", '</span><span class="color-yellow">')
+			.replaceAll("~b~", '')
+			.replaceAll("~y~", '')
             .replaceAll("~s~", "")
 			.replaceAll("VelocityRP", "")
 			.replaceAll("~w~", '</span><span class="color-white">')
