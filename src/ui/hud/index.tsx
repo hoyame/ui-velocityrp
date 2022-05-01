@@ -12,7 +12,7 @@ const Hud: React.FC = () => {
 
 	return (
 		<React.Fragment>
-			<div id="hud" style={{ opacity: state.visible && !location.pathname.includes("inventory") ? "1" : "1" }}>
+			<div id="hud" style={{ opacity: !location.pathname.includes("inventory") || !location.pathname.includes("cardealer") ? "1" : "1" }}>
 				<Overlay />
 
 				<Speedometer />
