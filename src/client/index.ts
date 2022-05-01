@@ -13,7 +13,7 @@ class Gamemode {
 		await Delay(1000);
 
 		await Speedometer.initialize();
-		await Context.initialize();
+		// await Context.initialize();
 		await Notification.initialize();
 		await Overlay.initialize();
 

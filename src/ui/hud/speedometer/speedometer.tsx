@@ -31,7 +31,7 @@ const Speedometer: React.FC = () => {
 	}
 
 	return (
-		<div id="speedometer-container" style={{ opacity: state?.gear > 0 ? 1 : 0 }}>
+		<div id="speedometer-container" style={{ opacity: !!state ? 1 : 0 }}>
 			<div style={{display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between"}}>
 				<div className="gear">
 					{state?.gear}

@@ -3,7 +3,6 @@ import { Nui } from "../core/nui";
 import { Delay } from "../core/utils";
 
 export abstract class Speedometer {
-	private static cache = { vehicleHandle: 0, maxSpeed: 0, fuelCapacity: 0 };
 	private static uiVisible = true;
 
 	public static async initialize() {
@@ -16,7 +15,7 @@ export abstract class Speedometer {
 					Nui.SendMessage({ type: "speedometer" });
 				}
 
-				await Delay(5000);
+				await Delay(1000);
 				return;
 			}
 

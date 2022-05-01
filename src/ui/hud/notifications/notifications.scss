@@ -1,7 +1,7 @@
-$red: #c9302f;
-$green: #5fa05d;
-$blue: #5296b9;
-$yellow: #c0a24b;
+$red: #dd3131;
+$green: #7AF903;
+$blue: #3690bd;
+$yellow: #ffd149;
 
 .color-blue {
 	color: $blue;
@@ -27,7 +27,7 @@ $yellow: #c0a24b;
 	position: absolute;
 	left: 1.5%;
 	top: 1.5%;
-	height: calc(100% - 25%);
+	height: calc(100% - 23%);
 	overflow: hidden;
 	width: 14.1%;
 	display: flex;
@@ -77,9 +77,8 @@ $yellow: #c0a24b;
 		height: 70px;
 		width: calc(100% + 15px);
 
-		background-color: red;
-
 		.banner {
+			opacity: 0.7;
 			height: 70px;
 			width: 100%;
 		}

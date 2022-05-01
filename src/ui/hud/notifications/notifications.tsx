@@ -14,16 +14,7 @@ interface INotification {
 }
 
 const Notifications: React.FC = () => {
-	const [state, setState] = useState<INotification[]>([
-		{
-			id: 1,
-			title: "eifub",
-			message: "amonagudum",
-			timeout: 5000,
-			advanced: false,
-			url: ""
-		}
-	]);
+	const [state, setState] = useState<INotification[]>([]);
      
 	const onMessage = (event: any) => {
 
