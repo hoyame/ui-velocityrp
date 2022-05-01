@@ -19,7 +19,10 @@ export abstract class Notification {
         "ems": "https://media.discordapp.net/attachments/969928521440968724/969992289772515368/emsm.png",
         "lspd": "https://media.discordapp.net/attachments/969928521440968724/969993361123582032/lspd.png",
         "bennys": "https://cdn.discordapp.com/attachments/969928521440968724/969993687620804608/bennys.png",
-        "casse": "https://cdn.discordapp.com/attachments/969928521440968724/969994104446550106/casse.png"
+        "casse": "https://cdn.discordapp.com/attachments/969928521440968724/969994104446550106/casse.png",
+        "velocity": "https://media.discordapp.net/attachments/956333971908730961/970050552396386344/Sans_titre-1.png",
+        "illegal": "https://cdn.discordapp.com/attachments/956333971908730961/970048348402901032/moeny.png",
+        "course": "https://cdn.discordapp.com/attachments/956333971908730961/970067052377305098/course.png"
     }
 
     public static async initialize() {
@@ -27,37 +30,22 @@ export abstract class Notification {
 
         onNet('hoyame:showNotification', this.show.bind(this))
         onNet('hoyame:showAdvancedNotification', this.showAdvanced.bind(this))
-
-        // this.show({
-        //     title: "Zebi",
-        //     message: "Zebi is now ready to use!"
-        // })
-
-        // this.showAdvanced({
-        //     title: "Advanced",
-        //     message: "This is an advanced notification",
-        //     url: "https://cdn.discordapp.com/attachments/857379508747239425/969621675698180164/unknown.png"
-        // })
     }
 
     public static show(data: INotification) {
         this.count++;
-
-        console.log("ziuzbfiuzbfiuzbefizfbiuzbef")
 
         SendNuiMessage(JSON.stringify({ type: "notification", data: {
             id: this.count,
             title: data.title,
             message: data.message,
             advanced: false,
-            timeout: 5000
+            timeout: 7500
         }}));
     }
 
     public static showAdvanced(data: INotification) {
         this.count++;
-
-        console.log("esf16g15ze61g65z1g65ze1g6e51g6z")
 
         SendNuiMessage(JSON.stringify({ type: "notification", data: {
             id: this.count,
@@ -66,7 +54,7 @@ export abstract class Notification {
             advanced: true,
             // @ts-ignore
             url: this.banners[data.url],
-            timeout: 5000
+            timeout: 7500
         }}));
     }
 } 
