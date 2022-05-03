@@ -16,7 +16,7 @@ files {
    'dist/ui/index.html',
    'dist/ui/*',
    'dist/ui/**/*',
-   'loadscreen/**/*'
+--    'loadscreen/**/*'
 }
 
 dependencies {
@@ -25,7 +25,7 @@ dependencies {
     "spawnmanager"
 }
 
-loadscreen 'loadscreen/index.html'
+-- loadscreen 'loadscreen/index.html'
 
 ui_page 'dist/ui/index.html'
 
