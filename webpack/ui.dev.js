@@ -36,12 +36,6 @@ module.exports = {
 			template: "./src/ui/index.html",
 			filename: "index.html",
 		}),
-		new CopyPlugin([
-			{
-				from: "src/ui/assets",
-				to: "./",
-			},
-		]),
 	],
 	optimization: {
 		minimize: false,

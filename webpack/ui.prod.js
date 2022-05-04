@@ -37,12 +37,6 @@ module.exports = {
 			template: "./src/ui/index.html",
 			filename: "index.html",
 		}),
-		new CopyPlugin([
-			{
-				from: "src/ui/assets",
-				to: "./",
-			},
-		]),
 		new WebpackObfuscator({ target: "browser" }),
 	],
 	optimization: {
