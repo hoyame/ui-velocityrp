@@ -4,7 +4,6 @@ game { 'gta5' }
 lua54 'yes'
 
 client_scripts {
-    'cl.lua',
     'dist/client/*.js',
 }
 
@@ -20,9 +19,7 @@ files {
 }
 
 dependencies {
-    "screenshot-basic",
-    "bob74_ipl",
-    "spawnmanager"
+    "screenshot-basic"
 }
 
 -- loadscreen 'loadscreen/index.html'
