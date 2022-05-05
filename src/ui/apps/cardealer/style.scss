@@ -17,7 +17,7 @@
 
     height: 100%;
     width: 100%;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.658), rgba(0, 0, 0, 0));   
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.733), rgba(0, 0, 0, 0));   
     padding: 0 45px;
     color: #fff;
 }
@@ -34,14 +34,16 @@
 
 
 .vehicle-container {
-    display: flex;
-    flex-direction: column;
-    max-height: 50%; 
+    height: 425px; 
     width: 100%;
     overflow-y: auto;
 
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 
+}
+
+.vehicle-container::-webkit-scrollbar {
+    display: none;
 }
 
 .vehicle-component {
@@ -61,6 +63,22 @@
     &:hover {
         background-color: #f40d45;
     }
+}
+
+.vehicle-component-selected {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 20px;
+    margin-bottom: 10px;
+
+    height: 60px;
+    width: calc(100% - 40px);
+
+    background-color: #f40d45;
+
 }
 
 .color-container {

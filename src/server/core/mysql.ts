@@ -3,14 +3,20 @@ import * as mysql from "mysql";
 export class MySQL {
 	public static MySQL: mysql.Connection;
 
-	public static initialize() {
+	public static async initialize() {
 		const connectionString = GetConvar("mysql_connection_string", "");
+		console.log(connectionString)
 		if (!connectionString) {
 			console.error("[GM][Framework] | [MySQL] : Uri is empty. You need to set 'mysql_connection_string' convar");
 			return;
 		}
 
-		this.MySQL = mysql.createConnection(connectionString);
+		this.MySQL = mysql.createConnection({
+			host: "51.254.34.28",
+			database: "velocityrp",
+			user: "velocityrp",
+			password: "66kM/)]h9CaW",
+		});
 		this.MySQL.config.timezone = "UTC";
 		this.MySQL.connect((err: any) => {
 			if (err) {

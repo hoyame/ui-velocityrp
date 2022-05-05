@@ -1,21 +1,21 @@
 import "../shared/extensions";
-
+import { Delay } from "../shared/utils/utils";
 import { Context } from "./core/context";
 import { Notification } from "./core/notifications";
-import { Delay } from "./core/utils";
 import { Overlay } from "./modules/overlay";
+import { Shops } from "./modules/shops";
 import { Speedometer } from "./modules/speedometer";
 
 class Gamemode {
 	public static async Initialize() {
-		// FreezeEntityPosition(PlayerPedId(), false);
-
 		await Delay(1000);
 
 		await Speedometer.initialize();
 		// await Context.initialize();
 		await Notification.initialize();
 		await Overlay.initialize();
+
+		await Shops.initialize();
 
 		
 		exports('showNotification', (args: any) => {

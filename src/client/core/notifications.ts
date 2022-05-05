@@ -1,6 +1,3 @@
-import { Nui } from "./nui";
-import { Delay } from "./utils";
-
 interface INotification {
     id?: number;
     title: string;

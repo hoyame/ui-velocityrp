@@ -1,7 +1,3 @@
-import { Nui } from "../core/nui";
-import { Delay } from "../core/utils";
-
-
 interface IOverlay {
     visible: boolean;
 

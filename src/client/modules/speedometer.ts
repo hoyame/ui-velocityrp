@@ -1,6 +1,6 @@
 import { Game, Player, VehicleSeat } from "@wdesgardin/fivem-js";
+import { Delay } from "../../shared/utils/utils";
 import { Nui } from "../core/nui";
-import { Delay } from "../core/utils";
 
 export abstract class Speedometer {
 	private static uiVisible = true;
