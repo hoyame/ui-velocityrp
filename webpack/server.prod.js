@@ -21,7 +21,7 @@ module.exports = {
 	},
 	output: {
 		filename: "server.js",
-		path: path.resolve("./dist/server"),
+		path: path.resolve("../hoyame/dist/server"),
 	},
 	target: "node",
 };

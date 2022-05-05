@@ -51,6 +51,6 @@ module.exports = {
 	output: {
 		filename: "[name].js",
 		publicPath: "",
-		path: path.resolve("./dist/ui"),
+		path: path.resolve("../hoyame/dist/ui"),
 	},
 };

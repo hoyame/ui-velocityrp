@@ -19,6 +19,6 @@ module.exports = {
 	},
 	output: {
 		filename: "client.js",
-		path: path.resolve("./dist/client"),
+		path: path.resolve("../hoyame/dist/client"),
 	},
 };
