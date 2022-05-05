@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 import "./style.scss";
 
 const CarDealer = () => {
-    const [catIndex, setCatIndex] = useState()
+    const [catIndex, setCatIndex] = useState(0);
     const [categories, setCategories] = useState([
         "Compacts",
-        "Supersportive"
+        "Supersportive",
+        "Coupès"
     ])
 
     return (
@@ -27,13 +28,13 @@ const CarDealer = () => {
 
                 <div className='vehicleList'>
                     <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: 'space-between' }}>
-                        <svg width="10" height="17" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg onClick={() => catIndex == 0 ? setCatIndex(categories.length - 1) : setCatIndex(catIndex - 1)} width="10" height="17" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M0.348633 8.6543C0.348633 8.96191 0.462891 9.22559 0.708984 9.4541L7.54688 16.1514C7.74023 16.3447 7.98633 16.4502 8.27637 16.4502C8.85645 16.4502 9.32227 15.9932 9.32227 15.4043C9.32227 15.1143 9.19922 14.8594 9.00586 14.6572L2.84473 8.6543L9.00586 2.65137C9.19922 2.44922 9.32227 2.18555 9.32227 1.9043C9.32227 1.31543 8.85645 0.858398 8.27637 0.858398C7.98633 0.858398 7.74023 0.963867 7.54688 1.15723L0.708984 7.8457C0.462891 8.08301 0.348633 8.34668 0.348633 8.6543Z" fill="#fff"/>
                         </svg>
 
-                        <p>Sportives</p>
+                        <p>{categories[catIndex]}</p>
 
-                        <svg width="10" height="17" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg onClick={() => catIndex + 1 < categories.length ? setCatIndex(catIndex + 1) : setCatIndex(0)} width="10" height="17" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M9.65137 8.6543C9.64258 8.34668 9.52832 8.08301 9.29102 7.8457L2.45312 1.15723C2.25098 0.963867 2.01367 0.858398 1.72363 0.858398C1.13477 0.858398 0.677734 1.31543 0.677734 1.9043C0.677734 2.18555 0.791992 2.44922 0.994141 2.65137L7.14648 8.6543L0.994141 14.6572C0.791992 14.8594 0.677734 15.1143 0.677734 15.4043C0.677734 15.9932 1.13477 16.4502 1.72363 16.4502C2.00488 16.4502 2.25098 16.3447 2.45312 16.1514L9.29102 9.4541C9.53711 9.22559 9.65137 8.96191 9.65137 8.6543Z" fill="#fff"/>
                         </svg>
                     </div>
