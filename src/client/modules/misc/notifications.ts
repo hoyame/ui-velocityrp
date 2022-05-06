@@ -19,7 +19,8 @@ export abstract class Notification {
         "casse": "https://cdn.discordapp.com/attachments/969928521440968724/969994104446550106/casse.png",
         "velocity": "https://media.discordapp.net/attachments/956333971908730961/970050552396386344/Sans_titre-1.png",
         "illegal": "https://cdn.discordapp.com/attachments/956333971908730961/970048348402901032/moeny.png",
-        "course": "https://cdn.discordapp.com/attachments/956333971908730961/970067052377305098/course.png"
+        "course": "https://cdn.discordapp.com/attachments/956333971908730961/970067052377305098/course.png",
+        "tresor": "https://cdn.discordapp.com/attachments/956333971908730961/972158205188792400/treasure.png"
     }
 
     public static async initialize() {

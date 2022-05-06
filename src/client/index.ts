@@ -1,13 +1,13 @@
 import "../shared/extensions";
 import { Delay } from "../shared/utils/utils";
-import { Context } from "./core/context";
-import { Notification } from "./core/notifications";
-import { Overlay } from "./modules/overlay";
+import { Context } from "./modules/misc/context";
+import { Notification } from "./modules/misc/notifications";
+import { Overlay } from "./modules/misc/overlay";
 import { Shops } from "./modules/shops";
-import { Speedometer } from "./modules/speedometer";
+import { Speedometer } from "./modules/misc/speedometer";
 
 class Gamemode {
-	public static async Initialize() {
+	public static async initialize() {
 		await Delay(1000);
 
 		await Speedometer.initialize();
@@ -34,4 +34,4 @@ class Gamemode {
 	}
 }
 
-Gamemode.Initialize();
+Gamemode.initialize();

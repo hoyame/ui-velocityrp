@@ -11,13 +11,17 @@ const CarDealer = () => {
 
     const onMessage = (event: any) => {
         if (event.data.type == "cardealer") {
-            // console.log(event.data.data);
+            let c = [];
+            event.data.data.categories.map((d) => {
+                d.name !== "plane" && d.name !== "boat" && c.push(d)
+            })
 
-            console.log(JSON.stringify(event.data.data.categories))
-            setCategories(event.data.data.categories);
+            setCategories(c);
             setVehicles(event.data.data.vehicles);
 		}
 	};
+
+
 
 	React.useEffect(() => {
 		window.addEventListener("message", onMessage);
@@ -58,6 +62,21 @@ const CarDealer = () => {
             body: JSON.stringify(v)
         })
     }
+
+    const leave = () => {
+        fetch(`https://${location.hostname.replace("cfx-nui-", "")}/leave`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify(true)
+        })
+    }
+
+    document.addEventListener('keydown', function(event) {
+        if (event.keyCode == 27) leave()
+    })
 
     return (
         <div className="cardealer">
@@ -148,7 +167,15 @@ const CarDealer = () => {
                 </div>
             </div>
 
-            <div>
+            <div style={{position: "absolute", right: 10, top: 10, height: 60, width: 200, display: "flex", alignItems: "center", justifyContent: "center"}}>
+                <div style={{ height: 40, width: 60, backgroundColor: "#fff", color: "#000", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, marginRight: 15  }}>
+                    ESC
+                </div>
+
+                <p style={{ fontSize: 20 }}>
+                    Pour quitter
+                </p>
+
 
             </div>
         </div>        

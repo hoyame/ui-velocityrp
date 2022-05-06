@@ -38,7 +38,7 @@ export abstract class Cardealer {
 
         if (vehicle.category == "plane") {
             const result = await MySQL.QueryAsync(
-                `INSERT INTO owned_vehicles(owner, plate, vehicle, type, state, garage)  VALUES(?, ?, ?, ?, ?, ?);`,
+                `INSERT INTO owned_vehicles(owner, plate, vehicle, type, state, garage)  VALUES(?, ?, ?, ?, ?, ?)`,
                 [
                     getPlayerIdentifiers(source)[0],
                     plate,
@@ -48,12 +48,12 @@ export abstract class Cardealer {
                     }),
                     "aircraft",
                     1,
-                    "Garage Helico Aeroport",
+                    "Garage Helico Aeroport"
                 ]
             );
         } else if (vehicle.category == "superboat") {
             const result = await MySQL.QueryAsync(
-                `INSERT INTO owned_vehicles(owner, plate, vehicle, type, state)  VALUES(?, ?, ?, ?, ?, ?);`,
+                `INSERT INTO owned_vehicles(owner, plate, vehicle, type, state)  VALUES(?, ?, ?, ?, ?)`,
                 [
                     getPlayerIdentifiers(source)[0],
                     plate,
@@ -62,12 +62,12 @@ export abstract class Cardealer {
                         plate: plate
                     }),
                     "boat",
-                    1,
+                    1
                 ]
             );
         } else {
             const result = await MySQL.QueryAsync(
-                `INSERT INTO owned_vehicles(owner, plate, vehicle, type, state)  VALUES(?, ?, ?, ?, ?, ?);`,
+                `INSERT INTO owned_vehicles(owner, plate, vehicle, type, state)  VALUES(?, ?, ?, ?, ?)`,
                 [
                     getPlayerIdentifiers(source)[0],
                     plate,
@@ -76,7 +76,7 @@ export abstract class Cardealer {
                         plate: plate
                     }),
                     "car",
-                    1,
+                    1
                 ]
             );
         }

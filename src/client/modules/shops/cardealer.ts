@@ -10,23 +10,21 @@ export abstract class Cardealer {
     private static lastVeh: any;
 
     public static async initialize() {
+        await this.grabData()
+
         Nui.RegisterCallback("spawnCar", (data: any) => this.spawnCar(data));
         Nui.RegisterCallback("setColor", (data: any) => this.setColor(data));
         Nui.RegisterCallback("buyVehicle", (data: any) => this.buyVehicle(data));
+        Nui.RegisterCallback("leave", () => this.disableCam());
 
-        await Delay(1500);
+        onNet('hoyame:cardealer:close', () => {
+            this.disableCam()
+        })
 
-        await this.grabData()
-
-        // this.open();
-        // this.enableCam()
-
-
-        // await Delay(7500);
-
-
-        // this.disableCam()
-
+        on('hoyame:cardealer:open', () => {
+            this.open();
+            this.enableCam()
+        })
     }
 
     public static async open() {
@@ -63,10 +61,14 @@ export abstract class Cardealer {
     }
 
     private static disableCam() {
+        if (this.lastVeh) DeleteVehicle(this.lastVeh);
+
         RenderScriptCams(false, true, 1500, true, true)
         DestroyCam(this.cam, true)
         FreezeEntityPosition(PlayerPedId(), false)
         SetEntityVisible(PlayerPedId(), true, true);
+        Nui.SendMessage({ path: "" });
+        Nui.SetFocus(false, false, false);
     }
 
     private static async spawnCar(vehicle: any) {
@@ -83,8 +85,8 @@ export abstract class Cardealer {
     }
 
     private static async buyVehicle(vehicle: any) {
-        const data = await TriggerServerCallbackAsync('hoyame:cardealer:buyVehicle', vehicle);
+        //const data = await TriggerServerCallbackAsync('hoyame:cardealer:buyVehicle', vehicle);
 
-        
+        emitNet("esx_vehicleshop:buyVehicle", vehicle.model, vehicle.type)
     }
 }
