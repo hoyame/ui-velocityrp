@@ -13,7 +13,7 @@
 	},
 	"include": [
 		"./**/*",
-		"./../shared/**/*",
+		"./../shared/ts/*",
 	],
 	"exclude": []
 }

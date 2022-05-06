@@ -13,7 +13,9 @@ export abstract class Cardealer {
 
         await Delay(1000);
         this.getData();
+
         RegisterServerCallback("hoyame:cardealer:returnData", this.returnData.bind(this))
+        RegisterServerCallback("hoyame:cardealer:buyVehicle", this.buyVehicle.bind(this))
     }
 
     private static async getData() {
@@ -26,6 +28,21 @@ export abstract class Cardealer {
         if (!resultVehicles) return console.log("Error getting vehicles")
 
         this.data.vehicles = resultVehicles
+    }
+
+    private static async buyVehicle(vehicle: any) {
+        let plate = Math.random().toString(16).substr(2, 6);
+        plate = plate.toUpperCase()
+
+        if (vehicle.category == "plane") {
+
+        } else if (vehicle.category == "superboat") {
+        
+        } else {
+            
+        }
+
+        return true 
     }
 
     private static returnData() {

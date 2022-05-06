@@ -7,6 +7,7 @@ const CarDealer = () => {
     const [categories, setCategories] = useState([])
     const [vehicles, setVehicles] = useState([])
     const [selectedVehicle, setSelectedVehicle] = useState(-1)
+    const [selectedVehicleData, setSelectedVehicleData] = useState({})
 
     const onMessage = (event: any) => {
         if (event.data.type == "cardealer") {
@@ -27,6 +28,28 @@ const CarDealer = () => {
 
     const spawnCar = (v: any) => {
         fetch(`https://${location.hostname.replace("cfx-nui-", "")}/spawnCar`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify(v)
+        })
+    }
+
+    const setColor = (v: any) => {
+        fetch(`https://${location.hostname.replace("cfx-nui-", "")}/setColor`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify(v)
+        })
+    }
+
+    const buyVehicle = (v: any) => {
+        fetch(`https://${location.hostname.replace("cfx-nui-", "")}/buyVehicle`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -72,7 +95,8 @@ const CarDealer = () => {
                             return (
                                 <div className={selectedVehicle == k ? "vehicle-component-selected" : "vehicle-component"} onClick={() => { 
                                     setSelectedVehicle(k);
-                                    spawnCar(v)
+                                    spawnCar(v);
+                                    setSelectedVehicleData(v)
                                     console.log(k)
                                 }}>
                                     <p>{v.name}</p> 
@@ -93,19 +117,19 @@ const CarDealer = () => {
 
                 <div className='color-container'>
                     <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", marginBottom: 10 }}>
-                        <div className="color-component" style={{backgroundColor: "#fed32f"}}></div>
-                        <div className="color-component" style={{backgroundColor: "#cc2e2d"}}></div>
-                        <div className="color-component" style={{backgroundColor: "#23c5d0"}}></div>
-                        <div className="color-component" style={{backgroundColor: "#d26223"}}></div>
-                        <div className="color-component" style={{backgroundColor: "#8b50f8"}}></div>
+                        <div className="color-component" onClick={() => setColor("#fed32f")} style={{backgroundColor: "#fed32f"}}></div>
+                        <div className="color-component" onClick={() => setColor("#cc2e2d")} style={{backgroundColor: "#cc2e2d"}}></div>
+                        <div className="color-component" onClick={() => setColor("#23c5d0")} style={{backgroundColor: "#23c5d0"}}></div>
+                        <div className="color-component" onClick={() => setColor("#d26223")} style={{backgroundColor: "#d26223"}}></div>
+                        <div className="color-component" onClick={() => setColor("#8b50f8")} style={{backgroundColor: "#8b50f8"}}></div>
                     </div>
 
                     <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
-                        <div className="color-component" style={{backgroundColor: "#ffffff"}}></div>
-                        <div className="color-component" style={{backgroundColor: "#862126"}}></div>
-                        <div className="color-component" style={{backgroundColor: "#3ab19d"}}></div>
-                        <div className="color-component" style={{backgroundColor: "#424242"}}></div>
-                        <div className="color-component" style={{backgroundColor: "#905225"}}></div>
+                        <div className="color-component" onClick={() => setColor("#ffffff")} style={{backgroundColor: "#ffffff"}}></div>
+                        <div className="color-component" onClick={() => setColor("#862126")} style={{backgroundColor: "#862126"}}></div>
+                        <div className="color-component" onClick={() => setColor("#3ab19d")} style={{backgroundColor: "#3ab19d"}}></div>
+                        <div className="color-component" onClick={() => setColor("#424242")} style={{backgroundColor: "#424242"}}></div>
+                        <div className="color-component" onClick={() => setColor("#905225")} style={{backgroundColor: "#905225"}}></div>
                     </div>
                 </div>
 
@@ -117,7 +141,9 @@ const CarDealer = () => {
                     <p style={{marginLeft: 7.5, fontSize: 18}}>ACHETER</p>
                 </div>
 
-                <div className="buy-button">
+                <div className="buy-button" onClick={() => {
+                    buyVehicle(selectedVehicleData);
+                }}>
                     <p>Acheter cette voiture</p>
                 </div>
             </div>
