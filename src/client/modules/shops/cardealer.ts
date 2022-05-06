@@ -18,20 +18,23 @@ export abstract class Cardealer {
 
         await this.grabData()
 
-        this.open();
-        this.enableCam()
+        // this.open();
+        // this.enableCam()
+
+
         // await Delay(7500);
+
+
         // this.disableCam()
 
     }
 
-    public static open() {
+    public static async open() {
         Nui.SendMessage({ path: "cardealer" });
         Nui.SendMessage({ type: "cardealer", data: this.data });
 
         DisplayRadar(false);
         Nui.SetFocus(true, true, false);
-
     }
 
     public static close() {
@@ -55,6 +58,8 @@ export abstract class Cardealer {
 
         FreezeEntityPosition(PlayerPedId(), true)
         SetEntityVisible(PlayerPedId(), false, false);
+
+        this.spawnCar({model: "asbo"})
     }
 
     private static disableCam() {
@@ -67,7 +72,6 @@ export abstract class Cardealer {
     private static async spawnCar(vehicle: any) {
         if (this.lastVeh) DeleteVehicle(this.lastVeh);
         this.lastVeh = await Vehicle.spawnVehicle(vehicle.model, null, [-47.177, -1092.30, 27.302, 285.77], false, false, true)
-        SetEntityAlpha(this.lastVeh, 253, 0)
     }
 
     private static async setColor(c: any) {
