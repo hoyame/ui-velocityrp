@@ -69,6 +69,7 @@ export abstract class Cardealer {
         SetEntityVisible(PlayerPedId(), true, true);
         Nui.SendMessage({ path: "" });
         Nui.SetFocus(false, false, false);
+        DisplayRadar(true);
     }
 
     private static async spawnCar(vehicle: any) {

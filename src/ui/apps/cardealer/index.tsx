@@ -13,7 +13,7 @@ const CarDealer = () => {
         if (event.data.type == "cardealer") {
             let c = [];
             event.data.data.categories.map((d) => {
-                d.name !== "plane" && d.name !== "boat" && c.push(d)
+                d.name !== "plane" && d.name !== "superboat" && c.push(d)
             })
 
             setCategories(c);
