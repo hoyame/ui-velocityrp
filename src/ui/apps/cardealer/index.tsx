@@ -11,17 +11,32 @@ const CarDealer = () => {
 
     const onMessage = (event: any) => {
         if (event.data.type == "cardealer") {
-            let c = [];
-            event.data.data.categories.map((d) => {
-                d.name !== "plane" && d.name !== "superboat" && c.push(d)
-            })
+            if (event.data.shop == "carshop") {
+                let c = [];
+                event.data.data.categories.map((d) => {
+                    d.name !== "plane" && d.name !== "superboat" && c.push(d)
+                })
 
-            setCategories(c);
+                setCategories(c);
+            } else if (event.data.shop == "planeshop") {
+                setCategories([{ name: 'plane', label: 'Avion', society: 'planeshop' }]);
+            } else if (event.data.shop == "boatshop") {
+                setCategories([{ name: 'superboat', label: 'Bateau', society: 'boatshop' }]);
+            }
+
             setVehicles(event.data.data.vehicles);
 		}
 	};
 
-
+    useEffect(() => {
+        setTimeout(() => {
+            if (vehicles.length == 0) {
+                grabData()
+            } else if (categories.length == 0) {
+                grabData()
+            }
+        }, 2000)
+    }, [vehicles, categories]);
 
 	React.useEffect(() => {
 		window.addEventListener("message", onMessage);
@@ -29,6 +44,18 @@ const CarDealer = () => {
 	});
 
     const v = vehicles.filter(v => v.category === categories[catIndex]?.name)
+
+    
+    const grabData = () => {
+        fetch(`https://${location.hostname.replace("cfx-nui-", "")}/grabData`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify(true)
+        })
+    }
 
     const spawnCar = (v: any) => {
         fetch(`https://${location.hostname.replace("cfx-nui-", "")}/spawnCar`, {
@@ -82,7 +109,7 @@ const CarDealer = () => {
         <div className="cardealer">
             <div style={{ display: "flex", flexDirection: 'column', alignItems: 'center', justifyContent: "center", width: "19%" }}>
                 <p style={{fontSize: 20, fontWeight: 200, marginBottom: -10}}>PREMIUM DEALERSHIP</p>
-                <p style={{fontSize: 70, fontWeight: 400, marginBottom: -10}}>VOITURES</p>
+                <p style={{fontSize: 70, fontWeight: 400, marginBottom: -10}}>VEHICULES</p>
                 <p style={{fontSize: 18, fontWeight: 300, marginBottom: 0, opacity: 0.5}}>BIENVENUE DANS VOTRE CONCESSIONAIRE</p>
                 <p style={{fontSize: 18, fontWeight: 300, marginBottom: 30, opacity: 0.5}}>VOUS RETROUVEZ ICI TOUT LES VEHICULES</p>
             
