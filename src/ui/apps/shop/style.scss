@@ -1,0 +1,85 @@
+.shop {
+    height: 100%;
+    width: 100%;
+    background: #101010;
+    font-family: "Korolev";
+    color: #fff;
+
+    .header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+
+        height: 75px;
+
+        .title {
+            font-size: 60px;
+        }
+
+        .subtitle {
+            font-size: 20px;
+        }
+
+        .account {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            width: 500px;
+
+            .coins {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+
+                font-size: 17.5px;
+                margin-bottom: 5px;
+
+                width: 115px;
+            }
+        }
+    }
+
+    .container {
+        display: flex;
+        flex-direction: row;
+
+        height: 90%;
+        width: 100%;
+
+        .caisses {
+            width: 16%;
+            height: 100%;
+            padding: 10px 23.5px;
+
+            .element {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                height: 150px;
+                width: calc(100% - 41px);
+                padding: 15px 10px;
+
+                margin-bottom: 10px;
+
+                &:hover {
+                    transition-duration: 0.2s;
+                    opacity: 0.5;
+                    cursor: pointer;
+                }
+
+                .case-img {
+                    height: 130px;
+                    margin-bottom: 5px;
+                }
+            }
+        }
+
+        .oth {
+            width: calc(100% - 17.5%);
+            height: 100%;
+
+        }
+    }
+}
