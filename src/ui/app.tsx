@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import "./app.scss";
 import CarDealer from "./apps/cardealer";
 import Context from "./apps/context";
+import Shop from "./apps/shop";
 
 const App: React.FC = () => {
 	const history = useHistory();
@@ -29,6 +30,7 @@ const App: React.FC = () => {
 				<Route path="/main" component={Main} />
 				<Route path="/cardealer" component={CarDealer} />
 				<Route path="/context" component={Context} />
+				<Route path="/shop" component={Shop} />
 
 				
 			</Switch>
