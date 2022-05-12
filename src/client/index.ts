@@ -5,17 +5,19 @@ import { Notification } from "./modules/misc/notifications";
 import { Overlay } from "./modules/misc/overlay";
 import { Shops } from "./modules/shops";
 import { Speedometer } from "./modules/misc/speedometer";
+import { Player } from "./modules/player";
 
 class Gamemode {
 	public static async initialize() {
 		await Delay(1000);
 
 		await Speedometer.initialize();
-		// await Context.initialize();
+		await Context.initialize();
 		await Notification.initialize();
 		await Overlay.initialize();
 
 		await Shops.initialize();
+		await Player.initialize();
 
 		
 		exports('showNotification', (args: any) => {
