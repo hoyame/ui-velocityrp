@@ -1,6 +1,8 @@
 import * as Cfx from '@nativewrappers/client';
-import { Vector3 } from '@nativewrappers/client';
+import { Vector3 } from '@wdesgardin/fivem-js';
 import { privateEncrypt } from 'crypto';
+import { IContextComponent, IContextMenu } from '../../../shared/data/context';
+import { Nui } from '../../core/nui';
 
 interface IEntity {
     id: any;
@@ -22,6 +24,20 @@ interface IContext {
 }
 
 export abstract class Context {
+    public static Cache: { id: number | boolean | number[] | { x: number; y: number; }; type: number | boolean | number[] | { x: number; y: number; }; model: number; networkId: number; svId: number; ifMyplayer: boolean; } = {
+        id: 0,
+        type: 0,
+        model: 0,
+        networkId: 0,
+        svId: 0,
+        ifMyplayer: false
+    }
+    private static Menus: IContextMenu[] = []
+    private static OpenedMenu: IContextMenu = {
+        name: 0,
+        condition: () => { return true },
+        menu: []
+    }
     private static Data: IContext = {
         focus: false,
         open: false,
@@ -39,8 +55,12 @@ export abstract class Context {
     public static async initialize() {
         console.log("[Context] Initialized");
 
+        Nui.RegisterCallback("close", () => this.close());
+        Nui.RegisterCallback("onClick", (id: number) => this.onClick(id));
+
         RegisterCommand("contexts", () => {
             this.Data.focus = !this.Data.focus;
+            this.Data.focus ? Nui.SendMessage({ path: "context" }) : Nui.SendMessage({ path: "" });
         }, false)
 
         RegisterKeyMapping('contexts', 'Context', 'keyboard', 'K');
@@ -66,6 +86,27 @@ export abstract class Context {
                             if (true) {     // si menu deja ouvert
                                 // @ts-ignore
                                 const [posX, posY] = this.convertToPixel(mouse.x, mouse.y);
+                                
+                                const id = entityHit;
+                                const type = entityType;
+                                // @ts-ignore
+                                const model = GetEntityModel(id) || 0;
+                                // @ts-ignore
+                                const networkId = NetworkGetNetworkIdFromEntity(entityHit);
+                                // @ts-ignore
+                                const svId = GetPlayerServerId(NetworkGetPlayerIndexFromPed(entityHit))
+                                                      
+                                const data = {
+                                    id: id,
+                                    type: type,
+                                    model: model,
+                                    networkId: networkId,
+                                    svId: svId,
+                                    ifMyplayer: (GetPlayerServerId(PlayerId()) == svId)
+                                }
+                            
+                                this.Cache = data;
+                                this.openMenu(data);
                             }
                         }
                     } else {
@@ -75,11 +116,62 @@ export abstract class Context {
                         }
                         SetMouseCursorSprite(1);
                     }
-                } else {
-                    // ananasikim
-                }
-            } else {
-                // console.log("[Context] Close")
+                } 
+            } 
+        })
+    }
+
+    
+    public static registerMenu(d: IContextMenu) {
+        this.Menus[d.name] = d;
+    }
+
+    private static onClick(id: number) {
+        if (this.OpenedMenu.name !== 0) {
+            const button = this.OpenedMenu.menu.find(b => b.id == id);
+            (button && button.onClick) && button.onClick() 
+        }
+    }
+
+    private static sendNUI(menu: IContextMenu) {
+        Nui.SendMessage({ type: "context", data: menu });
+        Nui.SetFocus(true, true, false);
+        SetMouseCursorSprite(0);
+        this.Data.focus = false;
+    }
+
+    private static close() {
+        SetEntityAlpha(this.Data.entity.id, 255, 0);
+        this.Cache = {
+            id: 0,
+            type: 0,
+            model: 0,
+            networkId: 0,
+            svId: 0,
+            ifMyplayer: false
+        }
+        this.Data.open = false;
+        this.Data.focus = false;
+        this.Data.entity.id = null;
+        this.Data.entity.model = null;
+        this.Data.entity.networkId = null;
+        this.Data.entity.svId = null;
+        this.Data.entity.type = null;
+        this.Data.offset.x = 0;
+        this.Data.offset.y = 0;
+        this.Data.pos.x = 0;
+        this.Data.pos.y = 0;
+        this.Data.pos.z = 0;
+        SetMouseCursorSprite(0);
+        Nui.SetFocus(false, false, false);
+        Nui.SendMessage({ path: "" });
+    }
+
+    private static openMenu(data: { id: number | boolean | number[] | { x: number; y: number; }; type: number | boolean | number[] | { x: number; y: number; }; model: number; networkId: number; svId: number; ifMyplayer: boolean; }) {
+        this.Menus.map((v: IContextMenu, k) => {
+            if (v.condition(data)) {
+                this.OpenedMenu = v
+                this.sendNUI(v)
             }
         })
     }
