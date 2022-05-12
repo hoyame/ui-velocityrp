@@ -19,7 +19,6 @@ const App: React.FC = () => {
 	};
 
 	React.useEffect(() => {
-		
 		window.addEventListener("message", onMessage);
 		return () => window.removeEventListener("message", onMessage);
 	});
