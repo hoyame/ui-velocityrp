@@ -60,7 +60,7 @@ export abstract class Context {
 
         RegisterCommand("contexts", () => {
             this.Data.focus = !this.Data.focus;
-            this.Data.focus ? Nui.SendMessage({ path: "context" }) : Nui.SendMessage({ path: "" });
+            this.Data.focus ? Nui.SendMessage({ path: "context"}) : Nui.SendMessage({ path: "" });
         }, false)
 
         RegisterKeyMapping('contexts', 'Context', 'keyboard', 'K');
@@ -134,13 +134,13 @@ export abstract class Context {
     }
 
     private static sendNUI(menu: IContextMenu) {
-        Nui.SendMessage({ type: "context", data: menu });
+        Nui.SendMessage({ type: "context", data: menu, dark: (GetClockHours() < 21 && GetClockHours() > 6)});
         Nui.SetFocus(true, true, false);
         SetMouseCursorSprite(0);
         this.Data.focus = false;
     }
 
-    private static close() {
+    public static close() {
         SetEntityAlpha(this.Data.entity.id, 255, 0);
         this.Cache = {
             id: 0,
@@ -165,6 +165,7 @@ export abstract class Context {
         SetMouseCursorSprite(0);
         Nui.SetFocus(false, false, false);
         Nui.SendMessage({ path: "" });
+        TriggerScreenblurFadeOut(500)
     }
 
     private static openMenu(data: { id: number | boolean | number[] | { x: number; y: number; }; type: number | boolean | number[] | { x: number; y: number; }; model: number; networkId: number; svId: number; ifMyplayer: boolean; }) {
@@ -172,6 +173,7 @@ export abstract class Context {
             if (v.condition(data)) {
                 this.OpenedMenu = v
                 this.sendNUI(v)
+                TriggerScreenblurFadeIn(500)
             }
         })
     }

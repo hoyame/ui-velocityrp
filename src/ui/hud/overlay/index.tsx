@@ -25,9 +25,12 @@ const Overlay = () => {
         dirty: 0
     })
 
+    const [dark, setDark] = useState(false);
+
 	const onMessage = (event: any) => {
         if (event.data.type == "overlay") {
             setState(event.data.data)
+            setDark(event.data.dark)
 		}
 	};
 
@@ -39,7 +42,7 @@ const Overlay = () => {
     return (
         <div id="overlay" style={{opacity: state.visible ? "1": "1"}}>
             <div style={{ display: 'flex', flexDirection: "column", alignItems: "flex-end" }}>
-                <div className="name">
+                <div className={dark ? "name dark-overlay" : "name light-overlay"}>
                     <div>
                         <div className="infos">
                             <div className="players">
@@ -71,30 +74,30 @@ const Overlay = () => {
                     </svg>
                 </div>
 
-                <div className="cash">
+                <div className={dark ? "cash dark-overlay" : "cash light-overlay"}>
                     <svg style={{marginRight: 10}} width="20" height="20" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M9.71202 0.0122137C9.63297 0.021408 9.39272 0.0489501 9.17815 0.0734547C5.92858 0.444349 2.9262 2.48016 1.27858 5.42995C0.677068 6.50684 0.241673 7.84237 0.0551869 9.18261C-0.0266601 9.77076 -0.0153256 11.3442 0.0749813 11.9327C0.444135 14.3384 1.43402 16.3058 3.10545 17.9554C3.36233 18.2089 3.73879 18.5493 3.94208 18.7118C6.57601 20.8171 10.0758 21.5225 13.3465 20.6072C17.1615 19.5396 20.1058 16.326 20.8184 12.4519C21.4566 8.98222 20.3946 5.54542 17.92 3.07213C16.2848 1.43763 14.31 0.448125 11.9707 0.0910225C11.5613 0.028509 10.0315 -0.0248511 9.71202 0.0122137ZM10.8522 4.03836C11.0912 4.21675 11.1278 4.31152 11.1426 4.79037C11.1586 5.30468 11.1573 5.30259 11.5554 5.44793C12.0873 5.64212 12.6705 6.11969 12.9887 6.62153C13.2537 7.0395 13.4491 7.68467 13.4491 8.14118C13.4491 8.36932 13.3282 8.61256 13.1523 8.73791C12.9711 8.86709 12.6041 8.87283 12.4383 8.74908C12.2274 8.59175 12.1701 8.47275 12.1308 8.1106C12.0594 7.45341 11.7291 6.97707 11.1568 6.70608C10.9087 6.58861 10.8451 6.57617 10.4923 6.57617C10.1395 6.57617 10.0759 6.58861 9.82783 6.70608C9.44603 6.88685 9.20825 7.11954 9.02353 7.49314C8.87877 7.78589 8.87014 7.82533 8.87014 8.19536C8.87014 8.55041 8.88242 8.61334 9.00012 8.86163C9.17782 9.23654 9.41486 9.48143 9.76968 9.65669C10.0306 9.78558 10.1165 9.80557 10.5664 9.84198C11.458 9.91414 11.9944 10.1501 12.5663 10.7217C13.1039 11.259 13.3833 11.858 13.4348 12.5838C13.5257 13.8641 12.7307 15.1152 11.5531 15.5451C11.1573 15.6896 11.1495 15.7009 11.1485 16.1361C11.1474 16.5757 11.0689 16.793 10.8564 16.9444C10.6714 17.0763 10.3061 17.0834 10.1385 16.9583C9.89292 16.7751 9.85687 16.6831 9.84196 16.2018C9.82598 15.6875 9.8273 15.6896 9.42919 15.5442C8.89729 15.3501 8.31405 14.8725 7.9959 14.3707C7.73094 13.9527 7.53546 13.3075 7.53546 12.851C7.53546 12.6229 7.65644 12.3796 7.83225 12.2543C8.01348 12.1251 8.3805 12.1193 8.54633 12.2431C8.75663 12.4001 8.81446 12.5197 8.85474 12.8816C8.92747 13.5348 9.23466 13.9896 9.78759 14.2627C10.0808 14.4076 10.1196 14.416 10.4923 14.416C10.865 14.416 10.9038 14.4076 11.197 14.2627C11.5708 14.0781 11.8036 13.8404 11.9845 13.4588C12.102 13.2108 12.1145 13.1473 12.1145 12.7947C12.1145 12.4421 12.102 12.3785 11.9845 12.1306C11.8068 11.7556 11.5697 11.5108 11.2149 11.3355C10.954 11.2066 10.8681 11.1866 10.4182 11.1502C9.5266 11.078 8.99018 10.8421 8.41828 10.2705C8.2375 10.0898 8.01989 9.8219 7.93467 9.67516C7.38088 8.7215 7.41661 7.50866 8.02556 6.5882C8.37261 6.06363 8.88764 5.64561 9.43153 5.44707C9.82734 5.30259 9.83506 5.2913 9.83613 4.85613C9.83736 4.33952 9.96261 4.0895 10.287 3.9561C10.4038 3.90804 10.7438 3.9575 10.8522 4.03836Z" fill="#7AF804"/>
                     </svg>
 
                     <p>{state.cash}</p>
 
-                    <svg style={{marginRight: -13.5}} width="30" height="48" viewBox="0 0 30 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg style={{marginRight: -14}} width="30" height="48" viewBox="0 0 30 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g filter="url(#filter0_d_34_169)"><rect x="14" y="14" width="2" height="20" fill="#7AF903"/></g><defs><filter id="filter0_d_34_169" x="0" y="0" width="30" height="48" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset/><feGaussianBlur stdDeviation="7"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0.478431 0 0 0 0 0.976471 0 0 0 0 0.0117647 0 0 0 1 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_34_169"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_34_169" result="shape"/></filter></defs>
                     </svg>
                 </div>
 
-                <div className="bank">
+                <div className={dark ? "bank dark-overlay" : "bank light-overlay"}>
                     <svg style={{marginRight: 10}} width="18" height="16" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3.48535 15.2832H18.5059C20.4131 15.2832 21.3975 14.29 21.3975 12.4092V2.91699C21.3975 1.03613 20.4131 0.0517578 18.5059 0.0517578H3.48535C1.58691 0.0517578 0.59375 1.03613 0.59375 2.91699V12.4092C0.59375 14.2988 1.58691 15.2832 3.48535 15.2832ZM2.34277 3.0752C2.34277 2.23145 2.79102 1.80957 3.59961 1.80957H18.3916C19.2002 1.80957 19.6484 2.23145 19.6484 3.0752V3.70801H2.34277V3.0752ZM3.59961 13.5254C2.79102 13.5254 2.34277 13.1035 2.34277 12.2598V5.77344H19.6484V12.2598C19.6484 13.1035 19.2002 13.5254 18.3916 13.5254H3.59961ZM4.79492 11.9346H6.94824C7.4668 11.9346 7.81836 11.5918 7.81836 11.0996V9.46484C7.81836 8.97266 7.4668 8.62988 6.94824 8.62988H4.79492C4.28516 8.62988 3.93359 8.97266 3.93359 9.46484V11.0996C3.93359 11.5918 4.28516 11.9346 4.79492 11.9346Z" fill="#7AF804"/>
                     </svg>
 
                     <p style={{marginTop: 2.5}}>{state.bank}</p>
 
-                    <svg style={{marginRight: -13.5}} width="30" height="43" viewBox="0 0 30 43" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#filter0_d_102_6)"><rect x="14" y="14" width="2" height="15" fill="#7AF903"/></g><defs><filter id="filter0_d_102_6" x="0" y="0" width="30" height="43" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset/><feGaussianBlur stdDeviation="7"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0.478431 0 0 0 0 0.976471 0 0 0 0 0.0117647 0 0 0 1 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_102_6"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_102_6" result="shape"/></filter></defs>
+                    <svg style={{marginRight: -14}} width="30" height="43" viewBox="0 0 30 43" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#filter0_d_102_6)"><rect x="14" y="14" width="2" height="15" fill="#7AF903"/></g><defs><filter id="filter0_d_102_6" x="0" y="0" width="30" height="43" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset/><feGaussianBlur stdDeviation="7"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0.478431 0 0 0 0 0.976471 0 0 0 0 0.0117647 0 0 0 1 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_102_6"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_102_6" result="shape"/></filter></defs>
                     </svg>
                 </div>
 
-                <div className="bank">
+                <div className={dark ? "bank dark-overlay" : "bank light-overlay"}>
                     <svg style={{marginRight: 10}} width="18" height="11" viewBox="0 0 18 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M2.07516 11H10.0407C9.84457 10.6187 9.79396 10.1549 9.92051 9.75451H2.15108C1.56268 9.75451 1.24001 9.44311 1.24001 8.82673V4.11785H12.9954C13.3244 3.62854 13.7989 3.36164 14.3683 3.36164C14.5834 3.36164 14.7796 3.39342 14.9694 3.47602V2.06528C14.9694 0.705369 14.2608 -2.22771e-06 12.8942 -2.22771e-06H2.07516C0.708546 -2.22771e-06 -6.28829e-05 0.705369 -6.28829e-05 2.06528V8.93475C-6.28829e-05 10.2946 0.708546 11 2.07516 11ZM1.24001 2.63721V2.17331C1.24001 1.5569 1.56268 1.24552 2.15108 1.24552H12.8182C13.4003 1.24552 13.7293 1.5569 13.7293 2.17331V2.63721H1.24001ZM11.6287 10.9936H17.1079C17.6456 10.9936 17.9999 10.5997 17.9999 10.104C17.9999 9.95783 17.962 9.80534 17.8797 9.66551L15.1339 4.74697C14.9631 4.43559 14.672 4.28943 14.3746 4.28943C14.0709 4.28943 13.7736 4.44194 13.6027 4.74697L10.8632 9.66551C10.7873 9.80534 10.743 9.95783 10.743 10.104C10.743 10.5997 11.091 10.9936 11.6287 10.9936ZM14.3746 8.47722C14.1279 8.47722 13.9571 8.31193 13.9507 8.07681L13.8938 6.30388C13.8874 6.02427 14.0836 5.82727 14.3746 5.82727C14.6594 5.82727 14.8555 6.02427 14.8492 6.30388L14.7986 8.07681C14.7922 8.31193 14.6151 8.47722 14.3746 8.47722ZM3.01154 8.59789H4.56163C4.92859 8.59789 5.18166 8.35011 5.18166 7.98787V6.81225C5.18166 6.45638 4.92859 6.2022 4.56163 6.2022H3.01154C2.63825 6.2022 2.38518 6.45638 2.38518 6.81225V7.98787C2.38518 8.35011 2.63825 8.59789 3.01154 8.59789ZM14.3683 10.0341C14.052 10.0341 13.7989 9.78626 13.7989 9.46849C13.7989 9.15715 14.0583 8.90294 14.3683 8.90294C14.691 8.90294 14.9441 9.15715 14.9441 9.46849C14.9441 9.78626 14.691 10.0341 14.3683 10.0341Z" fill="#7AF804"/>
                     </svg>
@@ -102,7 +105,7 @@ const Overlay = () => {
 
                     <p style={{marginTop: 2.5}}>{state.dirty}</p>
 
-                    <svg style={{marginRight: -13.5}} width="30" height="43" viewBox="0 0 30 43" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#filter0_d_102_6)"><rect x="14" y="14" width="2" height="15" fill="#7AF903"/></g><defs><filter id="filter0_d_102_6" x="0" y="0" width="30" height="43" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset/><feGaussianBlur stdDeviation="7"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0.478431 0 0 0 0 0.976471 0 0 0 0 0.0117647 0 0 0 1 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_102_6"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_102_6" result="shape"/></filter></defs>
+                    <svg style={{marginRight: -14}} width="30" height="43" viewBox="0 0 30 43" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#filter0_d_102_6)"><rect x="14" y="14" width="2" height="15" fill="#7AF903"/></g><defs><filter id="filter0_d_102_6" x="0" y="0" width="30" height="43" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset/><feGaussianBlur stdDeviation="7"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0.478431 0 0 0 0 0.976471 0 0 0 0 0.0117647 0 0 0 1 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_102_6"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_102_6" result="shape"/></filter></defs>
                     </svg>
                 </div>
             </div>

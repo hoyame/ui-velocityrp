@@ -1,5 +1,6 @@
 // import { ContextMenus } from "../../../shared/data/context";
 import { Context } from "../misc/context";
+import { Notification } from "../misc/notifications";
 
 export enum ContextMenus {
     None = 0,
@@ -17,14 +18,27 @@ export abstract class Player {
                 {
                     id: 1,
                     emoji: "🔐",
-                    text: "Mon ID"
+                    text: "Mon ID",
+                    onClick: () => {
+                        Notification.show({
+                            title: "Mon ID",
+                            message: "Mon ID: " + GetPlayerServerId(PlayerId())
+                        });
+                        Context.close();
+                    }
                 },
                 {
                     id: 2,
-                    emoji: "🙌",
-                    text: "Me Suicider",
-                    onClick: () => console.log("suicide")
-                }
+                    emoji: "❤️",
+                    text: "Ma vie",
+                    onClick: () => {
+                        Notification.show({
+                            title: "Ma vie",
+                            message: "HP: " + GetEntityHealth(PlayerPedId())
+                        });
+                        Context.close();
+                    }
+                },
             ]
         })
     }

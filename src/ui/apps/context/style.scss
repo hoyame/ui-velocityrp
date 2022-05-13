@@ -1,3 +1,11 @@
+.dark {
+	background: linear-gradient(to right, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55));
+}
+
+.light {
+	background: linear-gradient(to right, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.10));
+}
+
 .context {
     display: flex;
     height: 100%;
@@ -19,7 +27,6 @@
         left: calc(50% - 12.5px);
         transition: all 0.2s ease-in-out;
         z-index: 200;
-        background-color: rgba(134, 134, 134, 0.575);
 
         &:hover {
             transform: scale(1.5); 
@@ -56,12 +63,12 @@
             text-decoration: none; 
             text-align: center;
             color: rgba(255, 255, 255, 0.85);
-            background: linear-gradient(to right, rgba(134, 134, 134, 0.575), rgba(134, 134, 134, 0.4));
+            // background: linear-gradient(to right, rgba(134, 134, 134, 0.575), rgba(134, 134, 134, 0.4));
             padding: 9px 18px 9px 0;
             margin: 20px 30px;
             transition: all 0.2s ease-in-out;
             will-change: transform; 
-            fill: #fff;
+            fill: #7AF903;
             transform: scale(1.1); 
 
             span {
@@ -71,7 +78,6 @@
         
         li a:hover {
             transform: scale(1.2); 
-            fill: #7AF903;
             color: #7AF903;
             background: linear-gradient(to right, #7af90388, #7af9036e);
         }

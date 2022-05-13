@@ -16,6 +16,6 @@ export abstract class Overlay {
     }
 
     public static update(data: IOverlay) {
-        SendNuiMessage(JSON.stringify({ type: "overlay", data: data}));
+        SendNuiMessage(JSON.stringify({ type: "overlay", data: data, dark: (GetClockHours() < 21 && GetClockHours() > 6)}));
     }
 }

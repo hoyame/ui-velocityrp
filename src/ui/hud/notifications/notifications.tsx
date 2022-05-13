@@ -11,6 +11,7 @@ interface INotification {
     timeout: number;
     advanced?: boolean;
     url?: string;
+	dark?: boolean;
 }
 
 const Notifications: React.FC = () => {
@@ -85,7 +86,7 @@ const Notifications: React.FC = () => {
             <TransitionGroup>
                 {state.map(notification => (
                     <CSSTransition key={notification.id} classNames="notification" timeout={300}>
-                        <div className="notification">
+                        <div className={notification.dark ? "notification dark" : "notification light"}>
                             {
                                 notification.advanced && (
                                     <>

@@ -24,8 +24,6 @@ export abstract class Notification {
     }
 
     public static async initialize() {
-        // await Delay(5000);
-
         onNet('hoyame:showNotification', this.show.bind(this))
         onNet('hoyame:showAdvancedNotification', this.showAdvanced.bind(this))
     }
@@ -38,7 +36,8 @@ export abstract class Notification {
             title: data.title,
             message: data.message,
             advanced: false,
-            timeout: 7500
+            timeout: 7500,
+            dark: (GetClockHours() < 21 && GetClockHours() > 6)
         }}));
     }
 
@@ -52,7 +51,8 @@ export abstract class Notification {
             advanced: true,
             // @ts-ignore
             url: this.banners[data.url],
-            timeout: 7500
+            timeout: 7500,
+            dark: (GetClockHours() < 21 && GetClockHours() > 6)
         }}));
     }
 } 
