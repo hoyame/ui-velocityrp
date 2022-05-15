@@ -5,6 +5,7 @@ import { useReduxState } from "../store";
 import { useLocation } from "react-router-dom";
 import Overlay from "./overlay";
 import Notifications from "./notifications/notifications";
+import Help from "./help";
 
 const Hud: React.FC = () => {
 	const state = useReduxState(state => state.hud);
@@ -16,6 +17,8 @@ const Hud: React.FC = () => {
 				<Overlay />
 				<Speedometer />
 			</div>
+
+			{/* <Help /> */}
 			
 			<div id="notifications-hud" style={{ display: !location.pathname.includes("context") && !location.pathname.includes("inventory") && !location.pathname.includes("cardealer") && !location.pathname.includes("shop") ? "block" : "none", opacity: state.notificationsVisible ? "1" : "0" }}>
 				<Notifications />
