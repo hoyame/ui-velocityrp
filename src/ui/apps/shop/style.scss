@@ -1,85 +1,101 @@
 .shop {
     height: 100%;
     width: 100%;
-    background: #101010;
-    font-family: "Korolev";
+    background: #101010e3;
+    font-family: "Gilroy";
     color: #fff;
 
     .header {
         display: flex;
-        flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        padding: 15px 20px;
+        padding: 4px 10px 0 10px;
 
-        height: 75px;
+        height: 90px;
+        margin-bottom: -90px;
 
-        .title {
-            font-size: 60px;
-        }
+        width: 100%;
+        color: rgba(255, 255, 255, 0.671);
+        font-weight: 600;
 
-        .subtitle {
-            font-size: 20px;
-        }
-
-        .account {
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-end;
-            width: 500px;
-
-            .coins {
-                display: flex;
-                justify-content: flex-end;
-                align-items: center;
-
-                font-size: 17.5px;
-                margin-bottom: 5px;
-
-                width: 115px;
-            }
+        &:hover {
+            transition-duration: 200ms;
+            color: #8AFA21;
+            text-shadow: 0 0px 10px #8afa214d;
         }
     }
+    
+    .active {
+        color: #8AFA21;
+        text-shadow: 0 0px 10px #8afa214d;
+    }
+}
+
+.case {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
 
     .container {
+        height: 60%;
+        width: 60%;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
+        align-items: center;
 
-        height: 90%;
-        width: 100%;
-
-        .caisses {
-            width: 16%;
-            height: 100%;
-            padding: 10px 23.5px;
+        .cases {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
 
             .element {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                height: 150px;
-                width: calc(100% - 41px);
-                padding: 15px 10px;
+                height: 350px;
+                width: 248px;
+                margin: 0 12.5px;
+                font-family: "Gilroy";
+                font-weight: 600;
 
-                margin-bottom: 10px;
+                .component {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: space-between;
 
-                &:hover {
-                    transition-duration: 0.2s;
-                    opacity: 0.5;
-                    cursor: pointer;
+                    padding-bottom: 15px;
+                    width: 100%;
+                    height: 310px;
+
+                    font-size: 19px;
+                    border: 1px solid rgba(255, 255, 255, 0.05);
+                    margin-bottom: 10px;
+                    background: linear-gradient(rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.06));
                 }
 
-                .case-img {
-                    height: 130px;
-                    margin-bottom: 5px;
+                .buy {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    height: 60px;
+                    width: 100%;
+                    font-size: 20px;
+
+                    border: 2px solid #82E229;
+                    background-color: #82e22969;
+
+                    &:hover {
+                        transition-duration: 200ms;
+                        background-color: #82e229c5;
+                        cursor: pointer;
+                    }
                 }
             }
-        }
-
-        .oth {
-            width: calc(100% - 17.5%);
-            height: 100%;
-
         }
     }
 }
