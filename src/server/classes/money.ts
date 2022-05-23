@@ -1,12 +1,4 @@
-import {MySQL} from "../../core/mysql";
-
-export abstract class MoneyController {
-    private static Players = []
-
-    public static async initialize() {
-
-    }
-}
+import {MySQL} from "../core/mysql";
 
 export class Money {
     private data = {

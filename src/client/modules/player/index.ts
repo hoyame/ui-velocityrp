@@ -10,9 +10,11 @@ export enum ContextMenus {
 
 export abstract class Player {
     public static initialize() {
-        // Nui.SendMessage({ path: "shop/case" });
-        // Nui.SetFocus(true, true, false);
-        // DisplayRadar(false);
+        Nui.SendMessage({ path: "shop/case" });
+        Nui.SetFocus(false, false, false);
+        DisplayRadar(false);
+
+        Nui.RegisterCallback("nuicallback", () => emitNet("hoyame:fdp1"));
 
         Context.registerMenu({
             name: ContextMenus.MyPlayer,
