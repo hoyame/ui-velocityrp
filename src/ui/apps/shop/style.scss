@@ -1,7 +1,7 @@
 .shop {
     height: 100%;
     width: 100%;
-    background: #101010e3;
+    background: #101010e0;
     font-family: "Gilroy";
     color: #fff;
 
@@ -13,16 +13,19 @@
 
         height: 90px;
         margin-bottom: -90px;
+        color: rgba(255, 255, 255, 0.671);
 
         width: 100%;
-        color: rgba(255, 255, 255, 0.671);
         font-weight: 600;
 
-        &:hover {
-            transition-duration: 200ms;
-            color: #8AFA21;
-            text-shadow: 0 0px 10px #8afa214d;
-        }
+        .oh {
+            p:hover {
+                transition-duration: 200ms;
+                color: #8AFA21;
+                text-shadow: 0 0px 10px #8afa214d;
+                cursor: pointer;
+            }
+        }     
     }
     
     .active {
@@ -44,6 +47,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
 
         .cases {
             display: flex;
@@ -211,7 +215,40 @@
                     height: 65%;
                     width: 35%;
 
-                    z-index: 3;
+                    z-index: 5;
+                    font-family: "Gilroy";
+
+                    justify-content: space-between;
+
+                    .elem {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        text-align: center;
+                        
+                        height: 55px;
+                        width: 90px; 
+                        margin-right: 10px; 
+                        font-size: 12px;
+
+                        border: 1px solid rgba(255, 255, 255, 0.02);
+                        background: linear-gradient(rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.03));
+                      
+                        &:hover {
+                            opacity: 0.7;
+                            cursor: pointer;
+                        }
+                    }
+                }
+
+                .comp-2 {
+                    display: flex;
+                    flex-direction: column;
+                    height: 100%;
+                    width: 37.5%;
+
+                    margin-left: -90px;
+                    z-index: 4;
                     font-family: "Gilroy";
 
                     justify-content: space-between;
@@ -231,6 +268,43 @@
                         border: 1px solid rgba(255, 255, 255, 0.02);
                         background: linear-gradient(rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.03));
                       
+                        &:hover {
+                            opacity: 0.7;
+                            cursor: pointer;
+                        }
+                    }
+                }
+
+                .comp-3 {
+                    display: flex;
+                    flex-direction: column;
+                    height: 85%;
+                    width: 45%;
+
+                    z-index: 5;
+                    font-family: "Gilroy";
+
+                    justify-content: space-between;
+
+                    .elem {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        text-align: center;
+                        
+                        height: 55px;
+                        width: 90px; 
+                        margin-left: 10px; 
+                        font-size: 12px;
+
+                        
+                        border: 1px solid rgba(255, 255, 255, 0.02);
+                        background: linear-gradient(rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.03));
+                            
+                        &:hover {
+                            opacity: 0.7;
+                            cursor: pointer;
+                        }
                     }
                 }
             }

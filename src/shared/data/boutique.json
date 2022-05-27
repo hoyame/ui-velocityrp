@@ -1,0 +1,107 @@
+{
+    "cases": {
+        "ruby": {
+            "price": 3000,
+            "content": [
+                { "description": "Issou", "tier": 1, "img": "https://cdn.discordapp.com/attachments/978756863350935654/978763600065875978/unknown.png", "args": {
+                    "type": "", "reward": ""
+                }},
+                { "description": "Issou", "tier": 1, "img": "https://cdn.discordapp.com/attachments/978756863350935654/978763600065875978/unknown.png", "args": {
+                    "type": "", "reward": ""
+                }},
+                { "description": "Issou", "tier": 1, "img": "https://cdn.discordapp.com/attachments/978756863350935654/978763600065875978/unknown.png", "args": {
+                    "type": "", "reward": ""
+                }},
+                { "description": "Issou", "tier": 1, "img": "https://cdn.discordapp.com/attachments/978756863350935654/978763600065875978/unknown.png", "args": {
+                    "type": "", "reward": ""
+                }},
+                { "description": "Issou", "tier": 1, "img": "https://cdn.discordapp.com/attachments/978756863350935654/978763600065875978/unknown.png", "args": {
+                    "type": "", "reward": ""
+                }},
+                { "description": "Issou", "tier": 1, "img": "https://cdn.discordapp.com/attachments/978756863350935654/978763600065875978/unknown.png", "args": {
+                    "type": "", "reward": ""
+                }}
+            ]
+        },
+
+        "diamand": {
+            "price": 2000,
+            "content": [
+                { "description": "Issou", "tier": 1, "img": "", "args": {
+                    "type": "", "reward": ""
+                }}
+            ]
+        },
+
+        "gold": {
+            "price": 1250,
+            "content": [
+                { "description": "Issou", "tier": 1, "img": "", "args": {
+                    "type": "", "reward": ""
+                }}
+            ]
+        },
+
+        "silver": {
+            "price": 500,
+            "content": [
+                { "description": "Issou", "tier": 1, "img": "", "args": {
+                    "type": "", "reward": ""
+                }}
+            ]
+        }
+    },
+
+    "weapons": [
+        {"componentData": null, "img": "katana", "label": "Katana", "name": "WEAPON_KATANA", "description": null, "price": 450},
+        {"componentData": null, "img": "revolver", "label": "Double Action Revolver", "name": "WEAPON_DOUBLEACTION", "description": null, "price": 2000},
+        {"componentData": null, "img": "nanyRevolver", "label": "Navy Revolver", "name": "WEAPON_NAVYREVOLVER", "description": null, "price": 2500},
+        {"componentData": null, "img": "cayo", "label": "Pistolet Cayo", "name": "WEAPON_GADGETPISTOL", "description": null, "price": 1500},
+        {"componentData": null, "img": "ak47", "label": "AK-47", "name": "WEAPON_ASSAULTRIFLE", "description": null, "price": 3500},
+        {"componentData": null, "img": "defense", "label": "Arme de Défense", "name": "WEAPON_COMBATPDW", "description": null, "price": 2500},
+        {"componentData": null, "img": "ceramic", "label": "Glock 17", "name": "WEAPON_GLOCK", "description": null, "price": 1000}
+    ],
+
+    "vehicles": {
+        "cars": [
+            {"label": "T-Max", "model": "tmaxDX", "description": null, "price": 1000},
+            {"label": "Trotinette", "model": "serv_electricscooter", "description": null, "price": 1000},
+            {"label": "Golf 7R", "model": "golf7r", "description": null, "price": 1500},
+            {"label": "Urus", "model": "urus", "description": null, "price": 2500},
+            {"label": "BMW X6M", "model": "x6m", "description": null, "price": 2500},
+            {"label": "BMW M8", "model": "bmwm8", "description": null, "price": 3500},
+            {"label": "Audi RS7R", "model": "rs7r", "description": null, "price": 3000},
+            {"label": "Audi RS6 ABT", "model": "rs6abtp", "description": null, "price": 3000},
+            {"label": "Audi RS6 2015", "model": "rs615", "description": null, "price": 3000},
+            {"label": "Nissan GTR", "model": "gtr", "description": null, "price": 3000},
+            {"label": "Audi RS3 2018", "model": "rs318", "description": null, "price": 1500},
+            {"label": "Bugatti", "model": "rmodbugatti", "description": null, "price": 4500},
+            {"label": "911 Venom", "model": "911venom", "description": null, "price": 2500},
+            {"label": "Mustang", "model": "rmodmustang", "description": null, "price": 2500},
+            {"label": "Nissan Skyline R34", "model": "rmodskyline34", "description": null, "price": 3500},
+            {"label": "Brabus 800", "model": "brabus800", "description": null, "price": 2700},
+            {"label": "BMW M4 CS", "model": "m4c", "description": null, "price": 2500},
+            {"label": "BMW M5 F90", "model": "m5f90", "description": null, "price": 3000},
+            {"label": "KTM EXC 530", "model": "exc530sm", "description": null, "price": 1500},
+            {"label": "Mercedes AMG GT63S", "model": "rmodgt63", "description": null, "price": 3500}
+        ],
+
+        "boats": [
+            {"label": "Shark", "model": "GTAshark3", "description": null, "price": 750},
+            {"label": "Submersible", "model": "submersible", "description": null, "price": 1250},
+            {"label": "Submersible", "model": "submersible2", "description": null, "price": 1500},
+            {"label": "Longfin", "model": "longfin", "description": null, "price": 2000},
+            {"label": "SR 650", "model": "sr650fly", "description": null, "price": 2500}
+        ],
+
+        "planes": [
+            {"label": "Micro Light", "model": "microlight", "description": null, "price": 750},
+            {"label": "Havoc", "model": "havok", "description": null, "price": 1000},
+            {"label": "Stunt", "model": "stunt", "description": null, "price": 1250},
+            {"label": "Buzzard", "model": "buzzard2", "description": null, "price": 1500},
+            {"label": "Super Volito", "model": "supervolito2", "description": null, "price": 2000},
+            {"label": "Swift", "model": "swift2", "description": null, "price": 2500},
+            {"label": "Luxor", "model": "luxor2", "description": null, "price": 3000}
+        ]
+    }      
+}

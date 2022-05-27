@@ -32,5 +32,10 @@ ui_page 'dist/ui/index.html'
 exports {
     "showNotification",
     "showAdvancedNotification",
-    "showOverlay"
+    "showOverlay",
+    "registerEvent"
+}
+
+exports {
+    "registerEvent"
 }
