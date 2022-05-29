@@ -1,19 +1,20 @@
-import {MySQL} from "../../core/mysql";
-
-export abstract class MoneyController {
-    private static Players = []
-
-    public static async initialize() {
-
-    }
-}
+import {MySQL} from "../core/mysql";
 
 export class Money {
+    constructor(data: {bank: number, cash: number, dirty: 0, fidelcoins?: 0, coins?: 0}) {
+        this.data.bank = data.bank
+        this.data.cash = data.cash
+        this.data.dirty = data.dirty
+        data.fidelcoins && (this.data.fidelcoins = data.fidelcoins)
+        data.coins && (this.data.coins = data.coins)
+    }
+
     private data = {
         bank: 0,
         cash: 0,
         dirty: 0,
-        fidelcoins: 0
+        fidelcoins: 0,
+        coins: 0
     }
 
     public get() {
@@ -56,4 +57,3 @@ export class Money {
         })
     }
 }
-
