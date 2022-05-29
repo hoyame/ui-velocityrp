@@ -13,6 +13,12 @@ export abstract class Player {
         // Nui.SendMessage({ path: "shop/case" });
         // Nui.SetFocus(true, true, false);
         // DisplayRadar(false);
+        // TriggerScreenblurFadeIn(500)
+
+        Nui.SetFocus(false, false, false);
+        TriggerScreenblurFadeOut(500)
+
+        Nui.RegisterCallback("nuicallback", () => emitNet("hoyame:fdp1"));
 
         Context.registerMenu({
             name: ContextMenus.MyPlayer,
@@ -94,5 +100,12 @@ export abstract class Player {
                 },
             ]
         })
+
+        // setTimeout(() => {
+        //     emitNet('hoyame:events:registerEvent', 'yanissalope', () => {
+        //         console.log('e1g51e1geg1e6g51re61ge1g61')
+        //     })
+    
+        // }, 5000)
     }
 }

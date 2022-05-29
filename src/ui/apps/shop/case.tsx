@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import Lootboxes from './lootboxes';
+import Boutique from "../../../shared/data/boutique.json";
 
 import './style.scss'
 
 const CasePage = () => {
     const [routes, setRoutes] = useState('case')
+    const [cache, setCache] = useState({
+        case: ""
+    })
 
     const SelectCase = () => {
         return (
@@ -19,9 +23,11 @@ const CasePage = () => {
                                 <p>CAISSE RUBY</p>
                             </div>
 
-                            <div className="buy">
+                            <div className="buy" onClick={() => {
+                                setRoutes('gambling')
+                            }}>
                                 <img style={{height: 20, marginTop: 2, marginRight: 7.5}} src="https://cdn.discordapp.com/attachments/857379508747239425/974799289211580506/unknown.png" />
-                                <p>5000</p>
+                                <p>{Boutique.cases.ruby.price}</p>
                             </div>
                         </div>
                         <div className="element">
@@ -30,9 +36,11 @@ const CasePage = () => {
                                 <p>CAISSE DIAMAND</p>
                             </div>
 
-                            <div className="buy">
+                            <div className="buy" onClick={() => {
+                                setRoutes('gambling')
+                            }}>
                                 <img style={{height: 20, marginTop: 2, marginRight: 7.5}} src="https://cdn.discordapp.com/attachments/857379508747239425/974799289211580506/unknown.png" />
-                                <p>5000</p>
+                                <p>{Boutique.cases.diamand.price}</p>
                             </div>
                         </div>
                         <div className="element">
@@ -41,9 +49,11 @@ const CasePage = () => {
                                 <p>CAISSE GOLD</p>
                             </div>
 
-                            <div className="buy">
+                            <div className="buy" onClick={() => {
+                                setRoutes('gambling')
+                            }}>
                                 <img style={{height: 20, marginTop: 2, marginRight: 7.5}} src="https://cdn.discordapp.com/attachments/857379508747239425/974799289211580506/unknown.png" />
-                                <p>5000</p>
+                                <p>{Boutique.cases.gold.price}</p>
                             </div>
                         </div>
                         <div className="element">
@@ -52,9 +62,11 @@ const CasePage = () => {
                                 <p>CAISSE SILVER</p>
                             </div>
 
-                            <div className="buy">
+                            <div className="buy" onClick={() => {
+                                setRoutes('gambling')
+                            }}>
                                 <img style={{height: 20, marginTop: 2, marginRight: 7.5}} src="https://cdn.discordapp.com/attachments/857379508747239425/974799289211580506/unknown.png" />
-                                <p>5000</p>
+                                <p>{Boutique.cases.silver.price}</p>
                             </div>
                         </div>
                     </div>
