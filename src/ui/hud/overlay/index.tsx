@@ -32,7 +32,7 @@ const Overlay = () => {
     })
 
     const [staffData, setStaffData] = useState<IStaffData>({
-        state: true,
+        state: false,
         reportsCours: 5,
         reportsAttente: 10
     })

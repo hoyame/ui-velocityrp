@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import "./app.scss";
 import CarDealer from "./apps/cardealer";
 import Context from "./apps/context";
-import Shop from "./apps/shop";
+import Shop from "./apps/store";
 
 const App: React.FC = () => {
 	const history = useHistory();
