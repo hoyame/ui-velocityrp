@@ -49,7 +49,6 @@ const Shop = () => {
                 <div className='oh' style={{display: "flex", alignItems: 'center', marginLeft: 7.5}}>
                     <p onClick={() => setRoute('case')} style={{margin: "0 5px"}} className={route == 'case' ? "active" : ""}>CAISSES</p>
                     <p onClick={() => setRoute('armes')} style={{margin: "0 5px"}} className={route == 'armes' ? "active" : ""}>ARMES</p>
-                    <p onClick={() => setRoute('vehicles')} style={{margin: "0 5px"}} className="">VEHICULES</p>
                 </div>
 
                 <div style={{display: "flex", alignItems: 'center', marginRight: 30}}>
