@@ -14,6 +14,12 @@ interface IOverlay {
     dirty?: number;
 }
 
+interface IStaffData {
+    state: boolean;
+    reportsCours: number;
+    reportsAttente: number;
+}
+
 const Overlay = () => {
     const [state, setState] = useState<IOverlay>({
         visible: true,
@@ -25,6 +31,12 @@ const Overlay = () => {
         dirty: 0
     })
 
+    const [staffData, setStaffData] = useState<IStaffData>({
+        state: true,
+        reportsCours: 5,
+        reportsAttente: 10
+    })
+
     const [dark, setDark] = useState(false);
 
 	const onMessage = (event: any) => {
@@ -32,6 +44,10 @@ const Overlay = () => {
             setState(event.data.data)
             setDark(event.data.dark)
 		}
+
+        if (event.data.type == "staff") {
+            setStaffData(event.data.data)
+        }
 	};
 
 	React.useEffect(() => {
@@ -108,9 +124,31 @@ const Overlay = () => {
                     <svg style={{marginRight: -14}} width="30" height="43" viewBox="0 0 30 43" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#filter0_d_102_6)"><rect x="14" y="14" width="2" height="15" fill="#7AF903"/></g><defs><filter id="filter0_d_102_6" x="0" y="0" width="30" height="43" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset/><feGaussianBlur stdDeviation="7"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0.478431 0 0 0 0 0.976471 0 0 0 0 0.0117647 0 0 0 1 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_102_6"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_102_6" result="shape"/></filter></defs>
                     </svg>
                 </div>
+
+                {
+                    staffData.state &&
+                
+                    <div className={dark ? "bank dark-overlay" : "bank light-overlay"}>
+                      
+                        <svg style={{marginRight: 10}} width="18" height="18" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9.99121 18.7422C14.9746 18.7422 19.0879 14.6289 19.0879 9.6543C19.0879 4.67969 14.9658 0.566406 9.98242 0.566406C5.00781 0.566406 0.90332 4.67969 0.90332 9.6543C0.90332 14.6289 5.0166 18.7422 9.99121 18.7422ZM9.99121 16.9316C5.95703 16.9316 2.73145 13.6885 2.73145 9.6543C2.73145 5.62012 5.95703 2.38574 9.98242 2.38574C14.0166 2.38574 17.2598 5.62012 17.2686 9.6543C17.2773 13.6885 14.0254 16.9316 9.99121 16.9316ZM10.4395 5.9541C11.0723 5.9541 11.582 5.43555 11.582 4.8291C11.582 4.19629 11.0723 3.68652 10.4395 3.68652C9.81543 3.68652 9.32324 4.19629 9.32324 4.8291C9.32324 5.43555 9.81543 5.9541 10.4395 5.9541ZM12.0039 14.8574C12.2939 14.8574 12.5576 14.6641 12.5576 14.3389C12.5576 14.207 12.5312 14.0928 12.4521 13.9434L11.4502 11.9395C11.3447 11.7109 11.2393 11.5703 11.1338 11.4209L10.5537 10.5771L10.6064 10.4365C10.791 9.91797 10.8613 9.5752 10.8965 9.06543L10.9932 7.71191C11.0547 6.95605 10.6152 6.34961 9.79785 6.34961C9.25293 6.34961 8.76953 6.63086 8.24219 7.12305L7.4248 7.89648C7.15234 8.15137 7.08203 8.3623 7.04688 8.69629L6.9502 9.84766C6.91504 10.1992 7.12598 10.4277 7.45117 10.4541C7.75 10.4717 7.96973 10.2871 8.00488 9.90918L8.10156 8.6875L8.54102 8.32715C8.66406 8.23047 8.7959 8.29199 8.78711 8.45898L8.69922 9.4873C8.65527 10.0586 8.93652 10.4805 9.22656 10.832L10.2109 12.0625C10.3076 12.1855 10.334 12.2383 10.3867 12.3438L11.459 14.5059C11.5732 14.7432 11.7666 14.8574 12.0039 14.8574ZM12.3027 9.4082H13.5068C13.876 9.4082 14.0957 9.19727 14.0957 8.87207C14.0957 8.55566 13.876 8.34473 13.5068 8.34473H12.2412L11.4414 7.45703L11.3447 8.8457L11.6699 9.17969C11.8457 9.35547 12.0039 9.4082 12.3027 9.4082ZM7.35449 14.8574C7.53027 14.8574 7.67969 14.7959 7.77637 14.6729L9.33203 12.8535C9.50781 12.6514 9.53418 12.6162 9.57812 12.4316L9.65723 12.1064L8.76953 10.9814L8.51465 12.1855L7.08203 13.8555C6.96777 13.9873 6.84473 14.1367 6.84473 14.3477C6.84473 14.6553 7.06445 14.8574 7.35449 14.8574Z" fill="#7AF804"/>
+                        </svg>
+
+                        <p style={{ marginRight: 15, marginTop: 2.5 }}>{staffData.reportsCours}</p>
+
+                        <svg style={{marginRight: 10}} width="18" height="18" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9.99121 18.7422C14.9746 18.7422 19.0879 14.6289 19.0879 9.6543C19.0879 4.67969 14.9658 0.566406 9.98242 0.566406C5.00781 0.566406 0.90332 4.67969 0.90332 9.6543C0.90332 14.6289 5.0166 18.7422 9.99121 18.7422ZM9.99121 16.9316C5.95703 16.9316 2.73145 13.6885 2.73145 9.6543C2.73145 5.62012 5.95703 2.38574 9.98242 2.38574C14.0166 2.38574 17.2598 5.62012 17.2686 9.6543C17.2773 13.6885 14.0254 16.9316 9.99121 16.9316ZM9.18262 15.5342C9.53418 15.5342 9.7627 15.3145 9.7627 14.9102V11.4209C9.7627 11.2363 9.8418 11.1309 9.99121 11.1309C10.1143 11.1309 10.1934 11.2363 10.1934 11.4209V14.9102C10.1934 15.3145 10.4395 15.5342 10.7822 15.5342C11.1338 15.5342 11.3535 15.3145 11.3535 14.9102V8.82812C11.3535 8.67871 11.4414 8.58203 11.5557 8.58203C11.6699 8.58203 11.749 8.67871 11.749 8.82812V11.2803C11.749 11.6406 11.9688 11.8516 12.2852 11.8516C12.5928 11.8516 12.8037 11.6406 12.8037 11.2803V8.94238C12.8037 7.4043 11.9424 6.96484 10 6.96484H9.27051C8.91895 6.96484 8.75195 6.90332 8.48828 6.70996L7.74121 6.17383L7.62695 4.45996C7.60938 4.09082 7.37207 3.89746 7.06445 3.91504C6.74805 3.94141 6.5459 4.15234 6.57227 4.53027L6.67773 6.25293C6.7041 6.61328 6.87109 6.8418 7.12598 7.02637L8.37402 7.97559C8.53223 8.09863 8.60254 8.23047 8.60254 8.42383V14.9102C8.60254 15.3145 8.84863 15.5342 9.18262 15.5342ZM10 6.46387C10.624 6.46387 11.1338 5.93652 11.1338 5.33887C11.1338 4.70605 10.624 4.19629 10 4.19629C9.36719 4.19629 8.86621 4.70605 8.86621 5.33887C8.86621 5.93652 9.36719 6.46387 10 6.46387Z" fill="#7AF804"/>
+                        </svg>
+
+                        <p style={{marginTop: 2.5}}>{staffData.reportsAttente}</p>
+
+                        <svg style={{marginRight: -14}} width="30" height="43" viewBox="0 0 30 43" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#filter0_d_102_6)"><rect x="14" y="14" width="2" height="15" fill="#7AF903"/></g><defs><filter id="filter0_d_102_6" x="0" y="0" width="30" height="43" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset/><feGaussianBlur stdDeviation="7"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0.478431 0 0 0 0 0.976471 0 0 0 0 0.0117647 0 0 0 1 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_102_6"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_102_6" result="shape"/></filter></defs>
+                        </svg>
+                    </div>
+                }
             </div>
 
-            <img style={{marginLeft: 7.5, height: 125}} src="https://cdn.discordapp.com/attachments/959158897782960178/969356125248049242/unknown.png" />
+            <img style={{marginLeft: 7.5, height: staffData.state ? 160 : 125}} src="https://cdn.discordapp.com/attachments/959158897782960178/969356125248049242/unknown.png" />
 
         </div>
     );
