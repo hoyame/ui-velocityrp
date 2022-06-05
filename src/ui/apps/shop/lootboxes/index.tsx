@@ -25,13 +25,17 @@ export const Loots = [
 	{ money: 50000, tier: 4 },
 ];
 
+interface ILootboxes {
+	case: string;
+}
 
-const Lootboxes: React.FC = () => {
+const Lootboxes = (props: ILootboxes) => {
 	const [margin, setMargin] = useState(0);
 	const audio = createRef<HTMLAudioElement>();
 	const winningLoot = 1;
 	const history = useHistory()
-	const Items = Boutique.cases.ruby.content
+	const caseSelected = props.case
+	const Items = Boutique.cases[caseSelected].content
 
 	const getRandomItems = () => {
 		const items = [];
@@ -63,7 +67,7 @@ const Lootboxes: React.FC = () => {
 				<div key={index} className="item-case">
 					<img style={{marginTop: 15}} src={item.img} className="item-case-image" />
 
-					<p style={{ display: "flex", flexDirection: "column", width: "80%", justifyContent: "center", alignItems: "center", textAlign: "center"}}>{item.description}</p>
+					<p style={{ display: "flex", flexDirection: "column", width: "80%", justifyContent: "center", alignItems: "center", textAlign: "center"}}>{index} {item.description}</p>
 				
 					<svg style={{marginBottom: -7.5}} width="161" height="35" viewBox="0 0 161 35" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<g filter="url(#filter0_d_1_219)"><rect x="16" y="24" width="129" height="3" fill={returnColor(item.tier)}/></g><defs><filter id="filter0_d_1_219" x="0" y="0" width="161" height="35" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dy="-8"/><feGaussianBlur stdDeviation="8"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0.541176 0 0 0 0 0.980392 0 0 0 0 0.129412 0 0 0 0.25 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_219"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_219" result="shape"/></filter></defs>
@@ -107,6 +111,7 @@ const Lootboxes: React.FC = () => {
 			<div className="button" onClick={() => {
 				setTimeout(() => {
 					audio.current?.play?.();
+					
 					setTimeout(() => {
 						setMargin(-14137);
 					}, 1500)
@@ -116,11 +121,11 @@ const Lootboxes: React.FC = () => {
 			</div>
 
 			<img style={{marginTop: 22, marginLeft: 6, height: 31.5, marginBottom: 30}} src="https://cdn.discordapp.com/attachments/956333971908730961/975155604081508442/unknown.png" ></img>
-				<div className="lootboxes-content-holder">
-					<div className="lootboxes-content-container">
-						{casesContent}
-					</div>
+			<div className="lootboxes-content-holder">
+				<div className="lootboxes-content-container">
+					{casesContent}
 				</div>
+			</div>
 		</div>
 
 	);

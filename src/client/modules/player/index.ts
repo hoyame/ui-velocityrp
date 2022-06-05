@@ -9,15 +9,7 @@ export enum ContextMenus {
 }
 
 export abstract class Player {
-    public static initialize() {
-        // Nui.SendMessage({ path: "shop/case" });
-        // Nui.SetFocus(true, true, false);
-        // DisplayRadar(false);
-        // TriggerScreenblurFadeIn(500)
-
-        Nui.SetFocus(false, false, false);
-        TriggerScreenblurFadeOut(500)
-
+    public static async initialize() {
         Nui.RegisterCallback("nuicallback", () => emitNet("hoyame:fdp1"));
 
         Context.registerMenu({

@@ -1,3 +1,4 @@
+import { CardealerData } from "../../../shared/data/cardealer";
 import { Delay } from "../../../shared/utils/utils";
 import { Nui } from "../../core/nui";
 import { hexToRgb, TriggerServerCallbackAsync } from "../../core/utils";
@@ -47,30 +48,28 @@ export abstract class Cardealer {
     }
 
     private static async grabData() {
-        const data = await TriggerServerCallbackAsync('hoyame:cardealer:returnData');
+        const data = CardealerData;
         this.data = data;
     }
 
     private static async grabDataNUI() {
-        const data = await TriggerServerCallbackAsync('hoyame:cardealer:returnData');
+        const data = CardealerData;
         Nui.SendMessage({ type: "cardealer", data: this.data, shop: this.shop });
         this.data = data;
     }
 
     private static enableCam(shop: string) {
-        console.log("bzuifbzefbziufbziebgeizbg")
-        console.log(shop)
         if (shop == "carshop") {
             this.cam = CreateCam("DEFAULT_SCRIPTED_CAMERA", false)
             SetCamActive(this.cam, true)
-            SetCamCoord(this.cam, -41.046, -1094.127, 28.073)
+            SetCamCoord(this.cam, -70.76378, 72.53444, 71.6688)
             SetCamFov(this.cam, 50.0)
-            PointCamAtCoord(this.cam, -47.177, -1092.30, 27.302)
+            PointCamAtCoord(this.cam,-75.09708, 74.8302, 71.91198)
             RenderScriptCams(true, true, 1500, true, true)
             FreezeEntityPosition(PlayerPedId(), true)
             SetEntityVisible(PlayerPedId(), false, false);
 
-            this.spawnCar({model: "asbo"})
+            this.spawnCar(["asbo"])
         } else if (shop == "planeshop") {
             this.cam = CreateCam("DEFAULT_SCRIPTED_CAMERA", false)
             SetCamActive(this.cam, true)
@@ -81,7 +80,7 @@ export abstract class Cardealer {
             FreezeEntityPosition(PlayerPedId(), true)
             SetEntityVisible(PlayerPedId(), false, false);
 
-            this.spawnCar({model: "frogger"})
+            this.spawnCar(["frogger"])
         } else if (shop == "boatshop") {
             this.cam = CreateCam("DEFAULT_SCRIPTED_CAMERA", false)
             SetCamActive(this.cam, true)
@@ -92,7 +91,7 @@ export abstract class Cardealer {
             FreezeEntityPosition(PlayerPedId(), true)
             SetEntityVisible(PlayerPedId(), false, false);
 
-            this.spawnCar({model: "seashark"})
+            this.spawnCar(["seashark"])
         }
 
     }
@@ -110,11 +109,15 @@ export abstract class Cardealer {
         this.shop = null;
     }
 
+    private static s = ''
+
     private static async spawnCar(vehicle: any) {
+        if (this.s == vehicle[0]) return;
+        this.s = vehicle[0];
         if (this.lastVeh) DeleteVehicle(this.lastVeh);
-        this.shop == "carshop" && ( this.lastVeh = await Vehicle.spawnVehicle(vehicle.model, null, [-47.177, -1092.30, 27.302, 285.77], false, false, true))
-        this.shop == "planeshop" && ( this.lastVeh = await Vehicle.spawnVehicle(vehicle.model, null, [-962.527, -2965.897, 13.945, 205.77], false, false, true))
-        this.shop == "boatshop" && ( this.lastVeh = await Vehicle.spawnVehicle(vehicle.model, null, [568.658, -3164.614, 2.951, 285.77], false, false, true))   
+        this.shop == "carshop" && ( this.lastVeh = await Vehicle.spawnVehicle(vehicle[0], null, [-75.09708, 74.8302, 71.91198, 200.56], false, false, true))
+        this.shop == "planeshop" && ( this.lastVeh = await Vehicle.spawnVehicle(vehicle[0], null, [-962.527, -2965.897, 13.945, 205.77], false, false, true))
+        this.shop == "boatshop" && ( this.lastVeh = await Vehicle.spawnVehicle(vehicle[0], null, [568.658, -3164.614, 2.951, 285.77], false, false, true))   
     }
 
     private static async setColor(c: any) {
@@ -126,7 +129,6 @@ export abstract class Cardealer {
     }
 
     private static async buyVehicle(vehicle: any) {
-        //const data = await TriggerServerCallbackAsync('hoyame:cardealer:buyVehicle', vehicle);
-        emitNet("esx_vehicleshop:buyVehicle", vehicle.model, vehicle.type)
+        emitNet("esx_vehicleshop:buyVehicle", vehicle[0], vehicle.type)
     }
 }

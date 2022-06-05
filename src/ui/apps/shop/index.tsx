@@ -1,15 +1,47 @@
 import React, { useState } from 'react'
 import { Switch, Route } from 'react-router-dom';
 import Main from '../../main/main';
+import CarDealer from '../cardealer';
 import ArmePage from './armes';
 import CasePage from './case';
 import Lootboxes from './lootboxes';
+import Boutique from "../../../shared/data/boutique.json";
 
 import './style.scss'
 
 
 const Shop = () => {
-    const [route, setRoute] = useState('armes')
+    const [coins, setCoins] = useState(0);
+    const [route, setRoute] = useState('case')
+
+    const onMessage = (event: any) => {
+        console.log(event.data.type)
+        console.log(event.data.data.coins)
+
+        if (event.data.type == "store") {
+            setCoins(event.data.data.coins)
+		}
+	};
+
+    React.useEffect(() => {
+		window.addEventListener("message", onMessage);
+		return () => window.removeEventListener("message", onMessage);
+	});
+
+    const leave = () => {
+        fetch(`https://${location.hostname.replace("cfx-nui-", "")}/leave`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify(true)
+        })
+    }
+
+    document.addEventListener('keydown', function(event) {
+        if (event.keyCode == 27) leave()
+    })
 
     return (
         <div className="shop">
@@ -17,7 +49,7 @@ const Shop = () => {
                 <div className='oh' style={{display: "flex", alignItems: 'center', marginLeft: 7.5}}>
                     <p onClick={() => setRoute('case')} style={{margin: "0 5px"}} className={route == 'case' ? "active" : ""}>CAISSES</p>
                     <p onClick={() => setRoute('armes')} style={{margin: "0 5px"}} className={route == 'armes' ? "active" : ""}>ARMES</p>
-                    <p onClick={() => setRoute('')} style={{margin: "0 5px"}} className="">VEHICULES</p>
+                    <p onClick={() => setRoute('vehicles')} style={{margin: "0 5px"}} className="">VEHICULES</p>
                 </div>
 
                 <div style={{display: "flex", alignItems: 'center', marginRight: 30}}>
@@ -25,7 +57,7 @@ const Shop = () => {
 
                     <div>
                         <p style={{fontSize: 13, marginBottom: -2.5, color: "#8AFA21"}}>BALANCE</p>
-                        <p style={{fontSize: 16, color: "#fff"}}>120.000 COINS</p>
+                        <p style={{fontSize: 16, color: "#fff"}}>{coins} COINS</p>
                     </div>
 
                     <svg style={{marginLeft: 15}} width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -36,6 +68,9 @@ const Shop = () => {
 
             { route == 'case' && <CasePage /> }
             { route == 'armes' && <ArmePage /> }
+            { route == 'vehicles' && <CarDealer categories={Boutique['categories']} vehicles={Boutique['vehicles']} /> }
+
+            
         </div>
     );
 }

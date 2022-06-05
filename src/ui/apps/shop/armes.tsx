@@ -2,9 +2,6 @@ import { enumValues } from "@nativewrappers/client";
 import React, { useState } from "react";
 import Boutique from "../../../shared/data/boutique.json";
 
-
-import './style.scss'
-
 import katana from "../../assets/weapons/katana_276x106.png";
 import revolver from "../../assets/weapons/double-action-revolver_276x106.png";
 import nanyRevolver from "../../assets/weapons/navy-revolver_276x106.png";
@@ -13,7 +10,14 @@ import ak47 from "../../assets/weapons/assault-rifle_276x106.png";
 import defense from "../../assets/weapons/combat-pdw_276x106.png";
 import ceramic from "../../assets/weapons/ceramic-pistol_276x106.png";
 
+import Hrevolver from "../../assets/weapons_img/weapon_double-action-revolver.png";
+import HnanyRevolver from "../../assets/weapons_img/weapon_navy-revolver.png";
+import Hcayo from "../../assets/weapons_img/weapon_perico_pistol.png";
+import Hak47 from "../../assets/weapons_img/weapon_assault-rifles.png";
+import Hdefense from "../../assets/weapons_img/weapon_combat-pdw.png";
+import Hceramic from "../../assets/weapons_img/weapon_ceramic-pistol.png";
 
+import './style.scss'
 
 const ImgWeapons = {
     "katana": katana,
@@ -25,6 +29,16 @@ const ImgWeapons = {
     "ceramic": ceramic
 }
 
+const ImgWeaponsTall = {
+    "katana": katana,
+    "revolver": Hrevolver,
+    "nanyRevolver": HnanyRevolver,
+    "cayo": Hcayo,
+    "ak47": Hak47,
+    "defense": Hdefense,
+    "ceramic": Hceramic
+}
+
 const ImgAccesories = {
 
 }
@@ -34,10 +48,10 @@ const ArmePage = () => {
     const [weaponsList, setWeaponList] = useState(Boutique.weapons)
 
     const [weaponSelected, setWeaponSelected] = useState({
-        name: "assault-rifle",
+        name: "WEAPON_ASSAULTRIFLE",
         label: "AK-47",
-        img: ImgWeapons["ak47"],
-        price: 10000,
+        img: "ak47",
+        price: 3500,
     });
 
     const [specif, setSpecif] = useState([
@@ -181,7 +195,7 @@ const ArmePage = () => {
 
                 <div className="it-2">
                     <div style={{position: "absolute", zIndex: 1}}>
-                        <img style={{ height: 360 }} src={ImgWeapons[weaponSelected.img]} />
+                        <img style={{ height: 250 }} src={ImgWeaponsTall[weaponSelected.img]} />
                     </div>
 
                     <div className="comp">

@@ -6,9 +6,7 @@ import './style.scss'
 
 const CasePage = () => {
     const [routes, setRoutes] = useState('case')
-    const [cache, setCache] = useState({
-        case: ""
-    })
+    const [caseSelected, setCaseSelected] = useState("")
 
     const SelectCase = () => {
         return (
@@ -25,6 +23,7 @@ const CasePage = () => {
 
                             <div className="buy" onClick={() => {
                                 setRoutes('gambling')
+                                setCaseSelected('ruby')
                             }}>
                                 <img style={{height: 20, marginTop: 2, marginRight: 7.5}} src="https://cdn.discordapp.com/attachments/857379508747239425/974799289211580506/unknown.png" />
                                 <p>{Boutique.cases.ruby.price}</p>
@@ -38,6 +37,7 @@ const CasePage = () => {
 
                             <div className="buy" onClick={() => {
                                 setRoutes('gambling')
+                                setCaseSelected('diamond')
                             }}>
                                 <img style={{height: 20, marginTop: 2, marginRight: 7.5}} src="https://cdn.discordapp.com/attachments/857379508747239425/974799289211580506/unknown.png" />
                                 <p>{Boutique.cases.diamand.price}</p>
@@ -51,6 +51,7 @@ const CasePage = () => {
 
                             <div className="buy" onClick={() => {
                                 setRoutes('gambling')
+                                setCaseSelected('gold')
                             }}>
                                 <img style={{height: 20, marginTop: 2, marginRight: 7.5}} src="https://cdn.discordapp.com/attachments/857379508747239425/974799289211580506/unknown.png" />
                                 <p>{Boutique.cases.gold.price}</p>
@@ -64,6 +65,7 @@ const CasePage = () => {
 
                             <div className="buy" onClick={() => {
                                 setRoutes('gambling')
+                                setCaseSelected('silver')
                             }}>
                                 <img style={{height: 20, marginTop: 2, marginRight: 7.5}} src="https://cdn.discordapp.com/attachments/857379508747239425/974799289211580506/unknown.png" />
                                 <p>{Boutique.cases.silver.price}</p>
@@ -78,7 +80,7 @@ const CasePage = () => {
     return (
         <>
             { routes == 'case' && <SelectCase /> }
-            { routes == 'gambling' && <Lootboxes /> }
+            { routes == 'gambling' && <Lootboxes case={caseSelected} /> }
         </>
     )
 }

@@ -1,7 +1,7 @@
 {
     "cases": {
         "ruby": {
-            "price": 3000,
+            "price": 5000,
             "content": [
                 { "description": "Issou", "tier": 1, "img": "https://cdn.discordapp.com/attachments/978756863350935654/978763600065875978/unknown.png", "args": {
                     "type": "", "reward": ""
@@ -62,46 +62,46 @@
         {"componentData": null, "img": "ceramic", "label": "Glock 17", "name": "WEAPON_GLOCK", "description": null, "price": 1000}
     ],
 
-    "vehicles": {
-        "cars": [
-            {"label": "T-Max", "model": "tmaxDX", "description": null, "price": 1000},
-            {"label": "Trotinette", "model": "serv_electricscooter", "description": null, "price": 1000},
-            {"label": "Golf 7R", "model": "golf7r", "description": null, "price": 1500},
-            {"label": "Urus", "model": "urus", "description": null, "price": 2500},
-            {"label": "BMW X6M", "model": "x6m", "description": null, "price": 2500},
-            {"label": "BMW M8", "model": "bmwm8", "description": null, "price": 3500},
-            {"label": "Audi RS7R", "model": "rs7r", "description": null, "price": 3000},
-            {"label": "Audi RS6 ABT", "model": "rs6abtp", "description": null, "price": 3000},
-            {"label": "Audi RS6 2015", "model": "rs615", "description": null, "price": 3000},
-            {"label": "Nissan GTR", "model": "gtr", "description": null, "price": 3000},
-            {"label": "Audi RS3 2018", "model": "rs318", "description": null, "price": 1500},
-            {"label": "Bugatti", "model": "rmodbugatti", "description": null, "price": 4500},
-            {"label": "911 Venom", "model": "911venom", "description": null, "price": 2500},
-            {"label": "Mustang", "model": "rmodmustang", "description": null, "price": 2500},
-            {"label": "Nissan Skyline R34", "model": "rmodskyline34", "description": null, "price": 3500},
-            {"label": "Brabus 800", "model": "brabus800", "description": null, "price": 2700},
-            {"label": "BMW M4 CS", "model": "m4c", "description": null, "price": 2500},
-            {"label": "BMW M5 F90", "model": "m5f90", "description": null, "price": 3000},
-            {"label": "KTM EXC 530", "model": "exc530sm", "description": null, "price": 1500},
-            {"label": "Mercedes AMG GT63S", "model": "rmodgt63", "description": null, "price": 3500}
-        ],
+    "categories": [
+        ["mod_vehicles", "Voitures", "store"],
+        ["mod_boats", "Bateaux", "store"],
+        ["mod_plane", "Avions", "store"]
+    ],
 
-        "boats": [
-            {"label": "Shark", "model": "GTAshark3", "description": null, "price": 750},
-            {"label": "Submersible", "model": "submersible", "description": null, "price": 1250},
-            {"label": "Submersible", "model": "submersible2", "description": null, "price": 1500},
-            {"label": "Longfin", "model": "longfin", "description": null, "price": 2000},
-            {"label": "SR 650", "model": "sr650fly", "description": null, "price": 2500}
-        ],
+    "vehicles": [
+        ["tmaxDX", "T-Max", 1000, "mod_vehicles"],
+        ["serv_electricscooter", "Trotinette", 1000, "mod_vehicles"],
+        ["golf7r", "Golf 7R", 1500, "mod_vehicles"],
+        ["urus", "Urus", 2500, "mod_vehicles"],
+        ["x6m", "BMW X6M", 2500, "mod_vehicles"],
+        ["bmwm8", "BMW M8", 3500, "mod_vehicles"],
+        ["rs7r", "Audi RS7R", 3000, "mod_vehicles"],
+        ["rs6abtp", "Audi RS6 ABT", 3000, "mod_vehicles"],
+        ["rs615", "Audi RS6 2015", 3000, "mod_vehicles"],
+        ["gtr", "Nissan GTR", 3000, "mod_vehicles"],
+        ["rs318", "Audi RS3 2018", 1500, "mod_vehicles"],
+        ["rmodbugatti", "Bugatti", 4500, "mod_vehicles"],
+        ["911venom", "911 Venom", 2500, "mod_vehicles"],
+        ["rmodmustang", "Mustang", 2500, "mod_vehicles"],
+        ["rmodskyline34", "Nissan Skyline R34", 3500, "mod_vehicles"],
+        ["brabus800", "Brabus 800", 2700, "mod_vehicles"],
+        ["m4c", "BMW M4 CS", 2500, "mod_vehicles"],
+        ["m5f90", "BMW M5 F90", 3000, "mod_vehicles"],
+        ["exc530sm", "KTM EXC 530", 1500, "mod_vehicles"],
+        ["rmodgt63", "Mercedes AMG GT63S", 350, "mod_vehicles"],
 
-        "planes": [
-            {"label": "Micro Light", "model": "microlight", "description": null, "price": 750},
-            {"label": "Havoc", "model": "havok", "description": null, "price": 1000},
-            {"label": "Stunt", "model": "stunt", "description": null, "price": 1250},
-            {"label": "Buzzard", "model": "buzzard2", "description": null, "price": 1500},
-            {"label": "Super Volito", "model": "supervolito2", "description": null, "price": 2000},
-            {"label": "Swift", "model": "swift2", "description": null, "price": 2500},
-            {"label": "Luxor", "model": "luxor2", "description": null, "price": 3000}
-        ]
-    }      
+        ["GTAshark3", "Shark", 750, "mod_boats"],
+        ["submersible", "Submersible", 1250, "mod_boats"],
+        ["submersible2", "Submersible", 1500, "mod_boats"],
+        ["longfin", "Longfin", 2000, "mod_boats"],
+        ["sr650fly", "SR 650", 250, "mod_boats"],
+
+        ["microlight", "Micro Light", 750, "mod_plane"],
+        ["havok", "Havoc", 1000, "mod_plane"],
+        ["stunt", "Stunt", 1250, "mod_plane"],
+        ["buzzard2", "Buzzard", 1500, "mod_plane"],
+        ["supervolito2", "Super Volito", 2000, "mod_plane"],
+        ["swift2", "Swift", 2500, "mod_plane"],
+        ["luxor2", "Luxor", 3000, "mod_plane"]
+    ]
 }

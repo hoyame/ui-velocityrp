@@ -29,15 +29,18 @@ body,
 
 @font-face {
 	font-family: "Gilroy-Bold";
-	src: url("fonts/Gilroy-Bold.ttf") format("truetype");
+	src: url("./fonts/Gilroy-Bold.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "Gilroy";
+	src: url("./fonts/Gilroy-Medium.ttf") format("truetype");
 }
 
 @font-face {
 	font-family: "Gilroy-Medium";
-	src: url("fonts/Gilroy-Medium.ttf") format("truetype");
+	src: url("./fonts/Gilroy-Medium.ttf") format("truetype");
 }
-
-
 
 @font-face {
 	font-family: "Akrobat";
