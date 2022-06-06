@@ -5,6 +5,8 @@ import "./style.scss";
 interface ICardealer {
     categories?: any;
     vehicles?: any;
+    store?: boolean;
+    coins?: number;
 }
 
 const CarDealer = (props: ICardealer) => {
@@ -157,7 +159,15 @@ const CarDealer = (props: ICardealer) => {
                                     console.log(k)
                                 }}>
                                     <p>{v[1]}</p> 
-                                    <p>{v[2]} $</p>
+                                    {
+                                        props.store ? 
+                                            <div style={{display: "flex", flexDirection: "row"}}>
+                                                <p>{v[2]}</p>
+                                                <img style={{height: 16, marginTop: 1, marginLeft: 4}} src="https://cdn.discordapp.com/attachments/857379508747239425/974799289211580506/unknown.png" />
+                                            </div>
+                                        :
+                                            <p>{v[2]} $</p>
+                                    }
                                 </div>
                             )
                         })
@@ -205,16 +215,23 @@ const CarDealer = (props: ICardealer) => {
                 </div>
             </div>
 
-            <div style={{position: "absolute", right: 10, top: 10, height: 60, width: 200, display: "flex", alignItems: "center", justifyContent: "center"}}>
-                <div style={{ height: 40, width: 60, backgroundColor: "#fff", color: "#000", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, marginRight: 15  }}>
-                    ESC
+            <div style={{position: "absolute", right: 10, top: 10, display: "flex", flexDirection: "column", alignItems: "flex-end" }}>
+                <div style={{height: 60, width: 200, display: "flex", alignItems: "center", justifyContent: "center"}}>
+                    <div style={{ height: 40, width: 60, backgroundColor: "#fff", color: "#000", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, marginRight: 15  }}>
+                        ESC
+                    </div>
+
+                    <p style={{ fontSize: 20 }}>
+                        Pour quitter
+                    </p>
                 </div>
 
-                <p style={{ fontSize: 20 }}>
-                    Pour quitter
-                </p>
-
-
+                <div style={{display: "flex", alignItems: 'center', marginRight: 15}}>
+                    <div>
+                        <p style={{fontSize: 17, color: "#fff", fontFamily: "Gilroy-Bold"}}>{props.coins} COINS</p>
+                    </div>
+                    <img style={{height: 25, marginTop: 2, marginLeft: 7.5}} src="https://cdn.discordapp.com/attachments/857379508747239425/974799289211580506/unknown.png" />
+                </div>
             </div>
         </div>        
     );

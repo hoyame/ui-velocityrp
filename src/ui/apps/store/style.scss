@@ -41,9 +41,40 @@
     height: 100%;
     width: 100%;
 
+    .others {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 27%;
+        flex-direction: column;
+        padding: 0 10px;
+
+        .sub-element {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+
+            height: 140px;
+            width: 310px;
+
+            margin: 10px 0;
+            padding: 0 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: linear-gradient(rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.06));
+
+            &:hover {
+                transition-duration: 200ms;
+                cursor: pointer;
+                opacity: 0.6;
+            }
+        }
+    }
+
     .container {
         height: 60%;
-        width: 60%;
+        width: 55%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -62,6 +93,34 @@
             padding: 0 20px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             background: linear-gradient(rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.06));
+
+            &:hover {
+                transition-duration: 200ms;
+                cursor: pointer;
+                opacity: 0.6;
+            }
+        }
+
+        .sub-elements {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+
+            height: 40px;
+            width: 265px;
+
+            margin: 0 10px;
+            margin-bottom: 7.5px;
+            padding: 0 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.04);
+
+            &:hover {
+                transition-duration: 200ms;
+                cursor: pointer;
+                opacity: 0.6;
+            }
         }
 
         .cases {
@@ -79,6 +138,12 @@
                 margin: 0 12.5px;
                 font-family: "Gilroy";
                 font-weight: 600;
+
+                &:hover {
+                    transition-duration: 200ms;
+                    cursor: pointer;
+                    opacity: 0.6;
+                }
 
                 .component {
                     display: flex;

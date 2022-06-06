@@ -3,16 +3,14 @@ import { Switch, Route } from 'react-router-dom';
 import Main from '../../main/main';
 import CarDealer from '../cardealer';
 import ArmePage from './armes';
-import CasePage from './case';
 import Lootboxes from './lootboxes';
 import Boutique from "../../../shared/data/boutique.json";
 
 import './style.scss'
 
-
 const Shop = () => {
-    const [coins, setCoins] = useState(0);
-    const [route, setRoute] = useState('case')
+    const [coins, setCoins] = useState(1);
+    const [routePrimary, setRoutePrimary] = useState('case')
 
     const onMessage = (event: any) => {
         console.log(event.data.type)
@@ -43,12 +41,181 @@ const Shop = () => {
         if (event.keyCode == 27) leave()
     })
 
+    const CasePage = () => {
+        const [routes, setRoutes] = useState('case')
+        const [caseSelected, setCaseSelected] = useState("")
+    
+        const SelectCase = () => {
+            return (
+                <div className="case">
+                    <div className="container">
+                        <img style={{height: 57, marginBottom: 50}} src="https://cdn.discordapp.com/attachments/956333971908730961/983027158865817712/unknown.png?width=1440&height=57" />
+    
+                        <div style={{display: 'flex', flexDirection: "row"}}>
+                            <div className='sub-element' onClick={() => setRoutePrimary('vehicles')}>
+                                <img style={{height: 75, marginRight: 10}} src="https://cdn.discordapp.com/attachments/956333971908730961/983047270876467271/SeekPng.com_mclaren-logo-png_8783967.png" />
+                                <div>
+                                    <p style={{width: 100, textAlign: 'center', fontSize: 18}}>VEHICULES BOUTIQUE</p>
+                                </div>
+                            </div>
+    
+                            <div className='sub-element' onClick={() => {
+                                setRoutes('gambling')
+                                setCaseSelected('monthly')
+                            }}>
+                                <img style={{height: 125, marginRight: 10}} src="https://cdn.discordapp.com/attachments/857379508747239425/974796829298397286/unknown.png" />
+                                <div>
+                                    <p style={{width: 100, textAlign: 'center', fontSize: 18, marginRight: 10, marginBottom: 10}}>CAISSE MENSUELLE</p>
+                                    <div style={{color: '#f6ea30', display: 'flex', alignItems: 'center', width: 100, justifyContent: 'center'}}>
+                                        <img style={{height: 15, marginBottom: 2, marginRight: 7.5}} src="https://cdn.discordapp.com/attachments/857379508747239425/974799289211580506/unknown.png" />
+                                        <p>{Boutique.cases.ruby.price}</p>
+                                    </div>
+                                </div>
+                            </div>
+                   
+    
+                            <div className='sub-element' onClick={() => {
+                                
+                            }}>
+                                <img style={{height: 75, marginRight: 10}} src="https://cdn.discordapp.com/attachments/972502080893911090/983098711339057192/unknown_1.png" />
+                                <div>
+                                    <p style={{width: 100, textAlign: 'center', fontSize: 18, marginBottom: 10}}>VEHICULES EXCLUSIF</p>
+                                    <div style={{color: '#f6ea30', display: 'flex', alignItems: 'center', width: 100, justifyContent: 'center'}}>
+                                        <p style={{width: 100, textAlign: 'center', fontSize: 15}}>C63 AMG BERLINE</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <img style={{height: 57, marginTop: 50, marginBottom: 50}} src="https://media.discordapp.net/attachments/956333971908730961/983027716217524304/unknown.png?width=2520&height=100" />
+    
+                        <div className="cases"> 
+                            <div className="element">
+                                <div className="component" onClick={() => {
+                                    setRoutes('gambling')
+                                    setCaseSelected('ruby')
+                                }}>
+                                    <img style={{width: 250}} src="https://cdn.discordapp.com/attachments/857379508747239425/974796829298397286/unknown.png" />
+                                    <p style={{marginBottom: -20}}>CAISSE RUBY</p>
+    
+                                    <div style={{color: '#f6ea30', display: 'flex', alignItems: 'center', width: 100, justifyContent: 'center'}}>
+                                        <img style={{height: 20, marginTop: 2, marginRight: 7.5}} src="https://cdn.discordapp.com/attachments/857379508747239425/974799289211580506/unknown.png" />
+                                        <p>{Boutique.cases.ruby.price}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="element">
+                                <div className="component" onClick={() => {
+                                    setRoutes('gambling')
+                                    setCaseSelected('diamand')
+                                }}>
+                                    <img style={{width: 250}} src="https://cdn.discordapp.com/attachments/857379508747239425/974800383744544838/unknown.png" />
+                                    <p style={{marginBottom: -20}}>CAISSE DIAMAND</p>
+    
+                                    <div style={{color: '#f6ea30', display: 'flex', alignItems: 'center', width: 100, justifyContent: 'center'}}>
+                                        <img style={{height: 20, marginTop: 2, marginRight: 7.5}} src="https://cdn.discordapp.com/attachments/857379508747239425/974799289211580506/unknown.png" />
+                                        <p>{Boutique.cases.diamand.price}</p>
+                                    </div>
+                                </div>
+    
+                              
+                            </div>
+                            <div className="element">
+                                <div className="component" onClick={() => {
+                                    setRoutes('gambling')
+                                    setCaseSelected('gold')
+                                }}>
+                                    <img style={{width: 250}} src="https://cdn.discordapp.com/attachments/857379508747239425/974800575990464573/unknown.png" />
+                                    <p style={{marginBottom: -20}}>CAISSE GOLD</p>
+    
+                                    <div style={{color: '#f6ea30', display: 'flex', alignItems: 'center', width: 100, justifyContent: 'center'}}>
+                                        <img style={{height: 20, marginTop: 2, marginRight: 7.5}} src="https://cdn.discordapp.com/attachments/857379508747239425/974799289211580506/unknown.png" />
+                                        <p>{Boutique.cases.gold.price}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="element">
+                                <div className="component" onClick={() => {
+                                    setRoutes('gambling')
+                                    setCaseSelected('silver')
+                                }}>
+                                    <img style={{width: 250}} src="https://cdn.discordapp.com/attachments/857379508747239425/974800973383995493/unknown.png" />
+                                    <p style={{marginBottom: -20}}>CAISSE SILVER</p>
+    
+                                    <div style={{color: '#f6ea30', display: 'flex', alignItems: 'center', width: 100, justifyContent: 'center'}}>
+                                        <img style={{height: 20, marginTop: 2, marginRight: 7.5}} src="https://cdn.discordapp.com/attachments/857379508747239425/974799289211580506/unknown.png" />
+                                        <p>{Boutique.cases.silver.price}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div className="others">
+                        <img style={{height: 50, marginBottom: 50}} src="https://cdn.discordapp.com/attachments/956333971908730961/983312634956906526/unknown.png?width=1440&height=57" />
+                        
+                        <div className='sub-element'>
+                            <img style={{height: 100, marginRight: 60}} src="https://cdn.discordapp.com/attachments/956333971908730961/983317365976604702/unknown.png" />
+                            <div>
+                                <p style={{width: 100, textAlign: 'center', fontSize: 18, marginRight: 10, marginBottom: 10}}>CRÉE TON MECANO</p>
+                                <div style={{color: '#f6ea30', display: 'flex', alignItems: 'center', width: 100, justifyContent: 'center'}}>
+                                    <img style={{height: 15, marginBottom: 2, marginRight: 7.5}} src="https://cdn.discordapp.com/attachments/857379508747239425/974799289211580506/unknown.png" />
+                                    <p>{Boutique.cases.ruby.price}</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div className='sub-element'>
+                            <img style={{height: 135, marginLeft: -10, marginRight: 45, marginBottom: -5}} src="https://cdn.discordapp.com/attachments/956333971908730961/983318140215779388/removal.ai_tmp-629dd815de6f8.png" />
+                            <div>
+                                <p style={{width: 100, textAlign: 'center', fontSize: 18, marginRight: 10, marginBottom: 10}}>CRÉE TON ORGA</p>
+                                <div style={{color: '#f6ea30', display: 'flex', alignItems: 'center', width: 100, justifyContent: 'center'}}>
+                                    <img style={{height: 15, marginBottom: 2, marginRight: 7.5}} src="https://cdn.discordapp.com/attachments/857379508747239425/974799289211580506/unknown.png" />
+                                    <p>{Boutique.cases.ruby.price}</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div className='sub-element'>
+                            <img style={{height: 135, marginLeft: -10, marginRight: 45, marginBottom: -5}} src="https://cdn.discordapp.com/attachments/956333971908730961/983324444510527528/removal.ai_tmp-629ddc3bbed5e.png" />
+                            <div>
+                                <p style={{width: 100, textAlign: 'center', fontSize: 18, marginRight: 10, marginBottom: 10}}>CRÉE TON METIER</p>
+                                <div style={{color: '#f6ea30', display: 'flex', alignItems: 'center', width: 100, justifyContent: 'center'}}>
+                                    <img style={{height: 15, marginBottom: 2, marginRight: 7.5}} src="https://cdn.discordapp.com/attachments/857379508747239425/974799289211580506/unknown.png" />
+                                    <p>{Boutique.cases.ruby.price}</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div className='sub-element'>
+                            <img style={{height: 135, marginRight: 40}} src="https://cdn.discordapp.com/attachments/878647902631780392/983326466173448192/unknown.png" />
+                            <div>
+                                <p style={{width: 100, textAlign: 'center', fontSize: 18, marginRight: 10, marginBottom: 10}}>RECLAMER SON VIP</p>
+                                <div style={{color: '#f6ea30', display: 'flex', alignItems: 'center', width: 100, justifyContent: 'center'}}>
+                                    <img style={{height: 15, marginBottom: 2, marginRight: 7.5}} src="https://cdn.discordapp.com/attachments/857379508747239425/974799289211580506/unknown.png" />
+                                    <p>{Boutique.cases.ruby.price}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+    
+        return (
+            <>
+                { routes == 'case' && <SelectCase /> }
+                { routes == 'gambling' && <Lootboxes case={caseSelected} /> }
+            </>
+        )
+    }
+
     return (
         <div className="shop">
-            <div className="header">
+            <div className="header" style={{display: routePrimary == 'vehicles' && "none"}}>
                 <div className='oh' style={{display: "flex", alignItems: 'center', marginLeft: 7.5}}>
-                    <p onClick={() => setRoute('case')} style={{margin: "0 5px"}} className={route == 'case' ? "active" : ""}>CAISSES</p>
-                    <p onClick={() => setRoute('armes')} style={{margin: "0 5px"}} className={route == 'armes' ? "active" : ""}>ARMES</p>
+                    <p onClick={() => setRoutePrimary('case')} style={{margin: "0 5px"}} className={routePrimary == 'case' ? "active" : ""}>CAISSES</p>
+                    <p onClick={() => setRoutePrimary('armes')} style={{margin: "0 5px"}} className={routePrimary == 'armes' ? "active" : ""}>ARMES</p>
                 </div>
 
                 <div style={{display: "flex", alignItems: 'center', marginRight: 30}}>
@@ -65,9 +232,9 @@ const Shop = () => {
                 </div>
             </div>
 
-            { route == 'case' && <CasePage /> }
-            { route == 'armes' && <ArmePage /> }
-            { route == 'vehicles' && <CarDealer categories={Boutique['categories']} vehicles={Boutique['vehicles']} /> }
+            { routePrimary == 'case' && <CasePage /> }
+            { routePrimary == 'armes' && <ArmePage /> }
+            { routePrimary == 'vehicles' && <CarDealer coins={coins} store={true} categories={Boutique['categories']} vehicles={Boutique['vehicles']} /> }
 
             
         </div>

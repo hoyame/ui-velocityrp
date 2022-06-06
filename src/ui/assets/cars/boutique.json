@@ -217,10 +217,10 @@
                     "type": "coins", "reward": "BTC"
                 }},
                 { "description": "250 000 Cash", "tier": 2, "img": "BTC", "args": {
-                    "type": "cash", "reward": "BTC"
+                    "type": "coins", "reward": "BTC"
                 }},
                 { "description": "1 000 000 Cash", "tier": 3, "img": "BTC", "args": {
-                    "type": "cash", "reward": "BTC"
+                    "type": "coins", "reward": "BTC"
                 }},
                 { "description": "Lykan Hyper Sport", "tier": 2, "img": "lykan", "args": {
                     "type": "vehicule", "reward": "lykan"

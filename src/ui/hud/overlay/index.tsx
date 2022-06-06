@@ -25,7 +25,7 @@ const Overlay = () => {
         visible: true,
         players: 0,
         id: 0,
-        maxPlayers: 350,
+        maxPlayers: 400,
         cash: 0,
         bank: 0,
         dirty: 0
