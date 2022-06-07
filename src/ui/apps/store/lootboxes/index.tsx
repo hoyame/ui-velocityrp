@@ -70,6 +70,7 @@ import weapon_combatmg from "../../../assets/weapons/combat-mg_276x106.png";
 import weapon_specialcarbine from "../../../assets/weapons/special-carbine_276x106.png";
 import weapon_heavysniper_mk2 from "../../../assets/weapons/heavy-sniper-mk2_276x106.png";
 import weapon_bullpupshotgun from "../../../assets/weapons/bullpup-shotgun_276x106.png";
+import weapon_scar17fm from "../../../assets/weapons_img/weapon_scar17fm.jpg";
 
 const ImgLinksWeapons = {
 	"weapon_assaultsmg": weapon_assaultsmg,
@@ -85,10 +86,11 @@ const ImgLinksWeapons = {
 	"weapon_specialcarbine": weapon_specialcarbine,
 	"weapon_heavysniper_mk2": weapon_heavysniper_mk2,
 	"weapon_bullpupshotgun": weapon_bullpupshotgun,
+	"weapon_scar17fm": weapon_scar17fm
 }
 
 const ImgLinksCars = {
-	"performante": performante,
+	"18performante": performante,
 	"19S63": mercedesS,
 	"20x5m": bmw20x5,
 	"190e": mercedes190,
@@ -170,32 +172,91 @@ interface ILootboxes {
 const Lootboxes = (props: ILootboxes) => {
 	const [margin, setMargin] = useState(0);
 	const audio = createRef<HTMLAudioElement>();
-	const winningLoot = 1;
+	const winningLoot = 2;
 	const history = useHistory()
+	
 	const caseSelected = props.case
 	const Items = Boutique.cases[caseSelected].content
 
-	const getRandomItems = () => {
+	const algo = () => {
+		let l5 = []; let l4 = []; let l3 = []; let l2 = []; let l1 = [];
+
+		const tLegendary = Items.filter((e: { tier: number; }) => e.tier === 4); 
+		const tUnique = Items.filter((u: { tier: number; }) => u.tier === 0); 
+		const tEpique = Items.filter((e: { tier: number; }) => e.tier === 3); 
+		const tRare = Items.filter((r: { tier: number; }) => r.tier === 2); 
+		const tCommon = Items.filter((c: { tier: number; }) => c.tier === 1);
+		
+		l5.push(tLegendary[Math.randomRange(0, tLegendary.length - 1)]);
+		l4.push(tEpique[Math.randomRange(0, (tEpique.length - 1) / 2)]); l4.push(tEpique[Math.randomRange(0, tEpique.length - 1)]);
+		l3.push(tUnique[Math.randomRange(0, tRare.length - 1)]); l3.push(tUnique[Math.randomRange(0, tRare.length - 1)]); l3.push(tUnique[Math.randomRange(0, tRare.length - 1)]);
+		l2.push(tRare[Math.randomRange(0, tRare.length - 1)]); l2.push(tRare[Math.randomRange(0, tRare.length - 1)]); l2.push(tRare[Math.randomRange(0, tRare.length - 1)]); l2.push(tRare[Math.randomRange(0, tRare.length - 1)]); l2.push(tRare[Math.randomRange(0, tRare.length - 1)]);
+		l1.push(tCommon[Math.randomRange(0, tCommon.length - 1)]); l1.push(tCommon[Math.randomRange(0, tCommon.length - 1)]); l1.push(tCommon[Math.randomRange(0, tCommon.length - 1)]); l1.push(tCommon[Math.randomRange(0, tCommon.length - 1)]); l1.push(tCommon[Math.randomRange(0, tCommon.length - 1)]); l1.push(tCommon[Math.randomRange(0, tCommon.length - 1)]); l1.push(tCommon[Math.randomRange(0, tCommon.length - 1)]); l1.push(tCommon[Math.randomRange(0, tCommon.length - 1)]); l1.push(tCommon[Math.randomRange(0, tCommon.length - 1)]); l1.push(tCommon[Math.randomRange(0, tCommon.length - 1)]);
+
+		let r = []
+
+		l5.map((e: any) => r.push(e))
+		l4.map((e: any) => r.push(e))
+		l3.map((e: any) => r.push(e))
+		l2.map((e: any) => r.push(e))
+		l1.map((e: any) => r.push(e))
+
+		return r;
+	}
+
+	const getItems = () => {
+		const randomItems = algo()
 		const items = [];
+		
 		for (let i = 0; i < 150; i++) {
-			const lootIndex = i == winningIndex ? winningLoot : Math.randomRange(0, Loots.length - 1);
+			const lootIndex = Math.randomRange(0, randomItems.length - 1);
+			const c = randomItems[lootIndex]
+
+			if (!c) continue;
+			
 			let fegeg = null
 
-			if (Items[lootIndex].type == "vehicule") fegeg = ImgLinksCars[Items[lootIndex].name]
-			if (Items[lootIndex].type == "weapon") fegeg = ImgLinksWeapons[Items[lootIndex].name]
-			if (Items[lootIndex].type == "coins") fegeg = "https://cdn.discordapp.com/attachments/857379508747239425/974799289211580506/unknown.png"
-			if (Items[lootIndex].type == "cash") fegeg = "money.png"
+			if (randomItems[lootIndex].args && randomItems[lootIndex].args.type && randomItems[lootIndex].args.type == "vehicule") fegeg = ImgLinksCars[randomItems[lootIndex].img]
+			if (randomItems[lootIndex].args && randomItems[lootIndex].args.type && randomItems[lootIndex].args.type == "weapon") fegeg = ImgLinksWeapons[randomItems[lootIndex].img]
+			if (randomItems[lootIndex].args && randomItems[lootIndex].args.type && randomItems[lootIndex].args.type == "coins") fegeg = "https://cdn.discordapp.com/attachments/958102912029032449/983496084712206387/unknown_1.png"
+			if (randomItems[lootIndex].args && randomItems[lootIndex].args.type && randomItems[lootIndex].args.type == "cash") fegeg = "https://cdn.discordapp.com/attachments/972502080893911090/983496796061978654/unknown.png"
+			if (randomItems[lootIndex].args && randomItems[lootIndex].args.type && randomItems[lootIndex].args.type == "vip") fegeg = "https://cdn.discordapp.com/attachments/878647902631780392/983326466173448192/unknown.png"
 
 			items.push({
-				tier: Items[lootIndex].tier,
-				description: !!Items[lootIndex].description && `${Items[lootIndex].description}`,
+				tier: c["tier"],
+				description: !!c["description"] && `${c["description"]}`,
 				img: fegeg,
 			});
 		}
 		return items;
 	};
 
-	const [state] = useState<{ items: any[] }>({ items: getRandomItems() });
+	const returnAllItems: any = () => {
+		let items = [];
+
+		Items.map((v, k) => {
+			let fegeg = null
+
+			if (v) {
+				if (v.args && v.args.type && v.args.type == "vehicule") fegeg = ImgLinksCars[v.img]
+				if (v.args && v.args.type && v.args.type == "weapon") fegeg = ImgLinksWeapons[v.img]
+				if (v.args && v.args.type && v.args.type == "coins") fegeg = "https://cdn.discordapp.com/attachments/958102912029032449/983496084712206387/unknown_1.png"
+				if (v.args && v.args.type && v.args.type == "cash") fegeg = "https://cdn.discordapp.com/attachments/972502080893911090/983496796061978654/unknown.png"
+				if (v.args && v.args.type && v.args.type == "vip") fegeg = "https://cdn.discordapp.com/attachments/878647902631780392/983326466173448192/unknown.png"
+
+				items.push({
+					tier: v["tier"],
+					description: !!v["description"] && `${v["description"]}`,
+					img: fegeg,
+				});
+			}
+
+		})
+
+		return items;
+	}
+
+	const [state] = useState<{ items: any[], allItems: any[] }>({ items: getItems(), allItems: returnAllItems() });
 
 	const returnColor = (tier: number) => {
 		if (tier == 0) return "#bebcfe";
@@ -205,13 +266,21 @@ const Lootboxes = (props: ILootboxes) => {
 		if (tier == 4) return "#ffd000";
 	}
 
+	const returnColorElement = (tier: number) => {
+		if (tier == 0) return "#bebcfe8f";
+		if (tier == 1) return "#72c6f680";
+		if (tier == 2) return "#22bcfe80";
+		if (tier == 3) return "#c56e7e8c";
+		if (tier == 4) return "#ffd0008a";
+	}
+
 	const cases = React.useMemo(
 		() =>
 			state.items?.map((item, index) => (
-				<div key={index} className="item-case">
+				<div key={index} className="item-case" style={{backgroundColor: index == 70 ? returnColorElement(item.tier) : ""}}>
 					<img style={{marginTop: 15}} src={item.img} className="item-case-image" />
 
-					<p style={{ display: "flex", flexDirection: "column", width: "80%", justifyContent: "center", alignItems: "center", textAlign: "center"}}>{index} {item.description}</p>
+					<p style={{ display: "flex", flexDirection: "column", width: "80%", justifyContent: "center", alignItems: "center", textAlign: "center"}}>{item.description}</p>
 				
 					<svg style={{marginBottom: -7.5}} width="161" height="35" viewBox="0 0 161 35" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<g filter="url(#filter0_d_1_219)"><rect x="16" y="24" width="129" height="3" fill={returnColor(item.tier)}/></g><defs><filter id="filter0_d_1_219" x="0" y="0" width="161" height="35" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dy="-8"/><feGaussianBlur stdDeviation="8"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0.541176 0 0 0 0 0.980392 0 0 0 0 0.129412 0 0 0 0.25 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_219"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_219" result="shape"/></filter></defs>
@@ -223,18 +292,18 @@ const Lootboxes = (props: ILootboxes) => {
 
 	const casesContent = React.useMemo(
 		() =>
-			state.items?.map((item, index) => (
+			state.allItems.map((item, index) => (
 				<div key={index} className="item-case" style={{height: 150, width: 150}}>
-					<img style={{height: 95, marginTop: 12.5}} src="https://cdn.discordapp.com/attachments/956333971908730961/975096961017479240/unknown.png" className="item-case-image" />
+					<img style={{height: 95, marginTop: 12.5}} src={item.img} className="item-case-image" />
 
-					<p style={{ fontSize: 10, display: "flex", flexDirection: "column", width: "80%", justifyContent: "center", alignItems: "center", textAlign: "center"}}>MITSUBUSHI ANANASIKIM EVOLUTIN X</p>
+					<p style={{ fontSize: 10, display: "flex", flexDirection: "column", width: "80%", justifyContent: "center", alignItems: "center", textAlign: "center"}}>{item.description}</p>
 				
-					<svg style={{marginBottom: -5}} width="161" height="35" viewBox="0 0 161 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<svg style={{marginBottom: -8.5}} width="161" height="35" viewBox="0 0 161 35" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<g filter="url(#filter0_d_1_219)"><rect x="16" y="24" width="129" height="3" fill={returnColor(item.tier)}/></g><defs><filter id="filter0_d_1_219" x="0" y="0" width="161" height="35" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dy="-8"/><feGaussianBlur stdDeviation="8"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0.541176 0 0 0 0 0.980392 0 0 0 0 0.129412 0 0 0 0.25 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_219"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_219" result="shape"/></filter></defs>
 					</svg>
 				</div>
 			)),
-		state.items
+		state.allItems
 	);
 
 	return (

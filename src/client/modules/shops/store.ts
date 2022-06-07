@@ -9,6 +9,11 @@ export abstract class Store {
     public static async initialize() {
         Nui.RegisterCallback("leave", () => this.close());
 
+        Nui.RegisterCallback("buyMecano", () => this.buyMecano());
+        Nui.RegisterCallback("buyFarmCompany", () => this.buyFarmCompany());
+        Nui.RegisterCallback("buyOrganisation", () => this.buyOrganisation());
+        Nui.RegisterCallback("reclameVip", () => this.reclameVip());
+        Nui.RegisterCallback("exclusiveVehicle", () => this.exclusiveVehicle());
 
         RegisterCommand('boutique', async () => {
             Nui.SendMessage({ path: "shop/case" });
@@ -23,7 +28,15 @@ export abstract class Store {
         // RegisterKeyMapping('boutique', 'Boutique', 'keyboard', 'f1')
     }
 
+    private static buyMecano() { emitNet('hoyame:store:buyMecano'); this.close() }
+    private static buyFarmCompany() {  emitNet('hoyame:store:buyFarmCompany') }
+    private static buyOrganisation() {  emitNet('hoyame:store:buyOrganisation') }
+    private static reclameVip() {  emitNet('hoyame:store:reclameVip') }
+    private static exclusiveVehicle() {  emitNet('hoyame:store:exclusiveVehicle') }
+
+
     public static close() {
+        Nui.SendMessage({ path: "" });
         Nui.SetFocus(false, false, false);
         TriggerScreenblurFadeOut(500)
     }

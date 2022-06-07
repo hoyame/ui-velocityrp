@@ -59,16 +59,13 @@ const Shop = () => {
                                 </div>
                             </div>
     
-                            <div className='sub-element' onClick={() => {
-                                setRoutes('gambling')
-                                setCaseSelected('monthly')
-                            }}>
+                            <div className='sub-element' onClick={() => {}}>
                                 <img style={{height: 125, marginRight: 10}} src="https://cdn.discordapp.com/attachments/857379508747239425/974796829298397286/unknown.png" />
                                 <div>
                                     <p style={{width: 100, textAlign: 'center', fontSize: 18, marginRight: 10, marginBottom: 10}}>CAISSE MENSUELLE</p>
                                     <div style={{color: '#f6ea30', display: 'flex', alignItems: 'center', width: 100, justifyContent: 'center'}}>
                                         <img style={{height: 15, marginBottom: 2, marginRight: 7.5}} src="https://cdn.discordapp.com/attachments/857379508747239425/974799289211580506/unknown.png" />
-                                        <p>{Boutique.cases.ruby.price}</p>
+                                        <p>99999</p>
                                     </div>
                                 </div>
                             </div>
@@ -154,13 +151,22 @@ const Shop = () => {
                     <div className="others">
                         <img style={{height: 50, marginBottom: 50}} src="https://cdn.discordapp.com/attachments/956333971908730961/983312634956906526/unknown.png?width=1440&height=57" />
                         
-                        <div className='sub-element'>
+                        <div className='sub-element' onClick={() => {
+                            fetch(`https://${location.hostname.replace("cfx-nui-", "")}/buyMecano`, {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+                    
+                                body: JSON.stringify(true)
+                            })
+                        }}>
                             <img style={{height: 100, marginRight: 60}} src="https://cdn.discordapp.com/attachments/956333971908730961/983317365976604702/unknown.png" />
                             <div>
                                 <p style={{width: 100, textAlign: 'center', fontSize: 18, marginRight: 10, marginBottom: 10}}>CRÉE TON MECANO</p>
                                 <div style={{color: '#f6ea30', display: 'flex', alignItems: 'center', width: 100, justifyContent: 'center'}}>
                                     <img style={{height: 15, marginBottom: 2, marginRight: 7.5}} src="https://cdn.discordapp.com/attachments/857379508747239425/974799289211580506/unknown.png" />
-                                    <p>{Boutique.cases.ruby.price}</p>
+                                    <p>{Boutique.packs.mecano}</p>
                                 </div>
                             </div>
                         </div>
@@ -171,7 +177,7 @@ const Shop = () => {
                                 <p style={{width: 100, textAlign: 'center', fontSize: 18, marginRight: 10, marginBottom: 10}}>CRÉE TON ORGA</p>
                                 <div style={{color: '#f6ea30', display: 'flex', alignItems: 'center', width: 100, justifyContent: 'center'}}>
                                     <img style={{height: 15, marginBottom: 2, marginRight: 7.5}} src="https://cdn.discordapp.com/attachments/857379508747239425/974799289211580506/unknown.png" />
-                                    <p>{Boutique.cases.ruby.price}</p>
+                                    <p>{Boutique.packs.orga}</p>
                                 </div>
                             </div>
                         </div>
@@ -182,7 +188,7 @@ const Shop = () => {
                                 <p style={{width: 100, textAlign: 'center', fontSize: 18, marginRight: 10, marginBottom: 10}}>CRÉE TON METIER</p>
                                 <div style={{color: '#f6ea30', display: 'flex', alignItems: 'center', width: 100, justifyContent: 'center'}}>
                                     <img style={{height: 15, marginBottom: 2, marginRight: 7.5}} src="https://cdn.discordapp.com/attachments/857379508747239425/974799289211580506/unknown.png" />
-                                    <p>{Boutique.cases.ruby.price}</p>
+                                    <p>{Boutique.packs.entreprise}</p>
                                 </div>
                             </div>
                         </div>
@@ -191,10 +197,6 @@ const Shop = () => {
                             <img style={{height: 135, marginRight: 40}} src="https://cdn.discordapp.com/attachments/878647902631780392/983326466173448192/unknown.png" />
                             <div>
                                 <p style={{width: 100, textAlign: 'center', fontSize: 18, marginRight: 10, marginBottom: 10}}>RECLAMER SON VIP</p>
-                                <div style={{color: '#f6ea30', display: 'flex', alignItems: 'center', width: 100, justifyContent: 'center'}}>
-                                    <img style={{height: 15, marginBottom: 2, marginRight: 7.5}} src="https://cdn.discordapp.com/attachments/857379508747239425/974799289211580506/unknown.png" />
-                                    <p>{Boutique.cases.ruby.price}</p>
-                                </div>
                             </div>
                         </div>
                     </div>

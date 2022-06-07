@@ -189,7 +189,7 @@ const ArmePage = () => {
                     </div> */}
 
                     <div className="button-buy">
-                        {weaponSelected.price} $
+                        {weaponSelected.price} Coins
                     </div>
                 </div>
 

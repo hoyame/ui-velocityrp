@@ -1,8 +1,70 @@
 {
+    "packs": {
+        "entreprise": 5000,
+        "mecano": 7500,
+        "orga": 20000
+    },
+
+    "weapons": [
+        {"componentData": null, "img": "katana", "label": "Katana", "name": "WEAPON_KATANA", "description": null, "price": 450},
+        {"componentData": null, "img": "revolver", "label": "Double Action Revolver", "name": "WEAPON_DOUBLEACTION", "description": null, "price": 2000},
+        {"componentData": null, "img": "nanyRevolver", "label": "Navy Revolver", "name": "WEAPON_NAVYREVOLVER", "description": null, "price": 2500},
+        {"componentData": null, "img": "cayo", "label": "Pistolet Cayo", "name": "WEAPON_GADGETPISTOL", "description": null, "price": 1500},
+        {"componentData": null, "img": "ak47", "label": "AK-47", "name": "WEAPON_ASSAULTRIFLE", "description": null, "price": 3500},
+        {"componentData": null, "img": "defense", "label": "Arme de Défense", "name": "WEAPON_COMBATPDW", "description": null, "price": 2500},
+        {"componentData": null, "img": "ceramic", "label": "Glock 17", "name": "WEAPON_GLOCK", "description": null, "price": 1000}
+    ],
+
+    "categories": [
+        ["mod_vehicles", "Voitures", "store"],
+        ["mod_boats", "Bateaux", "store"],
+        ["mod_plane", "Avions", "store"]
+    ],
+
+    "vehicles": [
+        ["tmaxDX", "T-Max", 1000, "mod_vehicles"],
+        ["serv_electricscooter", "Trotinette", 1000, "mod_vehicles"],
+        ["golf7r", "Golf 7R", 1500, "mod_vehicles"],
+        ["urus", "Urus", 2500, "mod_vehicles"],
+        ["x6m", "BMW X6M", 2500, "mod_vehicles"],
+        ["bmwm8", "BMW M8", 3500, "mod_vehicles"],
+        ["rs7r", "Audi RS7R", 3000, "mod_vehicles"],
+        ["rs6abtp", "Audi RS6 ABT", 3000, "mod_vehicles"],
+        ["rs615", "Audi RS6 2015", 3000, "mod_vehicles"],
+        ["gtr", "Nissan GTR", 3000, "mod_vehicles"],
+        ["rs318", "Audi RS3 2018", 1500, "mod_vehicles"],
+        ["rmodbugatti", "Bugatti", 4500, "mod_vehicles"],
+        ["911venom", "911 Venom", 2500, "mod_vehicles"],
+        ["rmodmustang", "Mustang", 2500, "mod_vehicles"],
+        ["rmodskyline34", "Nissan Skyline R34", 3500, "mod_vehicles"],
+        ["brabus800", "Brabus 800", 2700, "mod_vehicles"],
+        ["m4c", "BMW M4 CS", 2500, "mod_vehicles"],
+        ["m5f90", "BMW M5 F90", 3000, "mod_vehicles"],
+        ["exc530sm", "KTM EXC 530", 1500, "mod_vehicles"],
+        ["rmodgt63", "Mercedes AMG GT63S", 350, "mod_vehicles"],
+
+        ["GTAshark3", "Shark", 750, "mod_boats"],
+        ["submersible", "Submersible", 1250, "mod_boats"],
+        ["submersible2", "Submersible", 1500, "mod_boats"],
+        ["longfin", "Longfin", 2000, "mod_boats"],
+        ["sr650fly", "SR 650", 250, "mod_boats"],
+
+        ["microlight", "Micro Light", 750, "mod_plane"],
+        ["havok", "Havoc", 1000, "mod_plane"],
+        ["stunt", "Stunt", 1250, "mod_plane"],
+        ["buzzard2", "Buzzard", 1500, "mod_plane"],
+        ["supervolito2", "Super Volito", 2000, "mod_plane"],
+        ["swift2", "Swift", 2500, "mod_plane"],
+        ["luxor2", "Luxor", 3000, "mod_plane"]
+    ],
+
     "cases": {
         "ruby": {
             "price": 5000,
             "content": [
+                { "description": "SCAR-H", "tier": 4, "img": "weapon_scar17fm", "args": {
+                    "type": "weapon", "reward": "weapon_scar17fm"
+                }},
                 { "description": "Fusil Bullpup", "tier": 4, "img": "weapon_bullpupshotgun", "args": {
                     "type": "weapon", "reward": "weapon_bullpupshotgun"
                 }},
@@ -15,17 +77,17 @@
                 { "description": "Mitrailleuse", "tier": 4, "img": "weapon_combatmg", "args": {
                     "type": "weapon", "reward": "weapon_combatmg"
                 }},
+                { "description": "3 000 Coins", "tier": 3, "img": "BTC", "args": {
+                    "type": "coins", "reward": "3000"
+                }},
                 { "description": "2 500 Coins", "tier": 3, "img": "BTC", "args": {
                     "type": "coins", "reward": "2500"
-                }},
-                { "description": "1 500 Coins", "tier": 3, "img": "BTC", "args": {
-                    "type": "coins", "reward": "1500"
                 }} ,
                 { "description": "VIP 1 Mois", "tier": 3, "img": "VIP", "args": {
                     "type": "vip", "reward": "1"           
                 }},
-                { "description": "2 000 000 Cash", "tier": 2, "img": "CASH", "args": {
-                    "type": "cash", "reward": "2000000"
+                { "description": "20 000 000 Cash", "tier": 3, "img": "CASH", "args": {
+                    "type": "cash", "reward": "20000000"
                 }},
                 { "description": "Lamborghini Huracan", "tier": 2, "img": "18performante", "args": {
                     "type": "vehicule", "reward": "18performante"
@@ -192,7 +254,7 @@
                 { "description": "Porsche Panamera", "tier": 1, "img": "panamera17turbo", "args": {
                     "type": "vehicule", "reward": "panamera17turbo"
                 }},
-                { "description": "Mercedes Gle", "tier": 1, "img": "gle450", "args": {
+                { "description": "Mercedes GLE", "tier": 1, "img": "gle450", "args": {
                     "type": "vehicule", "reward": "gle450"
                 }}
             ]
@@ -201,8 +263,8 @@
         "silver": {
             "price": 500,
             "content": [
-                { "description": "Mitrallette D'assaut", "tier": 4, "img": "", "weapon_assaultsmg": {
-                    "type": "weapon", "reward": "weapon_assaultsmg "
+                { "description": "Mitrallette d'assaut", "tier": 4, "img": "weapon_assaultsmg", "args": {
+                    "type": "weapon", "reward": "weapon_assaultsmg"
                 }},
                 { "description": "Pistolet Vintage", "tier": 4, "img": "weapon_vintagepistol", "args": {
                     "type": "weapon", "reward": "weapon_vintagepistol"
@@ -288,58 +350,5 @@
                 }}
             ]
         }
-    },
-
-    "weapons": [
-        {"componentData": null, "img": "katana", "label": "Katana", "name": "WEAPON_KATANA", "description": null, "price": 450},
-        {"componentData": null, "img": "revolver", "label": "Double Action Revolver", "name": "WEAPON_DOUBLEACTION", "description": null, "price": 2000},
-        {"componentData": null, "img": "nanyRevolver", "label": "Navy Revolver", "name": "WEAPON_NAVYREVOLVER", "description": null, "price": 2500},
-        {"componentData": null, "img": "cayo", "label": "Pistolet Cayo", "name": "WEAPON_GADGETPISTOL", "description": null, "price": 1500},
-        {"componentData": null, "img": "ak47", "label": "AK-47", "name": "WEAPON_ASSAULTRIFLE", "description": null, "price": 3500},
-        {"componentData": null, "img": "defense", "label": "Arme de Défense", "name": "WEAPON_COMBATPDW", "description": null, "price": 2500},
-        {"componentData": null, "img": "ceramic", "label": "Glock 17", "name": "WEAPON_GLOCK", "description": null, "price": 1000}
-    ],
-
-    "categories": [
-        ["mod_vehicles", "Voitures", "store"],
-        ["mod_boats", "Bateaux", "store"],
-        ["mod_plane", "Avions", "store"]
-    ],
-
-    "vehicles": [
-        ["tmaxDX", "T-Max", 1000, "mod_vehicles"],
-        ["serv_electricscooter", "Trotinette", 1000, "mod_vehicles"],
-        ["golf7r", "Golf 7R", 1500, "mod_vehicles"],
-        ["urus", "Urus", 2500, "mod_vehicles"],
-        ["x6m", "BMW X6M", 2500, "mod_vehicles"],
-        ["bmwm8", "BMW M8", 3500, "mod_vehicles"],
-        ["rs7r", "Audi RS7R", 3000, "mod_vehicles"],
-        ["rs6abtp", "Audi RS6 ABT", 3000, "mod_vehicles"],
-        ["rs615", "Audi RS6 2015", 3000, "mod_vehicles"],
-        ["gtr", "Nissan GTR", 3000, "mod_vehicles"],
-        ["rs318", "Audi RS3 2018", 1500, "mod_vehicles"],
-        ["rmodbugatti", "Bugatti", 4500, "mod_vehicles"],
-        ["911venom", "911 Venom", 2500, "mod_vehicles"],
-        ["rmodmustang", "Mustang", 2500, "mod_vehicles"],
-        ["rmodskyline34", "Nissan Skyline R34", 3500, "mod_vehicles"],
-        ["brabus800", "Brabus 800", 2700, "mod_vehicles"],
-        ["m4c", "BMW M4 CS", 2500, "mod_vehicles"],
-        ["m5f90", "BMW M5 F90", 3000, "mod_vehicles"],
-        ["exc530sm", "KTM EXC 530", 1500, "mod_vehicles"],
-        ["rmodgt63", "Mercedes AMG GT63S", 350, "mod_vehicles"],
-
-        ["GTAshark3", "Shark", 750, "mod_boats"],
-        ["submersible", "Submersible", 1250, "mod_boats"],
-        ["submersible2", "Submersible", 1500, "mod_boats"],
-        ["longfin", "Longfin", 2000, "mod_boats"],
-        ["sr650fly", "SR 650", 250, "mod_boats"],
-
-        ["microlight", "Micro Light", 750, "mod_plane"],
-        ["havok", "Havoc", 1000, "mod_plane"],
-        ["stunt", "Stunt", 1250, "mod_plane"],
-        ["buzzard2", "Buzzard", 1500, "mod_plane"],
-        ["supervolito2", "Super Volito", 2000, "mod_plane"],
-        ["swift2", "Swift", 2500, "mod_plane"],
-        ["luxor2", "Luxor", 3000, "mod_plane"]
-    ]
+    }
 }
