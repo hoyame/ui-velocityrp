@@ -91,6 +91,15 @@ const Shop = () => {
                                 <div className="component" onClick={() => {
                                     setRoutes('gambling')
                                     setCaseSelected('ruby')
+
+                                    fetch(`https://${location.hostname.replace("cfx-nui-", "")}/openCase`, {
+                                        method: "POST",
+                                        headers: {
+                                            "Content-Type": "application/json"
+                                        },
+
+                                        body: JSON.stringify('ruby')
+                                    })
                                 }}>
                                     <img style={{width: 250}} src="https://cdn.discordapp.com/attachments/857379508747239425/974796829298397286/unknown.png" />
                                     <p style={{marginBottom: -20}}>CAISSE RUBY</p>
@@ -105,6 +114,15 @@ const Shop = () => {
                                 <div className="component" onClick={() => {
                                     setRoutes('gambling')
                                     setCaseSelected('diamand')
+
+                                    fetch(`https://${location.hostname.replace("cfx-nui-", "")}/openCase`, {
+                                        method: "POST",
+                                        headers: {
+                                            "Content-Type": "application/json"
+                                        },
+
+                                        body: JSON.stringify('diamand')
+                                    })
                                 }}>
                                     <img style={{width: 250}} src="https://cdn.discordapp.com/attachments/857379508747239425/974800383744544838/unknown.png" />
                                     <p style={{marginBottom: -20}}>CAISSE DIAMAND</p>
@@ -121,6 +139,15 @@ const Shop = () => {
                                 <div className="component" onClick={() => {
                                     setRoutes('gambling')
                                     setCaseSelected('gold')
+
+                                    fetch(`https://${location.hostname.replace("cfx-nui-", "")}/openCase`, {
+                                        method: "POST",
+                                        headers: {
+                                            "Content-Type": "application/json"
+                                        },
+
+                                        body: JSON.stringify('gold')
+                                    })
                                 }}>
                                     <img style={{width: 250}} src="https://cdn.discordapp.com/attachments/857379508747239425/974800575990464573/unknown.png" />
                                     <p style={{marginBottom: -20}}>CAISSE GOLD</p>
@@ -135,6 +162,15 @@ const Shop = () => {
                                 <div className="component" onClick={() => {
                                     setRoutes('gambling')
                                     setCaseSelected('silver')
+
+                                    fetch(`https://${location.hostname.replace("cfx-nui-", "")}/openCase`, {
+                                        method: "POST",
+                                        headers: {
+                                            "Content-Type": "application/json"
+                                        },
+
+                                        body: JSON.stringify('silver')
+                                    })
                                 }}>
                                     <img style={{width: 250}} src="https://cdn.discordapp.com/attachments/857379508747239425/974800973383995493/unknown.png" />
                                     <p style={{marginBottom: -20}}>CAISSE SILVER</p>

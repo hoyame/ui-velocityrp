@@ -1,5 +1,6 @@
 import { Delay } from "../../../shared/utils/utils";
 import { Nui } from "../../core/nui";
+import { TriggerServerCallbackAsync } from "../../core/utils";
 
 export abstract class Store {
     public static data = {
@@ -15,6 +16,8 @@ export abstract class Store {
         Nui.RegisterCallback("reclameVip", () => this.reclameVip());
         Nui.RegisterCallback("exclusiveVehicle", () => this.exclusiveVehicle());
 
+        Nui.RegisterCallback("openCase", (caseLevel: string) => this.openCase(caseLevel));
+
         RegisterCommand('boutique', async () => {
             Nui.SendMessage({ path: "shop/case" });
             await Delay(500)
@@ -28,12 +31,18 @@ export abstract class Store {
         // RegisterKeyMapping('boutique', 'Boutique', 'keyboard', 'f1')
     }
 
-    private static buyMecano() { emitNet('hoyame:store:buyMecano'); this.close() }
-    private static buyFarmCompany() {  emitNet('hoyame:store:buyFarmCompany') }
-    private static buyOrganisation() {  emitNet('hoyame:store:buyOrganisation') }
-    private static reclameVip() {  emitNet('hoyame:store:reclameVip') }
-    private static exclusiveVehicle() {  emitNet('hoyame:store:exclusiveVehicle') }
+    private static async openCase(caseLevel: string) {
+        const actuallyCase = await TriggerServerCallbackAsync("hoyame:store:grabCaisse", caseLevel);
+        Nui.SendMessage({ type: "store/case", data: actuallyCase });
 
+        console.log(actuallyCase);
+    }
+
+    private static buyMecano() { emitNet('hoyame:store:buyMecano'); this.close() }
+    private static buyFarmCompany() {  emitNet('hoyame:store:buyFarmCompany'); this.close() }
+    private static buyOrganisation() {  emitNet('hoyame:store:buyOrganisation'); this.close() }
+    private static reclameVip() {  emitNet('hoyame:store:reclameVip'); this.close() }
+    private static exclusiveVehicle() {  emitNet('hoyame:store:exclusiveVehicle'); this.close() }
 
     public static close() {
         Nui.SendMessage({ path: "" });
