@@ -77,17 +77,17 @@
                 { "description": "Mitrailleuse", "tier": 4, "img": "weapon_combatmg", "args": {
                     "type": "weapon", "reward": "weapon_combatmg"
                 }},
-                { "description": "3 000 Coins", "tier": 3, "img": "BTC", "args": {
+                { "description": "3 000 Coins", "tier": 3, "img": "Coins", "args": {
                     "type": "coins", "reward": "3000"
                 }},
-                { "description": "2 500 Coins", "tier": 3, "img": "BTC", "args": {
+                { "description": "2 500 Coins", "tier": 3, "img": "Coins", "args": {
                     "type": "coins", "reward": "2500"
                 }} ,
                 { "description": "VIP 1 Mois", "tier": 3, "img": "VIP", "args": {
-                    "type": "vip", "reward": "1"           
+                    "type": "vip_gold", "reward": "1"           
                 }},
                 { "description": "20 000 000 Cash", "tier": 3, "img": "CASH", "args": {
-                    "type": "cash", "reward": "20000000"
+                    "type": "money", "reward": "20000000"
                 }},
                 { "description": "Lamborghini Huracan", "tier": 2, "img": "18performante", "args": {
                     "type": "vehicule", "reward": "18performante"
@@ -99,10 +99,10 @@
                     "type": "vehicule", "reward": "aventadors"
                 }},
                 { "description": "Cargobob", "tier": 3, "img": "cargobob2", "args": {
-                    "type": "vehicule", "reward": "cargobob2"
+                    "type": "helico", "reward": "cargobob2"
                 }},
                 { "description": "Volito", "tier": 3, "img": "SuperVolito2", "args": {
-                    "type": "vehicule", "reward": "SuperVolito2"
+                    "type": "helico", "reward": "SuperVolito2"
                 }},
                 { "description": "Ferrari 812", "tier": 1, "img": "ferrari812", "args": {
                     "type": "vehicule", "reward": "ferrari812"
@@ -140,17 +140,17 @@
                 { "description": "Fusil Bullpup", "tier": 4, "img": "weapon_bullpuprifle", "args": {
                     "type": "weapon", "reward": "weapon_bullpuprifle"
                 }},
-                { "description": "1 300 Coins", "tier": 3, "img": "BTC", "args": {
-                    "type": "coins", "reward": "BTC"
+                { "description": "1 300 Coins", "tier": 3, "img": "Coins", "args": {
+                    "type": "coins", "reward": "1300"
                 }},
-                { "description": "2 000 Coins", "tier": 3, "img": "BTC", "args": {
-                    "type": "coins", "reward": "BTC"
+                { "description": "2 000 Coins", "tier": 3, "img": "Coins", "args": {
+                    "type": "coins", "reward": "2000"
                 }},
                 { "description": "3 000 000 Cash", "tier": 4, "img": "CASH", "args": {
-                    "type": "cash", "reward": "CASH"
+                    "type": "money", "reward": "CASH"
                 }},
                 { "description": "1 000 000 Cash", "tier": 2, "img": "CASH", "args": {
-                    "type": "cash", "reward": "CASH"
+                    "type": "money", "reward": "CASH"
                 }},
                 { "description": "Bmw M4", "tier": 2, "img": "bmwm4", "args": {
                     "type": "vehicule", "reward": "bmwm4"
@@ -206,17 +206,17 @@
                 { "description": "Canon Scié", "tier": 4, "img": "weapon_dbshotgun", "args": {
                     "type": "weapon", "reward": "weapon_dbshotgun"
                 }},
-                { "description": "1 000 Coins", "tier": 3, "img": "BTC", "args": {
-                    "type": "coins", "reward": "BTC"
+                { "description": "1 000 Coins", "tier": 3, "img": "Coins", "args": {
+                    "type": "coins", "reward": "1000"
                 }},
-                { "description": "500 Coins", "tier": 2, "img": "BTC", "args": {
-                    "type": "coins", "reward": "BTC"
+                { "description": "500 Coins", "tier": 2, "img": "Coins", "args": {
+                    "type": "coins", "reward": "500"
                 }},
                 { "description": "2 000 000 Cash", "tier": 3, "img": "CASH", "args": {
-                    "type": "cash", "reward": "CASH"
+                    "type": "money", "reward": "CASH"
                 }},
                 { "description": "500 000 Cash", "tier": 3, "img": "CASH", "args": {
-                    "type": "cash", "reward": "CASH"
+                    "type": "money", "reward": "CASH"
                 }},
                 { "description": "Bmw X5", "tier": 1, "img": "20x5m", "args": {
                     "type": "vehicule", "reward": "20x5m"
@@ -272,17 +272,17 @@
                 { "description": "Mousquet", "tier": 4, "img": "weapon_musket", "args": {
                     "type": "weapon", "reward": "weapon_musket"
                 }},
-                { "description": "1 000 Coins", "tier": 4, "img": "BTC", "args": {
-                    "type": "coins", "reward": "BTC"
+                { "description": "1 000 Coins", "tier": 4, "img": "Coins", "args": {
+                    "type": "coins", "reward": "1000"
                 }},
-                { "description": "250 Coins", "tier": 2, "img": "BTC", "args": {
-                    "type": "coins", "reward": "BTC"
+                { "description": "250 Coins", "tier": 2, "img": "Coins", "args": {
+                    "type": "coins", "reward": "250"
                 }},
-                { "description": "250 000 Cash", "tier": 2, "img": "BTC", "args": {
-                    "type": "cash", "reward": "BTC"
+                { "description": "250 000 Cash", "tier": 2, "img": "Coins", "args": {
+                    "type": "money", "reward": "250000"
                 }},
-                { "description": "1 000 000 Cash", "tier": 3, "img": "BTC", "args": {
-                    "type": "cash", "reward": "BTC"
+                { "description": "1 000 000 Cash", "tier": 3, "img": "Coins", "args": {
+                    "type": "money", "reward": "1000000"
                 }},
                 { "description": "Lykan Hyper Sport", "tier": 2, "img": "lykan", "args": {
                     "type": "vehicule", "reward": "lykan"

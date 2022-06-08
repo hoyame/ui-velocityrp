@@ -17,7 +17,7 @@ const Shop = () => {
         console.log(event.data.data.coins)
 
         if (event.data.type == "store") {
-            setCoins(event.data.data.coins)
+            setCoins(event.data.data)
 		}
 	};
 
@@ -52,7 +52,17 @@ const Shop = () => {
                         <img style={{height: 57, marginBottom: 50}} src="https://cdn.discordapp.com/attachments/956333971908730961/983027158865817712/unknown.png?width=1440&height=57" />
     
                         <div style={{display: 'flex', flexDirection: "row"}}>
-                            <div className='sub-element' onClick={() => setRoutePrimary('vehicles')}>
+                            <div className='sub-element' onClick={() => {
+                                setRoutePrimary('vehicles')
+                                fetch(`https://${location.hostname.replace("cfx-nui-", "")}/openVehicles`, {
+                                    method: "POST",
+                                    headers: {
+                                        "Content-Type": "application/json"
+                                    },
+
+                                    body: JSON.stringify(true)
+                                })
+                            }}>
                                 <img style={{height: 75, marginRight: 10}} src="https://cdn.discordapp.com/attachments/956333971908730961/983047270876467271/SeekPng.com_mclaren-logo-png_8783967.png" />
                                 <div>
                                     <p style={{width: 100, textAlign: 'center', fontSize: 18}}>VEHICULES BOUTIQUE</p>
@@ -72,7 +82,14 @@ const Shop = () => {
                    
     
                             <div className='sub-element' onClick={() => {
-                                
+                                fetch(`https://${location.hostname.replace("cfx-nui-", "")}/exclusiveVehicle`, {
+                                    method: "POST",
+                                    headers: {
+                                        "Content-Type": "application/json"
+                                    },
+
+                                    body: JSON.stringify(true)
+                                })
                             }}>
                                 <img style={{height: 75, marginRight: 10}} src="https://cdn.discordapp.com/attachments/972502080893911090/983098711339057192/unknown_1.png" />
                                 <div>
@@ -89,6 +106,8 @@ const Shop = () => {
                         <div className="cases"> 
                             <div className="element">
                                 <div className="component" onClick={() => {
+                                    if (coins < Boutique.cases["ruby"].price) return;
+
                                     setRoutes('gambling')
                                     setCaseSelected('ruby')
 
@@ -112,6 +131,8 @@ const Shop = () => {
                             </div>
                             <div className="element">
                                 <div className="component" onClick={() => {
+                                    if (coins < Boutique.cases["diamand"].price) return;
+
                                     setRoutes('gambling')
                                     setCaseSelected('diamand')
 
@@ -137,6 +158,7 @@ const Shop = () => {
                             </div>
                             <div className="element">
                                 <div className="component" onClick={() => {
+                                    if (coins < Boutique.cases["gold"].price) return;
                                     setRoutes('gambling')
                                     setCaseSelected('gold')
 
@@ -160,6 +182,7 @@ const Shop = () => {
                             </div>
                             <div className="element">
                                 <div className="component" onClick={() => {
+                                    if (coins < Boutique.cases["silver"].price) return;
                                     setRoutes('gambling')
                                     setCaseSelected('silver')
 
@@ -188,6 +211,7 @@ const Shop = () => {
                         <img style={{height: 50, marginBottom: 50}} src="https://cdn.discordapp.com/attachments/956333971908730961/983312634956906526/unknown.png?width=1440&height=57" />
                         
                         <div className='sub-element' onClick={() => {
+                            if (coins < Boutique.packs["mecano"]) return;
                             fetch(`https://${location.hostname.replace("cfx-nui-", "")}/buyMecano`, {
                                 method: "POST",
                                 headers: {
@@ -207,7 +231,18 @@ const Shop = () => {
                             </div>
                         </div>
     
-                        <div className='sub-element'>
+                        <div className='sub-element' onClick={() => {
+                            if (coins < Boutique.packs["orga"]) return;
+
+                            fetch(`https://${location.hostname.replace("cfx-nui-", "")}/buyOrganisation`, {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+                    
+                                body: JSON.stringify(true)
+                            })
+                        }}>
                             <img style={{height: 135, marginLeft: -10, marginRight: 45, marginBottom: -5}} src="https://cdn.discordapp.com/attachments/956333971908730961/983318140215779388/removal.ai_tmp-629dd815de6f8.png" />
                             <div>
                                 <p style={{width: 100, textAlign: 'center', fontSize: 18, marginRight: 10, marginBottom: 10}}>CRÉE TON ORGA</p>
@@ -218,7 +253,18 @@ const Shop = () => {
                             </div>
                         </div>
     
-                        <div className='sub-element'>
+                        <div className='sub-element' onClick={() => {
+                            if (coins < Boutique.packs["entreprise"]) return;
+
+                            fetch(`https://${location.hostname.replace("cfx-nui-", "")}/buyFarmCompany`, {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+                    
+                                body: JSON.stringify(true)
+                            })
+                        }}>
                             <img style={{height: 135, marginLeft: -10, marginRight: 45, marginBottom: -5}} src="https://cdn.discordapp.com/attachments/956333971908730961/983324444510527528/removal.ai_tmp-629ddc3bbed5e.png" />
                             <div>
                                 <p style={{width: 100, textAlign: 'center', fontSize: 18, marginRight: 10, marginBottom: 10}}>CRÉE TON METIER</p>
@@ -229,7 +275,16 @@ const Shop = () => {
                             </div>
                         </div>
     
-                        <div className='sub-element'>
+                        <div className='sub-element' onClick={() => {
+                            fetch(`https://${location.hostname.replace("cfx-nui-", "")}/reclameVip`, {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+                    
+                                body: JSON.stringify(true)
+                            })
+                        }}>
                             <img style={{height: 135, marginRight: 40}} src="https://cdn.discordapp.com/attachments/878647902631780392/983326466173448192/unknown.png" />
                             <div>
                                 <p style={{width: 100, textAlign: 'center', fontSize: 18, marginRight: 10, marginBottom: 10}}>RECLAMER SON VIP</p>
@@ -249,7 +304,7 @@ const Shop = () => {
     }
 
     return (
-        <div className="shop">
+        <div className="shop" style={{background: routePrimary == 'vehicles' ? "linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0))" : "#101010e0"}}>
             <div className="header" style={{display: routePrimary == 'vehicles' && "none"}}>
                 <div className='oh' style={{display: "flex", alignItems: 'center', marginLeft: 7.5}}>
                     <p onClick={() => setRoutePrimary('case')} style={{margin: "0 5px"}} className={routePrimary == 'case' ? "active" : ""}>CAISSES</p>

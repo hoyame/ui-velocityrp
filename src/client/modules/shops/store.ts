@@ -1,6 +1,7 @@
 import { Delay } from "../../../shared/utils/utils";
 import { Nui } from "../../core/nui";
 import { TriggerServerCallbackAsync } from "../../core/utils";
+import { Cardealer } from "./cardealer";
 
 export abstract class Store {
     public static data = {
@@ -17,36 +18,55 @@ export abstract class Store {
         Nui.RegisterCallback("exclusiveVehicle", () => this.exclusiveVehicle());
 
         Nui.RegisterCallback("openCase", (caseLevel: string) => this.openCase(caseLevel));
+        Nui.RegisterCallback("buyWeapon", (data: any) => this.buyWeapon(data));
+        Nui.RegisterCallback("openVehicles", (data: any) => this.openVehicles());
+        Nui.RegisterCallback("buyStoreVehicles", (data: any) => this.buyStoreVehicles(data));
 
         RegisterCommand('boutique', async () => {
+            const coins = await TriggerServerCallbackAsync("hoyame:store:getCoins");
+            console.log(coins)
+
             Nui.SendMessage({ path: "shop/case" });
             await Delay(500)
-            Nui.SendMessage({ type: "store", data: this.data });
+
+            Nui.SendMessage({ type: "store", data: coins });
 
             Nui.SetFocus(true, true, false);
             DisplayRadar(false);
-            TriggerScreenblurFadeIn(500)
+            // TriggerScreenblurFadeIn(500)
         }, false)
  
-        // RegisterKeyMapping('boutique', 'Boutique', 'keyboard', 'f1')
+        RegisterKeyMapping('boutique', 'Boutique', 'keyboard', 'f1')
+    }
+
+    private static openVehicles() {
+        Cardealer.enableCam('storeshop')
+    }
+
+    private static buyStoreVehicles(v: any) {
+        TriggerServerEvent('aBoutique:BuyVehicle', v.model, v.price, v.label)
     }
 
     private static async openCase(caseLevel: string) {
         const actuallyCase = await TriggerServerCallbackAsync("hoyame:store:grabCaisse", caseLevel);
         Nui.SendMessage({ type: "store/case", data: actuallyCase });
-
         console.log(actuallyCase);
     }
 
-    private static buyMecano() { emitNet('hoyame:store:buyMecano'); this.close() }
-    private static buyFarmCompany() {  emitNet('hoyame:store:buyFarmCompany'); this.close() }
-    private static buyOrganisation() {  emitNet('hoyame:store:buyOrganisation'); this.close() }
-    private static reclameVip() {  emitNet('hoyame:store:reclameVip'); this.close() }
-    private static exclusiveVehicle() {  emitNet('hoyame:store:exclusiveVehicle'); this.close() }
+    private static buyWeapon(data: any) {
+        emitNet('hoyame_d:buyweapon', data.name, data.price, data.label);
+        this.close()
+    }
+    
+    private static buyMecano() { emitNet('aBoutique:Mecano'); this.close() }
+    private static buyFarmCompany() {  emitNet('aBoutique:Entreprise'); this.close() }
+    private static buyOrganisation() {  emitNet('aBoutique:Illegal'); this.close() }
+    private static reclameVip() {  emitNet('gm:reclame_vip'); this.close() }
+    private static exclusiveVehicle() {  emitNet('gm:store:buyLimitedVehicle'); this.close() }
 
     public static close() {
         Nui.SendMessage({ path: "" });
         Nui.SetFocus(false, false, false);
-        TriggerScreenblurFadeOut(500)
+        // TriggerScreenblurFadeOut(500)
     }
 }

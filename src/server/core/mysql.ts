@@ -15,7 +15,7 @@ export class MySQL {
 			host: "51.254.34.28",
 			database: "velocityrp",
 			user: "velocityrp",
-			password: "66kM/)]h9CaW",
+			password: "Ci2uwG@4bef@G6WifbIBF",
 		});
 		this.MySQL.config.timezone = "UTC";
 		this.MySQL.connect((err: any) => {

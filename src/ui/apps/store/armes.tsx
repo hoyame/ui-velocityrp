@@ -74,7 +74,6 @@ const ArmePage = () => {
     ])
 
     const Specifications = (props: { specif: string, value: number}) => {
-        console.log(props.value)
         return (
             <div className="specification">
                 <svg style={{marginLeft: -13, marginBottom: -8}} width="7" height="7" viewBox="0 0 5 5" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -143,9 +142,12 @@ const ArmePage = () => {
     }
 
     const returnAccesoriesList = () => {
-        return weaponsList.map((v, k) => {
-            return <AccesoriesComponent key={k} {...v.componentData} />
-        })
+        return (    
+            <>
+                <AccesoriesComponent label="Silencieux" name="sil" price={5000} />
+            </>
+        )
+        
     }
 
     return (
@@ -162,7 +164,7 @@ const ArmePage = () => {
                     <div style={{marginBottom: 25}}>
                         {
                             specif.map((spec, index) => {
-                                return <Specifications specif={spec.name} value={spec.value} key={index} />
+                                return <Specifications specif={spec.name} value={Math.randomRange(20, 100)} key={index} />
                             })
                         }
                     </div>
@@ -188,7 +190,16 @@ const ArmePage = () => {
                         </div>
                     </div> */}
 
-                    <div className="button-buy">
+                    <div className="button-buy" onClick={() => {
+                        fetch(`https://${location.hostname.replace("cfx-nui-", "")}/buyWeapon`, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+
+                            body: JSON.stringify(weaponSelected)
+                        })
+                    }}>
                         {weaponSelected.price} Coins
                     </div>
                 </div>
@@ -236,17 +247,6 @@ const ArmePage = () => {
                         </div>
                     </div>
 
-                </div>
-                
-                <div className="it-3">
-                    <p style={{fontSize: 22, fontWeight: 600, marginBottom: -3}}>AMELIORATION</p>
-                    <p style={{fontSize: 24, fontWeight: 500, marginBottom: 20, color: "#8AFA21"}}>ACCESOIRES</p>
-                
-                    <div className="items-container">
-                        {
-                            returnAccesoriesList()
-                        }
-                    </div>
                 </div>
             </div>
 

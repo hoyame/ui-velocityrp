@@ -58,7 +58,7 @@ export abstract class Cardealer {
         this.data = data;
     }
 
-    private static enableCam(shop: string) {
+    public static enableCam(shop: string) {
         if (shop == "carshop") {
             this.cam = CreateCam("DEFAULT_SCRIPTED_CAMERA", false)
             SetCamActive(this.cam, true)
@@ -92,8 +92,18 @@ export abstract class Cardealer {
             SetEntityVisible(PlayerPedId(), false, false);
 
             this.spawnCar(["seashark"])
-        }
+        } else if (shop == "storeshop") {
+            this.cam = CreateCam("DEFAULT_SCRIPTED_CAMERA", false)
+            SetCamActive(this.cam, true)
+            SetCamCoord(this.cam, -70.76378, 72.53444, 71.6688)
+            SetCamFov(this.cam, 50.0)
+            PointCamAtCoord(this.cam,-75.09708, 74.8302, 71.91198)
+            RenderScriptCams(true, true, 1500, true, true)
+            FreezeEntityPosition(PlayerPedId(), true)
+            SetEntityVisible(PlayerPedId(), false, false);
 
+            this.spawnCar(["tmaxDX"])
+        }
     }
 
     private static disableCam() {

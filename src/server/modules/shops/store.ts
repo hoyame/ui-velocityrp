@@ -12,11 +12,14 @@ export abstract class Store {
         onNet('hoyame:store:buyWeapon', this.buyWeapon.bind(this));
 
         RegisterServerCallback("hoyame:store:grabCaisse", this.generateCase.bind(this));
+        RegisterServerCallback("hoyame:store:getCoins", this.getCoins.bind(this));
     }
 
     private static async generateCase(source: number, selectedCase: string) {   
         // @ts-ignore
         const Items = BoutiqueConfig.cases[selectedCase].content
+        // @ts-ignore
+        const price = BoutiqueConfig.cases[selectedCase].price
     
         const algo = () => {
             let l5 = []; let l4 = []; let l3 = []; let l2 = []; let l1 = [];
@@ -45,7 +48,7 @@ export abstract class Store {
         }
 
         const randomItems = algo()
-        const items = [];
+        const items: { tier: any; description: string | false; img: any; args: { type: any; reward: any; } | { type: any; reward: any; }; }[] = [];
         
         for (let i = 0; i < 150; i++) {
             const lootIndex = Math.randomRange(0, randomItems.length - 1);
@@ -66,63 +69,69 @@ export abstract class Store {
 
         items.map((v, k) => {
             if (k == 70) {
-                
+                emit("hoyame:case:checkoutCase", source, v["args"]["type"], v["args"]["reward"], price)
             }
         })
 
         return items;
     }
 
-    private static async buyMecano() {
-        // remove money & send notification
+    private static async getCoins() {
         const identifier = getPlayerIdentifiers(source)[0];
         const coins = await MySQL.QueryAsync("SELECT coins FROM users WHERE identifier = ?", [identifier])
-        const mecanoPrice = BoutiqueConfig["packs"]["mecano"];        
+        return coins[0].coins;
+    }
 
-        if (coins < mecanoPrice) return emitNet("hoyame:main:notification", "Vous n'avez pas assez d'argent pour acheter ce pack");
+    private static async buyMecano() {
+        // remove money & send notification
+        // const identifier = getPlayerIdentifiers(source)[0];
+        // const coins = await MySQL.QueryAsync("SELECT coins FROM users WHERE identifier = ?", [identifier])
+        // const mecanoPrice = BoutiqueConfig["packs"]["mecano"];        
 
-        let fCoins = coins - mecanoPrice;
+        // if (coins < mecanoPrice) return emitNet("hoyame:showNotification", "Vous n'avez pas assez d'argent pour acheter ce pack");
 
-        await MySQL.QueryAsync('UPDATE users SET coins = ? WHERE identifier = ?', [fCoins, identifier]);
-        emitNet("hoyame:main:notification", "Vous avez acheté un pack de mecano, veuillez ouvrir un ticket sur discord pour porsuivre votre demande");
+        // let fCoins = coins - mecanoPrice;
+
+        // await MySQL.QueryAsync('UPDATE users SET coins = ? WHERE identifier = ?', [fCoins, identifier]);
+        // emitNet("hoyame:showNotification", "Vous avez acheté un pack de mecano, veuillez ouvrir un ticket sur discord pour porsuivre votre demande");
     }
     
     private static async buyFarmCompany() {
         // remove money & send notification
-        const identifier = getPlayerIdentifiers(source)[0];
-        const coins = await MySQL.QueryAsync("SELECT coins FROM users WHERE identifier = ?", [identifier])
-        const entreprisePrice = BoutiqueConfig["packs"]["entreprise"];        
+        // const identifier = getPlayerIdentifiers(source)[0];
+        // const coins = await MySQL.QueryAsync("SELECT coins FROM users WHERE identifier = ?", [identifier])
+        // const entreprisePrice = BoutiqueConfig["packs"]["entreprise"];        
 
-        if (coins < entreprisePrice) return emitNet("hoyame:main:notification", "Vous n'avez pas assez d'argent pour acheter ce pack");
+        // if (coins < entreprisePrice) return emitNet("hoyame:showNotification", "Vous n'avez pas assez d'argent pour acheter ce pack");
 
-        let fCoins = coins - entreprisePrice;
+        // let fCoins = coins - entreprisePrice;
 
-        await MySQL.QueryAsync('UPDATE users SET coins = ? WHERE identifier = ?', [fCoins, identifier]);
-        emitNet("hoyame:main:notification", "Vous avez acheté un pack entreprise, veuillez ouvrir un ticket sur discord pour porsuivre votre demande");
+        // await MySQL.QueryAsync('UPDATE users SET coins = ? WHERE identifier = ?', [fCoins, identifier]);
+        // emitNet("hoyame:showNotification", "Vous avez acheté un pack entreprise, veuillez ouvrir un ticket sur discord pour porsuivre votre demande");
     }
 
     private static async buyOrganisation() {
         // remove money & send notification
-        const identifier = getPlayerIdentifiers(source)[0];
-        const coins = await MySQL.QueryAsync("SELECT coins FROM users WHERE identifier = ?", [identifier])
-        const orgaPrice = BoutiqueConfig["packs"]["orga"];        
+        // const identifier = getPlayerIdentifiers(source)[0];
+        // const coins = await MySQL.QueryAsync("SELECT coins FROM users WHERE identifier = ?", [identifier])
+        // const orgaPrice = BoutiqueConfig["packs"]["orga"];        
 
-        if (coins < orgaPrice) return emitNet("hoyame:main:notification", "Vous n'avez pas assez d'argent pour acheter ce pack");
+        // if (coins < orgaPrice) return emitNet("hoyame:showNotification", "Vous n'avez pas assez d'argent pour acheter ce pack");
 
-        let fCoins = coins - orgaPrice;
+        // let fCoins = coins - orgaPrice;
 
-        await MySQL.QueryAsync('UPDATE users SET coins = ? WHERE identifier = ?', [fCoins, identifier]);
-        emitNet("hoyame:main:notification", "Vous avez acheté un pack orga, veuillez ouvrir un ticket sur discord pour porsuivre votre demande");
+        // await MySQL.QueryAsync('UPDATE users SET coins = ? WHERE identifier = ?', [fCoins, identifier]);
+        // emitNet("hoyame:showNotification", "Vous avez acheté un pack orga, veuillez ouvrir un ticket sur discord pour porsuivre votre demande");
     }
 
     private static reclameVip() {
-        const identifier = getPlayerIdentifiers(source)[0];
-        const vip: any = MySQL.QueryAsync("SELECT vip FROM users WHERE identifier = ?", [identifier])
+        // const identifier = getPlayerIdentifiers(source)[0];
+        // const vip: any = MySQL.QueryAsync("SELECT vip FROM users WHERE identifier = ?", [identifier])
 
-        if (vip == 0) return emitNet("hoyame:main:notification", "Vous n'avez pas de credit VIP");
-        if (vip == 1) {
-            emit('gm:reclame_vip', source)
-        }
+        // if (vip == 0) return emitNet("hoyame:showNotification", "Vous n'avez pas de credit VIP");
+        // if (vip == 1) {
+        //     emit('gm:reclame_vip', source)
+        // }
     }
 
     private static exclusiveVehicle() {

@@ -103,6 +103,17 @@ const CarDealer = (props: ICardealer) => {
         })
     }
 
+    const buyStoreVehicles = (v: any) => {
+        fetch(`https://${location.hostname.replace("cfx-nui-", "")}/buyStoreVehicles`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify(v)
+        })
+    }
+
     const leave = () => {
         fetch(`https://${location.hostname.replace("cfx-nui-", "")}/leave`, {
             method: "POST",
@@ -209,7 +220,11 @@ const CarDealer = (props: ICardealer) => {
                 </div>
 
                 <div className="buy-button" onClick={() => {
-                    buyVehicle(selectedVehicleData);
+                    if (props.coins) {
+                        buyStoreVehicles(selectedVehicleData)
+                    } else {
+                        buyVehicle(selectedVehicleData);
+                    }
                 }}>
                     <p>Acheter cette voiture</p>
                 </div>

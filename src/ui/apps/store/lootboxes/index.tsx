@@ -146,24 +146,6 @@ const ImgLinksCars = {
 
 import "./index.scss";
 
-const winningIndex = 45;
-
-export const Tiers = [
-	{ name: "Common", rate: 50 },
-	{ name: "Rare", rate: 40 },
-	{ name: "Epic", rate: 15 },
-	{ name: "Unique", rate: 6 },
-	{ name: "Legendary", rate: 1 },
-];
-
-//make sure to have at least one item per tier
-export const Loots = [
-	{ money: 2000, tier: 0 },
-	{ money: 4000, tier: 1 },
-	{ money: 6000, tier: 2 },
-	{ money: 10000, tier: 3 },
-	{ money: 50000, tier: 4 },
-];
 
 interface ILootboxes {
 	case: string;
@@ -190,10 +172,11 @@ const Lootboxes = (props: ILootboxes) => {
 				let fegeg = null
 
 				if (v.args && v.args.type && v.args.type == "vehicule") fegeg = ImgLinksCars[v.img]
+				if (v.args && v.args.type && v.args.type == "helico") fegeg = ImgLinksCars[v.img]
 				if (v.args && v.args.type && v.args.type == "weapon") fegeg = ImgLinksWeapons[v.img]
 				if (v.args && v.args.type && v.args.type == "coins") fegeg = "https://cdn.discordapp.com/attachments/958102912029032449/983496084712206387/unknown_1.png"
-				if (v.args && v.args.type && v.args.type == "cash") fegeg = "https://cdn.discordapp.com/attachments/972502080893911090/983496796061978654/unknown.png"
-				if (v.args && v.args.type && v.args.type == "vip") fegeg = "https://cdn.discordapp.com/attachments/878647902631780392/983326466173448192/unknown.png"
+				if (v.args && v.args.type && v.args.type == "money") fegeg = "https://cdn.discordapp.com/attachments/972502080893911090/983496796061978654/unknown.png"
+				if (v.args && v.args.type && v.args.type == "vip_gold") fegeg = "https://cdn.discordapp.com/attachments/878647902631780392/983326466173448192/unknown.png"
 
 				chCase.push({
 					tier: v["tier"],
@@ -272,10 +255,11 @@ const Lootboxes = (props: ILootboxes) => {
 
 			if (v) {
 				if (v.args && v.args.type && v.args.type == "vehicule") fegeg = ImgLinksCars[v.img]
+				if (v.args && v.args.type && v.args.type == "helico") fegeg = ImgLinksCars[v.img]
 				if (v.args && v.args.type && v.args.type == "weapon") fegeg = ImgLinksWeapons[v.img]
 				if (v.args && v.args.type && v.args.type == "coins") fegeg = "https://cdn.discordapp.com/attachments/958102912029032449/983496084712206387/unknown_1.png"
-				if (v.args && v.args.type && v.args.type == "cash") fegeg = "https://cdn.discordapp.com/attachments/972502080893911090/983496796061978654/unknown.png"
-				if (v.args && v.args.type && v.args.type == "vip") fegeg = "https://cdn.discordapp.com/attachments/878647902631780392/983326466173448192/unknown.png"
+				if (v.args && v.args.type && v.args.type == "money") fegeg = "https://cdn.discordapp.com/attachments/972502080893911090/983496796061978654/unknown.png"
+				if (v.args && v.args.type && v.args.type == "vip_gold") fegeg = "https://cdn.discordapp.com/attachments/878647902631780392/983326466173448192/unknown.png"
 
 				items.push({
 					tier: v["tier"],
@@ -387,6 +371,17 @@ const Lootboxes = (props: ILootboxes) => {
 					setTimeout(() => {
 						setMargin(-14137);
 					}, 1500)
+
+					setTimeout(() => {
+						fetch(`https://${location.hostname.replace("cfx-nui-", "")}/leave`, {
+							method: "POST",
+							headers: {
+								"Content-Type": "application/json"
+							},
+
+							body: JSON.stringify(true)
+						})
+					}, 10200)
 				}, 250);
 			}}>
 				<p>OUVRIR</p>

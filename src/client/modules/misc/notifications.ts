@@ -26,6 +26,7 @@ export abstract class Notification {
     public static async initialize() {
         onNet('hoyame:showNotification', this.show.bind(this))
         onNet('hoyame:showAdvancedNotification', this.showAdvanced.bind(this))
+        
     }
 
     public static show(data: INotification) {
