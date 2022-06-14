@@ -24,12 +24,12 @@ export abstract class Store {
 
         RegisterCommand('boutique', async () => {
             const coins = await TriggerServerCallbackAsync("hoyame:store:getCoins");
-            console.log(coins)
+            const code = await TriggerServerCallbackAsync("hoyame:store:getCode");
 
             Nui.SendMessage({ path: "shop/case" });
             await Delay(500)
 
-            Nui.SendMessage({ type: "store", data: coins });
+            Nui.SendMessage({ type: "store", coins: coins, code: code });
 
             Nui.SetFocus(true, true, false);
             DisplayRadar(false);
@@ -39,8 +39,10 @@ export abstract class Store {
         RegisterKeyMapping('boutique', 'Boutique', 'keyboard', 'f1')
     }
 
-    private static openVehicles() {
-        Cardealer.enableCam('storeshop')
+    private static async openVehicles() {
+        await Cardealer.tp()
+        setTimeout(() => Cardealer.enableCam('storeshop'), 1000)
+        
     }
 
     private static buyStoreVehicles(v: any) {
@@ -67,6 +69,7 @@ export abstract class Store {
     public static close() {
         Nui.SendMessage({ path: "" });
         Nui.SetFocus(false, false, false);
+        Cardealer.returnTp();
         // TriggerScreenblurFadeOut(500)
     }
 }

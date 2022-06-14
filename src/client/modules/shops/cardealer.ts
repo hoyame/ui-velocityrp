@@ -9,6 +9,7 @@ export abstract class Cardealer {
     private static cam: any;
     private static lastVeh: any;
     private static shop: any;
+    private static oldPos: any;
 
     public static async initialize() {
         await this.grabData()
@@ -30,6 +31,19 @@ export abstract class Cardealer {
         })
     }
 
+    public static async tp() {
+        this.oldPos = GetEntityCoords(PlayerPedId(), false);
+        SetEntityVisible(GetPlayerPed(-1), false, false);
+        SetEntityCoords(GetPlayerPed(-1), -56.628, 65.145, 71.949, false, false, false, false)
+        
+    }
+
+    public static returnTp() {
+        if (!this.oldPos) return;
+        SetEntityCoords(GetPlayerPed(-1), this.oldPos[0], this.oldPos[1], this.oldPos[2], false, false, false, false)
+        SetEntityVisible(GetPlayerPed(-1), true, true);
+    }
+
     public static async open(shop: string) {
         Nui.SendMessage({ path: "cardealer" });
         Nui.SendMessage({ type: "cardealer", data: this.data, shop: shop });
@@ -44,6 +58,8 @@ export abstract class Cardealer {
         DisplayRadar(true);
         Nui.SetFocus(false, false, false);
         this.shop = null;
+
+        if (this.oldPos) this.returnTp()
 
     }
 
