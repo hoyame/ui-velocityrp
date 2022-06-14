@@ -13,6 +13,8 @@ export abstract class Store {
 
         RegisterServerCallback("hoyame:store:grabCaisse", this.generateCase.bind(this));
         RegisterServerCallback("hoyame:store:getCoins", this.getCoins.bind(this));
+        RegisterServerCallback("hoyame:store:getCode", this.getCode.bind(this));
+
     }
 
     private static async generateCase(source: number, selectedCase: string) {   
@@ -80,6 +82,12 @@ export abstract class Store {
         const identifier = getPlayerIdentifiers(source)[0];
         const coins = await MySQL.QueryAsync("SELECT coins FROM users WHERE identifier = ?", [identifier])
         return coins[0].coins;
+    }
+
+    private static async getCode() {
+        const identifier = getPlayerIdentifiers(source)[0];
+        const coins = await MySQL.QueryAsync("SELECT character_id FROM users WHERE identifier = ?", [identifier])
+        return coins[0].character_id;
     }
 
     private static async buyMecano() {
