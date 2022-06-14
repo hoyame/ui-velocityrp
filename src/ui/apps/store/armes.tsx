@@ -39,11 +39,6 @@ const ImgWeaponsTall = {
     "ceramic": Hceramic
 }
 
-const ImgAccesories = {
-
-}
-
-
 const ArmePage = () => {
     const [weaponsList, setWeaponList] = useState(Boutique.weapons)
 
@@ -168,27 +163,6 @@ const ArmePage = () => {
                             })
                         }
                     </div>
-
-                    {/* <p style={{color: "#8AFA21", marginBottom: 15}}>COULEURS</p>
-
-
-                    <div className='colors' style={{marginBottom: 25}}>
-                        <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", marginBottom: 10 }}>
-                            <div className="elem" onClick={() => null} style={{backgroundColor: "#fed32f"}}></div>
-                            <div className="elem" onClick={() => null} style={{backgroundColor: "#cc2e2d"}}></div>
-                            <div className="elem" onClick={() => null} style={{backgroundColor: "#23c5d0"}}></div>
-                            <div className="elem" onClick={() => null} style={{backgroundColor: "#d26223"}}></div>
-                            <div className="elem" onClick={() => null} style={{backgroundColor: "#8b50f8"}}></div>
-                        </div>
-
-                        <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
-                            <div className="elem" onClick={() => null} style={{backgroundColor: "#ffffff"}}></div>
-                            <div className="elem" onClick={() => null} style={{backgroundColor: "#862126"}}></div>
-                            <div className="elem" onClick={() => null} style={{backgroundColor: "#3ab19d"}}></div>
-                            <div className="elem" onClick={() => null} style={{backgroundColor: "#424242"}}></div>
-                            <div className="elem" onClick={() => null} style={{backgroundColor: "#905225"}}></div>
-                        </div>
-                    </div> */}
 
                     <div className="button-buy" onClick={() => {
                         fetch(`https://${location.hostname.replace("cfx-nui-", "")}/buyWeapon`, {
