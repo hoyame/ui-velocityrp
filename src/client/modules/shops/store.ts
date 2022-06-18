@@ -27,13 +27,10 @@ export abstract class Store {
             const code = await TriggerServerCallbackAsync("hoyame:store:getCode");
 
             Nui.SendMessage({ path: "shop/case" });
-            await Delay(500)
-
+            await Delay(10)
             Nui.SendMessage({ type: "store", coins: coins, code: code });
-
             Nui.SetFocus(true, true, false);
             DisplayRadar(false);
-            // TriggerScreenblurFadeIn(500)
         }, false)
  
         RegisterKeyMapping('boutique', 'Boutique', 'keyboard', 'f1')

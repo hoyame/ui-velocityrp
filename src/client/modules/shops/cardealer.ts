@@ -35,13 +35,13 @@ export abstract class Cardealer {
         this.oldPos = GetEntityCoords(PlayerPedId(), false);
         SetEntityVisible(GetPlayerPed(-1), false, false);
         SetEntityCoords(GetPlayerPed(-1), -56.628, 65.145, 71.949, false, false, false, false)
-        
     }
 
     public static returnTp() {
         if (!this.oldPos) return;
         SetEntityCoords(GetPlayerPed(-1), this.oldPos[0], this.oldPos[1], this.oldPos[2], false, false, false, false)
         SetEntityVisible(GetPlayerPed(-1), true, true);
+        this.oldPos = null;
     }
 
     public static async open(shop: string) {

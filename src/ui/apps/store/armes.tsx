@@ -102,7 +102,7 @@ const ArmePage = () => {
             <div className="container" onClick={() => setWeaponSelected(props)}>
                 <div style={{display: "flex", justifyContent: "space-between"}}>
                     <p style={{marginBottom: -10, fontSize: 20}}>{props.label}</p>
-                    <p style={{marginBottom: -10, fontSize: 18, color: "#82E229"}}>{props.price} $</p>
+                    <p style={{marginBottom: -10, fontSize: 18, color: "#82E229"}}>{props.price} Coins</p>
                 </div>
                 <div style={{width: "100%", display: "flex", justifyContent: "center", alignItems: "center"}}>
                     <img style={{ margin: "15px 0 0 0", height: 90 }} src={ImgWeapons[props.img]} />

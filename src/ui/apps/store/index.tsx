@@ -124,7 +124,7 @@ const Shop = () => {
     
                                     <div style={{color: '#f6ea30', display: 'flex', alignItems: 'center', width: 100, justifyContent: 'center'}}>
                                         <img style={{height: 20, marginTop: 2, marginRight: 7.5}} src="https://cdn.discordapp.com/attachments/857379508747239425/974799289211580506/unknown.png" />
-                                        <p>{Boutique.cases.ruby.price}</p>
+                                        <p style={{color: coins < Boutique.cases["ruby"].price ? "#DC143C" : ""}}>{Boutique.cases.ruby.price}</p>
                                     </div>
                                 </div>
                             </div>
@@ -149,7 +149,7 @@ const Shop = () => {
     
                                     <div style={{color: '#f6ea30', display: 'flex', alignItems: 'center', width: 100, justifyContent: 'center'}}>
                                         <img style={{height: 20, marginTop: 2, marginRight: 7.5}} src="https://cdn.discordapp.com/attachments/857379508747239425/974799289211580506/unknown.png" />
-                                        <p>{Boutique.cases.diamand.price}</p>
+                                        <p style={{color: coins < Boutique.cases["diamand"].price ? "#DC143C" : ""}}>{Boutique.cases.diamand.price}</p>
                                     </div>
                                 </div>
     
@@ -175,7 +175,7 @@ const Shop = () => {
     
                                     <div style={{color: '#f6ea30', display: 'flex', alignItems: 'center', width: 100, justifyContent: 'center'}}>
                                         <img style={{height: 20, marginTop: 2, marginRight: 7.5}} src="https://cdn.discordapp.com/attachments/857379508747239425/974799289211580506/unknown.png" />
-                                        <p>{Boutique.cases.gold.price}</p>
+                                        <p style={{color: coins < Boutique.cases["gold"].price ? "#DC143C" : ""}}>{Boutique.cases.gold.price}</p>
                                     </div>
                                 </div>
                             </div>
@@ -199,7 +199,7 @@ const Shop = () => {
     
                                     <div style={{color: '#f6ea30', display: 'flex', alignItems: 'center', width: 100, justifyContent: 'center'}}>
                                         <img style={{height: 20, marginTop: 2, marginRight: 7.5}} src="https://cdn.discordapp.com/attachments/857379508747239425/974799289211580506/unknown.png" />
-                                        <p>{Boutique.cases.silver.price}</p>
+                                        <p style={{color: coins < Boutique.cases["silver"].price ? "#DC143C" : ""}}>{Boutique.cases.silver.price}</p>
                                     </div>
                                 </div>
                             </div>
@@ -225,7 +225,7 @@ const Shop = () => {
                                 <p style={{width: 100, textAlign: 'center', fontSize: 18, marginRight: 10, marginBottom: 10}}>CRÉE TON MECANO</p>
                                 <div style={{color: '#f6ea30', display: 'flex', alignItems: 'center', width: 100, justifyContent: 'center'}}>
                                     <img style={{height: 15, marginBottom: 2, marginRight: 7.5}} src="https://cdn.discordapp.com/attachments/857379508747239425/974799289211580506/unknown.png" />
-                                    <p>{Boutique.packs.mecano}</p>
+                                    <p style={{color: coins < Boutique.packs["mecano"] ? "#DC143C" : ""}}>{Boutique.packs.mecano}</p>
                                 </div>
                             </div>
                         </div>
@@ -247,7 +247,7 @@ const Shop = () => {
                                 <p style={{width: 100, textAlign: 'center', fontSize: 18, marginRight: 10, marginBottom: 10}}>CRÉE TON ORGA</p>
                                 <div style={{color: '#f6ea30', display: 'flex', alignItems: 'center', width: 100, justifyContent: 'center'}}>
                                     <img style={{height: 15, marginBottom: 2, marginRight: 7.5}} src="https://cdn.discordapp.com/attachments/857379508747239425/974799289211580506/unknown.png" />
-                                    <p>{Boutique.packs.orga}</p>
+                                    <p style={{color: coins < Boutique.packs["orga"] ? "#DC143C" : ""}}>{Boutique.packs.orga}</p>
                                 </div>
                             </div>
                         </div>
@@ -269,7 +269,7 @@ const Shop = () => {
                                 <p style={{width: 100, textAlign: 'center', fontSize: 18, marginRight: 10, marginBottom: 10}}>CRÉE TON METIER</p>
                                 <div style={{color: '#f6ea30', display: 'flex', alignItems: 'center', width: 100, justifyContent: 'center'}}>
                                     <img style={{height: 15, marginBottom: 2, marginRight: 7.5}} src="https://cdn.discordapp.com/attachments/857379508747239425/974799289211580506/unknown.png" />
-                                    <p>{Boutique.packs.entreprise}</p>
+                                    <p style={{color: coins < Boutique.packs["entreprise"] ? "#DC143C" : ""}}>{Boutique.packs.entreprise}</p>
                                 </div>
                             </div>
                         </div>
