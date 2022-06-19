@@ -149,6 +149,7 @@ import "./index.scss";
 
 interface ILootboxes {
 	case: string;
+	coins: number;
 }
 
 const Lootboxes = (props: ILootboxes) => {
@@ -319,7 +320,7 @@ const Lootboxes = (props: ILootboxes) => {
 								return (
 									<div key={index} className="item-case" style={{backgroundColor: index == 70 ? returnColorElement(item.tier) : ""}}>
 										<img style={{marginTop: 15}} src={item.img} className="item-case-image" />
-					
+
 										<p style={{ display: "flex", flexDirection: "column", width: "80%", justifyContent: "center", alignItems: "center", textAlign: "center"}}>{item.description}</p>
 									
 										<svg style={{marginBottom: -7.5}} width="161" height="35" viewBox="0 0 161 35" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -338,11 +339,19 @@ const Lootboxes = (props: ILootboxes) => {
 
 			<div className="button" onClick={() => {
 				setTimeout(() => {
-					audio.current?.play?.();
-										
-					console.log("[Lootboxes] Lootboxes have been claimed!");
-				
+					if (props.coins < Boutique.cases["silver"].price) return;
 
+					fetch(`https://${location.hostname.replace("cfx-nui-", "")}/buyCase`, {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json"
+						},
+
+						body: JSON.stringify(true)
+					})
+
+					audio.current?.play?.();
+					console.log("[Lootboxes] Lootboxes have been claimed!");
 
 					setTimeout(() => {
 						setMargin(-14137);
@@ -359,7 +368,7 @@ const Lootboxes = (props: ILootboxes) => {
 
 				}, 250);
 			}}>
-				<p>OUVRIR</p>
+				<p style={{color: props.coins < Boutique.cases["silver"].price ? "#DC143C" : ""}}>OUVRIR</p>
 			</div>
 
 			<img style={{marginTop: 22, marginLeft: 6, height: 31.5, marginBottom: 30}} src="https://cdn.discordapp.com/attachments/956333971908730961/975155604081508442/unknown.png" ></img>

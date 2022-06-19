@@ -7,6 +7,7 @@ import Lootboxes from './lootboxes';
 import Boutique from "../../../shared/data/boutique.json";
 
 import './style.scss'
+import Notifications from '../../hud/notifications/notifications';
 
 const Shop = () => {
     const [coins, setCoins] = useState(1);
@@ -105,7 +106,7 @@ const Shop = () => {
                         <div className="cases"> 
                             <div className="element">
                                 <div className="component" onClick={() => {
-                                    if (coins < Boutique.cases["ruby"].price) return;
+                                    // if (coins < Boutique.cases["ruby"].price) return;
 
                                     setRoutes('gambling')
                                     setCaseSelected('ruby')
@@ -130,7 +131,7 @@ const Shop = () => {
                             </div>
                             <div className="element">
                                 <div className="component" onClick={() => {
-                                    if (coins < Boutique.cases["diamand"].price) return;
+                                    // if (coins < Boutique.cases["diamand"].price) return;
 
                                     setRoutes('gambling')
                                     setCaseSelected('diamand')
@@ -157,7 +158,7 @@ const Shop = () => {
                             </div>
                             <div className="element">
                                 <div className="component" onClick={() => {
-                                    if (coins < Boutique.cases["gold"].price) return;
+                                    // if (coins < Boutique.cases["gold"].price) return;
                                     setRoutes('gambling')
                                     setCaseSelected('gold')
 
@@ -181,7 +182,7 @@ const Shop = () => {
                             </div>
                             <div className="element">
                                 <div className="component" onClick={() => {
-                                    if (coins < Boutique.cases["silver"].price) return;
+                                    // if (coins < Boutique.cases["silver"].price) return;
                                     setRoutes('gambling')
                                     setCaseSelected('silver')
 
@@ -297,8 +298,7 @@ const Shop = () => {
         return (
             <>
                 { routes == 'case' && <SelectCase /> }
-
-                { routes == 'gambling' && <Lootboxes case={caseSelected} /> }
+                { routes == 'gambling' && <Lootboxes case={caseSelected} coins={coins} /> }
             </>
         )
     }
@@ -336,6 +336,10 @@ const Shop = () => {
             { routePrimary == 'case' && <CasePage /> }
             { routePrimary == 'armes' && <ArmePage /> }
             { routePrimary == 'vehicles' && <CarDealer coins={coins} store={true} categories={Boutique['categories']} vehicles={Boutique['vehicles']} /> }
+        
+            <div id="notifications-store" style={{ opacity: "1" }}>
+				<Notifications inUI={true} />
+			</div> 
         </div>
     );
 }

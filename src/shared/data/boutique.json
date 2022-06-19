@@ -147,10 +147,10 @@
                     "type": "coins", "reward": "2000"
                 }},
                 { "description": "3 000 000 Cash", "tier": 4, "img": "CASH", "args": {
-                    "type": "money", "reward": "CASH"
+                    "type": "money", "reward": "3000000"
                 }},
                 { "description": "1 000 000 Cash", "tier": 2, "img": "CASH", "args": {
-                    "type": "money", "reward": "CASH"
+                    "type": "money", "reward": "1000000"
                 }},
                 { "description": "Bmw M4", "tier": 2, "img": "bmwm4", "args": {
                     "type": "vehicule", "reward": "bmwm4"
@@ -213,10 +213,10 @@
                     "type": "coins", "reward": "500"
                 }},
                 { "description": "2 000 000 Cash", "tier": 3, "img": "CASH", "args": {
-                    "type": "money", "reward": "CASH"
+                    "type": "money", "reward": "2000000"
                 }},
                 { "description": "500 000 Cash", "tier": 3, "img": "CASH", "args": {
-                    "type": "money", "reward": "CASH"
+                    "type": "money", "reward": "500000"
                 }},
                 { "description": "Bmw X5", "tier": 1, "img": "20x5m", "args": {
                     "type": "vehicule", "reward": "20x5m"

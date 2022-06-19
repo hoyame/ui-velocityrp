@@ -1,6 +1,7 @@
 import { Delay } from "../../../shared/utils/utils";
 import { Nui } from "../../core/nui";
 import { TriggerServerCallbackAsync } from "../../core/utils";
+import { Notification } from "../misc/notifications";
 import { Cardealer } from "./cardealer";
 
 export abstract class Store {
@@ -21,25 +22,42 @@ export abstract class Store {
         Nui.RegisterCallback("buyWeapon", (data: any) => this.buyWeapon(data));
         Nui.RegisterCallback("openVehicles", (data: any) => this.openVehicles());
         Nui.RegisterCallback("buyStoreVehicles", (data: any) => this.buyStoreVehicles(data));
+        Nui.RegisterCallback("buyCase", () => this.buyCase());
 
         RegisterCommand('boutique', async () => {
             const coins = await TriggerServerCallbackAsync("hoyame:store:getCoins");
             const code = await TriggerServerCallbackAsync("hoyame:store:getCode");
 
             Nui.SendMessage({ path: "shop/case" });
-            await Delay(10)
+            await Delay(30)
             Nui.SendMessage({ type: "store", coins: coins, code: code });
             Nui.SetFocus(true, true, false);
             DisplayRadar(false);
         }, false)
  
+        RegisterCommand('getSafeZone', () => {
+            console.log(exports.VelocityRP.GetSafeZone())
+        }, false)
+
         RegisterKeyMapping('boutique', 'Boutique', 'keyboard', 'f1')
     }
 
+    private static buyCase() {
+        emitNet('hoyame:store:buyCase');
+    }
+
     private static async openVehicles() {
+        if (!exports.VelocityRP.GetSafeZone()) {
+            this.close()
+            Notification.show({
+                title: "Véhicule",
+                message: 'Vous devez être dans une zone safe pour acheter des véhicules',
+            })
+            return
+        }
+            
         await Cardealer.tp()
         setTimeout(() => Cardealer.enableCam('storeshop'), 1000)
-        
     }
 
     private static buyStoreVehicles(v: any) {

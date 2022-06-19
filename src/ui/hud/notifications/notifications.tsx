@@ -14,7 +14,11 @@ interface INotification {
 	dark?: boolean;
 }
 
-const Notifications: React.FC = () => {
+interface INotif {
+	inUI?: boolean;
+}
+
+const Notifications = (props: INotif) => {
 	const [state, setState] = useState<INotification[]>([]);
      
 	const onMessage = (event: any) => {
@@ -82,13 +86,13 @@ const Notifications: React.FC = () => {
 
 	return (
 
-        <div className="notifications-container">
+        <div className={props.inUI ? "notifications-container-inui" : "notifications-container"}>
             <TransitionGroup>
                 {state.map(notification => (
                     <CSSTransition key={notification.id} classNames="notification" timeout={300}>
                         <div className={notification.dark ? "notification dark" : "notification light"}>
                             {
-                                notification.advanced && (
+                                notification.advanced && !props.inUI && (
                                     <>
                                         <div className="notification-header">
                                             <img className="banner" src={notification.url ? notification.url : "https://cdn.discordapp.com/attachments/857379508747239425/969621675698180164/unknown.png"} />

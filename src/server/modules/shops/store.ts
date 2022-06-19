@@ -3,6 +3,8 @@ import BoutiqueConfig from "../../../shared/data/boutique.json"
 import { RegisterServerCallback } from "../../core/utils";
 
 export abstract class Store {
+    private static buyedCase: any = [];
+
     public static async initialize() {
         onNet('hoyame:store:buyMecano',this.buyMecano.bind(this));
         onNet('hoyame:store:buyFarmCompany', this.buyFarmCompany.bind(this));
@@ -10,11 +12,11 @@ export abstract class Store {
         onNet('hoyame:store:reclameVip', this.reclameVip.bind(this));
         onNet('hoyame:store:exclusiveVehicle', this.exclusiveVehicle.bind(this));
         onNet('hoyame:store:buyWeapon', this.buyWeapon.bind(this));
+        onNet('hoyame:store:buyCase', this.buyCase.bind(this));
 
         RegisterServerCallback("hoyame:store:grabCaisse", this.generateCase.bind(this));
         RegisterServerCallback("hoyame:store:getCoins", this.getCoins.bind(this));
         RegisterServerCallback("hoyame:store:getCode", this.getCode.bind(this));
-
     }
 
     private static async generateCase(source: number, selectedCase: string) {   
@@ -28,11 +30,11 @@ export abstract class Store {
     
             const tLegendary = Items.filter((e: { tier: number; }) => e.tier === 4); 
             const tUnique = Items.filter((u: { tier: number; }) => u.tier === 0); 
-            const tEpique = Items.filter((e: { tier: number; }) => e.tier === 3); 
-            const tRare = Items.filter((r: { tier: number; }) => r.tier === 2); 
-            const tCommon = Items.filter((c: { tier: number; }) => c.tier === 1);
-            
-            l5.push(tLegendary[Math.randomRange(0, tLegendary.length - 1)]);
+            const tEpique = Items.filter((e: { tier: number; }) => e.tier === 2); 
+            const tRare = Items.filter((r: { tier: number; }) => r.tier === 1); 
+            const tCommon = Items.filter((c: { tier: number; }) => c.tier === 3);
+
+            Math.randomRange(1, 3) == 3 && l5.push(tLegendary[Math.randomRange(0, tLegendary.length - 1)]);
             l4.push(tEpique[Math.randomRange(0, (tEpique.length - 1) / 2)]); l4.push(tEpique[Math.randomRange(0, tEpique.length - 1)]);
             l3.push(tUnique[Math.randomRange(0, tRare.length - 1)]); l3.push(tUnique[Math.randomRange(0, tRare.length - 1)]); l3.push(tUnique[Math.randomRange(0, tRare.length - 1)]);
             l2.push(tRare[Math.randomRange(0, tRare.length - 1)]); l2.push(tRare[Math.randomRange(0, tRare.length - 1)]); l2.push(tRare[Math.randomRange(0, tRare.length - 1)]); l2.push(tRare[Math.randomRange(0, tRare.length - 1)]); l2.push(tRare[Math.randomRange(0, tRare.length - 1)]);
@@ -71,11 +73,16 @@ export abstract class Store {
 
         items.map((v, k) => {
             if (k == 70) {
-                emit("hoyame:case:checkoutCase", source, v["args"]["type"], v["args"]["reward"], price)
+                this.buyedCase[source] = [v["args"]["type"], v["args"]["reward"], price]
+                // emit("hoyame:case:checkoutCase", source, v["args"]["type"], v["args"]["reward"], price)
             }
         })
 
         return items;
+    }
+
+    private static buyCase() {
+        emit("hoyame:case:checkoutCase", source, this.buyedCase[source][0], this.buyedCase[source][1], this.buyedCase[source][2])
     }
 
     private static async getCoins() {
