@@ -1,8 +1,8 @@
 {
     "packs": {
         "entreprise": 5000,
-        "mecano": 7500,
-        "orga": 20000
+        "mecano": 50000,
+        "orga": 75000
     },
 
     "weapons": [
@@ -60,7 +60,7 @@
 
     "cases": {
         "ruby": {
-            "price": 5000,
+            "price": 5500,
             "content": [
                 { "description": "SCAR-H", "tier": 4, "img": "weapon_scar17fm", "args": {
                     "type": "weapon", "reward": "weapon_scar17fm"

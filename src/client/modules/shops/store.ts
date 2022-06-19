@@ -75,9 +75,9 @@ export abstract class Store {
         this.close()
     }
     
-    private static buyMecano() { emitNet('aBoutique:Mecano'); this.close() }
-    private static buyFarmCompany() {  emitNet('aBoutique:Entreprise'); this.close() }
-    private static buyOrganisation() {  emitNet('aBoutique:Illegal'); this.close() }
+    private static buyMecano() { emitNet('hoyame:store:t2'); this.close() }
+    private static buyFarmCompany() {  emitNet('hoyame:store:t1'); this.close() }
+    private static buyOrganisation() {  emitNet('hoyame:store:t3'); this.close() }
     private static reclameVip() {  emitNet('gm:reclame_vip'); this.close() }
     private static exclusiveVehicle() {  emitNet('gm:store:buyLimitedVehicle'); this.close() }
 
