@@ -8,7 +8,7 @@ export abstract class Cardealer {
     private static data: any;
     private static cam: any;
     private static lastVeh: any;
-    private static shop: any;
+    public static shop: any;
     private static oldPos: any;
 
     public static async initialize() {
@@ -122,7 +122,7 @@ export abstract class Cardealer {
         }
     }
 
-    private static disableCam() {
+    public static disableCam() {
         if (this.lastVeh) DeleteVehicle(this.lastVeh);
 
         RenderScriptCams(false, true, 1500, true, true)
@@ -142,6 +142,7 @@ export abstract class Cardealer {
         this.s = vehicle[0];
         if (this.lastVeh) DeleteVehicle(this.lastVeh);
         this.shop == "carshop" && ( this.lastVeh = await Vehicle.spawnVehicle(vehicle[0], null, [-75.09708, 74.8302, 71.91198, 200.56], false, false, true))
+        this.shop == "storeshop" && ( this.lastVeh = await Vehicle.spawnVehicle(vehicle[0], null, [-75.09708, 74.8302, 71.91198, 200.56], false, false, true))
         this.shop == "planeshop" && ( this.lastVeh = await Vehicle.spawnVehicle(vehicle[0], null, [-962.527, -2965.897, 13.945, 205.77], false, false, true))
         this.shop == "boatshop" && ( this.lastVeh = await Vehicle.spawnVehicle(vehicle[0], null, [568.658, -3164.614, 2.951, 285.77], false, false, true))   
     }

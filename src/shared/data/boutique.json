@@ -16,9 +16,7 @@
     ],
 
     "categories": [
-        ["mod_vehicles", "Voitures", "store"],
-        ["mod_boats", "Bateaux", "store"],
-        ["mod_plane", "Avions", "store"]
+        ["mod_vehicles", "Voitures", "store"]
     ],
 
     "vehicles": [
@@ -41,21 +39,7 @@
         ["m4c", "BMW M4 CS", 2500, "mod_vehicles"],
         ["m5f90", "BMW M5 F90", 3000, "mod_vehicles"],
         ["exc530sm", "KTM EXC 530", 1500, "mod_vehicles"],
-        ["rmodgt63", "Mercedes AMG GT63S", 350, "mod_vehicles"],
-
-        ["GTAshark3", "Shark", 750, "mod_boats"],
-        ["submersible", "Submersible", 1250, "mod_boats"],
-        ["submersible2", "Submersible", 1500, "mod_boats"],
-        ["longfin", "Longfin", 2000, "mod_boats"],
-        ["sr650fly", "SR 650", 250, "mod_boats"],
-
-        ["microlight", "Micro Light", 750, "mod_plane"],
-        ["havok", "Havoc", 1000, "mod_plane"],
-        ["stunt", "Stunt", 1250, "mod_plane"],
-        ["buzzard2", "Buzzard", 1500, "mod_plane"],
-        ["supervolito2", "Super Volito", 2000, "mod_plane"],
-        ["swift2", "Swift", 2500, "mod_plane"],
-        ["luxor2", "Luxor", 3000, "mod_plane"]
+        ["rmodgt63", "Mercedes AMG GT63S", 3500, "mod_vehicles"]
     ],
 
     "cases": {

@@ -339,7 +339,7 @@ const Lootboxes = (props: ILootboxes) => {
 
 			<div className="button" onClick={() => {
 				setTimeout(() => {
-					if (props.coins < Boutique.cases["silver"].price) return;
+					if (props.coins < Boutique.cases[caseSelected].price) return;
 
 					fetch(`https://${location.hostname.replace("cfx-nui-", "")}/buyCase`, {
 						method: "POST",
@@ -368,7 +368,7 @@ const Lootboxes = (props: ILootboxes) => {
 
 				}, 250);
 			}}>
-				<p style={{color: props.coins < Boutique.cases["silver"].price ? "#DC143C" : ""}}>OUVRIR</p>
+				<p style={{color: props.coins < Boutique.cases[caseSelected].price ? "#DC143C" : ""}}>OUVRIR</p>
 			</div>
 
 			<img style={{marginTop: 22, marginLeft: 6, height: 31.5, marginBottom: 30}} src="https://cdn.discordapp.com/attachments/956333971908730961/975155604081508442/unknown.png" ></img>

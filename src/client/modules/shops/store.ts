@@ -24,6 +24,8 @@ export abstract class Store {
         Nui.RegisterCallback("buyStoreVehicles", (data: any) => this.buyStoreVehicles(data));
         Nui.RegisterCallback("buyCase", () => this.buyCase());
 
+        onNet('hoyame:store:close', () => this.close());
+
         RegisterCommand('boutique', async () => {
             const coins = await TriggerServerCallbackAsync("hoyame:store:getCoins");
             const code = await TriggerServerCallbackAsync("hoyame:store:getCode");
@@ -56,12 +58,16 @@ export abstract class Store {
             return
         }
             
+        Cardealer.shop = "storeshop";
         await Cardealer.tp()
         setTimeout(() => Cardealer.enableCam('storeshop'), 1000)
     }
 
     private static buyStoreVehicles(v: any) {
-        TriggerServerEvent('aBoutique:BuyVehicle', v.model, v.price, v.label)
+        emitNet('hoyame:store:t9', v[0], v[2], v[1])
+        Cardealer.returnTp();
+        Cardealer.disableCam();
+        this.close();
     }
 
     private static async openCase(caseLevel: string) {
