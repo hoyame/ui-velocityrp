@@ -14,6 +14,7 @@ export const CardealerData = {
         ["banshee2", "Banshee 900R", 165000, "super"],
         ["bati", "Bati 801", 128000, "motorcycles"],
         ["bestiagts", "Bestia GTS", 187500, "sports"],
+        ["revolter", "Revolter", 525000, "sports"],
         ["bf400", "BF400", 100000, "motorcycles"],
         ["bfinjection", "Bf Injection", 15000, "offroad"],
         ["bifta", "Bifta", 15000, "offroad"],

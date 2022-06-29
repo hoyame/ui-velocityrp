@@ -56,7 +56,7 @@ const Overlay = () => {
 	});
 
     return (
-        <div id="overlay" style={{opacity: state.visible ? "1": "1"}}>
+        <div id="overlay" style={{top: staffData.state ? 88 : 70.5, opacity: state.visible ? "1": "1"}}>
             <div style={{ display: 'flex', flexDirection: "column", alignItems: "flex-end" }}>
                 <div className={dark ? "name dark-overlay" : "name light-overlay"}>
                     <div>

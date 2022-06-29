@@ -6,6 +6,7 @@ import { Overlay } from "./modules/misc/overlay";
 import { Shops } from "./modules/shops";
 import { Speedometer } from "./modules/misc/speedometer";
 import { Player } from "./modules/player";
+import { Illegal } from "./modules/illegal";
 
 class Gamemode {
 	public static async initialize() {
@@ -19,6 +20,7 @@ class Gamemode {
 		await Shops.initialize();
 		await Player.initialize();
 
+		await Illegal.initialize();
 		
 		exports('showNotification', (args: any) => {
 			emit('hoyame:showNotification', args);

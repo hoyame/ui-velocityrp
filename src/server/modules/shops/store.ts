@@ -34,7 +34,7 @@ export abstract class Store {
             const tRare = Items.filter((r: { tier: number; }) => r.tier === 1); 
             const tCommon = Items.filter((c: { tier: number; }) => c.tier === 3);
 
-            Math.randomRange(1, 3) == 3 && l5.push(tLegendary[Math.randomRange(0, tLegendary.length - 1)]);
+            Math.randomRange(1, 2) == 2 && l5.push(tLegendary[Math.randomRange(0, tLegendary.length - 1)]);
             l4.push(tEpique[Math.randomRange(0, (tEpique.length - 1) / 2)]); l4.push(tEpique[Math.randomRange(0, tEpique.length - 1)]);
             l3.push(tUnique[Math.randomRange(0, tRare.length - 1)]); l3.push(tUnique[Math.randomRange(0, tRare.length - 1)]); l3.push(tUnique[Math.randomRange(0, tRare.length - 1)]);
             l2.push(tRare[Math.randomRange(0, tRare.length - 1)]); l2.push(tRare[Math.randomRange(0, tRare.length - 1)]); l2.push(tRare[Math.randomRange(0, tRare.length - 1)]); l2.push(tRare[Math.randomRange(0, tRare.length - 1)]); l2.push(tRare[Math.randomRange(0, tRare.length - 1)]);
