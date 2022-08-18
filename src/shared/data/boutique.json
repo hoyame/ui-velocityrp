@@ -6,12 +6,10 @@
     },
 
     "weapons": [
+        {"componentData": null, "img": "blastm4", "label": "M4 Blast", "name": "WEAPON_BLASTM4", "description": null, "price": 3750},
+        {"componentData": null, "img": "snake", "label": "AK Snake", "name": "WEAPON_SNAKE", "description": null, "price": 3750},
+        {"componentData": null, "img": "tec9mf", "label": "TEC9 MF", "name": "WEAPON_TEC9MF", "description": null, "price": 3250},
         {"componentData": null, "img": "katana", "label": "Katana", "name": "WEAPON_KATANA", "description": null, "price": 450},
-        {"componentData": null, "img": "revolver", "label": "Double Action Revolver", "name": "WEAPON_DOUBLEACTION", "description": null, "price": 2000},
-        {"componentData": null, "img": "nanyRevolver", "label": "Navy Revolver", "name": "WEAPON_NAVYREVOLVER", "description": null, "price": 2500},
-        {"componentData": null, "img": "cayo", "label": "Pistolet Cayo", "name": "WEAPON_GADGETPISTOL", "description": null, "price": 1500},
-        {"componentData": null, "img": "ak47", "label": "AK-47", "name": "WEAPON_ASSAULTRIFLE", "description": null, "price": 3500},
-        {"componentData": null, "img": "defense", "label": "Arme de Défense", "name": "WEAPON_COMBATPDW", "description": null, "price": 2500},
         {"componentData": null, "img": "ceramic", "label": "Glock 17", "name": "WEAPON_GLOCK", "description": null, "price": 1000}
     ],
 
@@ -39,8 +37,8 @@
         ["m4c", "BMW M4 CS", 2500, "mod_vehicles"],
         ["m5f90", "BMW M5 F90", 3000, "mod_vehicles"],
         ["exc530sm", "KTM EXC 530", 1500, "mod_vehicles"],
-
         ["rmodgt63", "Mercedes AMG GT63S", 3500, "mod_vehicles"],
+        
         ["ltrstar", "Suzuki 450 Ltr", 1850, "mod_vehicles"],
         ["cla45sb2", "Mercedes Class A45 Break", 2300, "mod_vehicles"],
         ["evovaris", "Mistubishi Evo", 1850, "mod_vehicles"],
@@ -55,7 +53,8 @@
         ["s65f", "Mercedes classe S", 3150, "mod_vehicles"],
         ["rmodmartin", "Aston Martin DB11", 3400, "mod_vehicles"],
         ["exor", "Chevrolet ZL1", 2800, "mod_vehicles"],
-        ["ursa", "Porsche Macan 2018", 3500, "mod_vehicles"]
+        ["ursa", "Porsche Macan 2018", 3500, "mod_vehicles"],
+        ["zx10r", "Kawasaki ZX10R", 1500, "mod_vehicles"]
     ],
 
     "cases": {

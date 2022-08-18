@@ -49,14 +49,14 @@ export abstract class Store {
     }
 
     private static async openVehicles() {
-        if (!exports.VelocityRP.GetSafeZone()) {
-            this.close()
-            Notification.show({
-                title: "Véhicule",
-                message: 'Vous devez être dans une zone safe pour acheter des véhicules',
-            })
-            return
-        }
+        // if (!exports.VelocityRP.GetSafeZone()) {
+            // this.close()
+        //     Notification.show({
+        //         title: "Véhicule",
+        //         message: 'Vous devez être dans une zone safe pour acheter des véhicules',
+        //     })
+        //     return
+        // }
             
         Cardealer.shop = "storeshop";
         await Cardealer.tp()

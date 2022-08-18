@@ -17,6 +17,11 @@ import Hak47 from "../../assets/weapons_img/weapon_assault-rifles.png";
 import Hdefense from "../../assets/weapons_img/weapon_combat-pdw.png";
 import Hceramic from "../../assets/weapons_img/weapon_ceramic-pistol.png";
 
+import blastm4 from "../../assets/weapons_pack/blastm4.png";
+import snake from "../../assets/weapons_pack/snake.png";
+import tec9mf from "../../assets/weapons_pack/tec9mf.png";
+
+
 import './style.scss'
 
 const ImgWeapons = {
@@ -26,7 +31,10 @@ const ImgWeapons = {
     "cayo": cayo,
     "ak47": ak47,
     "defense": defense,
-    "ceramic": ceramic
+    "ceramic": ceramic,
+    "blastm4": blastm4,
+    "snake": snake,
+    "tec9mf": tec9mf
 }
 
 const ImgWeaponsTall = {
@@ -36,17 +44,20 @@ const ImgWeaponsTall = {
     "cayo": Hcayo,
     "ak47": Hak47,
     "defense": Hdefense,
-    "ceramic": Hceramic
+    "ceramic": Hceramic,
+    "blastm4": blastm4,
+    "snake": snake,
+    "tec9mf": tec9mf
 }
 
 const ArmePage = () => {
     const [weaponsList, setWeaponList] = useState(Boutique.weapons)
 
     const [weaponSelected, setWeaponSelected] = useState({
-        name: "WEAPON_ASSAULTRIFLE",
-        label: "AK-47",
-        img: "ak47",
-        price: 3500,
+        name: "WEAPON_BLASTM4",
+        label: "M4 Blast",
+        img: "blastm4",
+        price: 3750,
     });
 
     const [specif, setSpecif] = useState([
@@ -180,7 +191,7 @@ const ArmePage = () => {
 
                 <div className="it-2">
                     <div style={{position: "absolute", zIndex: 1}}>
-                        <img style={{ height: 250 }} src={ImgWeaponsTall[weaponSelected.img]} />
+                        <img style={{ height: 250, marginLeft: -200 }} src={ImgWeaponsTall[weaponSelected.img]} />
                     </div>
 
                     <div className="comp">
