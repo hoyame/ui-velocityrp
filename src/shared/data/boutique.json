@@ -1,8 +1,8 @@
 {
     "packs": {
         "entreprise": 5000,
-        "mecano": 17500,
-        "orga": 20000
+        "mecano": 7500,
+        "orga": 7500
     },
 
     "weapons": [
@@ -39,7 +39,23 @@
         ["m4c", "BMW M4 CS", 2500, "mod_vehicles"],
         ["m5f90", "BMW M5 F90", 3000, "mod_vehicles"],
         ["exc530sm", "KTM EXC 530", 1500, "mod_vehicles"],
-        ["rmodgt63", "Mercedes AMG GT63S", 3500, "mod_vehicles"]
+
+        ["rmodgt63", "Mercedes AMG GT63S", 3500, "mod_vehicles"],
+        ["ltrstar", "Suzuki 450 Ltr", 1850, "mod_vehicles"],
+        ["cla45sb2", "Mercedes Class A45 Break", 2300, "mod_vehicles"],
+        ["evovaris", "Mistubishi Evo", 1850, "mod_vehicles"],
+        ["yz450f", "450 YZF", 1250, "mod_vehicles"],
+        ["sl65bs", "Mercedes Sl65", 2350, "mod_vehicles"],
+        ["topcar911", "Porche 911", 2600, "mod_vehicles"],
+        ["bmci", "Bmw M5", 1800, "mod_vehicles"],
+        ["jesko2020x", "Koenigsegg Gemera", 1750, "mod_vehicles"],
+        ["amggtsmansory", "Mercedes Amg Gtr", 3000, "mod_vehicles"],
+        ["19S63", "Mercedes C63s Brabus", 3500, "mod_vehicles"],
+        ["terzo", "Lamborghini terzo", 3200, "mod_vehicles"],
+        ["s65f", "Mercedes classe S", 3150, "mod_vehicles"],
+        ["rmodmartin", "Aston Martin DB11", 3400, "mod_vehicles"],
+        ["exor", "Chevrolet ZL1", 2800, "mod_vehicles"],
+        ["ursa", "Porsche Macan 2018", 3500, "mod_vehicles"]
     ],
 
     "cases": {
@@ -306,7 +322,6 @@
                 }},
                 { "description": "Porsche Macan 2018", "tier": 1, "img": "ursa", "args": {
                     "type": "vehicule", "reward": "ursa"
-
                 }}
             ]
         },
