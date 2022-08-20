@@ -68,7 +68,7 @@
             margin: 20px 30px;
             transition: all 0.2s ease-in-out;
             will-change: transform; 
-            fill: #7AF903;
+            fill: #43ef01;
             transform: scale(1.1); 
 
             span {
@@ -78,8 +78,8 @@
         
         li a:hover {
             transform: scale(1.2); 
-            color: #7AF903;
-            background: linear-gradient(to right, #7af90388, #7af9036e);
+            color: #43ef01;
+            background: linear-gradient(to right, #43ef0188, #43ef016e);
         }
 
         li a .emoji {

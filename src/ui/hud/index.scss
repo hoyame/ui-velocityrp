@@ -1,3 +1,37 @@
+#ath {
+	position: absolute;
+	margin: 15px;
+
+	display: flex;
+	align-items: center;
+	z-index: 2;
+
+	svg {
+		fill: rgba(255, 255, 255, 0.2);
+		margin: 0 5px;
+
+		&:hover {
+			cursor: pointer;
+			fill: #43ef01;
+		}
+	}
+
+	.menu {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
+		position: absolute;
+		left: 12.5px;
+		top: 70px;
+
+		svg {
+			opacity: 0.5;
+			margin-bottom: 15px;
+		}
+	}
+}
+
 #hud {
 	position: absolute;
 	top: 0;
@@ -24,3 +58,11 @@
 	bottom: 0;
 }
 
+#announcement-hud {
+	z-index: 1;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}

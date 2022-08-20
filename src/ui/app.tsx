@@ -29,9 +29,7 @@ const App: React.FC = () => {
 				<Route path="/main" component={Main} />
 				<Route path="/cardealer" component={CarDealer} />
 				<Route path="/context" component={Context} />
-				<Route path="/shop" component={Shop} />
-
-				
+				<Route path="/shop" component={Shop} />			
 			</Switch>
 			<Hud />
 		</React.Fragment>

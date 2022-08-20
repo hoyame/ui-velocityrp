@@ -23,44 +23,31 @@ $yellow: #ffd149;
 	color: white;
 }
 
-.notifications-container-inui {
+.announcements-container {
 	position: absolute;
-    left: 40%;
-    top: -64.5%;
-    height: calc(100% - 23%);
-    overflow: hidden;
-    width: 20%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-	z-index: 1;
-}
-
-.notifications-container {
-	position: absolute;
-	left: 1.5%;
-	top: 1.5%;
-	height: calc(100% - 23%);
+	right: 1%;
+	top: 2%;
+	height: calc(100% - 30%);
 	overflow: hidden;
-	width: 14.1%;
+	width: 16.5%;
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-end;
+	justify-content: flex-start;
 	z-index: 1;
 	
-	.notification-enter {
+	.announcement-enter {
 		opacity: 0;
 
-		&.notification-enter-active {
+		&.announcement-enter-active {
 			opacity: 1;
 			transition: opacity 300ms ease-in;
 		}
 	}
 
-	.notification-exit {
+	.announcement-exit {
 		opacity: 1;
 
-		&.notification-exit-active {
+		&.announcement-exit-active {
 			opacity: 0.01;
 			transition: opacity 300ms ease-out;
 		}
@@ -75,7 +62,7 @@ $yellow: #ffd149;
 	background: linear-gradient(to right, rgba(255, 255, 255, 0.20), rgba(255, 255, 255, 0.10));
 }
 
-.notification {
+.announcement {
 	margin-top: 1vh;
 	// font-family: "Circular", Arial, Helvetica, sans-serif;
 	color: white;
@@ -91,7 +78,7 @@ $yellow: #ffd149;
 		}
 	}
 
-	.notification-header {
+	.announcement-header {
 		position: relative;
 		top: -7.4px;
 		left: -7.3px;
@@ -135,6 +122,10 @@ $yellow: #ffd149;
 		}
 
 		.icon {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
 			height: 32.5px;
 			width: 32.5px;
 			border-radius: 50px;
