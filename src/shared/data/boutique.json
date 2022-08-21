@@ -10,7 +10,9 @@
         {"componentData": null, "img": "snake", "label": "AK Snake", "name": "WEAPON_SNAKE", "description": null, "price": 3750},
         {"componentData": null, "img": "tec9mf", "label": "TEC9 MF", "name": "WEAPON_TEC9MF", "description": null, "price": 3250},
         {"componentData": null, "img": "katana", "label": "Katana", "name": "WEAPON_KATANA", "description": null, "price": 450},
-        {"componentData": null, "img": "ceramic", "label": "Glock 17", "name": "WEAPON_GLOCK", "description": null, "price": 1000}
+        {"componentData": null, "img": "ceramic", "label": "Glock 17", "name": "WEAPON_GLOCK", "description": null, "price": 1000},
+        {"componentData": null, "img": "defense", "label": "Arme de Défense", "name": "WEAPON_COMBATPDW", "description": null, "price": 2500},
+        {"componentData": null, "img": "ak47", "label": "AK-47", "name": "WEAPON_ASSAULTRIFLE", "description": null, "price": 3500}
     ],
 
     "categories": [

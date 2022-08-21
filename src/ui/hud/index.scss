@@ -1,3 +1,28 @@
+#content {
+	position: absolute;
+	height: 84%;
+	width: 92%;
+	z-index: 0;
+
+	margin: 80px;
+
+	// background-color: rgba(255, 0, 0, 0.685);
+}
+
+@keyframes popup {
+	0% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0.1;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
 #ath {
 	position: absolute;
 	margin: 15px;
@@ -6,14 +31,54 @@
 	align-items: center;
 	z-index: 2;
 
+	.icon {
+		height: 55px; 
+		margin-right: 5px;
+		transition-duration: 300ms;
+
+		&:hover {
+			opacity: 0.7;
+			cursor: pointer;
+		}
+	}
+
 	svg {
-		fill: rgba(255, 255, 255, 0.2);
+		animation-name: popup;
+		animation-duration: 2s;
+
+		fill: rgba(255, 255, 255, 0.5);
 		margin: 0 5px;
+		transition-duration: 300ms;
+		text-shadow: 0 0px 10px rgba(0, 0, 0, 0.5);
 
 		&:hover {
 			cursor: pointer;
 			fill: #43ef01;
 		}
+	}
+
+	
+			
+	.instaff {
+		fill: rgba(0, 112, 187, 0.75);
+
+		&:hover {
+			fill: rgb(0, 112, 187);
+		}
+	}
+
+	.nostaff {
+		fill: rgba(187, 0, 62, 0.75);
+
+		&:hover {
+			fill: rgb(187, 0, 78);
+		}
+	}
+
+	.staffoption {
+		display: flex;
+		align-items: center;
+		margin: 0
 	}
 
 	.menu {
@@ -26,8 +91,14 @@
 		top: 70px;
 
 		svg {
-			opacity: 0.5;
+			fill: rgba(255, 255, 255, 0.5);
 			margin-bottom: 15px;
+			transition-duration: 300ms;
+			text-shadow: 0 0px 10px rgba(0, 0, 0, 0.5);
+
+			&:hover {
+				fill: rgba(255, 255, 255, 0.85);
+			}
 		}
 	}
 }
