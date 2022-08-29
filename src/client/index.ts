@@ -22,6 +22,14 @@ class Gamemode {
 
 		await Illegal.initialize();
 		
+		exports('createContextMenu', (args: any) => {
+			emit('hoyame:createContextMenu', args);
+		})
+				
+		exports('closeContextMenu', (args: any) => {
+			emit('hoyame:closeContextMenu', args);
+		})
+
 		exports('showNotification', (args: any) => {
 			emit('hoyame:showNotification', args);
 		});

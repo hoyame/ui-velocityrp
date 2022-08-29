@@ -1,9 +1,8 @@
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 import { combineReducers, createStore } from "redux";
-import { HudReducer } from "./hud/reducer";
+import { HudReducer } from "./reducer";
 
 const reducers = combineReducers({
-
 	hud: HudReducer,
 });
 

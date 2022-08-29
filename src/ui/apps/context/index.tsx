@@ -6,7 +6,7 @@ import './style.scss';
 // 👋 Saluer
 
 const Context = () => {
-    const [state, setState] = useState([])
+    const [state, setState] = useState<IContextComponent[]>([])
     const [dark, setDark] = useState(false)
 
     const onMessage = (event: any) => {
@@ -51,11 +51,7 @@ const Context = () => {
         return (
             <li>
                 <a className={dark ? "dark" : "light"} onClick={() => onClick(props.id)}>
-                    <svg style={{marginBottom: -6, marginRight: 12 }} width="2" height="20" viewBox="0 0 2 20" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="2" height="20"/>
-                    </svg>
-
-                    <span className="emoji">{props.emoji}</span><span>{props.text}</span>
+                    <span>{props.text}</span>
                 </a>
             </li>
         )

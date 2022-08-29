@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import { useNuiEvent } from "../../nui";
+import { useNuiEvent } from "../../../nui";
 
 import "./announcements.scss";
 

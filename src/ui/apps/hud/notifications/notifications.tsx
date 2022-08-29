@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import { useNuiEvent } from "../../nui";
+import { useNuiEvent } from "../../../nui";
 
 import "./notifications.scss";
 
@@ -19,20 +19,7 @@ interface INotif {
 }
 
 const Notifications = (props: INotif) => {
-	const [state, setState] = useState<INotification[]>([
-		{
-			id: 1, 
-			title: 'Sheesh',
-			message: 'Wsh eiiube',
-			timeout: 1000000
-		},
-		{
-			id: 2, 
-			title: 'Sheesh',
-			message: 'Wsh eiiube',
-			timeout: 1000000
-		},
-	]);
+	const [state, setState] = useState<INotification[]>([]);
      
 	const onMessage = (event: any) => {
 

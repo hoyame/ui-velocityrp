@@ -7,7 +7,7 @@ import Lootboxes from './lootboxes';
 import Boutique from "../../../shared/data/boutique.json";
 
 import './style.scss'
-import Notifications from '../../hud/notifications/notifications';
+import Notifications from '../hud/notifications/notifications';
 
 const Shop = () => {
     const [coins, setCoins] = useState(1);

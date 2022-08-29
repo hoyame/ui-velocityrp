@@ -58,6 +58,9 @@ export abstract class Context {
         Nui.RegisterCallback("close", () => this.close());
         Nui.RegisterCallback("onClick", (id: number) => this.onClick(id));
 
+        onNet('hoyame:createContextMenu', (data: any) => Context.registerMenu(data));
+        onNet('hoyame:closeContextMenu', (data: any) => Context.close());
+
         RegisterCommand("contexts", () => {
             this.Data.focus = !this.Data.focus;
             this.Data.focus ? Nui.SendMessage({ path: "context"}) : Nui.SendMessage({ path: "" });
@@ -123,6 +126,7 @@ export abstract class Context {
 
     
     public static registerMenu(d: IContextMenu) {
+        console.log('creation effectuée')
         this.Menus[d.name] = d;
     }
 
@@ -171,6 +175,7 @@ export abstract class Context {
     private static openMenu(data: { id: number | boolean | number[] | { x: number; y: number; }; type: number | boolean | number[] | { x: number; y: number; }; model: number; networkId: number; svId: number; ifMyplayer: boolean; }) {
         this.Menus.map((v: IContextMenu, k) => {
             if (v.condition(data)) {
+                console.log('passed')
                 this.OpenedMenu = v
                 this.sendNUI(v)
                 TriggerScreenblurFadeIn(500)

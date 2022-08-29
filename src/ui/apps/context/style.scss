@@ -59,27 +59,32 @@
             
         li a {
             font-size: 16px;
+            // line-height: 18px;
             display: inline-block;
             text-decoration: none; 
             text-align: center;
             color: rgba(255, 255, 255, 0.85);
             // background: linear-gradient(to right, rgba(134, 134, 134, 0.575), rgba(134, 134, 134, 0.4));
-            padding: 9px 18px 9px 0;
+            padding: 9px 18px;
+            border-radius: 25px;
             margin: 20px 30px;
             transition: all 0.2s ease-in-out;
             will-change: transform; 
+            border: #303030 2px solid;
             fill: #43ef01;
             transform: scale(1.1); 
 
             span {
-                margin-bottom: 3px;
+                margin-top: 2px;
             }
         }
         
         li a:hover {
             transform: scale(1.2); 
             color: #43ef01;
+            border: #43ef01 2px solid;
             background: linear-gradient(to right, #43ef0188, #43ef016e);
+            cursor: pointer;
         }
 
         li a .emoji {
