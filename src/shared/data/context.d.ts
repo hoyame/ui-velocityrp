@@ -8,7 +8,7 @@ export interface IContextMenu {
 
 export interface IContextComponent {
     id: number;
-    emoji?: string;
+    icon?: string;
     text?: string;
     onClick?: () => void;
 }

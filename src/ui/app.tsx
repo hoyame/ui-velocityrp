@@ -7,8 +7,9 @@ import { useDispatch } from "react-redux";
 import "./app.scss";
 import CarDealer from "./apps/cardealer";
 import Context from "./apps/context";
-import Shop from "./apps/store";
+import Store from "./apps/store";
 import Menu from "./apps/menu";
+import Separator from "./apps/separator";
 
 const App: React.FC = () => {
 	const history = useHistory();
@@ -30,8 +31,9 @@ const App: React.FC = () => {
 				<Route path="/main" component={Main} />
 				<Route path="/cardealer" component={CarDealer} />
 				<Route path="/context" component={Context} />
-				<Route path="/shop" component={Shop} />			
+				<Route path="/store" component={Store} />			
 				<Route path="/menu" component={Menu} />			
+				<Route path="/separator" component={Separator} />			
 			</Switch>
 			{/* <Hud /> */}
 		</React.Fragment>
