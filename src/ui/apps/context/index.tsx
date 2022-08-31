@@ -50,7 +50,7 @@ const Context = () => {
 
     const Component = (props: IContextComponent) => {
         return (
-            <div className="elem">
+            <div onClick={() => onClick(props.id)} className="elem">
                 <svg className="svg" width="128" height="165" viewBox="0 0 108 121" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path opacity="0.3" d="M0 36.2703C0 30.7753 3.00465 25.7201 7.83158 23.094L46.7884 1.89992C51.258 -0.53174 56.6556 -0.531742 61.1253 1.89992L100.082 23.094C104.909 25.7201 107.914 30.7753 107.914 36.2703V84.7297C107.914 90.2247 104.909 95.2799 100.082 97.906L61.1253 119.1C56.6556 121.532 51.258 121.532 46.7884 119.1L7.83158 97.906C3.00466 95.2799 0 90.2247 0 84.7297V36.2703Z" />
                 
@@ -116,31 +116,31 @@ const Context = () => {
 
             { state.length >= 2 &&
                 <div className="line">
+                    <Component {...state[0]} />
                     <Component {...state[1]} />
-                    <Component {...state[2]} />
                 </div>
             }
 
             { state.length >= 5 &&
                 <div className="line">
+                    <Component {...state[2]} />
                     <Component {...state[3]} />
                     <Component {...state[4]} />
-                    <Component {...state[5]} />
                 </div>
             }
 
             { state.length >= 7 &&
                 <div className="line">
+                    <Component {...state[5]} />
                     <Component {...state[6]} />
-                    <Component {...state[7]} />
                 </div>
             }
 
             { state.length >= 10 &&
                 <div className="line">
+                    <Component {...state[7]} />
                     <Component {...state[8]} />
                     <Component {...state[9]} />
-                    <Component {...state[10]} />
                 </div>
             }
         </div>

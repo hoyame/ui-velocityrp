@@ -10,6 +10,7 @@ import Context from "./apps/context";
 import Store from "./apps/store";
 import Menu from "./apps/menu";
 import Separator from "./apps/separator";
+import InteractionMenu from "./apps/interaction";
 
 const App: React.FC = () => {
 	const history = useHistory();
@@ -26,16 +27,20 @@ const App: React.FC = () => {
 	});
 
 	return (
-		<React.Fragment>
-			<Switch>
-				<Route path="/main" component={Main} />
-				<Route path="/cardealer" component={CarDealer} />
-				<Route path="/context" component={Context} />
-				<Route path="/store" component={Store} />			
-				<Route path="/menu" component={Menu} />			
-				<Route path="/separator" component={Separator} />			
-			</Switch>
-			{/* <Hud /> */}
+		<React.Fragment>	
+			<div style={{position: "absolute", height: '100%', width: '100%', zIndex: 99}}>	
+				<Switch>
+					<Route path="/main" component={Main} />
+					<Route path="/cardealer" component={CarDealer} />
+					<Route path="/context" component={Context} />
+					<Route path="/store" component={Store} />			
+					<Route path="/menu" component={Menu} />			
+					<Route path="/separator" component={Separator} />			
+					<Route path="/interaction" component={InteractionMenu} />			
+				</Switch>
+			</div>
+
+			<Hud />
 		</React.Fragment>
 	);
 };

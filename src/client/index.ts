@@ -6,6 +6,7 @@ import { Overlay } from "./modules/misc/overlay";
 import { Shops } from "./modules/shops";
 import { Speedometer } from "./modules/misc/speedometer";
 import { Player } from "./modules/player";
+import { Interaction } from "./modules/misc/interaction";
 
 class Gamemode {
 	public static async initialize() {
@@ -18,6 +19,8 @@ class Gamemode {
 
 		await Shops.initialize();
 		await Player.initialize();
+
+		await Interaction.initialize();
 		
 		exports('createContextMenu', (args: any) => {
 			emit('hoyame:createContextMenu', args);
