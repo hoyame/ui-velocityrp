@@ -87,11 +87,6 @@ const InteractionMenu = () => {
                 data.title && <Menu 
                     title={data.title} 
                     description={data.description} 
-                    cbContent={data.cbContent}
-                    textLeft={data.textLeft}
-                    actionsLeft={data.actionsLeft}
-                    textRight={data.textRight}
-                    actionsRight={data.actionsRight}
                 /> 
             }
         </div>

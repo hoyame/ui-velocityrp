@@ -148,7 +148,7 @@ const Store = () => {
                         </div>
 
                         <div className="cash">
-                            <div className='box-text flex-column' style={{width: '1000%', alignItems: 'center'}}>
+                            <div className='box-text flex-column' style={{width: '100%', alignItems: 'center'}}>
                                 <p style={{fontSize: 25, fontWeight: 300}}>ACHAT</p>
                                 <p style={{fontSize: 25, fontWeight: 0}}>D'ARGENT</p>
                                 <p style={{fontSize: 25, fontWeight: 0}}>VIRTUELLES</p>
