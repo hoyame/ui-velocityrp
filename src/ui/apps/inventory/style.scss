@@ -1,0 +1,60 @@
+#inventory {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: calc(100% - 140px);
+    width: calc(100% - 140px);
+    font-family: 'Oswald';
+    padding: 50px 70px 90px 70px;
+    color: #fff;
+    background: radial-gradient(60.35% 85.46% at 51.28% 5.42%, rgba(5, 240, 255, 0.17) 0%, rgba(0, 240, 255, 0) 100%), #161616;
+
+    .header {
+        display: flex;
+        height: 40px;
+        align-items: center;
+
+        .button {
+            border: 2px solid rgba(255, 255, 255, 0.705);
+            padding: 12.5px 30px;
+            color: #fff;
+            border-radius: 10px;
+            font-family: 'Oswald';
+            transition-duration: 300ms;
+
+            margin: 0 10px;
+
+            &:hover {
+               background-color: #fff;
+               color: #000; 
+               cursor: pointer;
+            }
+            // background: #FFFFFF;
+        }
+    }
+
+    .inventory {
+        height: calc(100% - 50px);
+        width: calc(70% - 50px);
+        margin-right: 2.5%;
+        padding: 25px;
+    }
+
+    .player {
+        height: 100%;
+        width: 27.5%;
+    }
+
+    .item {
+        margin-right: 10px;
+
+        .content {
+
+        }
+
+        svg {
+
+        }
+    }
+}
