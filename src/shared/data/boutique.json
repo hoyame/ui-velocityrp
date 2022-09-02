@@ -1,8 +1,8 @@
 {
     "packs": {
         "entreprise": 5000,
-        "mecano": 7500,
-        "orga": 7500
+        "mecano": 15000,
+        "orga": 15000
     },
 
     "weapons": [
