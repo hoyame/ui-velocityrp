@@ -12,6 +12,9 @@ import Menu from "./apps/menu";
 import Separator from "./apps/separator";
 import InteractionMenu from "./apps/interaction";
 import Inventory from "./apps/inventory";
+import Selector from "./apps/selector";
+import Ped from "./apps/ped";
+import Character from "./apps/character";
 
 const App: React.FC = () => {
 	const history = useHistory();
@@ -39,6 +42,9 @@ const App: React.FC = () => {
 					<Route path="/separator" component={Separator} />			
 					<Route path="/interaction" component={InteractionMenu} />			
 					<Route path="/inventory" component={Inventory} />			
+					<Route path="/ped" component={Ped} />			
+					<Route path="/selector" component={Selector} />			
+					<Route path="/character" component={Character} />			
 					
 				</Switch>
 			</div>

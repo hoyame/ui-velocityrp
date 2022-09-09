@@ -2,13 +2,13 @@ import * as Cfx from '@nativewrappers/client';
 import { Vector3 } from '@wdesgardin/fivem-js';
 import { privateEncrypt } from 'crypto';
 import { IContextComponent, IContextMenu } from '../../../shared/data/context';
+import { Delay } from '../../../shared/utils/utils';
 import { Nui } from '../../core/nui';
 
 interface IEntity {
     id: any;
     networkId: any;
     svId: any;
-
     type: any;
     model: any;
 }
@@ -16,10 +16,8 @@ interface IEntity {
 interface IContext {
     focus: boolean;
     open: boolean;
-
     pos: Vector3;
     offset: Vector3;
-
     entity: IEntity;
 }
 
@@ -33,6 +31,7 @@ export abstract class Context {
         ifMyplayer: false
     }
     private static Menus: IContextMenu[] = []
+    private static BackMenu: IContextMenu;
     private static OpenedMenu: IContextMenu = {
         name: 0,
         condition: () => { return true },
@@ -57,9 +56,11 @@ export abstract class Context {
 
         Nui.RegisterCallback("close", () => this.close());
         Nui.RegisterCallback("onClick", (id: number) => this.onClick(id));
-
+        
         onNet('hoyame:createContextMenu', (data: any) => Context.registerMenu(data));
+        onNet('hoyame:openMenuDirectly', (data: any) => Context.openMenuDirectly(data));
         onNet('hoyame:closeContextMenu', (data: any) => Context.close());
+        onNet('hoyame:backMenu', (data: any) => Context.backMenu());
 
         RegisterCommand("contexts", () => {
             this.Data.focus = !this.Data.focus;
@@ -120,14 +121,25 @@ export abstract class Context {
                         SetMouseCursorSprite(1);
                     }
                 } 
-            } 
+            }
+            
+            // else {
+            //     if (this.Data.entity.id) {
+            //         // this.close();
+            //     }
+            // }
         })
     }
 
     
     public static registerMenu(d: IContextMenu) {
-        console.log('creation effectuée')
         this.Menus[d.name] = d;
+    }
+
+    private static backMenu() {
+        this.OpenedMenu = this.BackMenu;
+        this.OpenedMenu.onOpen && this.OpenedMenu.onOpen();
+        this.sendNUI(this.BackMenu);
     }
 
     private static onClick(id: number) {
@@ -138,6 +150,7 @@ export abstract class Context {
     }
 
     private static sendNUI(menu: IContextMenu) {
+        this.BackMenu = this.OpenedMenu;
         Nui.SendMessage({ type: "context", data: menu, dark: (GetClockHours() < 21 && GetClockHours() > 6)});
         Nui.SetFocus(true, true, false);
         SetMouseCursorSprite(0);
@@ -166,21 +179,27 @@ export abstract class Context {
         this.Data.pos.x = 0;
         this.Data.pos.y = 0;
         this.Data.pos.z = 0;
+        this.OpenedMenu.onClose && this.OpenedMenu.onClose();
         SetMouseCursorSprite(0);
         Nui.SetFocus(false, false, false);
         Nui.SendMessage({ path: "" });
-        TriggerScreenblurFadeOut(500)
     }
 
     private static openMenu(data: { id: number | boolean | number[] | { x: number; y: number; }; type: number | boolean | number[] | { x: number; y: number; }; model: number; networkId: number; svId: number; ifMyplayer: boolean; }) {
         this.Menus.map((v: IContextMenu, k) => {
             if (v.condition(data)) {
-                console.log('passed')
                 this.OpenedMenu = v
+                this.OpenedMenu.onOpen && this.OpenedMenu.onOpen();
                 this.sendNUI(v)
-                TriggerScreenblurFadeIn(500)
             }
         })
+    }
+
+    private static async openMenuDirectly(menu: IContextMenu) {
+        Nui.SendMessage({ path: "context" })
+        await Delay(200);
+        this.OpenedMenu = menu
+        this.sendNUI(menu)
     }
 
     private static visible() {

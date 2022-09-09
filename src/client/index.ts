@@ -7,6 +7,7 @@ import { Shops } from "./modules/shops";
 import { Speedometer } from "./modules/misc/speedometer";
 import { Player } from "./modules/player";
 import { Interaction } from "./modules/misc/interaction";
+import { Ped } from "./modules/misc/ped";
 
 class Gamemode {
 	public static async initialize() {
@@ -21,15 +22,26 @@ class Gamemode {
 		await Player.initialize();
 
 		await Interaction.initialize();
+		await Ped.initialize();
+
+		
 		
 		exports('createContextMenu', (args: any) => {
 			emit('hoyame:createContextMenu', args);
 		})
 				
+		exports('openMenuDirectly', (args: any) => {
+			emit('hoyame:openMenuDirectly', args);
+		})
+		
 		exports('closeContextMenu', (args: any) => {
 			emit('hoyame:closeContextMenu', args);
 		})
 
+		exports('backMenu', (args: any) => {
+			emit('hoyame:backMenu', args);
+		})
+		
 		exports('showNotification', (args: any) => {
 			emit('hoyame:showNotification', args);
 		});

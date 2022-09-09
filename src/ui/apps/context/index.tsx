@@ -12,8 +12,15 @@ const Context = () => {
 
     const onMessage = (event: any) => {
         if (event.data.type == "context") {
+            let t: IContextComponent[] = [];
+            event.data.data.menu.map((v: IContextComponent, k) => {
+                if (!v.condition) {
+                    t.push(v)
+                }
+            })
+
             setState([])
-            setState(event.data.data.menu)
+            setState(t)
             setDark(event.data.dark)
             console.log("dark")
             console.log(event.data.dark)
@@ -101,7 +108,7 @@ const Context = () => {
     return (
         <div id="context">
             { state.length !== 0 &&
-                <div style={{position: "absolute", left: 7.5, top: 10, display: "flex", flexDirection: "column", alignItems: "flex-end" }}>
+                <div style={{position: "absolute", right: 7.5, top: 10, display: "flex", flexDirection: "column", alignItems: "flex-end" }}>
                     <div style={{height: 60, width: 200, display: "flex", alignItems: "center", justifyContent: "center"}}>
                         <div style={{ borderRadius: 7.5, height: 40, width: 60, backgroundColor: "#fff", color: "#000", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, marginRight: 15  }}>
                             ESC
@@ -114,12 +121,22 @@ const Context = () => {
                 </div>
             }
 
-            { state.length >= 2 &&
+
+            { state.length == 3 &&
+                <div className="line">
+                    <Component {...state[0]} />
+                    <Component {...state[1]} />
+                    <Component {...state[2]} />
+                </div>
+            }
+
+            { state.length == 2 &&
                 <div className="line">
                     <Component {...state[0]} />
                     <Component {...state[1]} />
                 </div>
             }
+
 
             { state.length >= 5 &&
                 <div className="line">

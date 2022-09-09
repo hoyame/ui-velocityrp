@@ -36,7 +36,7 @@
 
     .inventory {
         height: calc(100% - 50px);
-        width: calc(70% - 50px);
+        width: calc(50% - 50px);
         margin-right: 2.5%;
         padding: 25px;
     }
@@ -44,6 +44,8 @@
     .player {
         height: 100%;
         width: 27.5%;
+        padding-top: 50px;
+
     }
 
     .item {

@@ -36,10 +36,9 @@ const Hud: React.FC = () => {
 	return (
 		<React.Fragment>
 
-			<div style={{ display: !location.pathname.includes("context") && !location.pathname.includes("inventory") && !location.pathname.includes("cardealer") && !location.pathname.includes("shop") && !location.pathname.includes("menu") ? "flex" : "none"}} id="ath">
+			<div style={{ display: location.pathname.includes("") ? "flex" : "none"}} id="ath">
 				<img className="icon" onClick={() => setOpenMenu(!openMenu)} style={{}} src="https://cdn.discordapp.com/attachments/963599447802134538/965238858591637544/256X256.png" />
 
-		
 				{
 					<>
 						<svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">

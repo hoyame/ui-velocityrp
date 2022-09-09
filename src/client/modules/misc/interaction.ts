@@ -18,18 +18,8 @@ export abstract class Interaction {
 
     public static async initialize() {
         Nui.RegisterCallback("close", () => this.close());
-        Nui.RegisterCallback("push", (e: string) => this.push(e));
+        Nui.RegisterCallback("push", (e: number) => this.push(e));
         onNet('hoyame:createInteractionMenu', (data: any) => this.open(data));
-
-
-        RegisterCommand('testInteractionMenu', (e: any, args: any) => {
-            console.log(args)
-            this.open({
-                title: args[0],
-                description: args[1],
-                cb: (e: string) => console.log(e)
-            })
-        }, false)
     }
 
     public static async open(menu: IInteractionMenu) {
@@ -41,8 +31,8 @@ export abstract class Interaction {
         SetMouseCursorSprite(0);
     }
 
-    public static push(e: string) {
-        this.cacheCb(e);
+    public static push(e: number) {
+        this.cacheCb && this.cacheCb(e);
         this.close();
     }
 
