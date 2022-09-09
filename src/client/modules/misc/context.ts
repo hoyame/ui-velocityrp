@@ -190,6 +190,7 @@ export abstract class Context {
             if (v.condition(data)) {
                 this.OpenedMenu = v
                 this.OpenedMenu.onOpen && this.OpenedMenu.onOpen();
+                SetCurrentPedWeapon(PlayerPedId(), GetHashKey("WEAPON_UNARMED"), true)
                 this.sendNUI(v)
             }
         })
