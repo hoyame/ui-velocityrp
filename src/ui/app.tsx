@@ -15,6 +15,7 @@ import Inventory from "./apps/inventory";
 import Selector from "./apps/selector";
 import Ped from "./apps/ped";
 import Character from "./apps/character";
+import Unfinded from "./apps/unfinded";
 
 const App: React.FC = () => {
 	const history = useHistory();
@@ -44,7 +45,10 @@ const App: React.FC = () => {
 					<Route path="/inventory" component={Inventory} />			
 					<Route path="/ped" component={Ped} />			
 					<Route path="/selector" component={Selector} />			
-					<Route path="/character" component={Character} />			
+					<Route path="/character" component={Character} />	
+					<Route path="/unfinded" component={Unfinded} />	
+
+							
 					
 				</Switch>
 			</div>
