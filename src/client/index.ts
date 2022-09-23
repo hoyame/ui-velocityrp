@@ -8,6 +8,8 @@ import { Speedometer } from "./modules/misc/speedometer";
 import { Player } from "./modules/player";
 import { Interaction } from "./modules/misc/interaction";
 import { Ped } from "./modules/misc/ped";
+import { Character } from "./modules/character";
+import { Menu } from "./modules/menu";
 
 class Gamemode {
 	public static async initialize() {
@@ -17,19 +19,27 @@ class Gamemode {
 		await Context.initialize();
 		await Notification.initialize();
 		await Overlay.initialize();
+		await Character.initialize();
 
 		await Shops.initialize();
 		await Player.initialize();
 
 		await Interaction.initialize();
 		await Ped.initialize();
-
+		await Menu.initialize();
 		
+		exports('openMainMenu', (args: any) => {
+			emit('hoyame:openMainMenu', args);
+		})
 		
 		exports('createContextMenu', (args: any) => {
 			emit('hoyame:createContextMenu', args);
 		})
-				
+
+		exports('createCharacter', (args: any) => {
+			emit('hoyame:createCharacter', args);
+		})
+						
 		exports('openMenuDirectly', (args: any) => {
 			emit('hoyame:openMenuDirectly', args);
 		})

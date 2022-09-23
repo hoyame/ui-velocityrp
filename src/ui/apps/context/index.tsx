@@ -121,16 +121,7 @@ const Context = () => {
                 </div>
             }
 
-
-            { state.length == 3 &&
-                <div className="line">
-                    <Component {...state[0]} />
-                    <Component {...state[1]} />
-                    <Component {...state[2]} />
-                </div>
-            }
-
-            { state.length == 2 &&
+            { state.length >= 2 &&
                 <div className="line">
                     <Component {...state[0]} />
                     <Component {...state[1]} />

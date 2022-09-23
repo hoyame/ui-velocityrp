@@ -9,10 +9,12 @@ interface IPed {
     button3?: string;
     button4?: string;
     cb?: (e: number) => any;
+    onClose?: () => void;
 }
-
+ 
 export abstract class Ped {
     private static cacheCb: any = null 
+    private static cacheOnClose: any = null 
 
     public static data = {
         title: '',
@@ -45,6 +47,7 @@ export abstract class Ped {
 
     public static async open(menu: IPed) {
         this.cacheCb = menu.cb;
+        this.cacheOnClose = menu.onClose;
         Nui.SendMessage({ path: "ped" });
         await Delay(500);
         Nui.SendMessage({ type: "ped", content: menu, dark: (GetClockHours() < 21 && GetClockHours() > 6)});
@@ -61,5 +64,6 @@ export abstract class Ped {
         Nui.SetFocus(false, false, false);
         Nui.SendMessage({ path: "" });
         TriggerScreenblurFadeOut(500)
+        this.cacheOnClose();
     }
 }

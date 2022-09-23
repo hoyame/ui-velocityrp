@@ -1,9 +1,43 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom';
 
 import './style.scss';
 
 const Menu = () => {
+    const history = useHistory();
+    const close = () => {
+        fetch(`https://${location.hostname.replace("cfx-nui-", "")}/close`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify(true)
+        })
+    }
+
+    const back = () => {
+        history.push('/menu')
+    }
+
+    document.addEventListener('keydown', function(event) { if (event.keyCode == 27) close() })
+    document.addEventListener('keydown', function(event) { if (event.keyCode == 8) back() })
+
     const [state, setState] = useState({
+        character: {
+            name: '',
+            coins: 0,
+            points: 0,
+            farm: 0,
+            farmLimit: 0,
+            patrimony: 0, 
+            family: 'Any',
+            phone: '',
+            amandes: '',
+            job: '',
+            org: '',
+            warn: 0
+        },
         lvl: 1
     })
 
@@ -42,7 +76,7 @@ const Menu = () => {
                     </div>
 
                     <div className="eeee">
-                        <div className="daily-tasks flex-column flex-align">
+                        <div className="daily-tasks flex-column flex-align" onClick={() => history.push('/daily')}>
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clip-path="url(#clip0_1_37)"><path d="M6.52086 11.7658C5.78992 11.2235 5.19623 10.5175 4.7874 9.7043C4.37858 8.89114 4.16599 7.99349 4.16669 7.08333C4.16669 3.86167 6.77836 1.25 10 1.25C13.2217 1.25 15.8334 3.86167 15.8334 7.08333C15.8334 8.97292 14.9346 10.6529 13.5417 11.7188" stroke="#EEE632" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 7.08331L18.3334 18.3333H1.66669L10 7.08331Z" stroke="#EEE632" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_1_37"><rect width="20" height="20" fill="rgba(250, 170, 56, 0.77)"/></clipPath></defs>
                             </svg>
@@ -64,7 +98,7 @@ const Menu = () => {
 
                 <div className='flex-column' style={{height: '95%', width: 1435 }}>
                     <div className="flex-row" style={{height: 210, marginBottom: 35}}>
-                        <div className="eeee profile">
+                        <div className="eeee profile" onClick={() => history.push('/character')}>
                             <div>
                                 {
                                     state.lvl == 1 &&
@@ -81,7 +115,7 @@ const Menu = () => {
                             <div className="" style={{
                                 marginLeft: 50,
                             }}>
-                                <p>Hoyame Jezeir</p>
+                                <p>{state.character.name}</p>
 
                                 <div style={{marginTop: 10}}>
                                     <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -95,7 +129,7 @@ const Menu = () => {
                             </div>
                         </div>
 
-                        <div className="eeee battle-pass">
+                        <div className="eeee battle-pass" onClick={() => history.push('/battlepass')}>
                             <img style={{height: 'calc(100% + 25px)'}} src="https://cdn.discordapp.com/attachments/749017234743099423/1013570817587687485/unknown.png" />
                         </div>
 
@@ -107,7 +141,7 @@ const Menu = () => {
 
                     <div className="flex-row" style={{height: 420, width: "72.5%", marginBottom: 35}}>
                         <div style={{marginRight: 35}}>
-                            <div className="eeee store">
+                            <div className="eeee store" onClick={() => history.push('/store')}>
                                 <div style={{display: "flex", alignItems: 'center'}}>
                                     <svg style={{marginRight: 20}} width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M2 5.8125H20.75L19.7083 19.875H3.04167L2 5.8125Z" stroke="#30C48D" stroke-width="2.08333" stroke-linejoin="round"/><path d="M7.20831 7.89583V1.125H15.5416V7.89583" stroke="#30C48D" stroke-width="2.08333" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.875 16H15.2083" stroke="#30C48D" stroke-width="2.08333" stroke-linecap="round"/>
@@ -119,7 +153,7 @@ const Menu = () => {
                                 </div>
                             </div>
 
-                            <div className="eeee realisations">
+                            <div className="eeee realisations" onClick={() => history.push('/realisations')}>
                                 <div className="flex-row" style={{width: '100%', justifyContent: 'space-between', alignItems: 'center', height: 30}}>
                                     <p>RÊALISATIONS</p>
 
@@ -247,7 +281,7 @@ const Menu = () => {
                                 <img style={{height: 220, marginRight: -40, marginTop: 0}} src='https://cdn.discordapp.com/attachments/749017234743099423/1013610074079494194/unknown.png' />
                             </div>
 
-                            <div className='eeee inventaire'>
+                            <div className='eeee inventaire' onClick={() => history.push('/inventory')}>
                                 <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g clip-path="url(#clip0_1_181)"><path d="M28.2267 15.8851C28.1244 15.8968 27.9824 15.9001 27.8005 15.8949C27.6186 15.8898 27.2642 15.8034 26.7373 15.6356C26.2105 15.4679 25.7039 15.2279 25.2175 14.9157C24.7311 14.6034 24.1742 14.0817 23.5467 13.3504C22.9192 12.6191 22.3652 11.737 21.8845 10.704C21.3764 9.61201 20.7673 8.74654 20.0571 8.1076C19.3469 7.46866 18.5356 7.05625 17.6234 6.87038C16.7111 6.6845 16.0367 6.58542 15.6001 6.57313C15.1636 6.56084 14.5225 6.57192 13.6768 6.60637L13.5883 6.64757C13.5018 6.61601 13.3552 6.64829 13.1486 6.74442L12.2629 4.8408L10.4035 5.70596L11.2893 7.60958C11.0827 7.70571 10.9931 7.78329 11.0206 7.84232L10.9321 7.88352C10.4674 8.35103 10.1224 8.70905 9.89694 8.95756C9.67149 9.20608 9.34552 9.66294 8.91902 10.3281C8.49251 10.9933 8.21701 11.5972 8.09251 12.1399C7.96801 12.6825 7.9338 13.3806 7.98987 14.2341C8.04595 15.0877 8.27997 15.9571 8.69196 16.8426C10.2575 20.2071 10.2171 22.9366 8.57069 25.0311L8.45541 25.2463L7.72467 27.1481L9.22841 30.3799L16.7986 26.8574C17.1694 27.6543 17.8508 28.1541 18.8427 28.3567C19.8345 28.5594 20.847 28.4204 21.88 27.9398C22.9129 27.4591 23.6713 26.7742 24.1551 25.8848C24.6389 24.9955 24.6954 24.1524 24.3246 23.3556L31.8948 19.8331L30.3911 16.6014L28.4656 15.9355L28.2267 15.8851ZM20.9942 26.0362C20.4629 26.2834 19.9648 26.3895 19.4998 26.3545C19.0347 26.3196 18.7541 26.1988 18.658 25.9922L22.4652 24.2207C22.5614 24.4273 22.473 24.7197 22.2002 25.098C21.9275 25.4763 21.5254 25.789 20.9942 26.0362ZM29.1054 18.8152L10.2463 27.5905L9.99908 27.0592L10.2625 26.2365C10.5185 25.9379 10.7623 25.5552 10.9939 25.0884C11.2255 24.6216 11.4553 23.9581 11.6834 23.098C11.9115 22.2379 11.9412 21.1829 11.7725 19.933C11.6038 18.6831 11.1967 17.3645 10.5513 15.9774C10.1805 15.1805 9.98273 14.4468 9.95791 13.7762C9.9331 13.1055 10.067 12.4867 10.3597 11.9197C10.6524 11.3527 10.938 10.9056 11.2166 10.5785C11.4953 10.2514 11.8669 9.85406 12.3315 9.38654L13.8367 8.68617C14.4936 8.63184 15.0369 8.60345 15.4666 8.60098C15.8963 8.59851 16.4223 8.66793 17.0445 8.80923C17.6668 8.95054 18.2264 9.24664 18.7234 9.69753C19.2205 10.1484 19.6544 10.7723 20.0252 11.5692C20.6706 12.9563 21.4171 14.1169 22.2646 15.051C23.1121 15.9851 23.9383 16.6418 24.7432 17.0213C25.5481 17.4008 26.2036 17.6522 26.7099 17.7757C27.2161 17.8992 27.6659 17.9592 28.0592 17.9557L28.8582 18.284L29.1054 18.8152Z" fill="white"/></g><defs><clipPath id="clip0_1_181"><rect width="25" height="25" fill="white" transform="translate(0 10.5468) rotate(-24.9527)"/></clipPath></defs>
                                 </svg>

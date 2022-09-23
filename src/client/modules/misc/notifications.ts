@@ -52,7 +52,7 @@ export abstract class Notification {
             advanced: true,
             // @ts-ignore
             url: this.banners[data.url],
-            timeout: 7500,
+            timeout: data.timeout || 7500,
             dark: (GetClockHours() < 21 && GetClockHours() > 6)
         }}));
     }

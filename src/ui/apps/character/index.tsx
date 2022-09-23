@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import './style.scss';
 
 const Character = () => {
     const [data, setData] = useState({
+        name: '',
         coins: 0,
         points: 0,
         farm: 0,
@@ -16,6 +18,25 @@ const Character = () => {
         org: '',
         warn: 0
     })
+
+    const history = useHistory();
+    const close = () => {
+        fetch(`https://${location.hostname.replace("cfx-nui-", "")}/close`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify(true)
+        })
+    }
+
+    const back = () => {
+        history.push('/menu')
+    }
+
+    document.addEventListener('keydown', function(event) { if (event.keyCode == 27) close() })
+    document.addEventListener('keydown', function(event) { if (event.keyCode == 8) back() })
 
     const onMessage = (event: any) => {
         if (event.data.type == "character") {
@@ -93,7 +114,7 @@ const Character = () => {
             </div>
 
             <div style={{display: "flex", flexDirection: "column", alignItems: 'center', height: '67.5%', width: '30%'}}>
-                <p style={{color: "#fff", fontSize: 35, textTransform: 'uppercase', marginBottom: 20}}>Hoyame Elezeir</p>
+                <p style={{color: "#fff", fontSize: 35, textTransform: 'uppercase', marginBottom: 20}}>{data.name}</p>
 
                 <div style={{display: "flex", flexDirection: "row", alignItems: 'center', marginBottom: 30}}>
                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">

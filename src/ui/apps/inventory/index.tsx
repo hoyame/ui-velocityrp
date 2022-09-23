@@ -1,8 +1,69 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import './style.scss';
 
+import water from '../../assets/items/water.png';
+import phone from '../../assets/items/phone.png';
+import sandwich from '../../assets/items/sandwich.png';
+
+const Images = {
+    "water": water,
+    "phone": phone,
+    "bread": sandwich,
+}
+
 const Inventory = () => {
+    const [inventory, setInventory] = useState([])
+    const [bag, setBag] = useState([])
+    const history = useHistory();
+
+    const close = () => {
+        fetch(`https://${location.hostname.replace("cfx-nui-", "")}/close`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify(true)
+        })
+    }
+
+    const interact = (action: any, data: any) => {
+        fetch(`https://${location.hostname.replace("cfx-nui-", "")}/interact`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({action: action, data: data})
+        })
+    }
+
+    const back = () => {
+        history.push('/menu')
+    }
+
+    const onMessage = (event: any) => {
+        if (event.data.type == "inventory") {
+            console.log(event.data.inventory)
+            setInventory(event.data.inventory)
+		}
+
+        if (event.data.type == "bag") {
+            setBag(event.data.bag)
+		}
+	};
+
+    React.useEffect(() => {
+		window.addEventListener("message", onMessage);
+		return () => window.removeEventListener("message", onMessage);
+	});
+
+    document.addEventListener('keydown', function(event) { if (event.keyCode == 27) close() })
+    document.addEventListener('keydown', function(event) { if (event.keyCode == 8) back() })
+    const [selected, setSelected] = useState(''); 
+
     const Item = (props) => {
         const [draggable, setDraggable] = useState(false);
 
@@ -11,7 +72,7 @@ const Inventory = () => {
                 { props.lat ? 
                     <div className="item">
                         <svg width="89" height="89" viewBox="0 0 103 103" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M102.5 0.5V102.5H0.5V0.5H9.83708H102.5Z" stroke="white" stroke-opacity="0.2"/>
+                            <path d="M102.5 0.5V102.5H0.5V0.5H9.83708H102.5Z" />
 
                             <foreignObject height={100} width={103}>
                                 <div className='content flex-column flex-align' style={{height: 103}}>
@@ -28,7 +89,7 @@ const Inventory = () => {
                             <>
                                 <div className="item">
                                     <svg width="89" height="89" viewBox="0 0 103 103" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M102.5 0.5V102.5H0.5V0.5H9.83708H102.5Z" stroke="white" stroke-opacity="0.2"/>
+                                        <path d="M102.5 0.5V102.5H0.5V0.5H9.83708H102.5Z" />
 
                                         <foreignObject height={100} width={103}>
                                             <div className='content flex-column flex-align' style={{height: 103}}>
@@ -48,25 +109,88 @@ const Inventory = () => {
                                     <>
                                         <div className="item">
                                             <svg width="89" height="89" viewBox="0 0 103 103" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M102.5 0.5V102.5H0.5V0.5H9.83708H102.5Z" stroke="white" stroke-opacity="0.2"/>
+                                                <path d="M102.5 0.5V102.5H0.5V0.5H9.83708H102.5Z" />
                                             </svg>
                                         </div>
                                     </>
 
                                     : 
 
-                                    <div className="item">
-                                        <svg width="89" height="89" viewBox="0 0 103 103" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M102.5 0.5V102.5H0.5V0.5H9.83708H102.5Z" stroke="white" stroke-opacity="0.3"/>
+                                    <div className='flex-row'>
+                                        <div className="item" onClick={() => setSelected(props.name)}>
+                                            <svg width="89" height="89" viewBox="0 0 103 103" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M102.5 0.5V102.5H0.5V0.5H9.83708H102.5Z" />
 
-                                            <foreignObject height={100} width={103}>
-                                                <div className='content flex-column' style={{height: 103}}>
-                                                    <p style={{position: 'relative', marginTop: 5, marginLeft: 7.5, marginBottom: 2, fontSize: 15, color: 'rgba(255, 255, 255, 0.6)'}}>{props.count}</p>
+                                                <foreignObject height={100} width={103}>
+                                                    <div className='content flex-column' style={{height: 103}}>
+                                                        <p style={{position: 'relative', marginTop: 5, marginLeft: 7.5, marginBottom: 2, fontSize: 15, color: 'rgba(255, 255, 255, 0.6)'}}>{props.count}</p>
 
-                                                    <img style={{margin: '0 auto'}} height={55} width={55} src={props.img} />
+                                                        <img style={{margin: '0 auto'}} height={55} width={55} src={Images[props.img]} />
+                                                    </div>
+                                                </foreignObject>
+                                            </svg>
+                                        </div>
+
+                                        {
+                                            selected == props.name && <div className="options-box">
+                                                <div style={{justifyContent: "space-between", height: '100%'}} className="flex-column">
+                                                    <div style={{padding: 20}}>
+                                                        <div className="flex-row" style={{justifyContent: 'space-between'}}>
+                                                            <p style={{fontSize: 10}}>{props.item.weight} KG</p> 
+
+                                                            <svg onClick={() => setSelected('')} className="cross" style={{height: 16, width: 16}} viewBox="0 0 1024 1024"><path d="M810.65984 170.65984q18.3296 0 30.49472 12.16512t12.16512 30.49472q0 18.00192-12.32896 30.33088l-268.67712 268.32896 268.67712 268.32896q12.32896 12.32896 12.32896 30.33088 0 18.3296-12.16512 30.49472t-30.49472 12.16512q-18.00192 0-30.33088-12.32896l-268.32896-268.67712-268.32896 268.67712q-12.32896 12.32896-30.33088 12.32896-18.3296 0-30.49472-12.16512t-12.16512-30.49472q0-18.00192 12.32896-30.33088l268.67712-268.32896-268.67712-268.32896q-12.32896-12.32896-12.32896-30.33088 0-18.3296 12.16512-30.49472t30.49472-12.16512q18.00192 0 30.33088 12.32896l268.32896 268.67712 268.32896-268.67712q12.32896-12.32896 30.33088-12.32896z"  /></svg>
+                                                        </div>
+                                                        <p style={{textTransform: 'uppercase', fontSize: 20, marginBottom: 5}}>{props.count} - {props.name}</p> 
+
+                                                        <svg width="32" height="3" viewBox="0 0 32 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M0 1.5H31.5" stroke="white" stroke-width="2"/>
+                                                        </svg>
+
+                                                        <p style={{textTransform: 'uppercase', fontSize: 12, marginTop: 5, opacity: 0.8}}>Un item avec une particularité tres cocasse, avec une utilité</p>
+                                                    </div>
+                                                
+                                                    <div className="flex-row" style={{height: 100, width: '100%'}}>
+                                                        <div className="button" onClick={() => interact('use', props.item)}>
+                                                            <img style={{
+                                                                height: 25,
+                                                                width: 25,
+                                                                marginBottom: 7.5
+                                                            }} src="https://cdn.discordapp.com/attachments/749017234743099423/1022513133622923376/click-1263.png" />
+
+                                                            Utiliser
+                                                        </div>
+
+                                                        <div className="button" onClick={() => interact('give', props.item)}>
+                                                            <img style={{
+                                                                height: 25,
+                                                                width: 25,
+                                                                marginBottom: 7.5
+                                                            }} src="https://cdn.discordapp.com/attachments/749017234743099423/1022512026414755860/handshake-1939_2.png" />
+                                                            Donner
+                                                        </div>
+
+                                                        <div className="button" onClick={() => interact('drop', props.item)}>
+                                                            <img style={{
+                                                                height: 25,
+                                                                width: 25,
+                                                                marginBottom: 7.5
+                                                            }} src="https://cdn.discordapp.com/attachments/749017234743099423/1022512569132531802/recycle-10457.png" />
+
+                                                            Jeter
+                                                        </div>
+
+                                                        <div className="button" onClick={() => interact('bagpack', props.item)}>
+                                                            <svg style={{marginBottom: 7.5}} width="25" height="25" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M11.2499 13.125C11.2499 12.09 12.0899 11.25 13.1249 11.25H16.8749C17.9099 11.25 18.7499 12.09 18.7499 13.125C18.7499 13.196 18.7217 13.2641 18.6715 13.3144C18.6212 13.3646 18.5531 13.3928 18.4821 13.3928H11.5178C11.4467 13.3928 11.3786 13.3646 11.3284 13.3144C11.2782 13.2641 11.2499 13.196 11.2499 13.125ZM14.9999 2.14282C13.6565 2.14271 12.3573 2.62336 11.3374 3.49784C10.3175 4.37233 9.64416 5.58292 9.43922 6.91068C7.8651 7.86572 6.56384 9.21051 5.66109 10.8152C4.75834 12.4199 4.28461 14.2302 4.28565 16.0714V17.1428H25.7142V16.0714C25.7153 14.2302 25.2415 12.4199 24.3388 10.8152C23.436 9.21051 22.1348 7.86572 20.5606 6.91068C20.3557 5.58292 19.6824 4.37233 18.6625 3.49784C17.6426 2.62336 16.3434 2.14271 14.9999 2.14282ZM14.9999 5.35711C14.0217 5.35711 13.0735 5.48782 12.1735 5.73425C12.4958 5.28572 12.9202 4.92039 13.4117 4.66849C13.9032 4.41659 14.4476 4.28536 14.9999 4.28568C16.1635 4.28568 17.1942 4.85675 17.8264 5.73425C16.9053 5.4829 15.9547 5.35606 14.9999 5.35711ZM13.1249 9.64282H16.8749C17.3322 9.64282 17.785 9.73289 18.2075 9.90788C18.63 10.0829 19.0138 10.3394 19.3372 10.6627C19.6605 10.9861 19.917 11.3699 20.092 11.7924C20.267 12.2149 20.3571 12.6677 20.3571 13.125C20.3571 13.6222 20.1595 14.0992 19.8079 14.4508C19.4563 14.8024 18.9794 15 18.4821 15H11.5178C11.0205 15 10.5436 14.8024 10.192 14.4508C9.84033 14.0992 9.64279 13.6222 9.64279 13.125C9.64279 12.6677 9.73286 12.2149 9.90785 11.7924C10.0828 11.3699 10.3393 10.9861 10.6627 10.6627C11.3157 10.0097 12.2014 9.64282 13.1249 9.64282ZM9.64279 20.625V18.75H4.28565V23.5714C4.28565 24.708 4.73718 25.7981 5.5409 26.6019C6.34463 27.4056 7.43472 27.8571 8.57136 27.8571H21.4285C22.5651 27.8571 23.6552 27.4056 24.459 26.6019C25.2627 25.7981 25.7142 24.708 25.7142 23.5714V18.75H11.2499V20.625C11.2499 20.8381 11.1653 21.0425 11.0146 21.1932C10.8639 21.3439 10.6595 21.4285 10.4464 21.4285C10.2332 21.4285 10.0288 21.3439 9.87815 21.1932C9.72745 21.0425 9.64279 20.8381 9.64279 20.625Z" fill="white" fill-opacity="0.6"/>
+                                                            </svg>
+
+                                                            Sac à dos
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </foreignObject>
-                                        </svg>
+                                            </div>
+                                        }
+                                        
                                     </div>
                                 }
                             </>
@@ -131,14 +255,42 @@ const Inventory = () => {
 
 
                         <div className="flex-row">
-                            <Item count={2} img='https://cdn.discordapp.com/attachments/749017234743099423/1014676412151631933/unknown.png' />
-                            <Item holder={true} />
-                            <Item holder={true} />
-                            <Item holder={true} />
-                            <Item holder={true} />
-                            <Item holder={true} />
-                            <Item holder={true} />
-                            <Item holder={true} />
+                            { inventory && inventory.length > 0 && inventory[0] 
+                                ? <Item count={inventory[0].count} img={inventory[0].name} name={inventory[0].label} item={inventory[0]} />
+                                : <Item holder={true} />
+                            }
+
+                            { inventory && inventory.length > 0 && inventory[1] 
+                                ? <Item count={inventory[1].count} img={inventory[1].name} name={inventory[1].label} item={inventory[1]} />
+                                : <Item holder={true} />
+                            }
+
+                            { inventory && inventory.length > 0 && inventory[2] 
+                                ? <Item count={inventory[2].count} img={inventory[2].name} name={inventory[2].label} item={inventory[2]} />
+                                : <Item holder={true} />
+                            }
+
+                            { inventory && inventory.length > 0 && inventory[3] 
+                                ? <Item count={inventory[3].count} img={inventory[3].name} name={inventory[3].label} item={inventory[3]} />
+                                : <Item holder={true} />
+                            }
+
+                            { inventory && inventory.length > 0 && inventory[4] 
+                                ? <Item count={inventory[4].count} img={inventory[4].name} name={inventory[4].label} item={inventory[4]} />
+                                : <Item holder={true} />
+                            }
+                            { inventory && inventory.length > 0 && inventory[5] 
+                                ? <Item count={inventory[5].count} img={inventory[5].name} name={inventory[5].label} item={inventory[5]} />
+                                : <Item holder={true} />
+                            }
+                            { inventory && inventory.length > 0 && inventory[6] 
+                                ? <Item count={inventory[6].count} img={inventory[6].img} name={inventory[6].label} item={inventory[6]} />
+                                : <Item holder={true} />
+                            }
+                            { inventory && inventory.length > 0 && inventory[7] 
+                                ? <Item count={inventory[7].count} img={inventory[7].img} name={inventory[7].label} item={inventory[7]} />
+                                : <Item holder={true} />
+                            }
                         </div>
                     </div>
 
@@ -148,47 +300,162 @@ const Inventory = () => {
                         </svg>
 
                         <div className="flex-row" style={{marginBottom: 5}}>
-                            <Item locked={true}/>
-                            <Item locked={true} />
-                            <Item locked={true} />
-                            <Item locked={true} />
-                            <Item locked={true} />
-                            <Item locked={true} />
-                            <Item locked={true} />
-                            <Item locked={true} />
+                            { bag && bag.length > 0 && bag[0] 
+                                ? <Item count={bag[0].count} img={bag[0].img} name={bag[0].label} item={bag[0]} />
+                                : <Item holder={true} />
+                            }
+
+                            { bag && bag.length > 0 && bag[1] 
+                                ? <Item count={bag[1].count} img={bag[1].img} name={bag[1].label} item={bag[1]} />
+                                : <Item holder={true} />
+                            }
+
+                            { bag && bag.length > 0 && bag[2] 
+                                ? <Item count={bag[2].count} img={bag[2].img} name={bag[2].label} item={bag[2]} />
+                                : <Item holder={true} />
+                            }
+
+                            { bag && bag.length > 0 && bag[3] 
+                                ? <Item count={bag[3].count} img={bag[3].img} name={bag[3].label} item={bag[3]} />
+                                : <Item holder={true} />
+                            }
+
+                            { bag && bag.length > 0 && bag[4] 
+                                ? <Item count={bag[4].count} img={bag[4].img} name={bag[4].label} item={bag[4]} />
+                                : <Item holder={true} />
+                            }
+
+                            { bag && bag.length > 0 && bag[5] 
+                                ? <Item count={bag[5].count} img={bag[5].img} name={bag[5].label} item={bag[5]} />
+                                : <Item holder={true} />
+                            }
+
+                            { bag && bag.length > 0 && bag[6] 
+                                ? <Item count={bag[6].count} img={bag[6].img} name={bag[6].label} item={bag[6]} />
+                                : <Item holder={true} />
+                            }
+
+                            { bag && bag.length > 0 && bag[7] 
+                                ? <Item count={bag[7].count} img={bag[7].img} name={bag[7].label} item={bag[7]} />
+                                : <Item holder={true} />
+                            }
                         </div>
 
                         <div className="flex-row" style={{marginBottom: 5}}>
-                            <Item locked={true}/>
-                            <Item locked={true} />
-                            <Item locked={true} />
-                            <Item locked={true} />
-                            <Item locked={true} />
-                            <Item locked={true} />
-                            <Item locked={true} />
-                            <Item locked={true} />
+                            { bag && bag.length > 0 && bag[0 + 8] 
+                                ? <Item count={bag[0 + 8].count} img={bag[0 + 8].img} name={bag[0 + 8].label} item={bag[0 + 8]} />
+                                : <Item holder={true} />
+                            }
+
+                            { bag && bag.length > 0 && bag[1 + 8] 
+                                ? <Item count={bag[1 + 8].count} img={bag[1 + 8].img} name={bag[1 + 8].label} item={bag[1 + 8]} />
+                                : <Item holder={true} />
+                            }
+
+                            { bag && bag.length > 0 && bag[2 + 8] 
+                                ? <Item count={bag[2 + 8].count} img={bag[2 + 8].img} name={bag[2 + 8].label} item={bag[2 + 8]} />
+                                : <Item holder={true} />
+                            }
+
+                            { bag && bag.length > 0 && bag[3 + 8] 
+                                ? <Item count={bag[3 + 8].count} img={bag[3 + 8].img} name={bag[3 + 8].label} item={bag[3 + 8]} />
+                                : <Item holder={true} />
+                            }
+
+                            { bag && bag.length > 0 && bag[4 + 8] 
+                                ? <Item count={bag[4 + 8].count} img={bag[4 + 8].img} name={bag[4 + 8].label} item={bag[4 + 8]} />
+                                : <Item holder={true} />
+                            }
+                            { bag && bag.length > 0 && bag[5 + 8] 
+                                ? <Item count={bag[5 + 8].count} img={bag[5 + 8].img} name={bag[5 + 8].label} item={bag[5 + 8]} />
+                                : <Item holder={true} />
+                            }
+                            { bag && bag.length > 0 && bag[6 + 8] 
+                                ? <Item count={bag[6 + 8].count} img={bag[6 + 8].img} name={bag[6 + 8].label} item={bag[6 + 8]} />
+                                : <Item holder={true} />
+                            }
+                            { bag && bag.length > 0 && bag[7 + 8] 
+                                ? <Item count={bag[7 + 8].count} img={bag[7 + 8].img} name={bag[7 + 8].label} item={bag[7 + 8]} />
+                                : <Item holder={true} />
+                            }
                         </div>
 
                         <div className="flex-row" style={{marginBottom: 5}}>
-                            <Item locked={true}/>
-                            <Item locked={true} />
-                            <Item locked={true} />
-                            <Item locked={true} />
-                            <Item locked={true} />
-                            <Item locked={true} />
-                            <Item locked={true} />
-                            <Item locked={true} />
+                            { bag && bag.length > 0 && bag[0 + 16] 
+                                ? <Item count={bag[0 + 16].count} img={bag[0 + 16].img} name={bag[0 + 16].label} item={bag[0 + 16]} />
+                                : <Item holder={true} />
+                            }
+
+                            { bag && bag.length > 0 && bag[1 + 16] 
+                                ? <Item count={bag[1 + 16].count} img={bag[1 + 16].img} name={bag[1 + 16].label} item={bag[1 + 16]} />
+                                : <Item holder={true} />
+                            }
+
+                            { bag && bag.length > 0 && bag[2 + 16] 
+                                ? <Item count={bag[2 + 16].count} img={bag[2 + 16].img} name={bag[2 + 16].label} item={bag[2 + 16]} />
+                                : <Item holder={true} />
+                            }
+
+                            { bag && bag.length > 0 && bag[3 + 16] 
+                                ? <Item count={bag[3 + 16].count} img={bag[3 + 16].img} name={bag[3 + 16].label} item={bag[3 + 16]} />
+                                : <Item holder={true} />
+                            }
+
+                            { bag && bag.length > 0 && bag[4 + 16] 
+                                ? <Item count={bag[4 + 16].count} img={bag[4 + 16].img} name={bag[4 + 16].label} item={bag[4 + 16]} />
+                                : <Item holder={true} />
+                            }
+                            { bag && bag.length > 0 && bag[5 + 16] 
+                                ? <Item count={bag[5 + 16].count} img={bag[5 + 16].img} name={bag[5 + 16].label} item={bag[5 + 16]} />
+                                : <Item holder={true} />
+                            }
+                            { bag && bag.length > 0 && bag[6 + 16] 
+                                ? <Item count={bag[6 + 16].count} img={bag[6 + 16].img} name={bag[6 + 16].label} item={bag[6 + 16]} />
+                                : <Item holder={true} />
+                            }
+                            { bag && bag.length > 0 && bag[7 + 16] 
+                                ? <Item count={bag[7 + 16].count} img={bag[7 + 16].img} name={bag[7 + 16].label} item={bag[7 + 16]} />
+                                : <Item holder={true} />
+                            }
                         </div>
 
                         <div className="flex-row" style={{marginBottom: 5}}>
-                            <Item locked={true}/>
-                            <Item locked={true} />
-                            <Item locked={true} />
-                            <Item locked={true} />
-                            <Item locked={true} />
-                            <Item locked={true} />
-                            <Item locked={true} />
-                            <Item locked={true} />
+                            { bag && bag.length > 0 && bag[0 + 24] 
+                                ? <Item count={bag[0 + 24].count} img={bag[0 + 24].img} name={bag[0 + 24].label} item={bag[0 + 24]} />
+                                : <Item holder={true} />
+                            }
+
+                            { bag && bag.length > 0 && bag[1 + 24] 
+                                ? <Item count={bag[1 + 24].count} img={bag[1 + 24].img} name={bag[1 + 24].label} item={bag[1 + 24]} />
+                                : <Item holder={true} />
+                            }
+
+                            { bag && bag.length > 0 && bag[2 + 24] 
+                                ? <Item count={bag[2 + 24].count} img={bag[2 + 24].img} name={bag[2 + 24].label} item={bag[2 + 24]} />
+                                : <Item holder={true} />
+                            }
+
+                            { bag && bag.length > 0 && bag[3 + 24] 
+                                ? <Item count={bag[3 + 24].count} img={bag[3 + 24].img} name={bag[3 + 24].label} item={bag[3 + 24]} />
+                                : <Item holder={true} />
+                            }
+
+                            { bag && bag.length > 0 && bag[4 + 24] 
+                                ? <Item count={bag[4 + 24].count} img={bag[4 + 24].img} name={bag[4 + 24].label} item={bag[4 + 24]} />
+                                : <Item holder={true} />
+                            }
+                            { bag && bag.length > 0 && bag[5 + 24] 
+                                ? <Item count={bag[5 + 24].count} img={bag[5 + 24].img} name={bag[5 + 24].label} item={bag[5 + 24]} />
+                                : <Item holder={true} />
+                            }
+                            { bag && bag.length > 0 && bag[6 + 24] 
+                                ? <Item count={bag[6 + 24].count} img={bag[6 + 24].img} name={bag[6 + 24].label} item={bag[6 + 24]} />
+                                : <Item holder={true} />
+                            }
+                            { bag && bag.length > 0 && bag[7 + 24] 
+                                ? <Item count={bag[7 + 24].count} img={bag[7 + 24].img} name={bag[7 + 24].label} item={bag[7 + 24]} />
+                                : <Item holder={true} />
+                            }
                         </div>
                     </div>
                 </div>
@@ -258,10 +525,6 @@ const Inventory = () => {
                                             <path d="M27 3.33329V3.83329H27.5H28.3333C28.9788 3.83329 29.5 4.35548 29.5 4.99996V9.16663C29.5 9.81079 28.9775 10.3333 28.3333 10.3333H25H24.7932L24.6468 10.4794L23.4661 11.6579L23.4659 11.6581C23.2465 11.8772 22.9499 12 22.6406 12H20.7604H20.3997L20.2859 12.3423L19.0106 16.1813C19.0105 16.1815 19.0105 16.1816 19.0104 16.1818C18.6809 17.1687 17.7605 17.8333 16.7177 17.8333H11.7917H11.4071L11.3084 18.205L9.8613 23.6578C9.71661 24.1568 9.26011 24.5 8.74063 24.5H3.33437C2.55972 24.5 1.99962 23.7559 2.21248 23.012L2.21266 23.012L2.21605 22.9988L4.33375 14.7549C4.7238 13.3732 3.68552 12 2.24844 12C1.28246 12 0.5 11.2182 0.5 10.2531V5.58329C0.5 4.61598 1.28314 3.83329 2.24844 3.83329H25H25.5V3.33329V2.91663C25.5 2.5016 25.834 2.16663 26.25 2.16663C26.666 2.16663 27 2.5016 27 2.91663V3.33329ZM17.5822 15.7146L17.5837 15.7101L18.6004 12.658L18.8196 12H18.126H13.3333H12.9482L12.8499 12.3723L11.9697 15.7056L11.804 16.3333H12.4531H16.7135C17.1111 16.3333 17.4561 16.0815 17.5822 15.7146ZM25 8.83329H25.5V8.33329V6.66663V6.16663H25H3.33333H2.83333V6.66663V8.33329V8.83329H3.33333H25Z" stroke="white" stroke-opacity="0.31"/>
                                         </svg>
                                     } />   
-
-                                    <Item lat={true} title="Munitions" icon={
-                                        <></>
-                                    } />            
 
                                     <Item lat={true} title="Gants" icon={
                                         <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">

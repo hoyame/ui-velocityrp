@@ -16,6 +16,10 @@ import Selector from "./apps/selector";
 import Ped from "./apps/ped";
 import Character from "./apps/character";
 import Unfinded from "./apps/unfinded";
+import Competences from "./apps/competences";
+import Daily from "./apps/daily";
+import Realisations from "./apps/realisation";
+import Jobs from "./apps/jobs";
 
 const App: React.FC = () => {
 	const history = useHistory();
@@ -46,10 +50,11 @@ const App: React.FC = () => {
 					<Route path="/ped" component={Ped} />			
 					<Route path="/selector" component={Selector} />			
 					<Route path="/character" component={Character} />	
+					<Route path="/competences" component={Competences} />	
 					<Route path="/unfinded" component={Unfinded} />	
-
-							
-					
+					<Route path="/daily" component={Daily} />	
+					<Route path="/realisations" component={Realisations} />	
+					<Route path="/jobs" component={Jobs} />	
 				</Switch>
 			</div>
 

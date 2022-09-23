@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom';
 
 
 import Boutique from "../../../shared/data/boutique.json";
@@ -9,6 +10,25 @@ const Store = () => {
     const [coins, setCoins] = useState(1);
     const [code, setCode] = useState(15);
     const [routePrimary, setRoutePrimary] = useState('case')
+
+    const history = useHistory();
+    const close = () => {
+        fetch(`https://${location.hostname.replace("cfx-nui-", "")}/close`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify(true)
+        })
+    }
+
+    const back = () => {
+        history.push('/menu')
+    }
+
+    document.addEventListener('keydown', function(event) { if (event.keyCode == 27) close() })
+    document.addEventListener('keydown', function(event) { if (event.keyCode == 8) back() })
 
     return (
         <div id='store'>
@@ -144,7 +164,7 @@ const Store = () => {
                                 <p style={{fontSize: 15, fontWeight: 300, width: '90%'}}>LES OBJEST NE TOMBENT PAS SU SAC LORS DU MEURTRE</p>
                             </div>
 
-                            <img style={{height: 200, marginRight: -25}} src='https://cdn.discordapp.com/attachments/1009466792135110697/1013892150058041435/unknown_16.png' />
+                            <img style={{height: 200, marginRight: -25}} src='https://cdn.discordapp.com/attachments/749017234743099423/1021069749339304046/unknown_16.png' />
                         </div>
 
                         <div className="cash">
