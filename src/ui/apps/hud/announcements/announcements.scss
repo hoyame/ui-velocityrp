@@ -34,7 +34,7 @@ $yellow: #ffd149;
 	flex-direction: column;
 	justify-content: flex-start;
 	z-index: 1;
-	
+
 	.announcement-enter {
 		opacity: 0;
 
@@ -55,11 +55,11 @@ $yellow: #ffd149;
 }
 
 .dark {
-	background: linear-gradient(to right, rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.10));
+	background: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
 }
 
 .light {
-	background: linear-gradient(to right, rgba(255, 255, 255, 0.20), rgba(255, 255, 255, 0.10));
+	background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
 }
 
 .announcement {
@@ -106,8 +106,6 @@ $yellow: #ffd149;
 		animation-name: example;
 		animation-duration: 4s;
 	}
-
-
 
 	.content {
 		padding: 0.8vh;

@@ -1,20 +1,21 @@
 #unfinded {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: calc(100% - 140px);
-    width: calc(100% - 140px);
-    font-family: 'Oswald';
-    padding: 50px 70px 90px 70px;
-    color: #fff;
-    background: linear-gradient(111.84deg, rgba(255, 255, 255, 0.132) 0%, rgba(255, 255, 255, 0) 25.53%), linear-gradient(112.2deg, rgba(128, 0, 255, 0.2) 35.08%, rgba(128, 0, 255, 0) 98.78%), linear-gradient(0deg, rgba(17, 17, 17, 0.94), rgba(17, 17, 17, 0.94));
-    background-image: url('https://media.discordapp.net/attachments/749017234743099423/1018645219534708827/564930_1.png');
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: calc(100% - 140px);
+	width: calc(100% - 140px);
+	font-family: "Oswald";
+	padding: 50px 70px 90px 70px;
+	color: #fff;
+	background: linear-gradient(111.84deg, rgba(255, 255, 255, 0.132) 0%, rgba(255, 255, 255, 0) 25.53%),
+		linear-gradient(112.2deg, rgba(128, 0, 255, 0.2) 35.08%, rgba(128, 0, 255, 0) 98.78%),
+		linear-gradient(0deg, rgba(17, 17, 17, 0.94), rgba(17, 17, 17, 0.94));
+	background-image: url("https://media.discordapp.net/attachments/749017234743099423/1018645219534708827/564930_1.png");
 
-    .menu {
-
-        height: 580px;
-        width: 1060px;
-        background: url('https://media.discordapp.net/attachments/749017234743099423/1018648990184648775/unknown.png?width=1059&height=576');
-    }
+	.menu {
+		height: 580px;
+		width: 1060px;
+		background: url("https://media.discordapp.net/attachments/749017234743099423/1018648990184648775/unknown.png?width=1059&height=576");
+	}
 }

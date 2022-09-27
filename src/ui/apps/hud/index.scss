@@ -1,10 +1,9 @@
-  
 .dark {
-    background: rgba(0, 0, 0, 0.20);
+	background: rgba(0, 0, 0, 0.2);
 }
 
 .light {
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.20), rgba(255, 255, 255, 0.10));
+	background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
 }
 
 #content {
@@ -18,13 +17,17 @@
 	// background-color: rgba(255, 0, 0, 0.685);
 }
 
-@keyframes bounce-out{
-    0%    { opacity: 1; }
-    100%  { opacity: 0; }
+@keyframes bounce-out {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
 }
 
 .anim-close {
-    animation: bounce-out 1s ease-in;
+	animation: bounce-out 1s ease-in;
 }
 
 @keyframes popup {
@@ -50,7 +53,7 @@
 	z-index: 2;
 
 	.icon {
-		height: 55px; 
+		height: 55px;
 		margin-right: 5px;
 		transition-duration: 300ms;
 
@@ -75,8 +78,6 @@
 		}
 	}
 
-	
-			
 	.instaff {
 		fill: rgba(0, 112, 187, 0.75);
 
@@ -96,7 +97,7 @@
 	.staffoption {
 		display: flex;
 		align-items: center;
-		margin: 0
+		margin: 0;
 	}
 
 	.menu {

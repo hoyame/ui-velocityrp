@@ -1,47 +1,47 @@
 @keyframes separator-arrow-left {
-    0% {
-        margin-left: 65px; 
-    }
+	0% {
+		margin-left: 65px;
+	}
 
-    100% {
-        margin-left: 80px;
-    }
+	100% {
+		margin-left: 80px;
+	}
 }
 
 @keyframes separator-arrow-right {
-    0% {
-        margin-right: 65px; 
-    }
+	0% {
+		margin-right: 65px;
+	}
 
-    100% {
-        margin-right: 80px;
-    }
+	100% {
+		margin-right: 80px;
+	}
 }
 
 #separator {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 100%;
-    width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 100%;
+	width: 100%;
 
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-image: url("https://cdn.discordapp.com/attachments/749017234743099423/1014493210988531732/unknown.png");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-image: url("https://cdn.discordapp.com/attachments/749017234743099423/1014493210988531732/unknown.png");
 
-    .arrow {
-        &:hover {
-            opacity: 0.8;
-            cursor: pointer;
-            transition-duration: 300ms;
-        }
-    }
+	.arrow {
+		&:hover {
+			opacity: 0.8;
+			cursor: pointer;
+			transition-duration: 300ms;
+		}
+	}
 
-    .left {
-        animation: separator-arrow-left 1s infinite;
-    }
+	.left {
+		animation: separator-arrow-left 1s infinite;
+	}
 
-    .right {
-        animation: separator-arrow-right 1s infinite;
-    }
+	.right {
+		animation: separator-arrow-right 1s infinite;
+	}
 }

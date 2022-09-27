@@ -1,14 +1,14 @@
 #speedometer-container {
 	position: absolute;
 	bottom: 80px;
-    right: 40px;
+	right: 40px;
 
 	height: 100px;
 	width: 150px;
 
 	display: flex;
 	flex-direction: column;
-	
+
 	line-height: 60px;
 	font-size: 65px;
 	font-family: "Akrobat-Black";
@@ -26,7 +26,7 @@
 
 		border-radius: 10px;
 		background-color: #43ef01;
-		color: #1F2B22;
+		color: #1f2b22;
 		font-size: 55px;
 
 		margin-right: 8px;

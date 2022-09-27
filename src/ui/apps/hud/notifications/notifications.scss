@@ -25,14 +25,14 @@ $yellow: #ffd149;
 
 .notifications-container-inui {
 	position: absolute;
-    left: 40%;
-    top: -64.5%;
-    height: calc(100% - 23%);
-    overflow: hidden;
-    width: 20%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+	left: 40%;
+	top: -64.5%;
+	height: calc(100% - 23%);
+	overflow: hidden;
+	width: 20%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
 	// z-index: 1;
 }
 
@@ -47,7 +47,7 @@ $yellow: #ffd149;
 	flex-direction: column;
 	justify-content: flex-end;
 	// z-index: 1;
-	
+
 	.notification-enter {
 		opacity: 0;
 
@@ -68,11 +68,11 @@ $yellow: #ffd149;
 }
 
 .dark {
-	background: linear-gradient(to right, rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.10));
+	background: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
 }
 
 .light {
-	background: linear-gradient(to right, rgba(255, 255, 255, 0.20), rgba(255, 255, 255, 0.10));
+	background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
 }
 
 .notification {
@@ -119,8 +119,6 @@ $yellow: #ffd149;
 		animation-name: example;
 		animation-duration: 4s;
 	}
-
-
 
 	.content {
 		padding: 0.8vh;

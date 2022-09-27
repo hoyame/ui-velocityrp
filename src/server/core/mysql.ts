@@ -5,7 +5,7 @@ export class MySQL {
 
 	public static async initialize() {
 		const connectionString = GetConvar("mysql_connection_string", "");
-		console.log(connectionString)
+		console.log(connectionString);
 		if (!connectionString) {
 			console.error("[GM][Framework] | [MySQL] : Uri is empty. You need to set 'mysql_connection_string' convar");
 			return;

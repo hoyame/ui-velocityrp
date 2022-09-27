@@ -5,8 +5,7 @@ global.fetch = require("node-fetch");
 
 import { MySQL } from "./core/mysql";
 import Shops from "./modules/shops";
-import {Player} from "./modules/player";
-
+import { Player } from "./modules/player";
 
 class Gamemode {
 	public static async initialize() {

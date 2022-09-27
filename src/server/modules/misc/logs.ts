@@ -1,25 +1,19 @@
-import LogsConfig from '../../../shared/data/logs.json';
+import LogsConfig from "../../../shared/data/logs.json";
 
 export enum LogsKeys {
-    Anticheat
+	Anticheat,
 }
 
-const LogsLinks = [
-    LogsConfig.anticheat
-]
+const LogsLinks = [LogsConfig.anticheat];
 
 export abstract class Logs {
-    public static async intialize() {
+	public static async intialize() {}
 
-    }
+	public static sendLogs(type: any, message: any) {
+		if (LogsLinks[type]) {
+			this.send(LogsLinks[type], message);
+		}
+	}
 
-    public static sendLogs(type: any, message: any) {
-        if (LogsLinks[type]) {
-            this.send(LogsLinks[type], message);
-        }
-    }
-
-    private static send(link: string, message: any) {
-
-    }
+	private static send(link: string, message: any) {}
 }

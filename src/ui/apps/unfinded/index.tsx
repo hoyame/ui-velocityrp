@@ -1,15 +1,13 @@
-import React from 'react';
+import React from "react";
 
-import './style.scss';
+import "./style.scss";
 
 const Unfinded = () => {
-    return (
-        <div id="unfinded">
-            <div className="menu">
-
-            </div>
-        </div>
-    )
-}
+	return (
+		<div id="unfinded">
+			<div className="menu"></div>
+		</div>
+	);
+};
 
 export default Unfinded;

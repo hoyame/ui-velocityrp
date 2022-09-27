@@ -27,41 +27,41 @@ class Gamemode {
 		await Interaction.initialize();
 		await Ped.initialize();
 		await Menu.initialize();
-		
-		exports('openMainMenu', (args: any) => {
-			emit('hoyame:openMainMenu', args);
-		})
-		
-		exports('createContextMenu', (args: any) => {
-			emit('hoyame:createContextMenu', args);
-		})
 
-		exports('createCharacter', (args: any) => {
-			emit('hoyame:createCharacter', args);
-		})
-						
-		exports('openMenuDirectly', (args: any) => {
-			emit('hoyame:openMenuDirectly', args);
-		})
-		
-		exports('closeContextMenu', (args: any) => {
-			emit('hoyame:closeContextMenu', args);
-		})
-
-		exports('backMenu', (args: any) => {
-			emit('hoyame:backMenu', args);
-		})
-		
-		exports('showNotification', (args: any) => {
-			emit('hoyame:showNotification', args);
+		exports("openMainMenu", (args: any) => {
+			emit("hoyame:openMainMenu", args);
 		});
 
-		exports('showAdvancedNotification', (args: any) => {
-			emit('hoyame:showAdvancedNotification', args);
+		exports("createContextMenu", (args: any) => {
+			emit("hoyame:createContextMenu", args);
 		});
 
-		exports('showOverlay', (args: any) => {
-			emit('hoyame:updateOverlay', args);
+		exports("createCharacter", (args: any) => {
+			emit("hoyame:createCharacter", args);
+		});
+
+		exports("openMenuDirectly", (args: any) => {
+			emit("hoyame:openMenuDirectly", args);
+		});
+
+		exports("closeContextMenu", (args: any) => {
+			emit("hoyame:closeContextMenu", args);
+		});
+
+		exports("backMenu", (args: any) => {
+			emit("hoyame:backMenu", args);
+		});
+
+		exports("showNotification", (args: any) => {
+			emit("hoyame:showNotification", args);
+		});
+
+		exports("showAdvancedNotification", (args: any) => {
+			emit("hoyame:showAdvancedNotification", args);
+		});
+
+		exports("showOverlay", (args: any) => {
+			emit("hoyame:updateOverlay", args);
 		});
 
 		console.log("GAMEMODE INITIALIZED");

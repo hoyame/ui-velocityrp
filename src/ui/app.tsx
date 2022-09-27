@@ -20,6 +20,7 @@ import Competences from "./apps/competences";
 import Daily from "./apps/daily";
 import Realisations from "./apps/realisation";
 import Jobs from "./apps/jobs";
+import Gasolina from "./apps/gasolina";
 
 const App: React.FC = () => {
 	const history = useHistory();
@@ -36,25 +37,26 @@ const App: React.FC = () => {
 	});
 
 	return (
-		<React.Fragment>	
-			<div style={{position: "absolute", height: '100%', width: '100%', zIndex: 99}}>	
+		<React.Fragment>
+			<div style={{ position: "absolute", height: "100%", width: "100%", zIndex: 99 }}>
 				<Switch>
 					<Route path="/main" component={Main} />
 					<Route path="/cardealer" component={CarDealer} />
 					<Route path="/context" component={Context} />
-					<Route path="/store" component={Store} />			
-					<Route path="/menu" component={Menu} />			
-					<Route path="/separator" component={Separator} />			
-					<Route path="/interaction" component={InteractionMenu} />			
-					<Route path="/inventory" component={Inventory} />			
-					<Route path="/ped" component={Ped} />			
-					<Route path="/selector" component={Selector} />			
-					<Route path="/character" component={Character} />	
-					<Route path="/competences" component={Competences} />	
-					<Route path="/unfinded" component={Unfinded} />	
-					<Route path="/daily" component={Daily} />	
-					<Route path="/realisations" component={Realisations} />	
-					<Route path="/jobs" component={Jobs} />	
+					<Route path="/store" component={Store} />
+					<Route path="/menu" component={Menu} />
+					<Route path="/separator" component={Separator} />
+					<Route path="/interaction" component={InteractionMenu} />
+					<Route path="/inventory" component={Inventory} />
+					<Route path="/ped" component={Ped} />
+					<Route path="/selector" component={Selector} />
+					<Route path="/character" component={Character} />
+					<Route path="/competences" component={Competences} />
+					<Route path="/unfinded" component={Unfinded} />
+					<Route path="/daily" component={Daily} />
+					<Route path="/realisations" component={Realisations} />
+					<Route path="/jobs" component={Jobs} />
+					<Route path="/gasolina" component={Gasolina} />
 				</Switch>
 			</div>
 
