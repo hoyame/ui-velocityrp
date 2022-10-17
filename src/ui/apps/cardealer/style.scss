@@ -1,113 +1,222 @@
-@font-face {
-	font-family: "Korolev";
-	src: url("http://db.onlinewebfonts.com/t/0ca28687efcc1f750df6ba59a72a6911.eot"); /* IE9*/
-	src: url("http://db.onlinewebfonts.com/t/0ca28687efcc1f750df6ba59a72a6911.eot?#iefix") format("embedded-opentype"),
-		/* IE6-IE8 */ url("http://db.onlinewebfonts.com/t/0ca28687efcc1f750df6ba59a72a6911.woff2") format("woff2"),
-		/* chrome firefox */ url("http://db.onlinewebfonts.com/t/0ca28687efcc1f750df6ba59a72a6911.woff") format("woff"),
-		/* chrome firefox */ url("http://db.onlinewebfonts.com/t/0ca28687efcc1f750df6ba59a72a6911.ttf") format("truetype"),
-		/* chrome firefox opera Safari, Android, iOS 4.2+*/
-			url("http://db.onlinewebfonts.com/t/0ca28687efcc1f750df6ba59a72a6911.svg#Korolev") format("svg"); /* iOS 4.1- */
-}
+/**********************/
+/*** CSS par Romain ***/
+/**********************/
 
-.cardealer {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	font-family: "Korolev";
+/* importations */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+
+
+// body {
+// 	margin: 0;
+// 	padding: 50px 50px;
+// 	background: url('img/background.png');
+// 	background-size:  cover;
+// 	max-height: 100vh;
+// 	overflow-y: hidden;
+
+// 	color: white;
+// 	font-family: 'Oswald', Arial, sans-serif;
+
+// 	box-sizing: border-box;
+// 	user-select: none;
+//   ul {
+//     padding: 0;
+//     list-style: none;
+//   }
+// }
+
+#concessionnaire {
+	
+
+	margin: 0;
+	padding: 0 50px;
+	background: url('img/background.png');
+	background-size:  cover;
+	max-height: 100vh;
+	overflow-y: hidden;
+	height: 100%;
+
+	color: white;
+	font-family: 'Oswald', Arial, sans-serif;
+
+	box-sizing: border-box;
 	user-select: none;
 
-	height: 100%;
-	width: 100%;
-	background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
-	padding: 0 45px;
-	color: #fff;
-}
-
-.vehicleList {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-
-	height: 40px;
-	width: 40%;
-	margin-bottom: 12.5px;
-}
-
-.vehicle-container {
-	height: 420px;
-	width: 100%;
-	overflow-y: auto;
-
-	margin-bottom: 15px;
-}
-
-.vehicle-container::-webkit-scrollbar {
-	display: none;
-}
-
-.vehicle-component {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-
-	padding: 0 20px;
-	margin-bottom: 10px;
-
-	height: 60px;
-	width: calc(100% - 40px);
-
-	background-color: rgba(0, 0, 0, 0.503);
-
-	&:hover {
-		background-color: #43ef01;
-		opacity: 0.7;
+	ul {
+		padding: 0;
+		list-style: none;
 	}
-}
 
-.vehicle-component-selected {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
 
-	padding: 0 20px;
-	margin-bottom: 10px;
 
-	height: 60px;
-	width: calc(100% - 40px);
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    .voiture {
+      height: 360px;
+    }
+  }
+  
+  /* statistiques voiture */
+  header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  
+    .nomVoiture {
+      color: #FFFFFF;
+      text-transform: uppercase;
+      font-weight: 500;
+      font-size: 48px;
+    }
+    .stats {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 100px;
+  
+      li {
+        font-weight: 400;
+        font-size: 20px;
+        color: #FFFFFF;
+      }
+      .prix {
+        padding: 5px 15px 2.5px;
+        border: 2px solid rgba(255, 255, 255, 0.17);
+        border-radius: 5px;
+      
+        font-weight: 500;
+        font-size: 30px;
+        color: #92FF5F;
 
-	background-color: #43ef01;
-}
-
-.color-container {
-	width: 100%;
-	margin-bottom: 20px;
-}
-
-.color-component {
-	height: 50px;
-	width: 50px;
-	border-radius: 7.5px;
-
-	&:hover {
-		opacity: 0.7;
-	}
-}
-
-.buy-button {
-	height: 70px;
-	width: 100%;
-
-	display: flex;
-	align-items: center;
-	justify-content: center;
-
-	font-size: 18px;
-
-	background-color: rgba(0, 0, 0, 0.503);
-
-	&:hover {
-		background-color: #43ef01;
-	}
+		h2 {
+			margin-bottom: 7.5px;
+		}
+      }
+      h2 {	
+        max-width: 150px;
+        color: rgba(255, 255, 255, 0.5);
+        text-transform: uppercase;
+        font-weight: 400;
+        font-size: 14px;
+      }
+      p {	
+        margin: 0;
+        margin-top: -15px;
+      }
+    }
+  }
+  
+  /* boutons stats */
+  .options {
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    height: 53px;
+  
+    .btn {
+      margin: 0;
+      padding:  10px 40px;
+      background: #FFFFFFDD;
+      box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.1);
+      border-radius: 60px;
+    
+      color: #3D4359;
+      text-transform: uppercase;
+      font-weight: 400;
+      font-size: 20px;
+    
+      cursor: pointer;
+      transition: .2s;
+  
+      &:hover {
+        background: #FFF;
+        box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.37);
+      }
+    }
+    .essai {
+      margin: 0;
+      padding: 10px 40px;
+      border: 2px solid rgba(255, 255, 255, 0.23);
+      border-radius: 34px;
+    
+      color: #FFF;
+      text-transform: uppercase;
+      font-weight: 400;
+      font-size: 20px;
+    
+      cursor: pointer;
+      transition: .2s;
+  
+      &:hover {
+        color: #3D4359;
+        background: #FFF;
+        box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+      }
+    }
+  }
+  
+  /* liste voitures */
+  .menu {
+    padding-bottom: 15px;
+    max-width: 100%;
+  
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  
+    overflow-x: scroll;
+  
+    &::-webkit-scrollbar {
+      height: 4px;
+    }
+    &::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.16);
+      border-radius: 5px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #FFF000;
+      border-radius: 5px;
+    }
+    .voiture {
+      margin: 0;
+      padding: 10px;
+      min-width: 150px;
+      height: 150px;
+    
+      border: 2px solid  rgba(255, 255, 255, 0.21);
+      border-radius: 5px;
+    
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    
+      cursor: pointer;
+      transition: .2s;
+  
+      &.active {
+        background: radial-gradient(48.08% 31.25% at 50% 41.56%, rgba(255, 232, 22, 0.26) 0%, rgba(255, 232, 22, 0) 100%);
+        border: 2px solid #FFE816;
+      }
+      &:hover {
+        border: 2px solid #FFE816;
+      }
+      img {
+        max-width: 100%;
+        width:  150px;
+      }
+      p {
+        margin: 0;
+        text-transform: uppercase;
+      }
+    }
+  }
 }

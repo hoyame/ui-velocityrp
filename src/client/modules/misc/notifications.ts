@@ -38,7 +38,7 @@ export abstract class Notification {
 					title: data.title,
 					message: data.message,
 					advanced: false,
-					timeout: 7500,
+					timeout: data.timeout || 7500,
 					dark: GetClockHours() < 21 && GetClockHours() > 6,
 				},
 			})

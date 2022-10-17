@@ -4,10 +4,7 @@ import { Nui } from "../../core/nui";
 interface IPed {
 	title?: string;
 	message?: string;
-	button1?: string;
-	button2?: string;
-	button3?: string;
-	button4?: string;
+	buttons?: any[];
 	cb?: (e: number) => any;
 	onClose?: () => void;
 }
@@ -36,10 +33,7 @@ export abstract class Ped {
 				this.open({
 					title: "Ped 1",
 					message: "Que voulez vous louer ?",
-					button1: "Bato",
-					button2: "Jetski",
-					button3: "Jetski",
-					button4: "Jetski",
+					buttons: ["zifu", "feuhjf"],
 					cb: (e: number) => {
 						console.log("fzeoifnzofin       " + e);
 					},

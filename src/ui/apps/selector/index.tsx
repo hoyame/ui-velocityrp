@@ -1,17 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./style.scss";
 
+interface ISelector {
+	name?: string;
+	icon?: string;
+	content?: any;
+}
+
 const Selector = () => {
-	const Element = () => {
+	const [data, setData] = useState<ISelector[]>([])
+	const [cache, setCache] = useState<ISelector>({})
+
+	const push = (data: any) => {
+		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/pushSelector`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+
+			body: JSON.stringify(data),
+		});
+	};
+
+	const onMessage = (event: any) => {
+		if (event.data.type == "selector") {
+			setData(event.data.selector);
+			setCache(event.data.selector[0])
+		}
+	};
+
+	React.useEffect(() => {
+		window.addEventListener("message", onMessage);
+		return () => window.removeEventListener("message", onMessage);
+	});
+
+	const Element = (props: ISelector) => {
 		return (
-			<div className="element">
-				<p style={{ marginTop: 15, marginLeft: 15, fontSize: 17 }}>GOLDEN TYCOON</p>
+			<div className={cache.name == props.name ? "selected element" : "element"} onClick={() => setCache(props)}>
+				<p style={{ marginTop: 15, marginLeft: 15, fontSize: 17 }}>{props.name}</p>
 
 				<div style={{ display: "flex", justifyContent: "flex-end" }}>
 					<img
 						style={{ width: 150, marginBottom: 10, marginRight: 10 }}
-						src="https://cdn.discordapp.com/attachments/749017234743099423/1015225222716194856/unknown.png"
+						src={props.icon}
 					/>
 				</div>
 			</div>
@@ -22,9 +54,9 @@ const Selector = () => {
 		<div id="selector">
 			<div style={{ display: "flex", width: "75%", marginLeft: "15%" }}>
 				<div className="list">
-					<Element />
-					<Element />
-					<Element />
+					{data.map((v, k) => {
+						return <Element key={k} {...v} />
+					})}
 				</div>
 
 				<div className="content">
@@ -41,8 +73,8 @@ const Selector = () => {
 						</svg>
 
 						<div>
-							<p style={{ fontSize: 12, marginBottom: -7.5, opacity: 0.42 }}>COÛT</p>
-							<p style={{ fontSize: 30 }}>20 COINS</p>
+							<p style={{ fontSize: 12, marginBottom: -7.5, opacity: 0.42 }}>{cache.content ? cache.content.title : ''}</p>
+							<p style={{ fontSize: 30 }}>{cache.content ? cache.content.subtitle : ''}</p>
 						</div>
 					</div>
 
@@ -55,18 +87,24 @@ const Selector = () => {
 							marginBottom: 10,
 						}}
 					>
-						GOLDEN TYCOON
+						{cache ? cache.name : ''}
 					</p>
 
-					<div className="mini-button">PREMIUM</div>
+					<div className="flex-row">
+						{cache.content ? cache.content.badges.map((v, k) => {
+							return (
+								<div className="mini-button">{v}</div>
+							)
+						}) : ''}
+					</div>
 
-					<div className="button">ACHETER</div>
+					<div onClick={() => push(cache)} className="button">ACHETER</div>
 
 					<div className="flex-row" style={{ justifyContent: "flex-end" }}>
 						<div className="logo">
 							<img
 								style={{ width: 340, marginBottom: 10, marginRight: 10 }}
-								src="https://cdn.discordapp.com/attachments/749017234743099423/1015262543033405461/unknown.png"
+								src={cache.icon}
 							/>
 						</div>
 					</div>

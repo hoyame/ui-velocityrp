@@ -5,20 +5,14 @@ import "./style.scss";
 interface IPed {
 	title?: string;
 	message?: string;
-	button1?: string;
-	button2?: string;
-	button3?: string;
-	button4?: string;
+	buttons: any[];
 }
 
 const Ped = () => {
 	const [state, setState] = useState({
 		title: "",
 		message: "",
-		button1: "",
-		button2: "",
-		button3: "",
-		button4: "",
+		buttons: [],
 	});
 
 	const close = () => {
@@ -60,7 +54,9 @@ const Ped = () => {
 
 	return (
 		<div id="ped">
-			<div style={{ position: "absolute", left: 5, bottom: 10, display: "flex", flexDirection: "column", alignItems: "flex-end" }}>
+			<div
+				style={{ position: "absolute", right: 7.5, top: 10, display: "flex", flexDirection: "column", alignItems: "flex-end" }}
+			>
 				<div style={{ height: 60, width: 200, display: "flex", alignItems: "center", justifyContent: "center" }}>
 					<div
 						style={{
@@ -83,19 +79,9 @@ const Ped = () => {
 				</div>
 			</div>
 
-			<img
-				style={{
-					position: "absolute",
-					top: 15,
-					right: 15,
-					width: 55,
-					opacity: 1,
-				}}
-				src="https://cdn.discordapp.com/attachments/749017234743099423/1014504170100887552/256X256_d1.png"
-			/>
 
 			<div className="intitle">
-				<p className="title">{state.title}</p>
+				{/* <p className="title">{state.title}</p> */}
 			</div>
 
 			<div className="content">
@@ -121,30 +107,73 @@ const Ped = () => {
 							</foreignObject>
 						</svg>
 					)}
+
 					<div className="flex-row" style={{ marginBottom: 15, justifyContent: "space-between", width: 590 }}>
-						{state.button1 && (
+						{state.buttons[0] && (
 							<div onClick={() => push(1)} className="button">
-								<p style={{ marginLeft: 25 }}>{state.button1}</p>
+								<p style={{ marginLeft: 25 }}>{state.buttons[0]}</p>
 							</div>
 						)}
 
-						{state.button2 && (
+						{state.buttons[1] && (
 							<div onClick={() => push(2)} className="button">
-								<p style={{ marginLeft: 25 }}>{state.button2}</p>
+								<p style={{ marginLeft: 25 }}>{state.buttons[1]}</p>
 							</div>
 						)}
 					</div>
 
-					<div className="flex-row" style={{ justifyContent: "space-between", width: 590 }}>
-						{state.button3 && (
+					<div className="flex-row" style={{ marginBottom: 15, justifyContent: "space-between", width: 590 }}>
+						{state.buttons[2] && (
 							<div onClick={() => push(3)} className="button">
-								<p style={{ marginLeft: 25 }}>{state.button3}</p>
+								<p style={{ marginLeft: 25 }}>{state.buttons[2]}</p>
 							</div>
 						)}
 
-						{state.button4 && (
+						{state.buttons[3] && (
 							<div onClick={() => push(4)} className="button">
-								<p style={{ marginLeft: 25 }}>{state.button4}</p>
+								<p style={{ marginLeft: 25 }}>{state.buttons[3]}</p>
+							</div>
+						)}
+					</div>
+
+					<div className="flex-row" style={{ marginBottom: 15, justifyContent: "space-between", width: 590 }}>
+						{state.buttons[4] && (
+							<div onClick={() => push(5)} className="button">
+								<p style={{ marginLeft: 25 }}>{state.buttons[4]}</p>
+							</div>
+						)}
+
+						{state.buttons[5] && (
+							<div onClick={() => push(6)} className="button">
+								<p style={{ marginLeft: 25 }}>{state.buttons[5]}</p>
+							</div>
+						)}
+					</div>
+					
+					<div className="flex-row" style={{ marginBottom: 15, justifyContent: "space-between", width: 590 }}>
+						{state.buttons[6] && (
+							<div onClick={() => push(7)} className="button">
+								<p style={{ marginLeft: 25 }}>{state.buttons[4]}</p>
+							</div>
+						)}
+
+						{state.buttons[7] && (
+							<div onClick={() => push(8)} className="button">
+								<p style={{ marginLeft: 25 }}>{state.buttons[5]}</p>
+							</div>
+						)}
+					</div>
+
+					<div className="flex-row" style={{ marginBottom: 15, justifyContent: "space-between", width: 590 }}>
+						{state.buttons[8] && (
+							<div onClick={() => push(9)} className="button">
+								<p style={{ marginLeft: 25 }}>{state.buttons[4]}</p>
+							</div>
+						)}
+
+						{state.buttons[9] && (
+							<div onClick={() => push(10)} className="button">
+								<p style={{ marginLeft: 25 }}>{state.buttons[5]}</p>
 							</div>
 						)}
 					</div>

@@ -8,7 +8,7 @@ export abstract class Inventory {
 		onNet("hoyame:openInventory", (data: any) => this.open(data));
 		onNet("hoyame:updateInventory", (data: any) => this.update(data));
 		RegisterCommand("openInventory", (arg: any) => this.open(arg), false);
-		Nui.RegisterCallback("interact", (arg: any, data: any) => this.interact(arg, data));
+		Nui.RegisterCallback("interact", (arg: any) => this.interact(arg));
 	}
 
 	public static async open(data: any) {

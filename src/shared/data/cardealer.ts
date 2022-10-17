@@ -3,6 +3,7 @@ export const CardealerData = {
 		["adder", "Adder", 500000, "super"],
 		["akuma", "Akuma", 102000, "motorcycles"],
 		["alpha", "Alpha", 142500, "sports"],
+		["thrax", "Thrax", 142500, "sports"],
 		["asbo", "Asbo", 68000, "compacts"],
 		["asea", "Asea", 18750, "sedans"],
 		["autarch", "Autarch", 900000, "super"],

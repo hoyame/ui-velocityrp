@@ -11,6 +11,13 @@ const Store = () => {
 	const [routePrimary, setRoutePrimary] = useState("case");
 
 	const history = useHistory();
+
+	const onMessage = (event: any) => {
+		if (event.data.type == "store") {
+			setCoins(event.data.coins);
+		}
+	};
+
 	const close = () => {
 		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/close`, {
 			method: "POST",
@@ -200,12 +207,12 @@ const Store = () => {
 								<div style={{ marginBottom: 25 }} className="flex-row">
 									<div style={{ marginRight: 35 }}>
 										<p style={{ fontSize: 25, marginBottom: -5 }}>130 KG</p>
-										<p style={{ fontSize: 15, color: "rgba(255, 255, 255, 0.66)" }}>LVL 4</p>
+										<p style={{ fontSize: 15, color: "rgba(255, 255, 255, 0.66)" }}>LVL 2</p>
 									</div>
 
 									<div>
 										<p style={{ fontSize: 25, marginBottom: -5 }}>80 KG</p>
-										<p style={{ fontSize: 15, color: "rgba(255, 255, 255, 0.66)" }}>LVL 3</p>
+										<p style={{ fontSize: 15, color: "rgba(255, 255, 255, 0.66)" }}>LVL 1</p>
 									</div>
 								</div>
 
