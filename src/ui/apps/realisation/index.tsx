@@ -6,7 +6,7 @@ import "./style.scss";
 const Realisations = () => {
 	const history = useHistory();
 	const close = () => {
-		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/close`, {
+		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/closerealisation`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

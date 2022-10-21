@@ -9,8 +9,10 @@ export abstract class Store {
 	public static data = {};
 
 	public static async initialize() {
-		Nui.RegisterCallback("leave", () => this.close());
-		Nui.RegisterCallback("interact", (action: string) => this.interact(action));
+		Nui.RegisterCallback("leavestore", () => this.close());
+		Nui.RegisterCallback("interactstore", (action: string) => this.interact(action));
+		Nui.RegisterCallback("buystoreveh", (action: any) => this.buystoreveh(action));
+		Nui.RegisterCallback("trystoreveh", (action: any) => this.trystoreveh(action));
 		
 		onNet("hoyame:store:open", (coins: number, code: number) => this.open(coins, code))
 		onNet("hoyame:store:close", () => this.close());
@@ -35,6 +37,19 @@ export abstract class Store {
 			},
 			false
 		);
+	}
+
+	public static buystoreveh(veh: any) {
+		console.log('buy')
+		console.log(veh)
+
+		emitNet('hoyame:store:t9', veh.model, veh.price, veh.name)
+		this.close();
+	}
+
+	public static trystoreveh(veh: any) {
+		console.log('try')
+		console.log(veh)
 	}
 
 	public static interact(action: string) {

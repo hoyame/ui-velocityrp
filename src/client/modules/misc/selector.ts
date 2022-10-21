@@ -16,8 +16,8 @@ export abstract class Selector {
     private static cacheCb: any = null;
 
     public static async initialize() {
-		Nui.RegisterCallback("close", () => this.close());
-		Nui.RegisterCallback("pushSelectorà", (e: string) => this.push(e));
+		Nui.RegisterCallback("closeselector", () => this.close());
+		Nui.RegisterCallback("pushSelectorselector", (e: string) => this.push(e));
     }
 
     public static async open(menu: ISelector) {

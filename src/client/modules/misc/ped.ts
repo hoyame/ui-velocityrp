@@ -23,8 +23,8 @@ export abstract class Ped {
 	};
 
 	public static async initialize() {
-		Nui.RegisterCallback("close", () => this.close());
-		Nui.RegisterCallback("push", (e: string) => this.push(e));
+		Nui.RegisterCallback("closeped", () => this.close());
+		Nui.RegisterCallback("pushped", (e: string) => this.push(e));
 		onNet("hoyame:createPedMenu", (data: any) => this.open(data));
 
 		RegisterCommand(

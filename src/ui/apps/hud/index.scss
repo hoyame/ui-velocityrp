@@ -100,10 +100,12 @@
 		margin: 0;
 	}
 
+
 	.menu {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
+		align-items: center;
 
 		position: absolute;
 		left: 12.5px;
@@ -157,3 +159,4 @@
 	right: 0;
 	bottom: 0;
 }
+

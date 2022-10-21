@@ -12,7 +12,7 @@ const Menu = (props?: IInteractionMenu) => {
 	const [input, setInput] = useState("");
 
 	const close = () => {
-		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/close`, {
+		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/closeinteraction`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -23,7 +23,7 @@ const Menu = (props?: IInteractionMenu) => {
 	};
 
 	const push = () => {
-		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/push`, {
+		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/pushinteraction`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -81,7 +81,7 @@ const MenuList = (props?: IInteractionMenu) => {
 	const [input, setInput] = useState("");
 
 	const close = () => {
-		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/close`, {
+		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/closeinteraction`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -92,7 +92,7 @@ const MenuList = (props?: IInteractionMenu) => {
 	};
 
 	const push = () => {
-		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/push`, {
+		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/pushinteraction`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

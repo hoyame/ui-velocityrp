@@ -6,7 +6,7 @@ import "./style.scss";
 const Daily = () => {
 	const history = useHistory();
 	const close = () => {
-		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/close`, {
+		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/closedaily`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

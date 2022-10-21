@@ -28,7 +28,7 @@ const Context = () => {
 	};
 
 	const close = () => {
-		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/close`, {
+		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/closecontext`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -39,7 +39,7 @@ const Context = () => {
 	};
 
 	const onClick = (id: number) => {
-		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/onClick`, {
+		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/onClickcontext`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

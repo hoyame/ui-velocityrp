@@ -16,8 +16,8 @@ export abstract class Interaction {
 	};
 
 	public static async initialize() {
-		Nui.RegisterCallback("close", () => this.close());
-		Nui.RegisterCallback("push", (e: number) => this.push(e));
+		Nui.RegisterCallback("closeinteraction", () => this.close());
+		Nui.RegisterCallback("pushinteraction", (e: number) => this.push(e));
 		onNet("hoyame:createInteractionMenu", (data: any) => this.open(data));
 	}
 

@@ -20,43 +20,136 @@
     ],
 
     "vehicles": [
-        ["tmaxDX", "T-Max", 1000, "mod_vehicles"],
-        ["serv_electricscooter", "Trotinette", 1000, "mod_vehicles"],
-        ["golf7r", "Golf 7R", 1500, "mod_vehicles"],
-        ["urus", "Urus", 2500, "mod_vehicles"],
-        ["x6m", "BMW X6M", 2500, "mod_vehicles"],
-        ["bmwm8", "BMW M8", 3500, "mod_vehicles"],
-        ["rs7r", "Audi RS7R", 3000, "mod_vehicles"],
-        ["rs6abtp", "Audi RS6 ABT", 3000, "mod_vehicles"],
-        ["rs615", "Audi RS6 2015", 3000, "mod_vehicles"],
-        ["gtr", "Nissan GTR", 3000, "mod_vehicles"],
-        ["rs318", "Audi RS3 2018", 1500, "mod_vehicles"],
-        ["rmodbugatti", "Bugatti", 4500, "mod_vehicles"],
-        ["911venom", "911 Venom", 2500, "mod_vehicles"],
-        ["rmodmustang", "Mustang", 2500, "mod_vehicles"],
-        ["rmodskyline34", "Nissan Skyline R34", 3500, "mod_vehicles"],
-        ["brabus800", "Brabus 800", 2700, "mod_vehicles"],
-        ["m4c", "BMW M4 CS", 2500, "mod_vehicles"],
-        ["m5f90", "BMW M5 F90", 3000, "mod_vehicles"],
-        ["exc530sm", "KTM EXC 530", 1500, "mod_vehicles"],
-        ["rmodgt63", "Mercedes AMG GT63S", 3500, "mod_vehicles"],
-        
-        ["ltrstar", "Suzuki 450 Ltr", 1850, "mod_vehicles"],
-        ["cla45sb2", "Mercedes Class A45 Break", 2300, "mod_vehicles"],
-        ["evovaris", "Mistubishi Evo", 1850, "mod_vehicles"],
-        ["yz450f", "450 YZF", 1250, "mod_vehicles"],
-        ["sl65bs", "Mercedes Sl65", 2350, "mod_vehicles"],
-        ["topcar911", "Porche 911", 2600, "mod_vehicles"],
-        ["bmci", "Bmw M5", 1800, "mod_vehicles"],
-        ["jesko2020x", "Koenigsegg Gemera", 1750, "mod_vehicles"],
-        ["amggtsmansory", "Mercedes Amg Gtr", 3000, "mod_vehicles"],
-        ["19S63", "Mercedes C63s Brabus", 3500, "mod_vehicles"],
-        ["terzo", "Lamborghini terzo", 3200, "mod_vehicles"],
-        ["s65f", "Mercedes classe S", 3150, "mod_vehicles"],
-        ["rmodmartin", "Aston Martin DB11", 3400, "mod_vehicles"],
-        ["exor", "Chevrolet ZL1", 2800, "mod_vehicles"],
-        ["ursa", "Porsche Macan 2018", 3500, "mod_vehicles"],
-        ["zx10r", "Kawasaki ZX10R", 1500, "mod_vehicles"]
+        {
+				
+            "name": "350z",
+            "model": "350z",
+            "price": 1500,
+            "content": {
+                "maxSpeed": "260 km/h",
+                "fuel": "83L"
+            }
+        },
+        {
+            
+            "name": "Supra Pandem",
+            "model": "suprapandem",
+            "price": 1500,
+            "content": {
+                "maxSpeed": "260 km/h",
+                "fuel": "83L"
+            }
+        },
+        {
+            
+            "name": "Skyline",
+            "model": "skyline34",
+            "price": 1500,
+            "content": {
+                "maxSpeed": "260 km/h",
+                "fuel": "83L"
+            }
+        },
+        {
+            
+            "name": "BMW E34",
+            "model": "me34",
+            "price": 1500,
+            "content": {
+                "maxSpeed": "260 km/h",
+                "fuel": "83L"
+            }
+        },
+        {
+            
+            "name": "LP 670",
+            "model": "lp670",
+            "price": 1500,
+            "content": {
+                "maxSpeed": "260 km/h",
+                "fuel": "83L"
+            }
+        },
+        {
+            
+            "name": "240 SX",
+            "model": "240sx",
+            "price": 1500,
+            "content": {
+                "maxSpeed": "260 km/h",
+                "fuel": "83L"
+            }
+        },
+        {
+            
+            "name": "RS6 R",
+            "model": "rs6r",
+            "price": 1500,
+            "content": {
+                "maxSpeed": "260 km/h",
+                "fuel": "83L"
+            }
+        },
+        {
+            
+            "name": "SVR Sport",
+            "model": "svrsport",
+            "price": 1500,
+            "content": {
+                "maxSpeed": "260 km/h",
+                "fuel": "83L"
+            }
+        },
+        {
+            
+            "name": "R8 Widebody",
+            "model": "r8widebody",
+            "price": 1500,
+            "content": {
+                "maxSpeed": "260 km/h",
+                "fuel": "83L"
+            }
+        },
+        {
+            
+            "name": "Porche 918",
+            "model": "porsche918",
+            "price": 1500,
+            "content": {
+                "maxSpeed": "260 km/h",
+                "fuel": "83L"
+            }
+        },
+        {
+            
+            "name": "Golf MK7",
+            "model": "golfmk7",
+            "price": 1500,
+            "content": {
+                "maxSpeed": "260 km/h",
+                "fuel": "83L"
+            }
+        },
+        {
+            
+            "name": "C63 Amg",
+            "model": "c63amg",
+            "price": 1500,
+            "content": {
+                "maxSpeed": "260 km/h",
+                "fuel": "83L"
+            }
+        },
+        {
+            
+            "name": "M8 C",
+            "model": "m8competition",
+            "price": 1500,
+            "content": {
+                "maxSpeed": "260 km/h",
+                "fuel": "83L"
+            }
+        }
     ],
 
     "cases": {

@@ -63,8 +63,8 @@ export abstract class Context {
 	public static async initialize() {
 		console.log("[Context] Initialized");
 
-		Nui.RegisterCallback("close", () => this.close());
-		Nui.RegisterCallback("onClick", (id: number) => this.onClick(id));
+		Nui.RegisterCallback("closecontext", () => this.close());
+		Nui.RegisterCallback("onClickcontext", (id: number) => this.onClick(id));
 
 		onNet("hoyame:createContextMenu", (data: any) => Context.registerMenu(data));
 		onNet("hoyame:openMenuDirectly", (data: any) => Context.openMenuDirectly(data));

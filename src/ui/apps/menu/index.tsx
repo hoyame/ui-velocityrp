@@ -6,7 +6,7 @@ import "./style.scss";
 const Menu = () => {
 	const history = useHistory();
 	const close = () => {
-		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/close`, {
+		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/closemenu`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

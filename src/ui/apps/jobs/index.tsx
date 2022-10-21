@@ -32,7 +32,7 @@ const Jobs = () => {
     const [selected, setSelected] = useState<IJob>({});
 
 	const itineraire = (data: any) => {
-		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/itineraire`, {
+		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/itinerairejobs`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

@@ -16,7 +16,7 @@ const Ped = () => {
 	});
 
 	const close = () => {
-		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/close`, {
+		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/closeped`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -27,7 +27,7 @@ const Ped = () => {
 	};
 
 	const push = (idButton: number) => {
-		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/push`, {
+		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/pushped`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

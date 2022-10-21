@@ -19,7 +19,7 @@ const Inventory = () => {
 	const history = useHistory();
 
 	const close = () => {
-		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/close`, {
+		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/closeinventory`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -30,7 +30,7 @@ const Inventory = () => {
 	};
 
 	const interact = (action: any, data: any) => {
-		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/interact`, {
+		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/interactinventory`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

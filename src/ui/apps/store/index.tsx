@@ -19,7 +19,7 @@ const Store = () => {
 	};
 
 	const close = () => {
-		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/close`, {
+		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/closestore`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -30,7 +30,7 @@ const Store = () => {
 	};
 
 	const interact = (action: string) => {
-		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/interact`, {
+		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/interactstore`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -110,7 +110,7 @@ const Store = () => {
 			<div className="content">
 				<div className="groupe-1">
 					<div className="flex-row">
-						<div className="vehicles">
+						<div className="vehicles" onClick={() => history.push('/cardealer')}>
 							<div className="flex-row" style={{ width: "100%", justifyContent: "space-between" }}>
 								<div>
 									<p>VOITURE</p>
@@ -243,10 +243,10 @@ const Store = () => {
 				</div>
 
 				<div className="vip" onClick={() => interact("vip")}>
-					<p style={{ marginBottom: 10 }}>STATUS PREMIUM</p>
+					<p style={{ marginBottom: 10 }}>VIP PLATINUM</p>
 
 					<svg
-						style={{ marginBottom: 40 }}
+						style={{ marginBottom: 30 }}
 						width="107"
 						height="35"
 						viewBox="0 0 107 35"
@@ -266,7 +266,7 @@ const Store = () => {
 								<rect x="0.173889" width="23" height="5" rx="2.5" fill="#FED643" />
 							</svg>
 
-							<p style={{ marginLeft: 7.5, fontSize: 15 }}>Posseder jusqu'a 3 maisons</p>
+							<p style={{ marginLeft: 7.5, fontSize: 15 }}>15 tenues</p>
 						</div>
 
 						<div className="elem">
@@ -274,7 +274,7 @@ const Store = () => {
 								<rect x="0.173889" width="23" height="5" rx="2.5" fill="#FED643" />
 							</svg>
 
-							<p style={{ marginLeft: 7.5, fontSize: 15 }}>Posseder jusqu'a 3 maisons</p>
+							<p style={{ marginLeft: 7.5, fontSize: 15 }}>Limite de 50 véhicules</p>
 						</div>
 
 						<div className="elem">
@@ -282,7 +282,7 @@ const Store = () => {
 								<rect x="0.173889" width="23" height="5" rx="2.5" fill="#FED643" />
 							</svg>
 
-							<p style={{ marginLeft: 7.5, fontSize: 15 }}>Posseder jusqu'a 3 maisons</p>
+							<p style={{ marginLeft: 7.5, fontSize: 15 }}>6 maison/propriétés</p>
 						</div>
 
 						<div className="elem">
@@ -290,7 +290,7 @@ const Store = () => {
 								<rect x="0.173889" width="23" height="5" rx="2.5" fill="#FED643" />
 							</svg>
 
-							<p style={{ marginLeft: 7.5, fontSize: 15 }}>Posseder jusqu'a 3 maisons</p>
+							<p style={{ marginLeft: 7.5, fontSize: 15 }}>Sac a dos niveau 3</p>
 						</div>
 
 						<div className="elem">
@@ -298,7 +298,7 @@ const Store = () => {
 								<rect x="0.173889" width="23" height="5" rx="2.5" fill="#FED643" />
 							</svg>
 
-							<p style={{ marginLeft: 7.5, fontSize: 15 }}>Posseder jusqu'a 3 maisons</p>
+							<p style={{ marginLeft: 7.5, fontSize: 15 }}>Drift Mode</p>
 						</div>
 
 						<div className="elem">
@@ -306,7 +306,7 @@ const Store = () => {
 								<rect x="0.173889" width="23" height="5" rx="2.5" fill="#FED643" />
 							</svg>
 
-							<p style={{ marginLeft: 7.5, fontSize: 15 }}>Posseder jusqu'a 3 maisons</p>
+							<p style={{ marginLeft: 7.5, fontSize: 15 }}>Salaire x2</p>
 						</div>
 
 						<div className="elem">
@@ -314,7 +314,7 @@ const Store = () => {
 								<rect x="0.173889" width="23" height="5" rx="2.5" fill="#FED643" />
 							</svg>
 
-							<p style={{ marginLeft: 7.5, fontSize: 15 }}>Posseder jusqu'a 3 maisons</p>
+							<p style={{ marginLeft: 7.5, fontSize: 15 }}>Et d'autres avantages</p>
 						</div>
 
 						<img
