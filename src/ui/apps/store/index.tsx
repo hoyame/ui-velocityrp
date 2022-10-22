@@ -141,7 +141,7 @@ const Store = () => {
 								/>
 							</div>
 
-							<div className="objets" style={{ paddingRight: 0 }}>
+							<div className="objets" style={{ paddingRight: 0 }} onClick={() => history.push('/items')}>
 								<div className="box-text" style={{ marginRight: 65 }}>
 									<p style={{ fontWeight: 300 }}>BOUTIQUE</p>
 									<p style={{ fontWeight: 0 }}>AVEC DES PRIX</p>

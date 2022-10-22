@@ -21,6 +21,7 @@ import Daily from "./apps/daily";
 import Realisations from "./apps/realisation";
 import Jobs from "./apps/jobs";
 import Gasolina from "./apps/gasolina";
+import Items from "./apps/items";
 
 const App: React.FC = () => {
 	const history = useHistory();
@@ -57,6 +58,9 @@ const App: React.FC = () => {
 					<Route path="/realisations" component={Realisations} />
 					<Route path="/jobs" component={Jobs} />
 					<Route path="/gasolina" component={Gasolina} />
+					<Route path="/items" component={Items} />
+
+					
 				</Switch>
 			</div>
 
