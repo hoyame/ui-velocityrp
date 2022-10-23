@@ -153,8 +153,9 @@ export abstract class Context {
 	}
 
 	private static backMenu() {
-		this.OpenedMenu = this.BackMenu;
+		console.log("this.BackMenu")
 		this.OpenedMenu.onOpen && this.OpenedMenu.onOpen();
+		console.log(this.BackMenu)
 		this.sendNUI(this.BackMenu);
 	}
 
@@ -166,7 +167,6 @@ export abstract class Context {
 	}
 
 	private static sendNUI(menu: IContextMenu) {
-		this.BackMenu = this.OpenedMenu;
 		Nui.SendMessage({ type: "context", data: menu, dark: GetClockHours() < 21 && GetClockHours() > 6 });
 		Nui.SetFocus(true, true, false);
 		SetMouseCursorSprite(0);
@@ -211,6 +211,7 @@ export abstract class Context {
 	}) {
 		this.Menus.map((v: IContextMenu, k) => {
 			if (v.condition(data)) {
+				this.BackMenu = this.OpenedMenu;
 				this.OpenedMenu = v;
 				this.OpenedMenu.onOpen && this.OpenedMenu.onOpen();
 				SetCurrentPedWeapon(PlayerPedId(), GetHashKey("WEAPON_UNARMED"), true);
@@ -222,6 +223,7 @@ export abstract class Context {
 	private static async openMenuDirectly(menu: IContextMenu) {
 		Nui.SendMessage({ path: "context" });
 		await Delay(200);
+		this.BackMenu = this.OpenedMenu;
 		this.OpenedMenu = menu;
 		this.sendNUI(menu);
 	}
