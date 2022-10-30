@@ -4,7 +4,7 @@ import { Nui } from "../../core/nui";
 import { hexToRgb, TriggerServerCallbackAsync } from "../../core/utils";
 import Vehicle from "../../core/vehicle";
 
-export abstract class Cardealer {
+export abstract class OldCardealer {
     private static data: any;
     private static cam: any;
     private static lastVeh: any;
@@ -45,7 +45,7 @@ export abstract class Cardealer {
     }
 
     public static async open(shop: string) {
-        Nui.SendMessage({ path: "cardealer" });
+        Nui.SendMessage({ path: "old-cardealer" });
         Nui.SendMessage({ type: "cardealer", data: this.data, shop: shop });
         this.shop = shop;
 

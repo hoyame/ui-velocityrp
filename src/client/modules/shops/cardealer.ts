@@ -26,10 +26,10 @@ export abstract class Cardealer {
 			this.disableCam();
 		});
 
-		on("hoyame:cardealer:open", (shop: string) => {
-			this.open(shop);
-			this.enableCam(shop);
-		});
+		// on("hoyame:cardealer:open", (shop: string) => {
+		// 	this.open(shop);
+		// 	this.enableCam(shop);
+		// });
 	}
 
 	public static async tp() {
