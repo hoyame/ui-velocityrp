@@ -50,7 +50,9 @@ export abstract class Store {
 	}
 
 	public static trystoreveh(veh: any) {
+		console.log('eggggggggggggggggg')
 		emit('Velocityrp:testcar', veh.model)
+		this.close();
 	}
 
 	public static interact(action: string) {

@@ -24,6 +24,7 @@ export abstract class Store {
         Nui.RegisterCallback("buyStoreVehicles", (data: any) => this.buyStoreVehicles(data));
         Nui.RegisterCallback("buyCase", () => this.buyCase());
 		Nui.RegisterCallback("buystoreveh", (action: any) => this.buystoreveh(action));
+		Nui.RegisterCallback("trystoreveh", (action: any) => this.trystoreveh(action));
 
         onNet('hoyame:store:close', () => this.close());
 
@@ -45,6 +46,12 @@ export abstract class Store {
         RegisterKeyMapping('boutique', 'Boutique', 'keyboard', 'f1')
     }
 
+    public static trystoreveh(veh: any) {
+        console.log('eggggggggggggggggg')
+        emit('Velocityrp:testcar', veh.model)
+        this.close();
+    }
+    
     private static buyCase() {
         emitNet('hoyame:store:buyCase');
     }
