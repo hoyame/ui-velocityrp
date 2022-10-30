@@ -47,11 +47,10 @@ export abstract class Store {
     }
 
     public static trystoreveh(veh: any) {
-        console.log('eggggggggggggggggg')
         emit('Velocityrp:testcar', veh.model)
         this.close();
     }
-    
+
     private static buyCase() {
         emitNet('hoyame:store:buyCase');
     }
