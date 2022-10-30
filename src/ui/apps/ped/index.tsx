@@ -16,7 +16,7 @@ const Ped = () => {
 	});
 
 	const close = () => {
-		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/closeped`, {
+		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/leaveped`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

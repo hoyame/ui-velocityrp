@@ -19,7 +19,7 @@ const Inventory = () => {
 	const history = useHistory();
 
 	const close = () => {
-		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/closeinventory`, {
+		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/leaveinventory`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -64,7 +64,7 @@ const Inventory = () => {
 		if (event.keyCode == 27) close();
 	});
 	document.addEventListener("keydown", function (event) {
-		if (event.keyCode == 8) back();
+		// if (event.keyCode == 8) back();
 	});
 	const [selected, setSelected] = useState("");
 

@@ -5,19 +5,44 @@ import './style.scss'
 const Items = () => {
     const history = useHistory();
 	const [selected, setSelected] = useState("");
+    const [items, setItems] = useState([])
+	const [coins, setCoins] = useState(0)
+	
+	const onMessage = (event: any) => {
+		if (event.data.type == "items") {
+			setItems(event.data.items)
+			setCoins(event.data.subdata.coins)
+		}
+	};
+	
+	React.useEffect(() => {
+		window.addEventListener("message", onMessage);
+		return () => window.removeEventListener("message", onMessage);
+	});
 
-    
-	const interact = (action: any, data: any) => {
-		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/interactinventory`, {
+	const back = () => {
+		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/backitems`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 			},
 
-			body: JSON.stringify({ action: action, data: data }),
+			body: JSON.stringify(true),
 		});
 	};
     
+	const onClick = (name: string) => {
+		console.log(name)
+		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/onClickitems`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+
+			body: JSON.stringify(name),
+		});
+	};
+
     const Item = props => {
 		const [draggable, setDraggable] = useState(false);
 
@@ -163,7 +188,7 @@ const Items = () => {
 													</div>
 
 													<div className="flex-row" style={{ height: 100, width: "100%" }}>
-														<div className="button" onClick={() => interact("use", props.item)}>
+														<div className="button" onClick={() => onClick(props.name)}>
 															<img
 																style={{
 																	height: 25,
@@ -194,7 +219,7 @@ const Items = () => {
             <header>
                 <div style={{ alignItems: "center", justifyContent: "space-between", width: "100%" }} className="flex-row header">
                     <div className="flex-row">
-                        <svg onClick={() => history.push('/store')} style={{marginTop: 2.5}} className="backButton" width="200" height="50" viewBox="0 0 200 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg onClick={() => back()} style={{marginTop: 2.5}} className="backButton" width="200" height="50" viewBox="0 0 200 62" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect x="1" y="1" width="198" height="60" rx="30" stroke="white" stroke-opacity="0.16" stroke-width="2"/>
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M68.125 31C68.125 31.2486 68.0262 31.4871 67.8504 31.6629C67.6746 31.8387 67.4361 31.9375 67.1875 31.9375L45.0756 31.9375L50.9762 37.8362C51.1523 38.0122 51.2512 38.251 51.2512 38.5C51.2512 38.7489 51.1523 38.9877 50.9762 39.1637C50.8002 39.3397 50.5615 39.4386 50.3125 39.4386C50.0635 39.4386 49.8248 39.3397 49.6487 39.1637L42.1487 31.6637C42.0614 31.5766 41.9922 31.4732 41.9449 31.3593C41.8977 31.2454 41.8733 31.1233 41.8733 31C41.8733 30.8766 41.8977 30.7545 41.9449 30.6406C41.9922 30.5268 42.0614 30.4233 42.1487 30.3362L49.6488 22.8362C49.8248 22.6602 50.0635 22.5613 50.3125 22.5613C50.5615 22.5613 50.8002 22.6602 50.9762 22.8362C51.1523 23.0123 51.2512 23.251 51.2512 23.5C51.2512 23.7489 51.1523 23.9877 50.9762 24.1637L45.0756 30.0625L67.1875 30.0625C67.4361 30.0625 67.6746 30.1612 67.8504 30.3371C68.0262 30.5129 68.125 30.7513 68.125 31Z" fill="white"/>
                             <path d="M89.26 40V23.8H92.52C93.6 23.8 94.4933 23.9467 95.2 24.24C95.9067 24.52 96.4267 24.98 96.76 25.62C97.1067 26.2467 97.28 27.0733 97.28 28.1C97.28 28.7267 97.2133 29.3 97.08 29.82C96.9467 30.3267 96.7333 30.76 96.44 31.12C96.1467 31.4667 95.76 31.72 95.28 31.88L97.58 40H95.4L93.28 32.4H91.52V40H89.26ZM91.52 30.78H92.38C93.02 30.78 93.54 30.7 93.94 30.54C94.34 30.38 94.6333 30.1067 94.82 29.72C95.0067 29.3333 95.1 28.7933 95.1 28.1C95.1 27.1533 94.9267 26.4733 94.58 26.06C94.2333 25.6333 93.5467 25.42 92.52 25.42H91.52V30.78ZM99.6311 40V23.8H105.911V25.48H101.891V30.84H105.151V32.44H101.891V38.38H105.951V40H99.6311ZM109.556 40V25.48H106.816V23.8H114.476V25.48H111.816V40H109.556ZM120.177 40.18C119.084 40.18 118.211 39.9667 117.557 39.54C116.904 39.1133 116.437 38.5067 116.157 37.72C115.877 36.92 115.737 35.9867 115.737 34.92V28.78C115.737 27.7133 115.877 26.8 116.157 26.04C116.451 25.2667 116.917 24.68 117.557 24.28C118.211 23.8667 119.084 23.66 120.177 23.66C121.271 23.66 122.137 23.8667 122.777 24.28C123.417 24.6933 123.877 25.28 124.157 26.04C124.451 26.8 124.597 27.7133 124.597 28.78V34.94C124.597 35.9933 124.451 36.9133 124.157 37.7C123.877 38.4867 123.417 39.1 122.777 39.54C122.137 39.9667 121.271 40.18 120.177 40.18ZM120.177 38.4C120.777 38.4 121.231 38.28 121.537 38.04C121.844 37.7867 122.051 37.44 122.157 37C122.264 36.5467 122.317 36.02 122.317 35.42V28.32C122.317 27.72 122.264 27.2067 122.157 26.78C122.051 26.34 121.844 26.0067 121.537 25.78C121.231 25.54 120.777 25.42 120.177 25.42C119.577 25.42 119.117 25.54 118.797 25.78C118.491 26.0067 118.284 26.34 118.177 26.78C118.071 27.2067 118.017 27.72 118.017 28.32V35.42C118.017 36.02 118.071 36.5467 118.177 37C118.284 37.44 118.491 37.7867 118.797 38.04C119.117 38.28 119.577 38.4 120.177 38.4ZM130.999 40.18C129.825 40.18 128.925 39.9467 128.299 39.48C127.672 39.0133 127.245 38.36 127.019 37.52C126.792 36.6667 126.679 35.6733 126.679 34.54V23.8H128.839V34.64C128.839 35.3333 128.885 35.9667 128.979 36.54C129.072 37.1133 129.272 37.5667 129.579 37.9C129.899 38.2333 130.372 38.4 130.999 38.4C131.639 38.4 132.112 38.2333 132.419 37.9C132.725 37.5667 132.925 37.1133 133.019 36.54C133.112 35.9667 133.159 35.3333 133.159 34.64V23.8H135.299V34.54C135.299 35.6733 135.185 36.6667 134.959 37.52C134.732 38.36 134.305 39.0133 133.679 39.48C133.065 39.9467 132.172 40.18 130.999 40.18ZM137.678 40V23.8H140.938C142.018 23.8 142.911 23.9467 143.618 24.24C144.325 24.52 144.845 24.98 145.178 25.62C145.525 26.2467 145.698 27.0733 145.698 28.1C145.698 28.7267 145.631 29.3 145.498 29.82C145.365 30.3267 145.151 30.76 144.858 31.12C144.565 31.4667 144.178 31.72 143.698 31.88L145.998 40H143.818L141.698 32.4H139.938V40H137.678ZM139.938 30.78H140.798C141.438 30.78 141.958 30.7 142.358 30.54C142.758 30.38 143.051 30.1067 143.238 29.72C143.425 29.3333 143.518 28.7933 143.518 28.1C143.518 27.1533 143.345 26.4733 142.998 26.06C142.651 25.6333 141.965 25.42 140.938 25.42H139.938V30.78Z" fill="white"/>
@@ -211,7 +236,7 @@ const Items = () => {
 
                         <div className="solde">
                             <span>SOLDE</span>
-                            <p>{2} COINS</p>
+                            <p>{coins} COINS</p>
                         </div>
             
                         <svg style={{ margin: "0 10px" }} width="2" height="58" viewBox="0 0 2 58" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -228,16 +253,257 @@ const Items = () => {
                 </div>
             </header>
 
-            <div style={{padding: 17.5}}>
-                <Item count={1} img="https://cdn.discordapp.com/attachments/988139730203983915/1033066516440154212/unknown.png" name="Zebi" item={{
-                    name: 'Range Rower',
-                    count: 1,
-                    img: "https://cdn.discordapp.com/attachments/988139730203983915/1033066516440154212/unknown.png"
-                }} />
-     
+            <div style={{padding: 17.5, paddingBottom: 0, paddingTop: 5, display: "flex", flexDirection: "row"}}>
+				{
+					items && items[0] && (
+						<Item count={items[0].count} img={items[0].img} name={items[0].name} item={{
+							name: items[0].name,
+							count: items[0].count,
+							img: items[0].img
+						}} />   
+					)
+				}
 
+				{
+					items && items[1] && (
+						<Item count={items[1].count} img={items[1].img} name={items[1].name} item={{
+							name: items[1].name,
+							count: items[1].count,
+							img: items[1].img
+						}} />   
+					)
+				}
+
+				{
+					items && items[2] && (
+						<Item count={items[2].count} img={items[2].img} name={items[2].name} item={{
+							name: items[2].name,
+							count: items[2].count,
+							img: items[2].img
+						}} />   
+					)
+				}
+
+				{
+					items && items[3] && (
+						<Item count={items[3].count} img={items[3].img} name={items[3].name} item={{
+							name: items[3].name,
+							count: items[3].count,
+							img: items[3].img
+						}} />   
+					)
+				}
+
+				{
+					items && items[4] && (
+						<Item count={items[4].count} img={items[4].img} name={items[4].name} item={{
+							name: items[4].name,
+							count: items[4].count,
+							img: items[4].img
+						}} />   
+					)
+				}
+
+				{
+					items && items[5] && (
+						<Item count={items[5].count} img={items[5].img} name={items[5].name} item={{
+							name: items[5].name,
+							count: items[5].count,
+							img: items[5].img
+						}} />   
+					)
+				}
             </div>
 
+			<div style={{padding: 17.5, paddingBottom: 0, paddingTop: 5, display: "flex", flexDirection: "row"}}>
+			
+
+				{
+					items && items[6] && (
+						<Item count={items[6].count} img={items[6].img} name={items[6].name} item={{
+							name: items[6].name,
+							count: items[6].count,
+							img: items[6].img
+						}} />   
+					)
+				}
+
+				{
+					items && items[7] && (
+						<Item count={items[7].count} img={items[7].img} name={items[7].name} item={{
+							name: items[7].name,
+							count: items[7].count,
+							img: items[7].img
+						}} />   
+					)
+				}
+
+				{
+					items && items[8] && (
+						<Item count={items[8].count} img={items[8].img} name={items[8].name} item={{
+							name: items[8].name,
+							count: items[8].count,
+							img: items[8].img
+						}} />   
+					)
+				}
+
+				{
+					items && items[9] && (
+						<Item count={items[9].count} img={items[9].img} name={items[9].name} item={{
+							name: items[9].name,
+							count: items[9].count,
+							img: items[9].img
+						}} />   
+					)
+				}
+
+				{
+					items && items[5 + 5] && (
+						<Item count={items[5 + 5].count} img={items[5 + 5].img} name={items[5 + 5].name} item={{
+							name: items[5 + 5].name,
+							count: items[5 + 5].count,
+							img: items[5 + 5].img
+						}} />   
+					)
+				}
+
+				{
+					items && items[6 + 5] && (
+						<Item count={items[5 + 5].count} img={items[5 + 5].img} name={items[5 + 5].name} item={{
+							name: items[5 + 5].name,
+							count: items[5 + 5].count,
+							img: items[5 + 5].img
+						}} />   
+					)
+				}
+            </div>
+
+			<div style={{padding: 17.5, paddingBottom: 0, paddingTop: 5, display: "flex", flexDirection: "row"}}>
+
+				{
+					items && items[6+ 11] && (
+						<Item count={items[6+ 11].count} img={items[6+ 11].img} name={items[6+ 11].name} item={{
+							name: items[6+ 11].name,
+							count: items[6+ 11].count,
+							img: items[6+ 11].img
+						}} />   
+					)
+				}
+				
+				{
+					items && items[7+ 11] && (
+						<Item count={items[7+ 11].count} img={items[7+ 11].img} name={items[7+ 11].name} item={{
+							name: items[7+ 11].name,
+							count: items[7+ 11].count,
+							img: items[7+ 11].img
+						}} />   
+					)
+				}
+				
+				{
+					items && items[8+ 11] && (
+						<Item count={items[8+ 11].count} img={items[8+ 11].img} name={items[8+ 11].name} item={{
+							name: items[8+ 11].name,
+							count: items[8+ 11].count,
+							img: items[8+ 11].img
+						}} />   
+					)
+				}
+				
+				{
+					items && items[9+ 11] && (
+						<Item count={items[9+ 11].count} img={items[9+ 11].img} name={items[9+ 11].name} item={{
+							name: items[9+ 11].name,
+							count: items[9+ 11].count,
+							img: items[9+ 11].img
+						}} />   
+					)
+				}
+				
+				{
+					items && items[10+ 11] && (
+						<Item count={items[10+ 11].count} img={items[10+ 11].img} name={items[10+ 11].name} item={{
+							name: items[10+ 11].name,
+							count: items[10+ 11].count,
+							img: items[10+ 11].img
+						}} />   
+					)
+				}
+				
+				{
+					items && items[11+ 11] && (
+						<Item count={items[11+ 11].count} img={items[11+ 11].img} name={items[11+ 11].name} item={{
+							name: items[11+ 11].name,
+							count: items[11+ 11].count,
+							img: items[11+ 11].img
+						}} />   
+					)
+				}
+			</div>
+
+			<div style={{padding: 17.5, paddingBottom: 0, paddingTop: 5, display: "flex", flexDirection: "row"}}>
+
+				{
+					items && items[6+ 22] && (
+						<Item count={items[6+ 22].count} img={items[6+ 22].img} name={items[6+ 22].name} item={{
+							name: items[6+ 22].name,
+							count: items[6+ 22].count,
+							img: items[6+ 22].img
+						}} />   
+					)
+				}
+				
+				{
+					items && items[7+ 22] && (
+						<Item count={items[7+ 22].count} img={items[7+ 22].img} name={items[7+ 22].name} item={{
+							name: items[7+ 22].name,
+							count: items[7+ 22].count,
+							img: items[7+ 22].img
+						}} />   
+					)
+				}
+				
+				{
+					items && items[8+ 22] && (
+						<Item count={items[8+ 22].count} img={items[8+ 22].img} name={items[8+ 22].name} item={{
+							name: items[8+ 22].name,
+							count: items[8+ 22].count,
+							img: items[8+ 22].img
+						}} />   
+					)
+				}
+				
+				{
+					items && items[9+ 22] && (
+						<Item count={items[9+ 22].count} img={items[9+ 22].img} name={items[9+ 22].name} item={{
+							name: items[9+ 22].name,
+							count: items[9+ 22].count,
+							img: items[9+ 22].img
+						}} />   
+					)
+				}
+				
+				{
+					items && items[10+ 22] && (
+						<Item count={items[10+ 22].count} img={items[10+ 22].img} name={items[10+ 22].name} item={{
+							name: items[10+ 22].name,
+							count: items[10+ 22].count,
+							img: items[10+ 22].img
+						}} />   
+					)
+				}
+				
+				{
+					items && items[11+ 22] && (
+						<Item count={items[11+ 22].count} img={items[11+ 22].img} name={items[11+ 22].name} item={{
+							name: items[11+ 22].name,
+							count: items[11+ 22].count,
+							img: items[11+ 22].img
+						}} />   
+					)
+				}
+			</div>
         </div>
     )
 }

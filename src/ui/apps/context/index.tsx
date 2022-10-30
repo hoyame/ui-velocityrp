@@ -28,7 +28,7 @@ const Context = () => {
 	};
 
 	const close = () => {
-		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/closecontext`, {
+		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/leavecontext`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

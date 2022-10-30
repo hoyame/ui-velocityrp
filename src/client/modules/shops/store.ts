@@ -1,12 +1,14 @@
 import { Delay } from "../../../shared/utils/utils";
 import { Nui } from "../../core/nui";
 import { TriggerServerCallbackAsync } from "../../core/utils";
+import { Items } from "../misc/items";
 import { Notification } from "../misc/notifications";
 import { Selector } from "../misc/selector";
 import { Cardealer } from "./cardealer";
 
 export abstract class Store {
 	public static data = {};
+	public static coins = 0;
 
 	public static async initialize() {
 		Nui.RegisterCallback("leavestore", () => this.close());
@@ -14,7 +16,7 @@ export abstract class Store {
 		Nui.RegisterCallback("buystoreveh", (action: any) => this.buystoreveh(action));
 		Nui.RegisterCallback("trystoreveh", (action: any) => this.trystoreveh(action));
 		
-		onNet("hoyame:store:open", (coins: number, code: number) => this.open(coins, code))
+		onNet("hoyame:store:open", () => this.open())
 		onNet("hoyame:store:close", () => this.close());
 
 		// RegisterCommand(
@@ -57,6 +59,26 @@ export abstract class Store {
 
 		if (action == "starterpack") {
 			
+		} else if (action == "items") {
+			Items.open({
+				subdata: {
+					coins: this.coins
+				},
+				items: [
+					{
+						count: 1,
+						name: 'Voiture Range',
+						img: 'https://cdn.discordapp.com/attachments/988139730203983915/1033066516440154212/unknown.png',
+						onClick: () => console.log('f')
+					},
+					{
+						count: 1,
+						name: 'Voiture Rangen',
+						img: 'https://cdn.discordapp.com/attachments/988139730203983915/1033066516440154212/unknown.png',
+						onClick: () => console.log('g')
+					},
+				]
+			});
 		} else if (action == "backpack") {
 			Selector.open({
 				buttons: [
@@ -143,12 +165,15 @@ export abstract class Store {
 		}
 	}
 
- 	public static async open(coins: number, code: number) {
+ 	public static async open() {
+		const coins = await TriggerServerCallbackAsync("hoyame:store:getCoins");
+		const code = await TriggerServerCallbackAsync("hoyame:store:getCode");
+
+		this.coins = coins;
 		Nui.SendMessage({ path: "store" });
 		await Delay(30);
 		Nui.SendMessage({ type: "store", coins: coins, code: code });
 		Nui.SetFocus(true, true, false);
-		DisplayRadar(false);
 	}	
 
 	public static close() {

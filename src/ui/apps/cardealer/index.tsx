@@ -71,7 +71,9 @@ const ImgVehicles = {
 	"tmaxdx": tmaxdx,
 	"r1m": r1m,
 	"rx7": rx7,
-	"lc500lb": lc500lb
+	"lc500lb": lc500lb,
+
+	"camaro": "https"
 }
 
 import "./style.scss";
@@ -205,7 +207,7 @@ const CarDealer = (props: ICardealer) => {
 					state.vehicles.map((v, k) => {
 						return (
 							<li className={cache.name == v.name ? "voiture active" : "voiture"} onClick={() => setCache(v)}>
-								<img src={ImgVehicles[v.model]} />
+								<img src={ImgVehicles[v.model] || v.} />
 								<p className="nom">{v.name}</p>
 							</li>
 						)

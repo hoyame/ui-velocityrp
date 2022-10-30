@@ -6,7 +6,7 @@ import "./style.scss";
 const Realisations = () => {
 	const history = useHistory();
 	const close = () => {
-		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/closerealisation`, {
+		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/leaverealisation`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -24,7 +24,7 @@ const Realisations = () => {
 		if (event.keyCode == 27) close();
 	});
 	document.addEventListener("keydown", function (event) {
-		if (event.keyCode == 8) back();
+		// if (event.keyCode == 8) back();
 	});
 
 	const Component = () => {

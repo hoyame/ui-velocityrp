@@ -15,11 +15,17 @@ const Store = () => {
 	const onMessage = (event: any) => {
 		if (event.data.type == "store") {
 			setCoins(event.data.coins);
+			setCode(event.data.code);
 		}
 	};
 
+	React.useEffect(() => {
+		window.addEventListener("message", onMessage);
+		return () => window.removeEventListener("message", onMessage);
+	});
+
 	const close = () => {
-		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/closestore`, {
+		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/leavestore`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -47,9 +53,10 @@ const Store = () => {
 	document.addEventListener("keydown", function (event) {
 		if (event.keyCode == 27) close();
 	});
-	document.addEventListener("keydown", function (event) {
-		if (event.keyCode == 8) back();
-	});
+
+	// document.addEventListener("keydown", function (event) {
+	// 	// if (event.keyCode == 8) back();
+	// });
 
 	return (
 		<div id="store">
@@ -141,7 +148,7 @@ const Store = () => {
 								/>
 							</div>
 
-							<div className="objets" style={{ paddingRight: 0 }} onClick={() => history.push('/items')}>
+							<div className="objets" style={{ paddingRight: 0 }} onClick={() => interact('items')}>
 								<div className="box-text" style={{ marginRight: 65 }}>
 									<p style={{ fontWeight: 300 }}>BOUTIQUE</p>
 									<p style={{ fontWeight: 0 }}>AVEC DES PRIX</p>
@@ -179,7 +186,7 @@ const Store = () => {
 										/>
 									</svg>
 
-									<p style={{ fontSize: 15, fontWeight: 300, marginLeft: 5 }}>20 HEURES RESTANTES</p>
+									<p style={{ fontSize: 15, fontWeight: 300, marginLeft: 5 }}>INDISPONIBLE</p>
 								</div>
 
 								<div style={{ marginTop: 10 }} className="flex-row">
@@ -206,12 +213,12 @@ const Store = () => {
 
 								<div style={{ marginBottom: 25 }} className="flex-row">
 									<div style={{ marginRight: 35 }}>
-										<p style={{ fontSize: 25, marginBottom: -5 }}>130 KG</p>
+										<p style={{ fontSize: 25, marginBottom: -5 }}>100 KG</p>
 										<p style={{ fontSize: 15, color: "rgba(255, 255, 255, 0.66)" }}>LVL 2</p>
 									</div>
 
 									<div>
-										<p style={{ fontSize: 25, marginBottom: -5 }}>80 KG</p>
+										<p style={{ fontSize: 25, marginBottom: -5 }}>50 KG</p>
 										<p style={{ fontSize: 15, color: "rgba(255, 255, 255, 0.66)" }}>LVL 1</p>
 									</div>
 								</div>

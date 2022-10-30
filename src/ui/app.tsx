@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import "./app.scss";
 import CarDealer from "./apps/cardealer";
 import Context from "./apps/context";
-import Store from "./apps/store";
+import Store from "./apps/old-store";
 import Menu from "./apps/menu";
 import Separator from "./apps/separator";
 import InteractionMenu from "./apps/interaction";

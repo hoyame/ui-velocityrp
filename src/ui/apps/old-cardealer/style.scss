@@ -1,0 +1,114 @@
+@font-face {
+	font-family: "Korolev";
+    src: url("http://db.onlinewebfonts.com/t/0ca28687efcc1f750df6ba59a72a6911.eot"); /* IE9*/
+    src: url("http://db.onlinewebfonts.com/t/0ca28687efcc1f750df6ba59a72a6911.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("http://db.onlinewebfonts.com/t/0ca28687efcc1f750df6ba59a72a6911.woff2") format("woff2"), /* chrome firefox */
+    url("http://db.onlinewebfonts.com/t/0ca28687efcc1f750df6ba59a72a6911.woff") format("woff"), /* chrome firefox */
+    url("http://db.onlinewebfonts.com/t/0ca28687efcc1f750df6ba59a72a6911.ttf") format("truetype"), /* chrome firefox opera Safari, Android, iOS 4.2+*/
+    url("http://db.onlinewebfonts.com/t/0ca28687efcc1f750df6ba59a72a6911.svg#Korolev") format("svg"); /* iOS 4.1- */
+}
+
+.cardealer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: "Korolev";
+    user-select: none;
+
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    padding: 0 45px;
+    color: #fff;
+}
+
+.vehicleList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    height: 40px;
+    width: 40%;
+    margin-bottom: 12.5px;
+}
+
+
+.vehicle-container {
+    height: 420px;
+    width: 100%;
+    overflow-y: auto;
+
+    margin-bottom: 15px;
+
+}
+
+.vehicle-container::-webkit-scrollbar {
+    display: none;
+}
+
+.vehicle-component {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 20px;
+    margin-bottom: 10px;
+
+    height: 60px;
+    width: calc(100% - 40px);
+
+    background-color: rgba(0, 0, 0, 0.503);
+
+    &:hover {
+        background-color: #7AF903;
+        opacity: 0.7;
+    }
+}
+
+.vehicle-component-selected {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 20px;
+    margin-bottom: 10px;
+
+    height: 60px;
+    width: calc(100% - 40px);
+
+    background-color: #7AF903;
+}
+
+.color-container {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.color-component {
+    height: 50px;
+    width: 50px;
+    border-radius: 7.5px;
+
+    &:hover {
+        opacity: 0.7;
+    }
+}
+
+.buy-button {
+    height: 70px;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+
+    background-color: rgba(0, 0, 0, 0.503);
+
+    &:hover {
+        background-color: #7AF903;
+    }
+}

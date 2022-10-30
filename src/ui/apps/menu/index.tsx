@@ -6,7 +6,7 @@ import "./style.scss";
 const Menu = () => {
 	const history = useHistory();
 	const close = () => {
-		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/closemenu`, {
+		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/leavemenu`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -24,7 +24,7 @@ const Menu = () => {
 		if (event.keyCode == 27) close();
 	});
 	document.addEventListener("keydown", function (event) {
-		if (event.keyCode == 8) back();
+		// if (event.keyCode == 8) back();
 	});
 
 	const [state, setState] = useState({

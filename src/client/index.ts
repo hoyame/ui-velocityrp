@@ -10,6 +10,7 @@ import { Interaction } from "./modules/misc/interaction";
 import { Ped } from "./modules/misc/ped";
 import { Character } from "./modules/character";
 import { Menu } from "./modules/menu";
+import { Items } from "./modules/misc/items";
 
 class Gamemode {
 	public static async initialize() {
@@ -27,6 +28,7 @@ class Gamemode {
 		await Interaction.initialize();
 		await Ped.initialize();
 		await Menu.initialize();
+		await Items.initialize();
 
 		exports("openMainMenu", (args: any) => {
 			emit("hoyame:openMainMenu", args);

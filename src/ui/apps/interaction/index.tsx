@@ -12,7 +12,7 @@ const Menu = (props?: IInteractionMenu) => {
 	const [input, setInput] = useState("");
 
 	const close = () => {
-		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/closeinteraction`, {
+		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/leaveinteraction`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -81,7 +81,7 @@ const MenuList = (props?: IInteractionMenu) => {
 	const [input, setInput] = useState("");
 
 	const close = () => {
-		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/closeinteraction`, {
+		fetch(`https://${location.hostname.replace("cfx-nui-", "")}/leaveinteraction`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

@@ -131,7 +131,8 @@
 	}
   
   .item {
-		margin-right: 10px;
+    display: inline-block;
+    margin-right: 10px;
 
 		.content {
 		}
@@ -150,4 +151,12 @@
 			}
 		}
 	}
+
+  .backButton {
+    &:hover {
+      transition-duration: 300ms;
+      cursor: pointer;
+      transform: scale(1.05);
+    }
+  }
 }

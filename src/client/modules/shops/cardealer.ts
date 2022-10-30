@@ -32,16 +32,16 @@ export abstract class Cardealer {
 	}
 
 	public static async tp() {
-		this.oldPos = GetEntityCoords(PlayerPedId(), false);
-		SetEntityVisible(GetPlayerPed(-1), false, false);
-		SetEntityCoords(GetPlayerPed(-1), -56.628, 65.145, 71.949, false, false, false, false);
+		// this.oldPos = GetEntityCoords(PlayerPedId(), false);
+		// SetEntityVisible(GetPlayerPed(-1), false, false);
+		// SetEntityCoords(GetPlayerPed(-1), -56.628, 65.145, 71.949, false, false, false, false);
 	}
 
 	public static returnTp() {
-		if (!this.oldPos) return;
-		SetEntityCoords(GetPlayerPed(-1), this.oldPos[0], this.oldPos[1], this.oldPos[2], false, false, false, false);
-		SetEntityVisible(GetPlayerPed(-1), true, true);
-		this.oldPos = null;
+		// if (!this.oldPos) return;
+		// SetEntityCoords(GetPlayerPed(-1), this.oldPos[0], this.oldPos[1], this.oldPos[2], false, false, false, false);
+		// SetEntityVisible(GetPlayerPed(-1), true, true);
+		// this.oldPos = null;
 	}
 
 	public static async open(shop: string) {
@@ -74,64 +74,64 @@ export abstract class Cardealer {
 	}
 
 	public static enableCam(shop: string) {
-		if (shop == "carshop") {
-			this.cam = CreateCam("DEFAULT_SCRIPTED_CAMERA", false);
-			SetCamActive(this.cam, true);
-			SetCamCoord(this.cam, -70.76378, 72.53444, 71.6688);
-			SetCamFov(this.cam, 50.0);
-			PointCamAtCoord(this.cam, -75.09708, 74.8302, 71.91198);
-			RenderScriptCams(true, true, 1500, true, true);
-			FreezeEntityPosition(PlayerPedId(), true);
-			SetEntityVisible(PlayerPedId(), false, false);
+		// if (shop == "carshop") {
+		// 	this.cam = CreateCam("DEFAULT_SCRIPTED_CAMERA", false);
+		// 	SetCamActive(this.cam, true);
+		// 	SetCamCoord(this.cam, -70.76378, 72.53444, 71.6688);
+		// 	SetCamFov(this.cam, 50.0);
+		// 	PointCamAtCoord(this.cam, -75.09708, 74.8302, 71.91198);
+		// 	RenderScriptCams(true, true, 1500, true, true);
+		// 	FreezeEntityPosition(PlayerPedId(), true);
+		// 	SetEntityVisible(PlayerPedId(), false, false);
 
-			this.spawnCar(["asbo"]);
-		} else if (shop == "planeshop") {
-			this.cam = CreateCam("DEFAULT_SCRIPTED_CAMERA", false);
-			SetCamActive(this.cam, true);
-			SetCamCoord(this.cam, -967.869, -2975.583, 13.945);
-			SetCamFov(this.cam, 50.0);
-			PointCamAtCoord(this.cam, -962.527, -2965.897, 13.945);
-			RenderScriptCams(true, true, 1500, true, true);
-			FreezeEntityPosition(PlayerPedId(), true);
-			SetEntityVisible(PlayerPedId(), false, false);
+		// 	this.spawnCar(["asbo"]);
+		// } else if (shop == "planeshop") {
+		// 	this.cam = CreateCam("DEFAULT_SCRIPTED_CAMERA", false);
+		// 	SetCamActive(this.cam, true);
+		// 	SetCamCoord(this.cam, -967.869, -2975.583, 13.945);
+		// 	SetCamFov(this.cam, 50.0);
+		// 	PointCamAtCoord(this.cam, -962.527, -2965.897, 13.945);
+		// 	RenderScriptCams(true, true, 1500, true, true);
+		// 	FreezeEntityPosition(PlayerPedId(), true);
+		// 	SetEntityVisible(PlayerPedId(), false, false);
 
-			this.spawnCar(["frogger"]);
-		} else if (shop == "boatshop") {
-			this.cam = CreateCam("DEFAULT_SCRIPTED_CAMERA", false);
-			SetCamActive(this.cam, true);
-			SetCamCoord(this.cam, 568.757, -3136.3957, 2.951);
-			SetCamFov(this.cam, 35.0);
-			PointCamAtCoord(this.cam, 568.658, -3164.614, 2.951);
-			RenderScriptCams(true, true, 1500, true, true);
-			FreezeEntityPosition(PlayerPedId(), true);
-			SetEntityVisible(PlayerPedId(), false, false);
+		// 	this.spawnCar(["frogger"]);
+		// } else if (shop == "boatshop") {
+		// 	this.cam = CreateCam("DEFAULT_SCRIPTED_CAMERA", false);
+		// 	SetCamActive(this.cam, true);
+		// 	SetCamCoord(this.cam, 568.757, -3136.3957, 2.951);
+		// 	SetCamFov(this.cam, 35.0);
+		// 	PointCamAtCoord(this.cam, 568.658, -3164.614, 2.951);
+		// 	RenderScriptCams(true, true, 1500, true, true);
+		// 	FreezeEntityPosition(PlayerPedId(), true);
+		// 	SetEntityVisible(PlayerPedId(), false, false);
 
-			this.spawnCar(["seashark"]);
-		} else if (shop == "storeshop") {
-			this.cam = CreateCam("DEFAULT_SCRIPTED_CAMERA", false);
-			SetCamActive(this.cam, true);
-			SetCamCoord(this.cam, -70.76378, 72.53444, 71.6688);
-			SetCamFov(this.cam, 50.0);
-			PointCamAtCoord(this.cam, -75.09708, 74.8302, 71.91198);
-			RenderScriptCams(true, true, 1500, true, true);
-			FreezeEntityPosition(PlayerPedId(), true);
-			SetEntityVisible(PlayerPedId(), false, false);
+		// 	this.spawnCar(["seashark"]);
+		// } else if (shop == "storeshop") {
+		// 	this.cam = CreateCam("DEFAULT_SCRIPTED_CAMERA", false);
+		// 	SetCamActive(this.cam, true);
+		// 	SetCamCoord(this.cam, -70.76378, 72.53444, 71.6688);
+		// 	SetCamFov(this.cam, 50.0);
+		// 	PointCamAtCoord(this.cam, -75.09708, 74.8302, 71.91198);
+		// 	RenderScriptCams(true, true, 1500, true, true);
+		// 	FreezeEntityPosition(PlayerPedId(), true);
+		// 	SetEntityVisible(PlayerPedId(), false, false);
 
-			this.spawnCar(["tmaxDX"]);
-		}
+		// 	this.spawnCar(["tmaxDX"]);
+		// }
 	}
 
 	public static disableCam() {
-		if (this.lastVeh) DeleteVehicle(this.lastVeh);
+		// if (this.lastVeh) DeleteVehicle(this.lastVeh);
 
-		RenderScriptCams(false, true, 1500, true, true);
-		DestroyCam(this.cam, true);
-		FreezeEntityPosition(PlayerPedId(), false);
-		SetEntityVisible(PlayerPedId(), true, true);
-		Nui.SendMessage({ path: "" });
-		Nui.SetFocus(false, false, false);
-		DisplayRadar(true);
-		this.shop = null;
+		// RenderScriptCams(false, true, 1500, true, true);
+		// DestroyCam(this.cam, true);
+		// FreezeEntityPosition(PlayerPedId(), false);
+		// SetEntityVisible(PlayerPedId(), true, true);
+		// Nui.SendMessage({ path: "" });
+		// Nui.SetFocus(false, false, false);
+		// DisplayRadar(true);
+		// this.shop = null;
 	}
 
 	private static s = "";

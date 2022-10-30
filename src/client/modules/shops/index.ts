@@ -1,5 +1,5 @@
 import { Cardealer } from "./cardealer";
-import { Store } from "./store";
+import { Store } from "./old-store";
 
 export abstract class Shops {
 	public static async initialize() {
