@@ -5,9 +5,9 @@ export class MySQL {
 
 	public static async initialize() {
 		const connectionString = GetConvar("mysql_connection_string", "");
-		console.log(connectionString);
+
 		if (!connectionString) {
-			console.error("[GM][Framework] | [MySQL] : Uri is empty. You need to set 'mysql_connection_string' convar");
+			// console.error("[GM][Framework] | [MySQL] : Uri is empty. You need to set 'mysql_connection_string' convar");
 			return;
 		}
 
@@ -23,10 +23,10 @@ export class MySQL {
 				console.log(err);
 				return;
 			}
-			console.log("[GM][Framework] | [MySQL] : Connected");
+			// console.log("[GM][Framework] | [MySQL] : Connected");
 		});
 
-		console.log("[GM][Framework] | [Module] - MySQL Initialized");
+		// console.log("[GM][Framework] | [Module] - MySQL Initialized");
 	}
 
 	public static QueryAsync(query: string, params: any[]): Promise<any> {

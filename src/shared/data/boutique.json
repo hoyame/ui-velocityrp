@@ -49,7 +49,7 @@
         },
         {
             
-            "name": "Aston martin",
+            "name": "Aston Martin",
             "model": "rmodmartin",
             "price": 2350,
             "content": {
@@ -71,7 +71,7 @@
             
             "name": "240 SX",
             "model": "240sx",
-            "price": 2500,
+            "price": 2000,
             "content": {
                 "maxSpeed": "260 km/h",
                 "fuel": "83L"
@@ -81,7 +81,7 @@
             
             "name": "ktm duke 2022",
             "model": "ksd",
-            "price": 1700,
+            "price": 2000,
             "content": {
                 "maxSpeed": "300 km/h",
                 "fuel": "83L"

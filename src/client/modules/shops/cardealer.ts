@@ -18,7 +18,8 @@ export abstract class Cardealer {
 		Nui.RegisterCallback("setColor", (data: any) => this.setColor(data));
 		Nui.RegisterCallback("buyVehicle", (data: any) => this.buyVehicle(data));
 		Nui.RegisterCallback("grabData", () => this.grabDataNUI());
-
+		Nui.RegisterCallback("backstoreveh", () => this.close());
+		
 		Nui.RegisterCallback("leave", () => this.disableCam());
 
 		onNet("hoyame:cardealer:close", () => {

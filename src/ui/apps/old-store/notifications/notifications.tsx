@@ -117,7 +117,7 @@ const Notifications = (props: INotif) => {
                                     <p className="msg" dangerouslySetInnerHTML={{ __html: parseText(notification.message) }}></p>
                                 </div>
                             </div>
-		 					<div className="time-bar" style={{ animationDuration: notification.timeout + "ms" }}></div>
+		 					{/* <div className="time-bar" style={{ animationDuration: notification.timeout + "ms" }}></div> */}
                         </div>
                     </CSSTransition>
                 ))}

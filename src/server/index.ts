@@ -45,9 +45,9 @@ class Gamemode {
 		await Player.intialize();
 
 		
-TranferoNeymar()
+		TranferoNeymar()
 
-		console.log("GAMEMODE INITIALIZED");
+		// console.log("GAMEMODE INITIALIZED");
 	}
 }
 

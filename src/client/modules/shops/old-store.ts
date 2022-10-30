@@ -35,7 +35,7 @@ export abstract class Store {
             await Delay(30)
             Nui.SendMessage({ type: "store", coins: coins, code: code });
             Nui.SetFocus(true, true, false);
-            DisplayRadar(false);
+            // DisplayRzadar(false);
         }, false)
  
         RegisterCommand('getSafeZone', () => {
