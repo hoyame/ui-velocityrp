@@ -80,7 +80,7 @@ export abstract class Context {
 			false
 		);
 
-		RegisterKeyMapping("contexts", "Context", "keyboard", "K");
+		RegisterKeyMapping("contexts", "Context", "keyboard", "LEFT ALT");
 
 		setTick(() => {
 			if (this.Data.focus) {

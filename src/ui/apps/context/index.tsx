@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { IContextComponent } from "../../../shared/data/context";
+import ImgLink from "./img";
 
 import "./style.scss";
+
 
 // 👋 Saluer
 
@@ -65,7 +67,7 @@ const Context = () => {
 
 					<foreignObject height={128} width={108}>
 						<div className="content flex-column flex-align" style={{ height: 121 }}>
-							<img style={{ height: 53, width: 53 }} src={props.icon} />
+							<img style={{ height: 53, width: 53 }} src={ImgLink[props.icon] || props.icon} />
 
 							<p style={{ marginTop: 2.5, color: "#fff" }}>{props.text}</p>
 						</div>
